@@ -4,7 +4,7 @@
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 <?php
-include "include/header.php"
+include "includes/header.php"
 ?>
 
 <body>
@@ -724,11 +724,11 @@ include "include/header.php"
     <!-- label white2 html Exit -->
     <!-- ================ footer html start ================ -->
     <?php
-    include "include/footer.php"
+    include "includes/footer.php"
     ?>
     <!-- ================ footer html Exit ================ -->
     <?php
-    include "include/footerlink.php`````````````````````"
+    include "includes/footerlink.php"
     ?>
 </body>
 
