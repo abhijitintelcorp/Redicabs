@@ -46,7 +46,7 @@
                              </li>
                          </ul> -->
                      </li>
-                     <li class="nav-item">
+                     <!-- <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-tree"></i>
                              <p>
@@ -68,9 +68,9 @@
                                  </a>
                              </li>
                          </ul>
-                     </li>
+                     </li> -->
 
-                     <li class="nav-item">
+                     <!-- <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-tree"></i>
                              <p>
@@ -92,8 +92,8 @@
                                  </a>
                              </li>
                          </ul>
-                     </li>
-                     <li class="nav-item">
+                     </li> -->
+                     <!-- <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="fa fa-car"></i>
                              <p>
@@ -115,7 +115,7 @@
                                  </a>
                              </li>
                          </ul>
-                     </li>
+                     </li> -->
 
                      <li class="nav-item">
                          <a href="#" class="nav-link">
@@ -127,7 +127,7 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="pages/tables/data.html" class="nav-link">
+                                 <a href="pages/forms/owner.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Add Owner</p>
                                  </a>
