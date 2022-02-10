@@ -35,19 +35,65 @@
                      data-accordion="false">
                      <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                     <li class="nav-item menu-open">
-                         <a href="#" class="nav-link active">
+                     <li class="nav-item ">
+                         <a href="./index.php" class="nav-link active">
                              <i class="nav-icon fas fa-tachometer-alt"></i>
                              <p>
                                  Dashboard
-                                 <i class="right fas fa-angle-left"></i>
                              </p>
                          </a>
-                         <ul class="nav nav-treeview">
+                         <!-- <ul class="nav nav-treeview">
                              <li class="nav-item">
                                  <a href="./index.php" class="nav-link active">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Dashboard </p>
+                                 </a>
+                             </li>
+                         </ul> -->
+                     </li>
+
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="fa fa-car"></i>
+                             <p>
+                                 Vehicle Management
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/postvehicle.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>PostAVehicle</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/managevehicle.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageVehicles</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="nav-icon fas fa-tree"></i>
+                             <p>
+                                 Category
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/category.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Add Category</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/managecategory.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageCategory</p>
                                  </a>
                              </li>
                          </ul>
@@ -57,25 +103,148 @@
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-tree"></i>
                              <p>
-                                 UI Elements
+                                 SubCategory
                                  <i class="fas fa-angle-left right"></i>
                              </p>
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="pages/UI/general.html" class="nav-link">
+                                 <a href="pages/subcategory.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
-                                     <p>Owner</p>
+                                     <p>Add SubCategory</p>
                                  </a>
                              </li>
-
-
-
-
+                             <li class="nav-item">
+                                 <a href="pages/managesubcategory.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageSubCategory</p>
+                                 </a>
+                             </li>
                          </ul>
                      </li>
-
-
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="fa fa-user"></i>
+                             <p>
+                                 Owner
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/tables/data.html" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Add Owner</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/tables/data.html" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageOwner</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="fa fa-user"></i>
+                             <p>
+                                 Booking
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/new-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>NewBooking</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/quick-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>QuickBooking</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/confirmed-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>confirmed</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/canceled-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Cancelled</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/delayed-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Delayed Pickup</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="fas fa-comment"></i>
+                             <p>
+                                 FeedBack
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/add_feedback.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>AddFeedback</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/manage_feedback.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageFeedback</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/testimonials.php" class="nav-link">
+                             <i class="fa fa-table"></i>
+                             <p>ManageTestimonials</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/manage-conactusquery.php" class="nav-link">
+                             <i class="fa fa-desktop"></i>
+                             <p>ManageContactusQuery</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/reg-users.php" class="nav-link">
+                             <i class="fa fa-users"></i>
+                             <p>RegUser</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/manage-pages.php" class="nav-link">
+                             <i class="fa-solid fa-file"></i>
+                             <p>ManagePages</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/update-contactinfo.php" class="nav-link">
+                             <i class="fa fa-files-o"></i>
+                             <p>UpdateContactInfo</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/manage-subscribers.php" class="nav-link">
+                             <i class="fa fa-table"></i>
+                             <p>ManageSubscriber</p>
+                         </a>
+                     </li>
                      <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-book"></i>
