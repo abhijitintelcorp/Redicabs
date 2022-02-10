@@ -15,3 +15,58 @@
   <link href="fonts/css/font-awesome.css" rel="stylesheet">
   <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
 </head>
+<div id="preloader">
+  <div class="preloader-container">
+    <img src="images/preloader.gif" class="preload-gif" alt="preload-image">
+  </div>
+</div>
+<div class="map-wapper-opacity">
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <div class="col-sm-4">
+<!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
+            <select class="selectpicker" data-live-search="false">
+              <option>English</option>
+              <option>Bangla</option>
+              <option>Hindi</option>
+            </select>
+          </div> -->
+
+          <div class="call-us">
+            <span class="img-circle"><i class="fa fa-phone"></i></span>
+            <p>Call Us Now - 9776000769 </p>
+          </div>
+
+        </div>
+        <div class="col-sm-3">
+          <div class="logo-wraper">
+            <div class="logo">
+              <a href="index-2.html">
+                <img src="images/logo.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div id="languages" class="resister-social">
+
+            <div class="login-register">
+              <a href="#">Login</a>
+              <a href="#">Register</a>
+            </div>
+            <div class="social-icon">
+              <p>paul@intelcorpsolutions.com</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="google-image">
+  <div id="directions-panel"></div>
+  <div id="map-canvas"></div>
+</div>
