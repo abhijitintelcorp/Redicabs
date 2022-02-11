@@ -25,7 +25,7 @@ include "includes/header.php"
                                     <div class="col-sm-12 custom-select-box tec-domain-cat1">
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
-                                                <option>city</option>
+                                                <option>SeatingCapacity</option>
                                                 <option>khulna</option>
                                                 <option>dhaka</option>
                                             </select>
@@ -34,12 +34,22 @@ include "includes/header.php"
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
-                                                <option>transfer type</option>
+                                                <option>Vehicle Name</option>
                                                 <option>transfer type 1</option>
                                                 <option>transfer type 2</option>
                                             </select>
                                         </div>
                                     </div>
+                                      <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                        <div class="row">
+                                            <select class="selectpicker" data-live-search="false">
+                                                <option>Vehicle Brand</option>
+                                                <option>transfer type 1</option>
+                                                <option>transfer type 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                      
                                     <div class="col-sm-12 custom-select-box tec-domain-cat3">
                                         <div class="row">
                                             <div id="panel">
@@ -92,6 +102,7 @@ include "includes/header.php"
                                             <div class="col-sm-8 custom-select-box tec-domain-cat5 day">
                                                 <div class="row">
                                                     <input class="form-control custom-select-box tec-domain-cat5" type="date" name="date" />
+
                                                 </div>
                                             </div>
 

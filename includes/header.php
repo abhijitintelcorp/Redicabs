@@ -14,6 +14,7 @@
   <!-- font awesome this template -->
   <link href="fonts/css/font-awesome.css" rel="stylesheet">
   <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/w3.css">
 </head>
 <div id="preloader">
   <div class="preloader-container">
@@ -42,7 +43,7 @@
         <div class="col-sm-3">
           <div class="logo-wraper">
             <div class="logo">
-              <a href="index-2.html">
+              <a href="index.php">
                 <img src="images/logo.png" alt="">
               </a>
             </div>
@@ -52,13 +53,23 @@
         <div class="col-sm-4">
           <div id="languages" class="resister-social">
 
-            <div class="login-register">
-              <a href="#">Login</a>
-              <a href="#">Register</a>
+            <div>
+              <!-- <a href="#">Login</a> -->
+              <button onclick="document.getElementById('id01').style.display='block'">Login</button>
+<?php
+  include "login.php"
+?>
+
+     <!-- <a href="#">Register</a> -->
+                <button onclick="document.getElementById('id02').style.display='block'">Register</button>
+<?php
+  include "register.php"
+?>
+
             </div>
-            <div class="social-icon">
+<!--             <div class="social-icon">
               <p>paul@intelcorpsolutions.com</p>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -67,6 +78,5 @@
   </div>
 </div>
 <div class="google-image">
-  <div id="directions-panel"></div>
   <div id="map-canvas"></div>
 </div>
