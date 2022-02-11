@@ -1,3 +1,7 @@
+<?php
+include "includes/connection.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +30,15 @@ include "includes/header.php"
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>SeatingCapacity</option>
-                                                <option>khulna</option>
-                                                <option>dhaka</option>
+                                                <?php
+                                                        $qry = "SELECT id,SeatingCapacity from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['SeatingCapacity'] ?>
+                                                        </option>
+                                                    <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
@@ -35,8 +46,15 @@ include "includes/header.php"
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>Vehicle Name</option>
-                                                <option>transfer type 1</option>
-                                                <option>transfer type 2</option>
+                                                <?php
+                                                        $qry = "SELECT id,owner_vehicle_name from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['owner_vehicle_name'] ?>
+                                                        </option>
+                                                    <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
@@ -44,12 +62,19 @@ include "includes/header.php"
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>Vehicle Brand</option>
-                                                <option>transfer type 1</option>
-                                                <option>transfer type 2</option>
+                                                    <?php
+                                                        $qry = "SELECT id,owner_vehicle_brand from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['owner_vehicle_brand'] ?>
+                                                        </option>
+                                                    <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
-                                      
+
                                     <div class="col-sm-12 custom-select-box tec-domain-cat3">
                                         <div class="row">
                                             <div id="panel">
