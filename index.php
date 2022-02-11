@@ -129,10 +129,10 @@ include "includes/header.php"
             </div>
         </div>
     </div>
-    <div class="google-image">
+   <!--- <div class="google-image">
         <div id="directions-panel"></div>
         <div id="map-canvas"></div>
-    </div>
+    </div> -->
 
 
     <!-- Booking now form wrapper html start -->
