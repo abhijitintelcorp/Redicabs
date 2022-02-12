@@ -32,8 +32,7 @@ echo "<script type='text/javascript'> document.location = '$currentpage'; </scri
           <label><b>Password</b></label>
           <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" id="password" required>
            <input class="w3-check w3-margin-top" type="checkbox" checked="checked">Remember Me
-          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="login_submit">Login</button>
-         
+          <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="login_submit">Login</button>        
         </div>
       </form>
 
@@ -41,12 +40,10 @@ echo "<script type='text/javascript'> document.location = '$currentpage'; </scri
         <div class="w3-padding w3-hide-small">
           <center><p onclick="document.getElementById('id02').style.display='block'">Don't have an account? Signup Here</p>
           </center></div>
-<!--         <div class="w3-right w3-padding w3-hide-small"><a href="#">Forgot Password?</a></div> -->
-        
+<!--         <div class="w3-right w3-padding w3-hide-small"><a href="#">Forgot Password?</a></div> -->      
       </div>
-
     </div>
   </div>
-    <script src="js/jquery.validate.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
   <script src="js/additional-methods.min.js"></script>
   <script src="js/validation.js"></script>
