@@ -150,31 +150,31 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="pages/new-bookings.php" class="nav-link">
+                                 <a href="new-bookings.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>NewBooking</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="pages/quick-bookings.php" class="nav-link">
+                                 <a href="quick-bookings.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>QuickBooking</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="pages/confirmed-bookings.php" class="nav-link">
+                                 <a href="confirmed-bookings.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>confirmed</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="pages/canceled-bookings.php" class="nav-link">
+                                 <a href="canceled-bookings.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Cancelled</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="pages/delayed-bookings.php" class="nav-link">
+                                 <a href="delayed-bookings.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Delayed Pickup</p>
                                  </a>
@@ -349,4 +349,5 @@
                      </div><!-- /.col -->
                  </div><!-- /.row -->
              </div><!-- /.container-fluid -->
+
          </div>
