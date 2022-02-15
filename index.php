@@ -29,7 +29,7 @@ include "includes/header.php"
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>SeatingCapacity</option>
                                                 <?php
-                                                        $qry = "SELECT id,SeatingCapacity from tblbooking";
+                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking ORDER BY id ASC";
                                                         $exe = mysqli_query($conn, $qry);
                                                         while ($row = mysqli_fetch_array($exe)) {
                                                         ?>
