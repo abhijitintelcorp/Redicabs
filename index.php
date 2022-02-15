@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<?php
+include "includes/connection.php"
+?>
+
+>>>>>>> laxmipriya
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +15,7 @@ include "includes/header.php"
 ?>
 
 <body>
+<<<<<<< HEAD
     <div id="preloader">
         <div class="preloader-container">
             <img src="images/preloader.gif" class="preload-gif" alt="preload-image">
@@ -125,10 +133,149 @@ include "includes/header.php"
                             </nav>
                         </div>
                     </div>
+=======
+
+    <!-- Booking now form wrapper html start -->
+    <div class="booking-form-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="form-wrap ">
+                            <div class="form-headr"></div>
+                            <h2>Fill in the Details Below to Book Your Transfer.</h2>
+                            <div class="form-select">
+                                <form>
+                                    <div class="col-sm-12 custom-select-box tec-domain-cat1">
+                                        <div class="row">
+                                            <select class="selectpicker" data-live-search="false">
+                                                <option>SeatingCapacity</option>
+                                                <?php
+                                                        $qry = "SELECT id,SeatingCapacity from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['SeatingCapacity'] ?>
+                                                        </option>
+                                                    <?php }  ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                        <div class="row">
+                                            <select class="selectpicker" data-live-search="false">
+                                                <option>Vehicle Name</option>
+                                                <?php
+                                                        $qry = "SELECT id,owner_vehicle_name from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['owner_vehicle_name'] ?>
+                                                        </option>
+                                                    <?php }  ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                      <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                        <div class="row">
+                                            <select class="selectpicker" data-live-search="false">
+                                                <option>Vehicle Brand</option>
+                                                    <?php
+                                                        $qry = "SELECT id,owner_vehicle_brand from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['owner_vehicle_brand'] ?>
+                                                        </option>
+                                                    <?php }  ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 custom-select-box tec-domain-cat3">
+                                        <div class="row">
+                                            <div id="panel">
+                                                <select id="start" onchange="calcRoute();" class="selectpicker custom-select-box tec-domain-cat">
+                                                    <option value="">puck-up location</option>
+                                                    <option value="chicago, il">Chicago</option>
+                                                    <option value="st louis, mo">St Louis</option>
+                                                    <option value="joplin, mo">Joplin, MO</option>
+                                                    <option value="oklahoma city, ok">Oklahoma City</option>
+                                                    <option value="amarillo, tx">Amarillo</option>
+                                                    <option value="gallup, nm">Gallup, NM</option>
+                                                    <option value="flagstaff, az">Flagstaff, AZ</option>
+                                                    <option value="winona, az">Winona</option>
+                                                    <option value="kingman, az">Kingman</option>
+                                                    <option value="barstow, ca">Barstow</option>
+                                                    <option value="san bernardino, ca">San Bernardino</option>
+                                                    <option value="los angeles, ca">Los Angeles</option>
+                                                    <option value="khulna">Khulna, Bangladesh</option>
+                                                    <option value="terokhada">Terokhada, Bangladesh</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 custom-select-box tec-domain-cat4">
+                                        <div class="row">
+                                            <div>
+                                                <select id="end" onchange="calcRoute();" class="selectpicker custom-select-box tec-domain-cat">
+                                                    <option value="">drop-off location</option>
+                                                    <option value="chicago, il">Chicago</option>
+                                                    <option value="st louis, mo">St Louis</option>
+                                                    <option value="joplin, mo">Joplin, MO</option>
+                                                    <option value="oklahoma city, ok">Oklahoma City</option>
+                                                    <option value="amarillo, tx">Amarillo</option>
+                                                    <option value="gallup, nm">Gallup, NM</option>
+                                                    <option value="flagstaff, az">Flagstaff, AZ</option>
+                                                    <option value="winona, az">Winona</option>
+                                                    <option value="kingman, az">Kingman</option>
+                                                    <option value="barstow, ca">Barstow</option>
+                                                    <option value="san bernardino, ca">San Bernardino</option>
+                                                    <option value="los angeles, ca">Los Angeles</option>
+                                                    <option value="Satkhira">Satkhira, Bangladesh</option>
+                                                    <option value="terokhada">Terokhada, Bangladesh</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-8 custom-select-box tec-domain-cat5 day">
+                                                <div class="row">
+                                                    <input class="form-control custom-select-box tec-domain-cat5" type="date" name="date" />
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4 custom-select-box tec-domain-cat6 time">
+                                                <div class="row">
+                                                    <select class="selectpicker" data-live-search="false">
+                                                        <option class="time1"> 08:00</option>
+                                                        <option class="time1"> 09:00</option>
+                                                        <option class="time1"> 10:00</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-button">
+                                        <button type="submit" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> laxmipriya
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="google-image">
         <div id="map-canvas"></div>
     </div> 
@@ -240,6 +387,8 @@ include "includes/header.php"
             </div>
         </div>
     </div>
+=======
+>>>>>>> laxmipriya
     <!-- Booking now form wrapper html Exit -->
 
     <!-- anytime-anywhere html start -->
@@ -266,7 +415,11 @@ include "includes/header.php"
                         <div class="car-wrap"><img class="private-car" src="images/private-car.png" alt="" /></div>
                         <h5>Private Car</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -274,7 +427,11 @@ include "includes/header.php"
                         <div class="car-wrap"><img class="morotbike-car" src="images/motorbike.png" alt="" /></div>
                         <h5>Motorbike</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -282,7 +439,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="minicar-car" src="images/minicar.png" alt="" /></div>
                         <h5>Minicar</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -290,7 +451,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="mini-track-car" src="images/mini-track.png" alt="" /></div>
                         <h5>Mini Truck</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -298,7 +463,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="boat-car" src="images/boat.png" alt="" /></div>
                         <h5>Boat</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -306,7 +475,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="snow-car" src="images/snow-bike.png" alt="" /></div>
                         <h5>Snow Bike</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -314,7 +487,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="tractor-car" src="images/tractor.png" alt="" /></div>
                         <h5>Tractor</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -322,7 +499,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="vihicel-car" src="images/vihicel.png" alt="" /></div>
                         <h5>Large Vehicle</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -330,7 +511,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="morotbike-car" src="images/motorbike.png" alt="" /></div>
                         <h5>Motorbike</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
@@ -338,7 +523,11 @@ include "includes/header.php"
                         <div class="car-wrap"> <img class="big-track-car" src="images/big-track.png" alt="" /></div>
                         <h5>Big Truck</h5>
                         <div class="car-type-btn">
+<<<<<<< HEAD
                             <a href="Results_1.html" class="btn car-btn btn-lg">BOOK NOW</a>
+=======
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+>>>>>>> laxmipriya
                         </div>
                     </div>
 
