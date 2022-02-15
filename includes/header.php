@@ -1,10 +1,6 @@
 <head>
 
-<<<<<<< HEAD
-  <title>Redicabs</title>
-=======
   <title>Taksi</title>
->>>>>>> laxmipriya
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
   <link href="css/bootstrap.css" rel="stylesheet">
@@ -18,9 +14,6 @@
   <!-- font awesome this template -->
   <link href="fonts/css/font-awesome.css" rel="stylesheet">
   <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-<<<<<<< HEAD
-</head>
-=======
   <link rel="stylesheet" href="css/w3.css">
 </head>
 <div id="preloader">
@@ -87,4 +80,3 @@
 <div class="google-image">
   <div id="map-canvas"></div>
 </div>
->>>>>>> laxmipriya
