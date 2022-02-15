@@ -127,9 +127,9 @@ if (isset($_POST['owner_submit'])) {
                                     <div class="card-body">
                                         <form action="" method="post" name="add_owner" id="add_owner"
                                             class="form-horizontal" enctype="multipart/form-data">
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col-sm-6">
-                                                    <!-- text input -->
+                                                
                                                     <div class="form-group">
                                                         <label>BrandName</label>
                                                         <input type="text" class="form-control"
@@ -144,10 +144,9 @@ if (isset($_POST['owner_submit'])) {
                                                             id="VehicleName">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <!-- text input -->
+                                            </div> -->
+                                            <!-- <div class="row">
+                                                <div class="col-sm-6">                                                  
                                                     <div class="form-group">
                                                         <label>VehicleNumber</label>
                                                         <input type="text" class="form-control"
@@ -163,8 +162,8 @@ if (isset($_POST['owner_submit'])) {
                                                             id="VehRCNo">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            </div> -->
+                                            <!-- <div class="row">
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -174,15 +173,15 @@ if (isset($_POST['owner_submit'])) {
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <!-- text input -->
+                                                  
                                                     <div class="form-group">
                                                         <label>DriverName</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter Driver name" name="Dname" id="Dname">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            </div> -->
+                                            <!-- <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DLnumber</label>
@@ -197,10 +196,10 @@ if (isset($_POST['owner_submit'])) {
                                                             placeholder="Enter driver number" name="Dno" id="Dno">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <!-- text input -->
+
                                                     <div class="form-group">
                                                         <label>SeatingCapacity</label>
                                                         <input type="text" class="form-control"
