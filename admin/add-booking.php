@@ -128,7 +128,7 @@ if (isset($_POST['owner_submit'])) {
                                         <form action="" method="post" name="add_owner" id="add_owner"
                                             class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-6">
 
                                                     <label>SeatingCapacity</label>
 
@@ -159,28 +159,29 @@ if (isset($_POST['owner_submit'])) {
                                                     </select>
 
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-6">
                                                     <label>Brand</label>
                                                     <select class="selectpicker" data-live-search="false" name="brand"
                                                         id="brand">
                                                         <option>Brand</option>
                                                         <?php
-                                                        $qry = "SELECT distinct brand from tblbooking";
+                                                        $seat_id = $_POST['id'];
+                                                        $qry = "SELECT  brand from tblbooking where id='$seat_id'";
                                                         $exe = mysqli_query($conn, $qry);
                                                         while ($row = mysqli_fetch_array($exe)) {
-
-
                                                         ?>
 
-                                                        <option value="<?php echo $row['id'] ?>">
+                                                        $options = <option value="<?php echo $row['id'] ?>">
                                                             <?php echo $row['brand'] ?>
                                                         </option>
+                                                        echo $options;
                                                         <?php }  ?>
                                                     </select>
 
                                                 </div>
+                                            </div>
+                                            <div class="row">
+
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
@@ -395,7 +396,7 @@ if (isset($_POST['owner_submit'])) {
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Page specific script -->
     <script>
     $(function() {
@@ -427,6 +428,19 @@ if (isset($_POST['owner_submit'])) {
         $('select[name="name"]').change(function() {
             var number = $('option:selected', this).attr('number');
             $("#number").val(number);
+        });
+    });
+    </script>
+    <script>
+    $('#SeatingCapacity').on('change', function() {
+        var seat_id = this.value;
+        $.ajax({
+            type: "POST",
+            url: "add-booking.php",
+            data: 'seat_id=' + seat_id,
+            success: function(result) {
+                $("#brand").html(result);
+            }
         });
     });
     </script>
