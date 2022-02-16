@@ -9,10 +9,6 @@
 
  <body>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> archana
      <!-- Booking now form wrapper html start -->
      <div class="booking-form-wrapper">
          <div class="container">

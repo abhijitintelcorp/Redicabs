@@ -39,92 +39,14 @@
                          </a>
                          <!-- <ul class="nav nav-treeview">
                              <li class="nav-item">
-<<<<<<< HEAD
-                                 <a href="index.php" class="nav-link active">
-=======
                                  <a href="./index.php" class="nav-link active">
->>>>>>> archana
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Dashboard </p>
                                  </a>
                              </li>
-<<<<<<< HEAD
- 
-                         </ul>
-                     </li>
-
-                     <li class="nav-item">
-                         <a href="#" class="nav-link">
-                             <i class="nav-icon fas fa-copy"></i>
-                             <p>
-                                Booking
-                                 <i class="fas fa-angle-left right"></i>
-                             </p>
-                         </a>
-                         <ul class="nav nav-treeview">
-                             <li class="nav-item">
-                                 <a href="pages/layout/top-nav.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>New Booking</p>
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>Confirmed</p>
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="pages/layout/boxed.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>Canceled</p>
-                                 </a>
-                             </li>
-
-
-                         </ul>
-                     </li>
-                     <li class="nav-item">
-                         <a href="#" class="nav-link">
-                             <i class="nav-icon fas fa-chart-pie"></i>
-                             <p>
-                                 Charts
-                                 <i class="right fas fa-angle-left"></i>
-                             </p>
-                         </a>
-                         <ul class="nav nav-treeview">
-                             <li class="nav-item">
-                                 <a href="pages/charts/chartjs.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>ChartJS</p>
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="pages/charts/flot.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>Flot</p>
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="pages/charts/inline.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>Inline</p>
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="pages/charts/uplot.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>uPlot</p>
-                                 </a>
-                             </li>
-                         </ul>
-                     </li>
-                     <li class="nav-item">
-=======
                          </ul> -->
                      </li>
                      <!-- <li class="nav-item">
->>>>>>> archana
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-tree"></i>
                              <p>
@@ -403,45 +325,6 @@
                              </li>
                          </ul>
                      </li>
-<<<<<<< HEAD
-                     <li class="nav-item">
-                         <a href="#" class="nav-link">
-                             <i class="nav-icon fas fa-search"></i>
-                             <p>
-                                 Search
-                                 <i class="fas fa-angle-left right"></i>
-                             </p>
-                         </a>
-                         <ul class="nav nav-treeview">
-                             <li class="nav-item">
-                                 <a href="pages/search/simple.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>Simple Search</p>
-                                 </a>
-                             </li>
-                             <li class="nav-item">
-                                 <a href="pages/search/enhanced.html" class="nav-link">
-                                     <i class="far fa-circle nav-icon"></i>
-                                     <p>Enhanced</p>
-                                 </a>
-                             </li>
-                         </ul>
-                     </li>
-                     <li class="nav-header">MISCELLANEOUS</li>
-                     <li class="nav-item">
-                         <a href="iframe.html" class="nav-link">
-                             <i class="nav-icon fas fa-ellipsis-h"></i>
-                             <p>Tabbed IFrame Plugin</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                             <i class="nav-icon fas fa-file"></i>
-                             <p>Documentation</p>
-                         </a>
-                     </li>                     
-=======
->>>>>>> archana
                  </ul>
              </nav>
             <!-- /.sidebar-menu -->
