@@ -1,18 +1,12 @@
 <?php
-include "includes/connection.php"
+include("includes/connection.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
-
 <?php
-include "includes/header.php"
+include("includes/header.php");
 ?>
-
 <body>
-
     <!-- Booking now form wrapper html start -->
     <div class="booking-form-wrapper">
         <div class="container">
@@ -23,20 +17,20 @@ include "includes/header.php"
                             <div class="form-headr"></div>
                             <h2>Fill in the Details Below to Book Your Transfer.</h2>
                             <div class="form-select">
-                                <form>
+                                <form name="form1" action="" method="post">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat1">
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>SeatingCapacity</option>
                                                 <?php
-                                                $qry = "SELECT id,SeatingCapacity from tblbooking";
-                                                $exe = mysqli_query($conn, $qry);
-                                                while ($row = mysqli_fetch_array($exe)) {
-                                                ?>
-                                                    <option value="<?php echo $row['id'] ?>">
-                                                        <?php echo $row['SeatingCapacity'] ?>
-                                                    </option>
-                                                <?php }  ?>
+                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking ORDER BY id ASC";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['SeatingCapacity'] ?>
+                                                        </option>
+                                                    <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
@@ -45,30 +39,30 @@ include "includes/header.php"
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>Vehicle Name</option>
                                                 <?php
-                                                $qry = "SELECT id,owner_vehicle_name from tblbooking";
-                                                $exe = mysqli_query($conn, $qry);
-                                                while ($row = mysqli_fetch_array($exe)) {
-                                                ?>
-                                                    <option value="<?php echo $row['id'] ?>">
-                                                        <?php echo $row['owner_vehicle_name'] ?>
-                                                    </option>
-                                                <?php }  ?>
+                                                        $qry = "SELECT id,owner_vehicle_name from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['owner_vehicle_name'] ?>
+                                                        </option>
+                                                    <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                      <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false">
                                                 <option>Vehicle Brand</option>
-                                                <?php
-                                                $qry = "SELECT id,owner_vehicle_brand from tblbooking";
-                                                $exe = mysqli_query($conn, $qry);
-                                                while ($row = mysqli_fetch_array($exe)) {
-                                                ?>
-                                                    <option value="<?php echo $row['id'] ?>">
-                                                        <?php echo $row['owner_vehicle_brand'] ?>
-                                                    </option>
-                                                <?php }  ?>
+                                                    <?php
+                                                        $qry = "SELECT id,owner_vehicle_brand from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        ?>
+                                                        <option value="<?php echo $row['id'] ?>">
+                                                            <?php echo $row['owner_vehicle_brand'] ?>
+                                                        </option>
+                                                    <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
@@ -142,8 +136,7 @@ include "includes/header.php"
                                     </div>
 
                                     <div class="form-button">
-                                        <button type="submit" class="btn form-btn btn-lg btn-block">Book Your Taxi
-                                            Now</button>
+                                        <button type="submit" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
                                     </div>
                                 </form>
                             </div>
@@ -161,8 +154,7 @@ include "includes/header.php"
             <div class="anytime-wrap">
                 <h1>ANYTIME, <br />ANYWHERE!</h1>
                 <div class="anytime-text">
-                    <p><i class="fa fa-custom fa-circle-o"></i>Proin gravida nibh vel velit auctor aliquet sollicitudin.
-                    </p>
+                    <p><i class="fa fa-custom fa-circle-o"></i>Proin gravida nibh vel velit auctor aliquet sollicitudin.</p>
                     <p><i class="fa fa-custom fa-circle-o"></i>Qnec sagittis bibendum auctor sem nibh id.</p>
                     <p><i class="fa fa-custom fa-circle-o"></i>Rit amet nibh vulputate cursus nisi elit.</p>
                 </div>
@@ -583,8 +575,7 @@ include "includes/header.php"
                             <div class="containt-text">
                                 <h3>Secure Booking</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
-                                    non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -598,8 +589,7 @@ include "includes/header.php"
                             <div class="containt-text">
                                 <h3>Reliable Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
-                                    non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -613,8 +603,7 @@ include "includes/header.php"
                             <div class="containt-text">
                                 <h3>Customer Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
-                                    non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -628,8 +617,7 @@ include "includes/header.php"
                             <div class="containt-text">
                                 <h3>No Hidden Charges</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
-                                    non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -640,14 +628,17 @@ include "includes/header.php"
     <!-- label white2 html Exit -->
     <!-- ================ footer html start ================ -->
     <?php
-    include "includes/footer.php"
+    include("includes/footer.php");
     ?>
     <!-- ================ footer html Exit ================ -->
     <?php
-    include "includes/footerlink.php"
+    include("includes/footerlink.php");
     ?>
 </body>
 
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 </html>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/validation.js">
+</script>

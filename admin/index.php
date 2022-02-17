@@ -2,7 +2,32 @@
 <html lang="en">
 
 <?php
+<<<<<<< HEAD
+<<<<<<< HEAD
 include "includes/headerlink.php"
+=======
+session_start();
+include('includes/config.php');
+if(isset($_POST['login']))
+{
+$email=htmlspecialchars($_POST['username']);
+$password=md5($_POST['password']);
+$sql ="SELECT * FROM admin WHERE UserName='$email' and Password='$password'";
+$res = mysqli_query($conn, $sql);
+$row=mysqli_fetch_assoc($res);
+$count = mysqli_num_rows($res);
+if($count > 0)
+{
+$_SESSION['alogin']=$_POST['username'];
+echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+} else{
+  echo "<script>alert('Invalid Details');</script>";
+}
+}
+>>>>>>> abd86ae45c06cdc4712b860731af8dbfa36f88c8
+=======
+include "includes/headerlink.php"
+>>>>>>> 4e2c0c0dfe18c9255c427c1d6e337c15864efc1b
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
