@@ -24,7 +24,6 @@
     $run_query = mysqli_query($conn, $query);
     //Count total number of rows
     $count = mysqli_num_rows($run_query);
-    
     //Display cities list
     if($count > 0){
         echo '<option value="">Select Vehicle Name</option>';
