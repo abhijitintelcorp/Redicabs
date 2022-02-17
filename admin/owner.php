@@ -47,7 +47,7 @@ if (isset($_POST['owner_submit'])) {
     if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif') {
         if ($size <= 7000000) {
             //$DLimage = $_FILES['DLimage']['name'];
-            $insert_qry = "INSERT INTO tblbooking(Categories,SubCategories,owner_vehicle_name,owner_vehicle_no,owner_vehicle_RCno,owner_vehicle_chesis_no,DriverName,DriverMobile,Driver_DL_No,PricePerDay,SeatingCapacity,ModelYear,OwnerName,Owner_Aadhar_No,owner_mobile,owner_email,frontimage,backimage,DLimage,Driver_Adhar_image,own_adhar_image) VALUES('$category','$brand','$VehicleName','$VehicleNumber','$VehRCNo','$chasis', '$Dname','$Dno','$DLno','$price','$seat','$year','$ownname','$ownadhar','$ownno','$email','$frontimage','$backimage','$DLimage','$Adharimage','$Adharimage1')";
+            $insert_qry = "INSERT INTO tblbooking(Categories,SubCategories,owner_vehicle_brand,owner_vehicle_name,owner_vehicle_no,owner_vehicle_RCno,owner_vehicle_chesis_no,DriverName,DriverMobile,Driver_DL_No,PricePerDay,SeatingCapacity,ModelYear,OwnerName,Owner_Aadhar_No,owner_mobile,owner_email,frontimage,backimage,DLimage,Driver_Adhar_image,own_adhar_image) VALUES('$category','$brand','$brand','$VehicleName','$VehicleNumber','$VehRCNo','$chasis', '$Dname','$Dno','$DLno','$price','$seat','$year','$ownname','$ownadhar','$ownno','$email','$frontimage','$backimage','$DLimage','$Adharimage','$Adharimage1')";
             $res_query = mysqli_query($conn, $insert_qry);
         }
         $path = "images/" . $frontimage;
@@ -67,7 +67,7 @@ if (isset($_POST['owner_submit'])) {
             copy($path, "$path");
         }
         $path = "images/" . $Adharimage1;
-        if (move_uploaded_file($img_file4, $path)) {
+        if (move_uploaded_file($img_file5, $path)) {
             copy($path, "$path");
         }
     }
