@@ -169,21 +169,18 @@
                                          <div class="service-wrap2"><span>Private Car</span></div>
                                      </div>
                                  </div>
-
                                  <div class="row">
                                      <div class="col-sm-12">
                                          <div class="service-wrap1"><span>Service:</span></div>
                                          <div class="service-wrap2"><span>Outstation</span></div>
                                      </div>
                                  </div>
-
                                  <div class="row">
                                      <div class="col-sm-12">
                                          <div class="service-wrap1"><span>From:</span></div>
                                          <div class="service-wrap2"><span>Paris</span></div>
                                      </div>
                                  </div>
-
                                  <div class="row">
                                      <div class="col-sm-12">
                                          <div class="service-wrap1"><span>Destination:</span></div>
