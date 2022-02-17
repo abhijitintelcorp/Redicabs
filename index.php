@@ -1,18 +1,12 @@
 <?php
 include("includes/connection.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
-
 <?php
 include("includes/header.php");
 ?>
-
 <body>
-
     <!-- Booking now form wrapper html start -->
     <div class="booking-form-wrapper">
         <div class="container">
@@ -645,3 +639,6 @@ include("includes/header.php");
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 </html>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/validation.js">
+</script>

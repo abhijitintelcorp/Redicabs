@@ -327,9 +327,9 @@
                      </li>
                  </ul>
              </nav>
-            <!-- /.sidebar-menu -->
+             <!-- /.sidebar-menu -->
          </div>
-        <!-- /.sidebar -->
+         <!-- /.sidebar -->
      </aside>
 
      <!-- Content Wrapper. Contains page content -->
