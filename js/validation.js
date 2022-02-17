@@ -13,8 +13,13 @@ $("#signup_form").validate({
         required: true,
         minlength: 10
       },
-      password: {
-        required: true,
+      password_id: {
+        required: true, 
+        minlength:8,
+      },
+      cpassword: {
+        minlength:8,
+        equalTo: "#password_id"
       }
     },
     messages : {
@@ -30,11 +35,17 @@ $("#signup_form").validate({
        required: "<b style='color:red'>Please enter your Mobile Number</b>",
        number: "<b style='color:red'>Please Enter numerical values Only</b>"
       },
-       password: {
+       password_id: {
         required: "<b style='color:red'>Please enter your Password</b>",
-        minlength: "<b style='color:red'>Password should be at least 4 characters</b>",
+        minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+      },
+      cpassword: {
+        minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
+        equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>"
       }
     },
-    
+   submitHandler: function(form) {
+   form.submit();
+    }
   });
 });
