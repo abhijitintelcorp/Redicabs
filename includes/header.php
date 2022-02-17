@@ -26,7 +26,7 @@
     <div class="row">
       <div class="row">
         <div class="col-sm-4">
-<!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
+          <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
             <select class="selectpicker" data-live-search="false">
               <option>English</option>
               <option>Bangla</option>
@@ -56,18 +56,18 @@
             <div>
               <!-- <a href="#">Login</a> -->
               <button onclick="document.getElementById('id01').style.display='block'">Login</button>
-<?php
-  include "login.php"
-?>
+              <?php
+              include "login.php"
+              ?>
 
-     <!-- <a href="#">Register</a> -->
-                <button onclick="document.getElementById('id02').style.display='block'">Register</button>
-<?php
-  include "register.php"
-?>
+              <!-- <a href="#">Register</a> -->
+              <button onclick="document.getElementById('id02').style.display='block'">Register</button>
+              <?php
+              include "register.php"
+              ?>
 
             </div>
-<!--             <div class="social-icon">
+            <!--             <div class="social-icon">
               <p>paul@intelcorpsolutions.com</p>
             </div> -->
           </div>
