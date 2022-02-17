@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 error_reporting(0);
@@ -235,3 +236,5 @@ echo $row['detail'];
 
 </html>
 <?php } ?>
+=======
+>>>>>>> 4e2c0c0dfe18c9255c427c1d6e337c15864efc1b

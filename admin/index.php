@@ -3,6 +3,7 @@
 
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 include "includes/headerlink.php"
 =======
 session_start();
@@ -24,6 +25,9 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 }
 }
 >>>>>>> abd86ae45c06cdc4712b860731af8dbfa36f88c8
+=======
+include "includes/headerlink.php"
+>>>>>>> 4e2c0c0dfe18c9255c427c1d6e337c15864efc1b
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
