@@ -50,37 +50,34 @@ if (isset($_POST['owner_submit'])) {
 
     if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif') {
         if ($size <= 7000000) {
-            $update_qry = "UPDATE  tblbooking SET  owner_name='$owner_name',owner_mobile='$owner_mobile',owner_email='$owner_email',owner_vehicle_no='$owner_vehicle_no',owner_vehicle_rc_no='$owner_vehicle_rc_no',owner_vehicle_jcc_no=' $owner_vehicle_jcc_no',owner_vehicle_brand='$owner_vehicle_brand',owner_vehicle_name='$owner_vehicle_name',owner_vehicle_color='$owner_vehicle_color',driver_id='$driver_id' WHERE id='$user_id'";
-            $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
-
-            if ($inst_u_fn1_qry) {
-                header("location:booking-details.php");
-            }
-            $path = "images/" . $frontimage;
-            if (move_uploaded_file($img_file1, $path)) {
-                copy($path, "$path");
-            }
-            $path = "images/" . $backimage;
-            if (move_uploaded_file($img_file2, $path)) {
-                copy($path, "$path");
-            }
-            $path = "images/" . $DLimage;
-            if (move_uploaded_file($img_file3, $path)) {
-                copy($path, "$path");
-            }
-            $path = "images/" . $Adharimage;
-            if (move_uploaded_file($img_file4, $path)) {
-                copy($path, "$path");
-            }
-            $path = "images/" . $Adharimage1;
-            if (move_uploaded_file($img_file4, $path)) {
-                copy($path, "$path");
-            }
+            //$DLimage = $_FILES['DLimage']['name'];
+            $insert_qry = "INSERT INTO tblbooking(owner_vehicle_brand,owner_vehicle_name,owner_vehicle_no,owner_vehicle_RCno,owner_vehicle_chesis_no,DriverName,DriverMobile,Driver_DL_No,PricePerDay,SeatingCapacity,ModelYear,OwnerName,Owner_Aadhar_No,owner_mobile,owner_email,frontimage,backimage,DLimage,Adharimage,own_adhar_image) VALUES('$brand','$VehicleName','$VehicleNumber','$VehRCNo','$chasis', '$Dname','$Dno','$DLno','$price','$seat','$year','$ownname','$ownadhar','$ownno','$email','$frontimage','$backimage','$DLimage','$Adharimage','$Adharimage1')";
+            $res_query = mysqli_query($conn, $insert_qry);
         }
-        if ($res_query) {
-            header("location:manageowner.php");
-            echo "success";
+        $path = "images/" . $frontimage;
+        if (move_uploaded_file($img_file1, $path)) {
+            copy($path, "$path");
         }
+        $path = "images/" . $backimage;
+        if (move_uploaded_file($img_file2, $path)) {
+            copy($path, "$path");
+        }
+        $path = "images/" . $DLimage;
+        if (move_uploaded_file($img_file3, $path)) {
+            copy($path, "$path");
+        }
+        $path = "images/" . $Adharimage;
+        if (move_uploaded_file($img_file4, $path)) {
+            copy($path, "$path");
+        }
+        $path = "images/" . $Adharimage1;
+        if (move_uploaded_file($img_file4, $path)) {
+            copy($path, "$path");
+        }
+    }
+    if ($res_query) {
+        header("location:manageowner.php");
+        echo "success";
     }
 }
 ?>
@@ -135,28 +132,38 @@ if (isset($_POST['owner_submit'])) {
 
                                                     <label>SeatingCapacity</label>
 
-                                                    <select class="selectpicker" onchange=getbrand()
+                                                    <select class="selectpicker" data-live-search="false"
                                                         name="SeatingCapacity" id="SeatingCapacity">
                                                         <option>SeatingCapacity</option>
                                                         <?php
-                                                        $qry = "SELECT  id, SeatingCapacity from tblbooking";
+                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                         $exe = mysqli_query($conn, $qry);
-                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                        while ($row = mysqli_fetch_assoc($exe)) {
+                                                            // $VehicleName = $row['owner_vehicle_name'];
+                                                            // $VehicleNumber = $row['VehicleNumber'];
+                                                            // $PricePerDay = $row['PricePerDay'];
+                                                            // $OwnerName = $row['OwnerName'];
+                                                            // $owner_mobile = $row['owner_mobile'];
 
                                                         ?>
-                                                        <option value="<?php echo $row['id'] ?>">
+
+                                                        <!-- <option VehicleName="<?php echo $row['owner_vehicle_name']; ?>"
+                                                            VehicleNumber="<?php echo $row['owner_vehicle_no']; ?>"
+                                                            PricePerDay="<?php echo $row['PricePerDay']; ?>"
+                                                            OwnerName="<?php echo $row['OwnerName']; ?>"
+                                                            owner_mobile="<?php echo $row['owner_mobile']; ?>" -->
+                                                        <option value="<?php echo $row['SeatingCapacity'] ?>">
                                                             <?php echo $row['SeatingCapacity'] ?>
                                                         </option>
-
                                                         <?php }  ?>
                                                     </select>
 
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <label>Brand</label>
-                                                    <select class="selectpicker" name="brand" id="brand"
-                                                        onchange=getname()>
-                                                        <option value=''>Select Brand</option>
+                                                    <select class="selectpicker" data-live-search="false" name="brand"
+                                                        id="brand">
+                                                       <option value="">Select Brand</option>
                                                     </select>
 
                                                 </div>
@@ -167,9 +174,9 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>VehicleName</label>
-                                                    <select class="selectpicker" name="VehicleName" id="VehicleName">
-                                                        <option value=''>Select Vehicle</option>
-                                                    </select>
+                                                    <select class="selectpicker" data-live-search="false" name="VehicleName"
+                                                        id="VehicleName">
+                                                        <option value="">Select Brand first</option>
                                                 </div>
                                             </div>
                                     </div>
@@ -232,6 +239,7 @@ if (isset($_POST['owner_submit'])) {
                                                 name="price" id="price">
                                         </div>
                                     </div>
+                                    <!-- /.card-body -->
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -412,51 +420,43 @@ if (isset($_POST['owner_submit'])) {
         });
     });
     </script>
-
-    <script>
-    function getbrand() {
-        var str = '';
-        var val = document.getElementById('SeatingCapacity');
-        for (i = 0; i < val.length; i++) {
-            if (val[i].selected) {
-                str += val[i].value + ',';
-            }
+    <script type="text/javascript">
+$(document).ready(function(){
+    $('#SeatingCapacity').on('change',function(){
+        var SeatingCapacity = $(this).val();
+        if(SeatingCapacity){
+            $.ajax({
+                type:'POST',
+                url:'get-brand.php',
+                data:'SeatingCapacity='+SeatingCapacity,
+                success:function(html){
+                    $('#brand').html(html);
+                    $('#VehicleName').html('<option value="">Select Brand first</option>'); 
+                }
+            }); 
+        }else{
+            $('#brand').html('<option value="">Select Seating Capacity first</option>');
+            $('#VehicleName').html('<option value="">Select Brand first</option>'); 
         }
-        var str = str.slice(0, str.length - 1);
-        // $('#SeatingCapacity').on('change', function() {
-        //     var seat_id = this.value;
-        $.ajax({
-            type: "GET",
-            url: "get-brand.php",
-            data: 'id=' + str,
-            success: function(data) {
-                $("#brand").html(data);
-                // $("#VehicleName").html(data);
-            }
-        });
-    }
-
-    function getname() {
-        var str = '';
-        var val = document.getElementById('brand');
-        for (i = 0; i < val.length; i++) {
-            if (val[i].selected) {
-                str += val[i].value + ',';
-            }
+    });
+    
+    $('#brand').on('change',function(){
+        var owner_vehicle_brand = $(this).val();
+        if(owner_vehicle_brand){
+            $.ajax({
+                type:'POST',
+                url:'get-brand.php',
+                data:'owner_vehicle_brand='+owner_vehicle_brand,
+                success:function(html){
+                    $('#VehicleName').html(html);
+                }
+            }); 
+        }else{
+            $('#VehicleName').html('<option value="">Select Brand first</option>'); 
         }
-        var str = str.slice(0, str.length - 1);
-        // $('#SeatingCapacity').on('change', function() {
-        //     var seat_id = this.value;
-        $.ajax({
-            type: "GET",
-            url: "get-name.php",
-            data: 'id=' + str,
-            success: function(data) {
-                $("#VehicleName").html(data);
-            }
-        });
-    }
-    </script>
+    });
+});
+</script>
 </body>
 
 </html>
