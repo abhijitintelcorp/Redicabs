@@ -635,10 +635,8 @@ include("includes/header.php");
     include "includes/footerlink.php"
     ?>
 </body>
-
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/validation.js">
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 </html>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/validation.js">
-</script>

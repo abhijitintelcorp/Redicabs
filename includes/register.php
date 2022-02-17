@@ -5,7 +5,11 @@
             $username = htmlspecialchars($_POST['username']);
             $email = htmlspecialchars($_POST['email']);
             $contact = htmlspecialchars($_POST['contact']);
+<<<<<<< HEAD
             $password = htmlspecialchars($_POST['password']);
+=======
+            $password = htmlspecialchars($_POST['password_id']);
+>>>>>>> 0256d7a884253c49cee8afa5fcdfe573cfaad0c6
             $insert_qry = "INSERT INTO `tblbooking` (`UserName`,`EmailId`,`password`,`ContactNo`)
     VALUES('$username','$email','$password','$contact')";
             $fn_qry = mysqli_query($conn, $insert_qry);
@@ -46,14 +50,17 @@
                     </div>
                     <div>
                       <label><b>Password</b></label>
-                      <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Password" name="password" id="password">
+                      <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="password_id" id="password_id">
                     </div>
                     <div>
                       <label><b>Confirm Password</b></label>
-                      <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Confirm Password" name="confirm_password" id="confirm_password">
+                      <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Confirm Password" name="cpassword" id="cpassword">
                     </div>
                     <div>
+<<<<<<< HEAD
                       <input class="w3-check w3-margin-top" type="checkbox" checked="checked">Remember Me
+=======
+>>>>>>> 0256d7a884253c49cee8afa5fcdfe573cfaad0c6
                       <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" name="submit">Sign Up</button>
 
                     </div>
@@ -71,4 +78,8 @@
 
            <?php
             ob_flush();
+<<<<<<< HEAD
             ?>
+=======
+            ?>
+>>>>>>> 0256d7a884253c49cee8afa5fcdfe573cfaad0c6
