@@ -9,7 +9,10 @@
          <!-- Sidebar -->
          <div class="sidebar">
              <!-- Sidebar user panel (optional) -->
+<<<<<<< HEAD
 
+=======
+>>>>>>> pragyan
 
              <!-- SidebarSearch Form -->
              <div class="form-inline">
@@ -298,7 +301,11 @@
                                  </a>
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
+<<<<<<< HEAD
                                          <a href="login.php" class="nav-link">
+=======
+                                         <a href="pages/examples/login.php" class="nav-link">
+>>>>>>> pragyan
                                              <i class="far fa-circle nav-icon"></i>
                                              <p>Login </p>
                                          </a>
@@ -337,6 +344,7 @@
          <!-- Content Header (Page header) -->
          <div class="content-header">
              <div class="container-fluid">
+<<<<<<< HEAD
                  <div class="row mb-2">
                      <div class="col-sm-6">
                          <h1 class="m-0">Dashboard</h1>
@@ -350,4 +358,9 @@
                  </div><!-- /.row -->
              </div><!-- /.container-fluid -->
 
+=======
+
+             </div><!-- /.container-fluid -->
+
+>>>>>>> pragyan
          </div>

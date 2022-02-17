@@ -1,3 +1,28 @@
+<<<<<<< HEAD:admin/login.php
+=======
+<?php
+if (isset($_POST['login'])) {
+    $email = htmlspecialchars($_POST['email']);
+    //$password=md5($_POST['password']);
+    $password = md5($_POST['password']);
+    $sql = "SELECT EmailId,Password,UserName FROM tblusers WHERE EmailId='$email' and Password='$password'";
+    $query = mysqli_query($conn, $sql);
+    $results = mysqli_fetch_assoc($query);
+    $count = mysqli_num_rows($query);
+    if ($count > 0) {
+        $_SESSION['login'] = $_POST['email'];
+        $_SESSION['UserName'] = $results['UserName'];
+        $currentpage = $_SERVER['REQUEST_URI'];
+        echo "<script type='text/javascript'> document.location = '$currentpage'; </script>";
+    } else {
+
+        echo "<script>alert('Invalid Details');</script>";
+    }
+}
+
+?>
+
+>>>>>>> pragyan:admin/pages/examples/login.php
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +45,11 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
+<<<<<<< HEAD:admin/login.php
             <a href="../../index2.html"><b>Admin</b>LTE</a>
+=======
+            <a href="../../index2.html"><b>REDICAB</a>
+>>>>>>> pragyan:admin/pages/examples/login.php
         </div>
         <!-- /.login-logo -->
         <div class="card">
@@ -29,7 +58,11 @@
 
                 <form action="../../index3.html" method="post">
                     <div class="input-group mb-3">
+<<<<<<< HEAD:admin/login.php
                         <input type="email" class="form-control" placeholder="Email">
+=======
+                        <input type="email" class="form-control" placeholder="Email" name="email">
+>>>>>>> pragyan:admin/pages/examples/login.php
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -37,7 +70,11 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
+<<<<<<< HEAD:admin/login.php
                         <input type="password" class="form-control" placeholder="Password">
+=======
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+>>>>>>> pragyan:admin/pages/examples/login.php
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -55,7 +92,11 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
+<<<<<<< HEAD:admin/login.php
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+=======
+                            <button type="submit" class="btn btn-primary btn-block" name="btnsubmit">Sign In</button>
+>>>>>>> pragyan:admin/pages/examples/login.php
                         </div>
                         <!-- /.col -->
                     </div>
@@ -70,8 +111,11 @@
                         <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
                     </a>
                 </div>
+<<<<<<< HEAD:admin/login.php
                 <!-- /.social-auth-links -->
 
+=======
+>>>>>>> pragyan:admin/pages/examples/login.php
                 <p class="mb-1">
                     <a href="forgot-password.html">I forgot my password</a>
                 </p>
@@ -79,10 +123,17 @@
                     <a href="register.html" class="text-center">Register a new membership</a>
                 </p>
             </div>
+<<<<<<< HEAD:admin/login.php
             <!-- /.login-card-body -->
         </div>
     </div>
     <!-- /.login-box -->
+=======
+
+        </div>
+    </div>
+
+>>>>>>> pragyan:admin/pages/examples/login.php
 
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
