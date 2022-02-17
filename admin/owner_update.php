@@ -22,6 +22,7 @@ if (isset($_POST['owner_submit'])) {
     $ownno = htmlspecialchars($_POST['ownno']);
     $email = htmlspecialchars($_POST['email']);
     $inst_u_fn1_qry = "";
+    $inst_u_fn_qry = "";
 
     $frontimage = $_FILES['frontimage']['name'];
     $type = $_FILES['frontimage']['type'];
@@ -31,26 +32,28 @@ if (isset($_POST['owner_submit'])) {
     $type = $_FILES['backimage']['type'];
     $size = $_FILES['backimage']['size'];
     $img_file2 = $_FILES['backimage']['tmp_name'];
-    // $DLimage = $_FILES['DLimage']['name'];
-    // $type = $_FILES['DLimage']['type'];
-    // $size = $_FILES['DLimage']['size'];
-    // $img_file3 = $_FILES['DLimage']['tmp_name'];
-    // $Adharimage = $_FILES['Adharimage']['name'];
-    // $type = $_FILES['Adharimage']['type'];
-    // $size = $_FILES['Adharimage']['size'];
-    // $img_file4 = $_FILES['Adharimage']['tmp_name'];
-    // $Adharimage1 = $_FILES['Adharimage1']['name'];
-    // $type = $_FILES['Adharimage1']['type'];
-    // $size = $_FILES['Adharimage1']['size'];
-    // $img_file5 = $_FILES['Adharimage1']['tmp_name'];
+    $DLimage = $_FILES['DLimage']['name'];
+    $type = $_FILES['DLimage']['type'];
+    $size = $_FILES['DLimage']['size'];
+    $img_file3 = $_FILES['DLimage']['tmp_name'];
+    $Adharimage = $_FILES['Adharimage']['name'];
+    $type = $_FILES['Adharimage']['type'];
+    $size = $_FILES['Adharimage']['size'];
+    $img_file4 = $_FILES['Adharimage']['tmp_name'];
+    $Adharimage1 = $_FILES['Adharimage1']['name'];
+    $type = $_FILES['Adharimage1']['type'];
+    $size = $_FILES['Adharimage1']['size'];
+    $img_file5 = $_FILES['Adharimage1']['tmp_name'];
 
     $path1 = "images/" . $frontimage;
     $path2 = "images/" . $backimage;
-    // $path3 = "images/" . $DLimage;
-    // $path4 = "images/" . $Adharimage;
-    // $path5 = "images/" . $Adharimage1;
+    $path3 = "images/" . $DLimage;
+    $path4 = "images/" . $Adharimage;
+    $path5 = "images/" . $Adharimage1;
 
-    $update_qry = "UPDATE   tblbooking SET  owner_vehicle_brand='$brand',owner_vehicle_name='$VehicleName',owner_vehicle_no='$VehicleNumber',owner_vehicle_RCno='$VehRCNo',DriverName=' $Dname',DriverMobile='$Dno',PricePerDay='$price',owner_mobile='$ownno',owner_email='$email', WHERE id='$user_id'";
+    $update_qry = "UPDATE   tblbooking SET  owner_vehicle_brand='$brand',owner_vehicle_name='$VehicleName',
+    owner_vehicle_no='$VehicleNumber',owner_vehicle_RCno='$VehRCNo',owner_vehicle_chesis_no	='$chasis',OwnerName='$ownname',owner_mobile='$ownno',DriverName='$Dname',DriverMobile='$Dno',
+    PricePerDay='$price',owner_email='$email' WHERE id='$user_id'";
     $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
     if ($inst_u_fn1_qry) {
 
@@ -85,7 +88,7 @@ if (isset($_POST['owner_submit'])) {
         }
     }
 
-    if ($inst_u_fn1_qry) {
+    if ($inst_u_fn_qry) {
         header("location:manageowner.php");
         echo "success";
     }
@@ -96,7 +99,7 @@ if (isset($_POST['owner_submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- <?php include("includes/headerlink.php"); ?>  -->
+<?php include("includes/headerlink.php"); ?>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -135,7 +138,7 @@ if (isset($_POST['owner_submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <form action="" method="post" name="add_owner" id="add_owner"
+                                        <form action="" method="post" name="add_owner_update" id="add_owner_update"
                                             class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -263,10 +266,8 @@ if (isset($_POST['owner_submit'])) {
                                                             value="<?php echo $urows['owner_mobile']; ?>">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-sm-6">
-                                                    <!-- text input -->
+
                                                     <div class="form-group">
                                                         <label>Owneremail</label>
                                                         <input type="text" class="form-control"
@@ -274,51 +275,88 @@ if (isset($_POST['owner_submit'])) {
                                                             value="<?php echo $urows['owner_email']; ?>">
                                                     </div>
                                                 </div>
-
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="customFile">CarFrontImage</label>
-                                                        <img src="images/<?php echo $urows['frontimage']; ?>"
-                                                            style="width:20%;">
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="frontimage"
-                                                                name="frontimage">
-                                                            <label class="custom-file-label" for="customFile">Choose
-                                                                file</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="customFile">CarBackImage</label>
-                                                        <img src="images/<?php echo $urows['backimage']; ?>"
-                                                            style="width:20%;">
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="backimage"
-                                                                name="backimage">
-                                                            <label class="custom-file-label" for="customFile">Choose
-                                                                file</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary"
-                                                        name="owner_submit">Update</button>
-                                                </div>
-                                            </div>
-
-                                        </form>
                                     </div>
-                                    <!-- /.card-body -->
-                                </div>
-                                <!-- /.card -->
-                            </div>
-                            <!--/.col (right) -->
-                        </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">CarFrontImage</label>
+                                                <img src="images/<?php echo $urows['frontimage']; ?>"
+                                                    style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="frontimage"
+                                                        name="frontimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">CarBackImage</label>
+                                                <img src="images/<?php echo $urows['backimage']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="backimage"
+                                                        name="backimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">DriverDLimage</label>
+                                                <img src="images/<?php echo $urows['DLimage']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="DLimage"
+                                                        name="DLimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">OwnerAdharimage</label>
+                                                <img src="images/<?php echo $urows['own_adhar_image']; ?>"
+                                                    style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Adharimage"
+                                                        name="Adharimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">DriverAdharimage</label>
+                                                <img src="images/<?php echo $urows['Driver_Adhar_image']; ?>"
+                                                    style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Adharimage1"
+                                                        name="Adharimage1">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary"
+                                                name="owner_submit">Update</button>
+                                        </div>
+                                    </div>
 
-                    </div><!-- /.container-fluid -->
+                                    </form>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!--/.col (right) -->
+                    </div>
+
+                </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
@@ -336,7 +374,7 @@ if (isset($_POST['owner_submit'])) {
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+
     <!-- Page specific script -->
     <script>
     $(function() {

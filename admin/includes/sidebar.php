@@ -10,7 +10,6 @@
          <div class="sidebar">
              <!-- Sidebar user panel (optional) -->
 
-
              <!-- SidebarSearch Form -->
              <div class="form-inline">
                  <div class="input-group" data-widget="sidebar-search">
@@ -298,25 +297,25 @@
                                  </a>
                                  <ul class="nav nav-treeview">
                                      <li class="nav-item">
-                                         <a href="login.php" class="nav-link">
+                                         <a href="pages/examples/login.php" class="nav-link">
                                              <i class="far fa-circle nav-icon"></i>
                                              <p>Login </p>
                                          </a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="register.php" class="nav-link">
+                                         <a href="pages/examples/register.php" class="nav-link">
                                              <i class="far fa-circle nav-icon"></i>
                                              <p>Register </p>
                                          </a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="forgot-password.php" class="nav-link">
+                                         <a href="pages/examples/forgot-password.php" class="nav-link">
                                              <i class="far fa-circle nav-icon"></i>
                                              <p>Forgot Password </p>
                                          </a>
                                      </li>
                                      <li class="nav-item">
-                                         <a href="recover-password.php" class="nav-link">
+                                         <a href="pages/examples/recover-password.php" class="nav-link">
                                              <i class="far fa-circle nav-icon"></i>
                                              <p>Recover Password </p>
                                          </a>
@@ -337,17 +336,7 @@
          <!-- Content Header (Page header) -->
          <div class="content-header">
              <div class="container-fluid">
-                 <div class="row mb-2">
-                     <div class="col-sm-6">
-                         <h1 class="m-0">Dashboard</h1>
-                     </div><!-- /.col -->
-                     <div class="col-sm-6">
-                         <ol class="breadcrumb float-sm-right">
-                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                             <li class="breadcrumb-item active">Dashboard </li>
-                         </ol>
-                     </div><!-- /.col -->
-                 </div><!-- /.row -->
+
              </div><!-- /.container-fluid -->
 
          </div>
