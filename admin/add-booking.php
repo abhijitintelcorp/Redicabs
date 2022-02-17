@@ -416,7 +416,7 @@ if (isset($_POST['owner_submit'])) {
     <script>
     function getbrand() {
         var str = '';
-        var val = document.getElementById('brand');
+        var val = document.getElementById('SeatingCapacity');
         for (i = 0; i < val.length; i++) {
             if (val[i].selected) {
                 str += val[i].value + ',';
@@ -438,7 +438,7 @@ if (isset($_POST['owner_submit'])) {
 
     function getname() {
         var str = '';
-        var val = document.getElementById('VehicleName');
+        var val = document.getElementById('brand');
         for (i = 0; i < val.length; i++) {
             if (val[i].selected) {
                 str += val[i].value + ',';
@@ -457,7 +457,6 @@ if (isset($_POST['owner_submit'])) {
         });
     }
     </script>
-
 </body>
 
 </html>
