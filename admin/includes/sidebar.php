@@ -117,7 +117,7 @@
                      </li> -->
 
                      <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="owner.php" class="nav-link">
                              <i class="fa fa-user"></i>
                              <p>
                                  Owner
@@ -181,7 +181,7 @@
                          </ul>
                      </li>
                      <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="pages/add_feedback.php" class="nav-link">
                              <i class="fas fa-comment"></i>
                              <p>
                                  FeedBack
@@ -239,7 +239,7 @@
                              <p>ManageSubscriber</p>
                          </a>
                      </li>
-                     <li class="nav-item">
+                     <!-- <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-book"></i>
                              <p>
@@ -277,7 +277,7 @@
                                  </a>
                              </li>
                          </ul>
-                     </li>
+                     </li> -->
                      <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="nav-icon far fa-plus-square"></i>
@@ -288,7 +288,7 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="#" class="nav-link">
+                                 <a href="pages/examples/login.php" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>
                                          Login & Register
