@@ -628,11 +628,11 @@ include("includes/header.php");
     <!-- label white2 html Exit -->
     <!-- ================ footer html start ================ -->
     <?php
-    include "includes/footer.php"
+    include("includes/footer.php");
     ?>
     <!-- ================ footer html Exit ================ -->
     <?php
-    include "includes/footerlink.php"
+    include("includes/footerlink.php");
     ?>
 </body>
 
