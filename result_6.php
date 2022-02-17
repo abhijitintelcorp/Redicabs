@@ -1,8 +1,10 @@
  <!DOCTYPE html>
  <html lang="en">
 
+ <!-- Mirrored from themeskanon.com/livedemo/html/taksi/Results_6.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:41 GMT -->
+
  <?php
-    include("includes/header.php");
+    include "includes/header.php"
     ?>
 
  <body>
@@ -293,11 +295,11 @@
 
      <!-- ================ footer html start ================ -->
      <?php
-        include("includes/footer.php");
+        include "includes/footer.php"
         ?>
      <!-- ================ footer html Exit ================ -->
      <?php
-        include("includes/footerlink.php");
+        include "includes/footerlink.php"
         ?>
  </body>
 

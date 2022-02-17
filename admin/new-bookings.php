@@ -134,11 +134,7 @@ include("includes/config.php");
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-<<<<<<< HEAD
     <script src="../../dist/js/demo.js"></script>
-=======
-  
->>>>>>> pragyan
     <!-- Page specific script -->
     <script>
     $(function() {
