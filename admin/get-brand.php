@@ -1,4 +1,4 @@
-   <?php
+      <?php
    include("includes/config.php");
    if(isset($_POST["SeatingCapacity"])){
    $SeatingCapacity = $_POST['SeatingCapacity'];
@@ -19,6 +19,10 @@
   if(isset($_POST["owner_vehicle_brand"])){
 	$owner_vehicle_brand= $_POST['owner_vehicle_brand'];
     //Get all city data
+<<<<<<< HEAD
+=======
+    
+>>>>>>> dedd8ecf377b3b7719a6e6ffa816a95c3b7887a4
     $query = "SELECT * FROM tblbooking WHERE owner_vehicle_brand = '$owner_vehicle_brand' 
 	GROUP BY owner_vehicle_name ASC";
     $run_query = mysqli_query($conn, $query);
@@ -37,4 +41,8 @@
 }
 ?>
 
+<<<<<<< HEAD
    
+=======
+   
+>>>>>>> dedd8ecf377b3b7719a6e6ffa816a95c3b7887a4
