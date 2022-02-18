@@ -49,36 +49,34 @@
             </div>
           </div>
         </div>
-        <div>
-          <div class="col-sm-4">
-            <div id="languages" class="resister-social">
 
-              <div>
-                <!-- <a href="#">Login</a> -->
-                <button onclick="document.getElementById('id01').style.display='block'">Login</button>
-                <?php
-                include "login.php"
-                ?>
+        <div class="col-sm-4">
+          <div id="languages" class="resister-social">
 
-                <div class="pull-right">
-                  <!-- <a href="#">Login</a> -->
-                  <button onclick="document.getElementById('id01').style.display='block'">Login</button>
-                  <?php
-                  include "login.php"
-                  ?>
+            <div class="pull-right">
+              <!-- <a href="#">Login</a> -->
+              <button onclick="document.getElementById('id01').style.display='block'">Login</button>
+              <?php
+              include "login.php"
+              ?>
 
-                </div>
+              <!-- <a href="#">Register</a> -->
+              <button onclick="document.getElementById('id02').style.display='block'">Register</button>
+              <?php
+              include "register.php"
+              ?>
 
-                <!--             <div class="social-icon">
+            </div>
+            <!--             <div class="social-icon">
               <p>paul@intelcorpsolutions.com</p>
             </div> -->
-              </div>
-            </div>
-
           </div>
         </div>
+
       </div>
     </div>
-    <div class="google-image">
-      <div id="map-canvas"></div>
-    </div>
+  </div>
+</div>
+<div class="google-image">
+  <div id="map-canvas"></div>
+</div>
