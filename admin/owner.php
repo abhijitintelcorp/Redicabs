@@ -201,7 +201,7 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Price/day</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Priceperday" name="price" id="price">
+                                                    <input type="text" class="form-control" placeholder="Enter Priceperday" name="price" id="price" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -209,13 +209,13 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>ModelYear</label>
-                                                    <input type="text" class="form-control" placeholder="Enter vehiclename" name="year" id="year">
+                                                    <input type="text" class="form-control" placeholder="Enter vehiclename" name="year" id="year" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>OwnerName</label>
-                                                    <input type="text" class="form-control" placeholder="Enter ownername" name="ownname" id="ownname">
+                                                    <input type="text" class="form-control" placeholder="Enter ownername" name="ownname" id="ownname" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -223,13 +223,13 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>OwnerAdharNumber</label>
-                                                    <input type="number" class="form-control" placeholder="Enter ownerAdharNo" name="ownadhar" id="ownadhar">
+                                                    <input type="number" class="form-control" placeholder="Enter ownerAdharNo" name="ownadhar" id="ownadhar" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>OwnerNumber</label>
-                                                    <input type="number" class="form-control" placeholder="Enter owner number" name="ownno" id="ownno">
+                                                    <input type="number" class="form-control" placeholder="Enter owner number" name="ownno" id="ownno" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -238,7 +238,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Owneremail</label>
-                                                    <input type="email" class="form-control" placeholder="Enter owneremail" name="email" id="email">
+                                                    <input type="email" class="form-control" placeholder="Enter owneremail" name="email" id="email" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
@@ -246,7 +246,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="form-group">
                                                     <label for="customFile">UploadOwnerAdharCard</label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="Adharimage1" name="Adharimage1">
+                                                        <input type="file" class="custom-file-input" id="Adharimage1" name="Adharimage1" required>
                                                         <label class="custom-file-label" for="customFile">Choose
                                                             file</label>
                                                     </div>
@@ -259,7 +259,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="form-group">
                                                     <label for="customFile">UploadDriverDL</label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="DLimage" name="DLimage">
+                                                        <input type="file" class="custom-file-input" id="DLimage" name="DLimage" required>
                                                         <label class="custom-file-label" for="customFile">Choose
                                                             file</label>
                                                     </div>
@@ -269,7 +269,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="form-group">
                                                     <label for="customFile">UploadDriverAdharCard</label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="Adharimage" name="Adharimage">
+                                                        <input type="file" class="custom-file-input" id="Adharimage" name="Adharimage" required>
                                                         <label class="custom-file-label" for="customFile">Choose
                                                             file</label>
                                                     </div>
@@ -281,7 +281,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="form-group">
                                                     <label for="customFile">CarFrontImage</label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="frontimage" name="frontimage">
+                                                        <input type="file" class="custom-file-input" id="frontimage" name="frontimage" required>
                                                         <label class="custom-file-label" for="customFile">Choose
                                                             file</label>
                                                     </div>
@@ -291,7 +291,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="form-group">
                                                     <label for="customFile">CarBackImage</label>
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="backimage" name="backimage">
+                                                        <input type="file" class="custom-file-input" id="backimage" name="backimage" required>
                                                         <label class="custom-file-label" for="customFile">Choose
                                                             file</label>
                                                     </div>
@@ -333,7 +333,8 @@ if (isset($_POST['owner_submit'])) {
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="js/validations.js"></script>
+    <script src="../../Redicabs//admin//js//valid.js"></script>
+
     <script src="js/additional-methods.min.js">
     </script>
 
