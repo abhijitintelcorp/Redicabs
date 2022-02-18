@@ -139,19 +139,8 @@ if (isset($_POST['owner_submit'])) {
                                                         $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                         $exe = mysqli_query($conn, $qry);
                                                         while ($row = mysqli_fetch_assoc($exe)) {
-                                                            // $VehicleName = $row['owner_vehicle_name'];
-                                                            // $VehicleNumber = $row['VehicleNumber'];
-                                                            // $PricePerDay = $row['PricePerDay'];
-                                                            // $OwnerName = $row['OwnerName'];
-                                                            // $owner_mobile = $row['owner_mobile'];
 
                                                         ?>
-
-                                                        <!-- <option VehicleName="<?php echo $row['owner_vehicle_name']; ?>"
-                                                            VehicleNumber="<?php echo $row['owner_vehicle_no']; ?>"
-                                                            PricePerDay="<?php echo $row['PricePerDay']; ?>"
-                                                            OwnerName="<?php echo $row['OwnerName']; ?>"
-                                                            owner_mobile="<?php echo $row['owner_mobile']; ?>" -->
                                                         <option value="<?php echo $row['SeatingCapacity'] ?>">
                                                             <?php echo $row['SeatingCapacity'] ?>
                                                         </option>
@@ -163,216 +152,235 @@ if (isset($_POST['owner_submit'])) {
                                                     <label>Brand</label>
                                                     <select class="selectpicker" data-live-search="false" name="brand"
                                                         id="brand">
-                                                       <option value="">Select Brand</option>
+                                                        <option value="">Select Brand</option>
                                                     </select>
 
                                                 </div>
                                             </div>
-                                            <div class="row">
 
-                                            </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>VehicleName</label>
-                                                    <select class="selectpicker" data-live-search="false" name="VehicleName"
-                                                        id="VehicleName">
+                                                    <select class="selectpicker" data-live-search="false"
+                                                        name="VehicleName" id="VehicleName">
                                                         <option value="">Select Brand first</option>
+                                                        <?php
+                                                        $qry = "SELECT * from tblbooking";
+                                                        $exe = mysqli_query($conn, $qry);
+                                                        while ($row = mysqli_fetch_array($exe)) {
+                                                            $owner_vehicle_no = $row['owner_vehicle_no'];
+                                                            $owner_vehicle_RCno = $row['owner_vehicle_RCno'];
+                                                            $owner_vehicle_chesis_no = $row['owner_vehicle_chesis_no'];
+
+                                                        ?>
+                                                        <option
+                                                            owner_vehicle_no="<?php echo $row['owner_vehicle_no']; ?>"
+                                                            owner_vehicle_RCno="<?php echo $row['owner_vehicle_RCno']; ?>"
+                                                            owner_vehicle_chesis_no="<?php echo $row['owner_vehicle_chesis_no']; ?>"
+                                                            ; ?>
+                                                        </option>
+                                                        <?php }  ?>
                                                 </div>
                                             </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>VehicleNumber</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter vehicle number" name="VehicleNumber"
-                                                    id="VehicleNumber">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>VehRCNo</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
 
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>VehicleNumber</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle number" name="owner_vehicle_no"
+                                                            id="owner_vehicle_no"
+                                                            value="<?php echo $row['owner_vehicle_no']; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>VehRCNo</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle RC no" name="owner_vehicle_RCno"
+                                                            id="owner_vehicle_RCno"
+                                                            value="<?php echo $row['owner_vehicle_RCno']; ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>VehChesisNo</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename"
+                                                            name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no"
+                                                            value="<?php echo $row['owner_vehicle_chesis_no']; ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+
+                                                    <div class="form-group">
+                                                        <label>DriverName</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Driver name" name="Dname" id="Dname">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>DLnumber</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Driver DL number" name="DLno" id="DLno">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>DriverNumber</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter driver number" name="Dno" id="Dno">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Price/day</label>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Enter Priceperday" name="price" id="price">
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>VehChesisNo</label>
+                                                <label>ModelYear</label>
                                                 <input type="text" class="form-control" placeholder="Enter vehiclename"
-                                                    name="chasis" id="chasis">
+                                                    name="year" id="year">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-
                                             <div class="form-group">
-                                                <label>DriverName</label>
-                                                <input type="text" class="form-control" placeholder="Enter Driver name"
-                                                    name="Dname" id="Dname">
+                                                <label>OwnerName</label>
+                                                <input type="text" class="form-control" placeholder="Enter ownername"
+                                                    name="ownname" id="ownname">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>DLnumber</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter Driver DL number" name="DLno" id="DLno">
+                                                <label>OwnerAdharNumber</label>
+                                                <input type="text" class="form-control" placeholder="Enter ownerAdharNo"
+                                                    name="ownadhar" id="ownadhar">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>DriverNumber</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter driver number" name="Dno" id="Dno">
+                                                <label>OwnerNumber</label>
+                                                <input type="text" class="form-control" placeholder="Enter owner number"
+                                                    name="ownno" id="ownno">
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <!-- text input -->
+                                            <div class="form-group">
+                                                <label>Owneremail</label>
+                                                <input type="text" class="form-control" placeholder="Enter owneremail"
+                                                    name="email" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <!-- text input -->
+                                            <div class="form-group">
+                                                <label for="customFile">UploadOwnerAdharCard</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Adharimage1"
+                                                        name="Adharimage1">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Price/day</label>
-                                            <input type="text" class="form-control" placeholder="Enter Priceperday"
-                                                name="price" id="price">
-                                        </div>
                                     </div>
-                                    <!-- /.card-body -->
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>ModelYear</label>
-                                            <input type="text" class="form-control" placeholder="Enter vehiclename"
-                                                name="year" id="year">
+                                    <!-- input states -->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">UploadDriverDL</label>
+
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="DLimage"
+                                                        name="DLimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>OwnerName</label>
-                                            <input type="text" class="form-control" placeholder="Enter ownername"
-                                                name="ownname" id="ownname">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>OwnerAdharNumber</label>
-                                            <input type="text" class="form-control" placeholder="Enter ownerAdharNo"
-                                                name="ownadhar" id="ownadhar">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>OwnerNumber</label>
-                                            <input type="text" class="form-control" placeholder="Enter owner number"
-                                                name="ownno" id="ownno">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label>Owneremail</label>
-                                            <input type="text" class="form-control" placeholder="Enter owneremail"
-                                                name="email" id="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label for="customFile">UploadOwnerAdharCard</label>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="Adharimage1"
-                                                    name="Adharimage1">
-                                                <label class="custom-file-label" for="customFile">Choose
-                                                    file</label>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">UploadDriverAdharCard</label>
+
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Adharimage"
+                                                        name="Adharimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">CarFrontImage</label>
 
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="frontimage"
+                                                        name="frontimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">CarBackImage</label>
+
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="backimage"
+                                                        name="backimage">
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary"
+                                                name="owner_submit">Submit</button>
+                                        </div>
+                                    </div>
+
+                                    </form>
                                 </div>
-                                <!-- input states -->
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="customFile">UploadDriverDL</label>
-
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="DLimage"
-                                                    name="DLimage">
-                                                <label class="custom-file-label" for="customFile">Choose
-                                                    file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="customFile">UploadDriverAdharCard</label>
-
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="Adharimage"
-                                                    name="Adharimage">
-                                                <label class="custom-file-label" for="customFile">Choose
-                                                    file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="customFile">CarFrontImage</label>
-
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="frontimage"
-                                                    name="frontimage">
-                                                <label class="custom-file-label" for="customFile">Choose
-                                                    file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="customFile">CarBackImage</label>
-
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="backimage"
-                                                    name="backimage">
-                                                <label class="custom-file-label" for="customFile">Choose
-                                                    file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary"
-                                            name="owner_submit">Submit</button>
-                                    </div>
-                                </div>
-
-                                </form>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
+                            <!-- /.card -->
                         </div>
-                        <!-- /.card -->
+                        <!--/.col (right) -->
                     </div>
-                    <!--/.col (right) -->
-                </div>
 
-        </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
-    </div>
-    <?php include("includes/footerlink.php"); ?>
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <?php include("includes/footerlink.php"); ?>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -394,21 +402,20 @@ if (isset($_POST['owner_submit'])) {
     </script>
     <script>
     $(document).ready(function() {
-        $('select[name="SeatingCapacity"]').change(function() {
-            var VehicleName = $('option:selected', this).attr('VehicleName');
-            $("#VehicleName").val(VehicleName);
+        $('select[name="VehicleName"]').change(function() {
+            // var VehicleName = $('option:selected', this).attr('VehicleName');
+            //     $("#VehicleName").val(VehicleName);
 
-            var VehicleNumber = $('option:selected', this).attr('VehicleNumber');
-            $("#VehicleNumber").val(VehicleNumber);
+            var owner_vehicle_no = $('option:selected', this).attr('owner_vehicle_no');
+            $("#owner_vehicle_no").val(owner_vehicle_no);
 
-            var PricePerDay = $('option:selected', this).attr('PricePerDay');
-            $("#PricePerDay").val(PricePerDay);
+            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
+            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
 
-            var OwnerName = $('option:selected', this).attr('OwnerName');
-            $("#OwnerName").val(OwnerName);
+            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
+            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
 
-            var owner_mobile = $('option:selected', this).attr('owner_mobile');
-            $("#owner_mobile").val(owner_mobile);
+
         });
     });
     </script>
@@ -421,42 +428,44 @@ if (isset($_POST['owner_submit'])) {
     });
     </script>
     <script type="text/javascript">
-$(document).ready(function(){
-    $('#SeatingCapacity').on('change',function(){
-        var SeatingCapacity = $(this).val();
-        if(SeatingCapacity){
-            $.ajax({
-                type:'POST',
-                url:'get-brand.php',
-                data:'SeatingCapacity='+SeatingCapacity,
-                success:function(html){
-                    $('#brand').html(html);
-                    $('#VehicleName').html('<option value="">Select Brand first</option>'); 
-                }
-            }); 
-        }else{
-            $('#brand').html('<option value="">Select Seating Capacity first</option>');
-            $('#VehicleName').html('<option value="">Select Brand first</option>'); 
-        }
+    $(document).ready(function() {
+        $('#SeatingCapacity').on('change', function() {
+            var SeatingCapacity = $(this).val();
+            if (SeatingCapacity) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'SeatingCapacity=' + SeatingCapacity,
+                    success: function(html) {
+                        $('#brand').html(html);
+                        $('#VehicleName').html(
+                            '<option value="">Select Brand first</option>');
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
+        });
+
+        $('#brand').on('change', function() {
+            var owner_vehicle_brand = $(this).val();
+            if (owner_vehicle_brand) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                    success: function(html) {
+                        $('#VehicleName').html(html);
+                    }
+                });
+            } else {
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
+        });
     });
-    
-    $('#brand').on('change',function(){
-        var owner_vehicle_brand = $(this).val();
-        if(owner_vehicle_brand){
-            $.ajax({
-                type:'POST',
-                url:'get-brand.php',
-                data:'owner_vehicle_brand='+owner_vehicle_brand,
-                success:function(html){
-                    $('#VehicleName').html(html);
-                }
-            }); 
-        }else{
-            $('#VehicleName').html('<option value="">Select Brand first</option>'); 
-        }
-    });
-});
-</script>
+    </script>
+
 </body>
 
 </html>

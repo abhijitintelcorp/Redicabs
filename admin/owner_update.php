@@ -51,7 +51,7 @@ if (isset($_POST['owner_submit'])) {
     $path4 = "images/" . $Adharimage;
     $path5 = "images/" . $Adharimage1;
 
-    $update_qry = "UPDATE   tblbooking SET  owner_vehicle_brand='$brand',owner_vehicle_name='$VehicleName',
+    $update_qry = "UPDATE   tblbooking SET  SubCategories='$brand',owner_vehicle_name='$VehicleName',
     owner_vehicle_no='$VehicleNumber',owner_vehicle_RCno='$VehRCNo',owner_vehicle_chesis_no	='$chasis',OwnerName='$ownname',owner_mobile='$ownno',DriverName='$Dname',DriverMobile='$Dno',
     PricePerDay='$price',owner_email='$email' WHERE id='$user_id'";
     $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
@@ -147,7 +147,7 @@ if (isset($_POST['owner_submit'])) {
                                                         <label>BrandName</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter BrandName" name="brand" id="brand"
-                                                            value="<?php echo $urows['owner_vehicle_brand']; ?>">
+                                                            value="<?php echo $urows['SubCategories']; ?>">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">

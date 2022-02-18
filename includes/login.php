@@ -3,7 +3,7 @@ include "connection.php";
 if (isset($_POST['login_submit'])) {
   $email = htmlspecialchars($_POST['email']);
   $password = htmlspecialchars($_POST['password']);
-  $select = "SELECT * FROM tblbooking WHERE email='$email' && Password='$password'";
+  $select = "SELECT * FROM tblbooking WHERE EmailId='$email' && password='$password'";
   $res = mysqli_query($conn, $select);
   $count = mysqli_num_rows($res);
   if ($count == 1) {
@@ -31,11 +31,11 @@ if (isset($_POST['login_submit'])) {
       <div class="w3-section">
         <div>
           <label><b>User Email</b></label>
-          <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="Enter email" name="email" id="email">
+          <input class="w3-input w3-border w3-margin-bottom" type="email" placeholder="Enter email" name="email" id="email" required>
         </div>
         <div>
           <label><b>Password</b></label>
-          <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" id="password">
+          <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" id="password" required>
         </div>
         <input class="w3-check w3-margin-top" type="checkbox" checked="checked">Remember Me
         <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="submit" name="login_submit">Login</button>
