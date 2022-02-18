@@ -44,7 +44,7 @@
           <div class="logo-wraper">
             <div class="logo">
               <a href="index.php">
-                <img src="images/logo.png" alt="">
+                <img src="images/Redicabs.png" alt="carlogo" height="60px">
               </a>
             </div>
           </div>
