@@ -12,7 +12,7 @@
 		$brand_name=$row['owner_vehicle_brand'];
         echo "<option value=$brand_name>$brand_name</option>";
         }
-    }else{
+    } else{
         echo '<option value="">Brand Name not available</option>';
     }
    }
