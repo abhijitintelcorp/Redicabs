@@ -1,112 +1,82 @@
+<head>
 
-<header>
-  <div class="default-header" style="padding:0px">
-    <div class="container">
+  <title>Taksi</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-select.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/color.css" rel="stylesheet">
+  <link href="css/custom-responsive.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/component.css" rel="stylesheet">
+  <link href="css/default.css" rel="stylesheet">
+  <!-- font awesome this template -->
+  <link href="fonts/css/font-awesome.css" rel="stylesheet">
+  <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/w3.css">
+</head>
+<div id="preloader">
+  <div class="preloader-container">
+    <img src="images/preloader.gif" class="preload-gif" alt="preload-image">
+  </div>
+</div>
+<div class="map-wapper-opacity">
+  <div class="container">
+    <div class="row">
       <div class="row">
-        <div class="col-sm-2 col-md-2">
-          <div class="logo"> <a href="index.php"><img src="./assets/images/redicabs_logo.png" height="200" width="250" alt="image"/></a> </div>
+        <div class="col-sm-4">
+          <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
+            <select class="selectpicker" data-live-search="false">
+              <option>English</option>
+              <option>Bangla</option>
+              <option>Hindi</option>
+            </select>
+          </div> -->
+
+          <div class="call-us">
+            <span class="img-circle"><i class="fa fa-phone"></i></span>
+            <p>Call Us Now - 9776000769 </p>
+          </div>
+
         </div>
-        <div class="col-sm-10 col-md-10" >
-          <div class="header_info" style="padding: 50px;">
-         <?php
-         $sql = "SELECT EmailId,ContactNo from tblcontactusinfo";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-foreach ($results as $result) {
-$email=$result->EmailId;
-$contactno=$result->ContactNo;
-}
-?>   
-
-            <div class="header_widgets" >
-              <div class="circle_icon"> <i class="fa fa-envelope" style="color: white" aria-hidden="true"></i> </div>
-              <p class="uppercase_text">For Support Mail us : </p>
-              <a href="mailto:<?php echo htmlentities($email);?>"><?php echo htmlentities($email);?></a> </div>
-            <div class="header_widgets" >
-              <div class="circle_icon"> <i class="fa fa-phone" style="color: white"aria-hidden="true"></i> </div>
-              <p class="uppercase_text">Service Helpline Call Us: </p>
-              <a href="tel:<?php echo htmlentities($contactno);?>"><?php echo htmlentities($contactno);?></a> </div>
-            <div class="social-follow">
-            
+        <div class="col-sm-3">
+          <div class="logo-wraper">
+            <div class="logo">
+              <a href="index.php">
+                <img src="images/logo.png" alt="">
+              </a>
             </div>
-   <?php   if(strlen($_SESSION['login'])==0)
-  { 
-?>
-
-  
- <div class="login_btn " > <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> &nbsp; &nbsp;<a href="Book_car.php" class="btn btn-xs uppercase" >Book a car</a></div>
- <!--  <div class="login_btn " > <a href="car-listing.php" class="btn btn-xs uppercase" >Book a car</a> </div> -->
-<?php }
-else{ 
-
-echo "<h5 style='color:#1886bb'>Welcome To Car rental portal<h5>";
- } ?>
           </div>
         </div>
+
+        <div class="col-sm-4">
+          <div id="languages" class="resister-social">
+
+            <div>
+              <!-- <a href="#">Login</a> -->
+              <button onclick="document.getElementById('id01').style.display='block'">Login</button>
+              <?php
+              include "login.php"
+              ?>
+
+              <!-- <a href="#">Register</a> -->
+              <button onclick="document.getElementById('id02').style.display='block'">Register</button>
+              <?php
+              include "register.php"
+              ?>
+
+            </div>
+            <!--             <div class="social-icon">
+              <p>paul@intelcorpsolutions.com</p>
+            </div> -->
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-  
-  <!-- Navigation -->
-  <nav id="navigation_bar" class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      </div>
-      <div class="header_wrap">
-        <div class="user_login">
-          <ul>
-            <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded=" false"><i class="fa fa-user-circle" aria-hidden="true"></i> 
-<?php 
-$email=$_SESSION['login'];
-$sql ="SELECT FullName FROM tblusers WHERE EmailId=:email ";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-  {
-
-   echo htmlentities($result->FullName); }}?>
-   <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-              <ul class="dropdown-menu">
-           <?php if($_SESSION['login']){?>
-            <li><a href="profile.php">Profile Settings</a></li>
-              <li><a href="update-password.php">Update Password</a></li>
-            <li><a href="my-booking.php">My Booking</a></li>
-            <li><a href="post-testimonial.php">Post a Testimonial</a></li>
-          <li><a href="my-testimonials.php">My Testimonial</a></li>
-            <li><a href="logout.php">Sign Out</a></li>
-            <?php } ?>
-          </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="header_search">
-          <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
-          <form action="search.php" method="post" id="header-search-form">
-            <input type="text" placeholder="Search..." name="searchdata" class="form-control" required="true">
-            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-          </form>
-        </div>
-      </div>
-      <div class="collapse navbar-collapse" id="navigation">
-        <ul class="nav navbar-nav">
-          <li><a href="index.php">Home</a>    </li>
-             
-         <!--  <li><a href="page.php?type=aboutus">About Us</a></li> -->
-         <li><a href="AboutUs.php">About Us</a></li>
-          <li><a href="Book_car.php">Book a car</a>
-          <li><a href="page.php?type=faqs">FAQs</a></li>
-          <li><a href="contact-us.php">Contact Us</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Navigation end --> 
-  
-</header>
+</div>
+<div class="google-image">
+  <div id="map-canvas"></div>
+</div>

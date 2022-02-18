@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 error_reporting(0);
@@ -179,3 +180,5 @@ if(mysqli_num_rows($query_run2) > 0)
 </body>
 </html>
 <?php } ?>
+=======
+>>>>>>> 4e2c0c0dfe18c9255c427c1d6e337c15864efc1b

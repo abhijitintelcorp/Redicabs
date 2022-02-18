@@ -1,362 +1,361 @@
 <?php
-	include('includes/config.php');
-	$user_id = $_GET['id'];
-	$u_query = "SELECT * FROM add_owner WHERE id='$user_id'";
-	$user_update_query = mysqli_query($conn, $u_query);
-	$urows = mysqli_fetch_array($user_update_query);
-	 //update
-    if (isset($_POST['owner_update_submit'])) {
-         $owner_name=htmlspecialchars($_POST['owner_name']);
-		 $owner_mobile=htmlspecialchars($_POST['owner_mobile']);
-		 $owner_email=htmlspecialchars($_POST['owner_email']);
-		 $owner_vehicle_no=htmlspecialchars($_POST['owner_vehicle_no']);
-		 $owner_vehicle_rc_no=htmlspecialchars($_POST['owner_vehicle_rc_no']);
-		 $owner_vehicle_jcc_no=htmlspecialchars($_POST['owner_vehicle_jcc_no']);
-		 $owner_vehicle_brand=htmlspecialchars($_POST['owner_vehicle_brand']);
-		 $owner_vehicle_name=htmlspecialchars($_POST['owner_vehicle_name']);
-		 $owner_vehicle_color=htmlspecialchars($_POST['owner_vehicle_color']);
-		 $driver_id=htmlspecialchars($_POST['driver_id']);
+include("includes/config.php");
+$user_id = $_GET['id'];
+$u_query = "SELECT * FROM tblbooking WHERE id='$user_id'";
+$user_update_query = mysqli_query($conn, $u_query);
+$urows = mysqli_fetch_array($user_update_query);
 
-     	$front_image=$_FILES['front_image']['name'];
-		 $type=$_FILES['front_image']['type'];
-		 $size=$_FILES['front_image']['size'];
-		 $img_file1=$_FILES['front_image']['tmp_name'];
+if (isset($_POST['owner_submit'])) {
+    $category = htmlspecialchars($_POST['category']);
+    $brand = htmlspecialchars($_POST['brand']);
+    $VehicleName = htmlspecialchars($_POST['VehicleName']);
+    $VehicleNumber = htmlspecialchars($_POST['VehicleNumber']);
+    $VehRCNo = htmlspecialchars($_POST['VehRCNo']);
+    $chasis = htmlspecialchars($_POST['chasis']);
+    $Dname = htmlspecialchars($_POST['Dname']);
+    $Dno = htmlspecialchars($_POST['Dno']);
+    //$DLno = htmlspecialchars($_POST['DLno']);
+    $price = htmlspecialchars($_POST['price']);
+    $seat = htmlspecialchars($_POST['seat']);
+    $year = htmlspecialchars($_POST['year']);
+    $ownname = htmlspecialchars($_POST['ownname']);
+    //$ownadhar = htmlspecialchars($_POST['ownadhar']);
+    $ownno = htmlspecialchars($_POST['ownno']);
+    $email = htmlspecialchars($_POST['email']);
+    $inst_u_fn1_qry = "";
+    $inst_u_fn_qry = "";
 
-		 $back_image=$_FILES['back_image']['name'];
-		 $type=$_FILES['back_image']['type'];
-		 $size=$_FILES['back_image']['size'];
-		 $img_file2=$_FILES['back_image']['tmp_name'];
+    $frontimage = $_FILES['frontimage']['name'];
+    $type = $_FILES['frontimage']['type'];
+    $size = $_FILES['frontimage']['size'];
+    $img_file1 = $_FILES['frontimage']['tmp_name'];
+    $backimage = $_FILES['backimage']['name'];
+    $type = $_FILES['backimage']['type'];
+    $size = $_FILES['backimage']['size'];
+    $img_file2 = $_FILES['backimage']['tmp_name'];
+    $DLimage = $_FILES['DLimage']['name'];
+    $type = $_FILES['DLimage']['type'];
+    $size = $_FILES['DLimage']['size'];
+    $img_file3 = $_FILES['DLimage']['tmp_name'];
+    $Adharimage = $_FILES['Adharimage']['name'];
+    $type = $_FILES['Adharimage']['type'];
+    $size = $_FILES['Adharimage']['size'];
+    $img_file4 = $_FILES['Adharimage']['tmp_name'];
+    $Adharimage1 = $_FILES['Adharimage1']['name'];
+    $type = $_FILES['Adharimage1']['type'];
+    $size = $_FILES['Adharimage1']['size'];
+    $img_file5 = $_FILES['Adharimage1']['tmp_name'];
 
-		 $side_image=$_FILES['side_image']['name'];
-		 $type=$_FILES['side_image']['type'];
-		 $size=$_FILES['side_image']['size'];
-		 $img_file3=$_FILES['side_image']['tmp_name'];
+    $path1 = "images/" . $frontimage;
+    $path2 = "images/" . $backimage;
+    $path3 = "images/" . $DLimage;
+    $path4 = "images/" . $Adharimage;
+    $path5 = "images/" . $Adharimage1;
 
-		 $path1 = "image/".$back_image;
-		 $path2 = "image/".$side_image;
-	
-       
-		    $update_qry = "UPDATE  add_owner SET  owner_name='$owner_name',owner_mobile='$owner_mobile',owner_email='$owner_email',owner_vehicle_no='$owner_vehicle_no',owner_vehicle_rc_no='$owner_vehicle_rc_no',owner_vehicle_jcc_no=' $owner_vehicle_jcc_no',owner_vehicle_brand='$owner_vehicle_brand',owner_vehicle_name='$owner_vehicle_name',owner_vehicle_color='$owner_vehicle_color',driver_id='$driver_id' WHERE id='$user_id'";
-        	  $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
+    $update_qry = "UPDATE   tblbooking SET Categories='$category', SubCategories='$brand',owner_vehicle_name='$VehicleName',
+    owner_vehicle_no='$VehicleNumber',owner_vehicle_RCno='$VehRCNo',owner_vehicle_chesis_no	='$chasis',OwnerName='$ownname',owner_mobile='$ownno',DriverName='$Dname',DriverMobile='$Dno',
+    PricePerDay='$price',owner_email='$email' WHERE id='$user_id'";
+    $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
+    if ($inst_u_fn1_qry) {
 
-        	   if($inst_u_fn1_qry){
-        	header("location:manage-owner.php");
-        }
- 
-		 if($type=='image/jpg' || $type=='image/jpeg' || $type=='image/png' || $type=='image/gif'){
-		   
-		    	if(empty($front_image) OR empty($back_image) OR empty($side_image)) {
-            $update_qry = "UPDATE  add_owner SET front_image='$front_image',back_image='$back_image',side_image='$side_image' WHERE id='$user_id'";
+        header("location:manageowner.php");
+    }
+
+    if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif') {
+
+        if (empty($frontimage) or empty($backimage)) {
+            $update_qry = "UPDATE  tblbooking SET frontimage='$frontimage',backimage='$backimage' WHERE id='$user_id'";
             $inst_u_fn_qry = mysqli_query($conn, $update_qry);
-             $path = "image/".$front_image;
-		   if(move_uploaded_file($img_file1, $path)){
-            copy($path, "$path");
-		   }  
-		   $path = "image/".$back_image;
-		   if(move_uploaded_file($img_file2, $path)){
-            copy($path, "$path");
-		   } 
-		    $path = "image/".$side_image;
-		   if(move_uploaded_file($img_file3, $path)){
-            copy($path, "$path");
-		   }   
+            $path = "images/" . $frontimage;
+            if (move_uploaded_file($img_file1, $path)) {
+                copy($path, "$path");
+            }
+            $path = "images/" . $backimage;
+            if (move_uploaded_file($img_file2, $path)) {
+                copy($path, "$path");
+            }
         } else {
-        	 $update_qry = "UPDATE  add_owner SET front_image='$front_image',back_image='$back_image',side_image='$side_image' WHERE id='$user_id'";
+            $update_qry = "UPDATE  tblbooking SET frontimage='$frontimage',backimage='$backimage' WHERE id='$user_id'";
 
             $inst_u_fn_qry = mysqli_query($conn, $update_qry);
-            $path = "image/".$front_image;
-		   if(move_uploaded_file($img_file1, $path)){
-            copy($path, "$path");
-		   }  
-		   $path = "image/".$back_image;
-		   if(move_uploaded_file($img_file2, $path)){
-            copy($path, "$path");
-		   } 
-		    $path = "image/".$side_image;
-		   if(move_uploaded_file($img_file3, $path)){
-            copy($path, "$path");
-		   }   
+            $path = "images/" . $frontimage;
+            if (move_uploaded_file($img_file1, $path)) {
+                copy($path, "$path");
+            }
+            $path = "images/" . $backimage;
+            if (move_uploaded_file($img_file2, $path)) {
+                copy($path, "$path");
+            }
         }
-        if($inst_u_fn_qry){
-        	header("location:manage-owner.php");
-        } 
+    }
+
+    if ($inst_u_fn_qry) {
+        header("location:manageowner.php");
+        echo "success";
+    }
 }
-}
+
 
 ?>
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<meta name="theme-color" content="#3e454c">
-	
-	<title>Redicabs | Admin Edit Owner</title>
+<?php include("includes/headerlink.php"); ?>
 
-	<!-- Font awesome -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<!-- Sandstone Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!-- Bootstrap Datatables -->
-	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
-	<!-- Bootstrap social button library -->
-	<link rel="stylesheet" href="css/bootstrap-social.css">
-	<!-- Bootstrap select -->
-	<link rel="stylesheet" href="css/bootstrap-select.css">
-	<!-- Bootstrap file input -->
-	<link rel="stylesheet" href="css/fileinput.min.css">
-	<!-- Awesome Bootstrap checkbox -->
-	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
-	<!-- Admin Stye -->
-	<link rel="stylesheet" href="css/style.css">
-  <style>
-		.errorWrap {
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #dd3d36;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-.succWrap{
-    padding: 10px;
-    margin: 0 0 20px 0;
-    background: #fff;
-    border-left: 4px solid #5cb85c;
-    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
-}
-		</style>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <?php include('includes/sidebar.php'); ?>
 
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="margin:0px">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
 
-</head>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Owner page</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
 
-<body>
-	<?php include('includes/header.php');?>
-	<div class="ts-main-content">
-	<?php include('includes/leftbar.php');?>
-		<div class="content-wrapper">
-			<div class="container-fluid">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- left column -->
+                        <div class="col-md-10">
+                            <!-- general form elements -->
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Update Owner</h3>
+                                </div>
 
-				<div class="row">
-					<div class="col-md-12">
-					
-						<h2 class="page-title">Edit Owner</h2>
+                                <div class="card card-warning">
 
-						<div class="row">
-							<div class="col-md-10">
-								<div class="panel panel-default">
-									<div class="panel-heading">Edit Owner</div>
-									<div class="panel-body">
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <form action="" method="post" name="add_owner_update" id="add_owner_update" class="form-horizontal" enctype="multipart/form-data">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Cartegory name</label>
+                                                        <input type="text" class="form-control" placeholder="Enter category" name="category" id="category" value="<?php echo $urows['Categories']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Brand Name</label>
+                                                        <input type="text" class="form-control" placeholder="Enter BrandName" name="brand" id="brand" value="<?php echo $urows['SubCategories']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Vehicle Name</label>
+                                                        <input type="text" class="form-control" placeholder="Enter vehiclename" name="VehicleName" id="VehicleName" value="<?php echo $urows['owner_vehicle_name']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Vehicle Number</label>
+                                                        <input type="text" class="form-control" placeholder="Enter vehicle number" name="VehicleNumber" id="VehicleNumber" value="<?php echo $urows['owner_vehicle_no']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Vehicle RC Number</label>
+                                                        <input type="text" class="form-control" placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo" value="<?php echo $urows['owner_vehicle_RCno']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
 
-					<form action="" method="post" name="add_owner_update" id="add_owner_update"  class="form-horizontal" enctype="multipart/form-data">
-										
-											
-  	        <!-- 	<div class="errorWrap"><strong>ERROR</strong></div>
-			<div class="succWrap"><strong>SUCCESS</strong></div> -->
-									<div class="col-md-5">
-											<div class="form-group">
-												<label for="owner_name" class="col-sm-4 control-label">Owner Name <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_name" id="owner_name"  value="<?php echo $urows['owner_name']; ?>" required>
-												</div>
-											</div>
-									</div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Vehicle Chesis Number</label>
+                                                        <input type="text" class="form-control" placeholder="Enter vehiclename" name="chasis" id="chasis" value="<?php echo $urows['owner_vehicle_chesis_no']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Driver Name</label>
+                                                        <input type="text" class="form-control" placeholder="Enter Driver name" name="Dname" id="Dname" value="<?php echo $urows['DriverName']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label> <label>Driving licence Number</label>
+                                                        </label>
+                                                        <input type="text" class="form-control" placeholder="Enter Driver DL number" name="DLno" id="DLno" value="<?php echo $urows['Driver_DL_No']; ?> " disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Driver Number</label>
+                                                        <input type="number" class="form-control" placeholder="Enter driver number" name="Dno" id="Dno" value="<?php echo $urows['DriverMobile']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Seating Capacity</label>
+                                                        <input type="number" class="form-control" placeholder="Enter seating capacity" name="seat" id="seat" value="<?php echo $urows['SeatingCapacity']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Price/day</label>
+                                                        <input type="text" class="form-control" placeholder="Enter Priceperday" name="price" id="price" value="<?php echo $urows['PricePerDay']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>ModelYear</label>
+                                                        <input type="number" class="form-control" placeholder="Enter vehiclename" name="year" id="year" value="<?php echo $urows['ModelYear']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Owner Name</label>
+                                                        <input type="text" class="form-control" placeholder="Enter ownername" name="ownname" id="ownname" value="<?php echo $urows['OwnerName']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
 
-									<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label">Mobile <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="number" class="form-control" name="owner_mobile" id="owner_mobile" value="<?php echo $urows['owner_mobile']; ?>" required>
-												</div>
-											</div>
-									</div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Owner Number</label>
+                                                        <input type="number" class="form-control" placeholder="Enter owner number" name="ownno" id="ownno" value="<?php echo $urows['owner_mobile']; ?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
 
-										<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label"> Email Id  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="email" class="form-control" name="owner_email" id="owner_email" value="<?php echo $urows['owner_email']; ?>" required>
-												</div>
-											</div>
-									</div>
+                                                    <div class="form-group">
+                                                        <label>Owner Email</label>
+                                                        <input type="email" class="form-control" placeholder="Enter owneremail" name="email" id="email" value="<?php echo $urows['owner_email']; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">Car Front Image</label>
+                                                <img src="images/<?php echo $urows['frontimage']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="frontimage" name="frontimage" required>
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">Car Back Image</label>
+                                                <img src="images/<?php echo $urows['backimage']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="backimage" name="backimage" required>
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">Driver Driving licence image</label>
+                                                <img src="images/<?php echo $urows['DLimage']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="DLimage" name="DLimage" required>
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">Owner Adhar Image</label>
+                                                <img src="images/<?php echo $urows['own_adhar_image']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Adharimage" name="Adharimage" required>
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">Driver Adhar image</label>
+                                                <img src="images/<?php echo $urows['Driver_Adhar_image']; ?>" style="width:20%;">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="Adharimage1" name="Adharimage1" required>
+                                                    <label class="custom-file-label" for="customFile">Choose
+                                                        file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary" name="owner_submit">Update</button>
+                                        </div>
+                                    </div>
 
+                                    </form>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!--/.col (right) -->
+                    </div>
 
-									<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label"> Vehicle Number  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_vehicle_no" id="owner_vehicle_no" value="<?php echo $urows['owner_vehicle_no']; ?>" required>
-												</div>
-											</div>
-									</div>
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- <?php include("includes/footerlink.php"); ?> -->
 
-									<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label">Vehicle RC Number  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_vehicle_rc_no" id="owner_vehicle_rc_no"  value="<?php echo $urows['owner_vehicle_rc_no']; ?>" required>
-												</div>
-											</div>
-									</div>
+    </div>
+    <!-- ./wrapper -->
 
-										<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label">Vehicle Jcc Number  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_vehicle_jcc_no" id="owner_vehicle_jcc_no"  value="<?php echo $urows['owner_vehicle_jcc_no']; ?>" required>
-												</div>
-											</div>
-									</div>
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="../../Redicabs//admin//js//valid.js"></script>
 
-									<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label">Vehicle Brand  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_vehicle_brand" id="owner_vehicle_brand"  value="<?php echo $urows['owner_vehicle_brand']; ?>" required>
-												</div>
-											</div>
-									</div>
-
-									<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label"> Vehicle Name  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_vehicle_name" id="owner_vehicle_name" value="<?php echo $urows['owner_vehicle_name']; ?>" required>
-												</div>
-											</div>
-									</div>
-
-									<div class="col-md-5">
-											<div class="form-group">
-												<label class="col-sm-4 control-label"> Vehicle Color  <span style="color:red">*</span></label>
-												<div class="col-sm-8">
-													<input type="text" class="form-control" name="owner_vehicle_color" id="owner_vehicle_color" value="<?php echo $urows['owner_vehicle_color']; ?>">
-												</div>
-											</div>
-									</div>
-
-								
-
-								<!-- 	<div class="col-md-5">
-										<div class="form-group">
-												<label class="col-sm-4 control-label"> Assign Driver</label>
-											<div class="col-sm-8">
-												<input class="selectpicker" name="driver_id_update" id="driver_id_update"value="<?php echo $urows['driver_id']; ?>"/>
-											</div>
-										</div>
-									</div> -->
-										<div class="col-md-5">
-										<div class="form-group">
-												<label class="col-sm-4 control-label"> Assign Driver  <span style="color:red">*</span></label>
-											<div class="col-sm-8">
-												<select class="selectpicker" name="driver_id" id="driver_id" >
-
-													<?php										
-			// $qry = "SELECT id, name from tbldriver";
-		$sql = "SELECT * FROM tbldriver  INNER JOIN  add_owner ON tbldriver.id=add_owner.driver_id WHERE add_owner.id='$user_id'";
-		  	$exe = mysqli_query($conn, $sql); 
-		  	while ($row = mysqli_fetch_array($exe)) 
-		  	{
-		  ?>
-													<option value="<?php echo $row['driver_id']; ?>"> <?php echo $row['name']; ?> </option>
-													
- <?php
-	}
-  ?>
-		
-		<?php										
-			// $qry = "SELECT id, name from tbldriver";
-		$sql = "SELECT * FROM tbldriver";
-		  	$exe1 = mysqli_query($conn, $sql); 
-		  	while ($rows = mysqli_fetch_array($exe1)) 
-		  	{
-		  ?>
-  <option  value="<?php echo $rows['id'] ?>"><?php echo $rows['name'] ?>
-  </option>
-
-  <?php
-	}
-  ?>
-    </select>
-											</div>
-										</div>
-									</div>
-
-
-									<div class="form-group">
-										<div class="col-sm-12">
-										<h4><b>Upload Images</b></h4>
-										</div>
-									</div>
-
-								<div class="form-group">
-									<div class="col-sm-4">
-										Front Image
-										<img src="image/<?php echo $urows['front_image']; ?>" style="width:20%;">
-										 <span style="color:red">*</span><input type="file" name="front_image" id="front_image" required>
-
-									</div>
-									<div class="col-sm-4">
-										Back Image 
-										<img src="image/<?php echo $urows['back_image']; ?>" style="width:20%;"> 
-										<span style="color:red">*</span><input type="file" name="back_image"  id="back_image" required>
-									</div>
-									<div class="col-sm-4">
-										Side Image 
-										<img src="image/<?php echo $urows['side_image']; ?>" style="width:20%;">
-										 <span style="color:red">*</span><input type="file" name="side_image" id="side_image" required>
-									</div>
-								</div>
-
-
-
-											<div class="hr-dashed"></div>
-
-
-											<div class="form-group">
-												<div class="col-sm-8 col-sm-offset-4">
-						
-										<button class="btn btn-primary" name="owner_update_submit" type="submit">Update</button>
-												</div>
-											</div>
-
-							</form>
-
-									</div>
-								</div>
-							</div>
-							
-						</div>
-						
-					
-
-					</div>
-				</div>
-				
-			
-			</div>
-		</div>
-	</div>
-
-	<!-- Loading Scripts -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.dataTables.min.js"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/Chart.min.js"></script>
-	<script src="js/fileinput.js"></script>
-	<script src="js/chartData.js"></script>
-	<script src="js/main.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
-	<script src="js/additional-methods.min.js"></script>
-	<script src="js/validation.js"></script>
-
+    <script src="js/additional-methods.min.js">
+    </script>
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script>
 </body>
 
 </html>
