@@ -44,7 +44,11 @@
           <div class="logo-wraper">
             <div class="logo">
               <a href="index.php">
+<<<<<<< HEAD
                 <img src="images/Redicabs.png" alt="carlogo" height="60px">
+=======
+                <img src="images/Redicabs.png" alt="carlogo" height="70px">
+>>>>>>> abhijit
               </a>
             </div>
           </div>
@@ -60,11 +64,20 @@
                 include "login.php"
                 ?>
 
+<<<<<<< HEAD
                 <!-- <a href="#">Register</a> -->
                 <button onclick="document.getElementById('id02').style.display='block'">Register</button>
                 <?php
                 include "register.php"
                 ?>
+=======
+            <div class="pull-right">
+              <!-- <a href="#">Login</a> -->
+              <button onclick="document.getElementById('id01').style.display='block'">Login</button>
+              <?php
+              include "login.php"
+              ?>
+>>>>>>> abhijit
 
               </div>
 
