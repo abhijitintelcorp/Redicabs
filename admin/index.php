@@ -2,32 +2,29 @@
 <html lang="en">
 
 <?php
-<<<<<<< HEAD
-<<<<<<< HEAD
-include "includes/headerlink.php"
-=======
+
+include "includes/headerlink.php";
+
 session_start();
 include('includes/config.php');
-if(isset($_POST['login']))
-{
-$email=htmlspecialchars($_POST['username']);
-$password=md5($_POST['password']);
-$sql ="SELECT * FROM admin WHERE UserName='$email' and Password='$password'";
-$res = mysqli_query($conn, $sql);
-$row=mysqli_fetch_assoc($res);
-$count = mysqli_num_rows($res);
-if($count > 0)
-{
-$_SESSION['alogin']=$_POST['username'];
-echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
-} else{
-  echo "<script>alert('Invalid Details');</script>";
+if (isset($_POST['login'])) {
+    $email = htmlspecialchars($_POST['username']);
+    $password = md5($_POST['password']);
+    $sql = "SELECT * FROM admin WHERE UserName='$email' and Password='$password'";
+    $res = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($res);
+    $count = mysqli_num_rows($res);
+    if ($count > 0) {
+        $_SESSION['alogin'] = $_POST['username'];
+        echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+    } else {
+        echo "<script>alert('Invalid Details');</script>";
+    }
 }
-}
->>>>>>> abd86ae45c06cdc4712b860731af8dbfa36f88c8
-=======
+
+
 include "includes/headerlink.php"
->>>>>>> 4e2c0c0dfe18c9255c427c1d6e337c15864efc1b
+
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -63,7 +60,8 @@ include "includes/headerlink.php"
                     <div class="navbar-search-block">
                         <form class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                    aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -87,7 +85,8 @@ include "includes/headerlink.php"
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
@@ -103,7 +102,8 @@ include "includes/headerlink.php"
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -119,11 +119,13 @@ include "includes/headerlink.php"
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
+                                    class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                        <span class="float-right text-sm text-warning"><i
+                                                class="fas fa-star"></i></span>
                                     </h3>
                                     <p class="text-sm">The subject goes here</p>
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
@@ -168,7 +170,8 @@ include "includes/headerlink.php"
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
+                        role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
@@ -274,10 +277,12 @@ include "includes/headerlink.php"
                             <div class="card-body">
                                 <div class="tab-content p-0">
                                     <!-- Morris chart - Sales -->
-                                    <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                                    <div class="chart tab-pane active" id="revenue-chart"
+                                        style="position: relative; height: 300px;">
                                         <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
                                     </div>
-                                    <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                                    <div class="chart tab-pane" id="sales-chart"
+                                        style="position: relative; height: 300px;">
                                         <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                                     </div>
                                 </div>
@@ -295,7 +300,8 @@ include "includes/headerlink.php"
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
-                                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                                    <button type="button" class="btn btn-tool" title="Contacts"
+                                        data-widget="chat-pane-toggle">
                                         <i class="fas fa-comments"></i>
                                     </button>
                                     <button type="button" class="btn btn-tool" data-card-widget="remove">
@@ -314,7 +320,8 @@ include "includes/headerlink.php"
                                             <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg"
+                                            alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
                                             Is this template really for free? That's unbelievable!
@@ -330,7 +337,8 @@ include "includes/headerlink.php"
                                             <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                                        <img class="direct-chat-img" src="dist/img/user3-128x128.jpg"
+                                            alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
                                             You better believe it!
@@ -346,7 +354,8 @@ include "includes/headerlink.php"
                                             <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                        <img class="direct-chat-img" src="dist/img/user1-128x128.jpg"
+                                            alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
                                             Working with AdminLTE on a great new app! Wanna join?
@@ -362,7 +371,8 @@ include "includes/headerlink.php"
                                             <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
                                         </div>
                                         <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                                        <img class="direct-chat-img" src="dist/img/user3-128x128.jpg"
+                                            alt="message user image">
                                         <!-- /.direct-chat-img -->
                                         <div class="direct-chat-text">
                                             I would love to.
@@ -379,7 +389,8 @@ include "includes/headerlink.php"
                                     <ul class="contacts-list">
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Avatar">
+                                                <img class="contacts-list-img" src="dist/img/user1-128x128.jpg"
+                                                    alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -394,7 +405,8 @@ include "includes/headerlink.php"
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar">
+                                                <img class="contacts-list-img" src="dist/img/user7-128x128.jpg"
+                                                    alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -409,7 +421,8 @@ include "includes/headerlink.php"
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar">
+                                                <img class="contacts-list-img" src="dist/img/user3-128x128.jpg"
+                                                    alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -424,7 +437,8 @@ include "includes/headerlink.php"
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar">
+                                                <img class="contacts-list-img" src="dist/img/user5-128x128.jpg"
+                                                    alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -439,7 +453,8 @@ include "includes/headerlink.php"
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar">
+                                                <img class="contacts-list-img" src="dist/img/user6-128x128.jpg"
+                                                    alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -454,7 +469,8 @@ include "includes/headerlink.php"
                                         <!-- End Contact Item -->
                                         <li>
                                             <a href="#">
-                                                <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar">
+                                                <img class="contacts-list-img" src="dist/img/user8-128x128.jpg"
+                                                    alt="User Avatar">
 
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
@@ -476,7 +492,8 @@ include "includes/headerlink.php"
                             <div class="card-footer">
                                 <form action="#" method="post">
                                     <div class="input-group">
-                                        <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                        <input type="text" name="message" placeholder="Type Message ..."
+                                            class="form-control">
                                         <span class="input-group-append">
                                             <button type="button" class="btn btn-primary">Send</button>
                                         </span>
@@ -603,7 +620,8 @@ include "includes/headerlink.php"
                                             <label for="todoCheck6"></label>
                                         </div>
                                         <span class="text">Let theme shine like a star</span>
-                                        <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                                        <small class="badge badge-secondary"><i class="far fa-clock"></i> 1
+                                            month</small>
                                         <div class="tools">
                                             <i class="fas fa-edit"></i>
                                             <i class="fas fa-trash-o"></i>
@@ -613,7 +631,8 @@ include "includes/headerlink.php"
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer clearfix">
-                                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+                                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i>
+                                    Add item</button>
                             </div>
                         </div>
                         <!-- /.card -->
@@ -634,7 +653,8 @@ include "includes/headerlink.php"
                                     <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
                                         <i class="far fa-calendar-alt"></i>
                                     </button>
-                                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                                    <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse"
+                                        title="Collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                 </div>
@@ -685,25 +705,29 @@ include "includes/headerlink.php"
                                 </div>
                             </div>
                             <div class="card-body">
-                                <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                <canvas class="chart" id="line-chart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer bg-transparent">
                                 <div class="row">
                                     <div class="col-4 text-center">
-                                        <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60" data-fgColor="#39CCCC">
+                                        <input type="text" class="knob" data-readonly="true" value="20" data-width="60"
+                                            data-height="60" data-fgColor="#39CCCC">
 
                                         <div class="text-white">Mail-Orders</div>
                                     </div>
                                     <!-- ./col -->
                                     <div class="col-4 text-center">
-                                        <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60" data-fgColor="#39CCCC">
+                                        <input type="text" class="knob" data-readonly="true" value="50" data-width="60"
+                                            data-height="60" data-fgColor="#39CCCC">
 
                                         <div class="text-white">Online</div>
                                     </div>
                                     <!-- ./col -->
                                     <div class="col-4 text-center">
-                                        <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60" data-fgColor="#39CCCC">
+                                        <input type="text" class="knob" data-readonly="true" value="30" data-width="60"
+                                            data-height="60" data-fgColor="#39CCCC">
 
                                         <div class="text-white">In-Store</div>
                                     </div>
@@ -727,7 +751,8 @@ include "includes/headerlink.php"
                                 <div class="card-tools">
                                     <!-- button with a dropdown -->
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                                        <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                            data-toggle="dropdown" data-offset="-52">
                                             <i class="fas fa-bars"></i>
                                         </button>
                                         <div class="dropdown-menu" role="menu">
