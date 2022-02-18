@@ -128,15 +128,13 @@ if (isset($_POST['owner_submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <form action="" method="post" name="add_owner" id="add_owner"
-                                            class="form-horizontal" enctype="multipart/form-data">
+                                        <form action="" method="post" name="add_owner" id="add_owner" class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-6">
 
                                                     <label>SeatingCapacity</label>
 
-                                                    <select class="selectpicker" onchange=getbrand()
-                                                        name="SeatingCapacity" id="SeatingCapacity">
+                                                    <select class="selectpicker" onchange=getbrand() name="SeatingCapacity" id="SeatingCapacity">
                                                         <option>SeatingCapacity</option>
                                                         <?php
                                                         $qry = "SELECT  id, SeatingCapacity from tblbooking";
@@ -144,9 +142,9 @@ if (isset($_POST['owner_submit'])) {
                                                         while ($row = mysqli_fetch_array($exe)) {
 
                                                         ?>
-                                                        <option value="<?php echo $row['id'] ?>">
-                                                            <?php echo $row['SeatingCapacity'] ?>
-                                                        </option>
+                                                            <option value="<?php echo $row['id'] ?>">
+                                                                <?php echo $row['SeatingCapacity'] ?>
+                                                            </option>
 
                                                         <?php }  ?>
                                                     </select>
@@ -154,8 +152,7 @@ if (isset($_POST['owner_submit'])) {
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <label>Brand</label>
-                                                    <select class="selectpicker" name="brand" id="brand"
-                                                        onchange=getname()>
+                                                    <select class="selectpicker" name="brand" id="brand" onchange=getname()>
                                                         <option value=''>Select Brand</option>
                                                     </select>
 
@@ -177,16 +174,13 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>VehicleNumber</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter vehicle number" name="VehicleNumber"
-                                                    id="VehicleNumber">
+                                                <input type="text" class="form-control" placeholder="Enter vehicle number" name="VehicleNumber" id="VehicleNumber">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>VehRCNo</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo">
+                                                <input type="text" class="form-control" placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo">
                                             </div>
                                         </div>
                                     </div>
@@ -195,16 +189,14 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>VehChesisNo</label>
-                                                <input type="text" class="form-control" placeholder="Enter vehiclename"
-                                                    name="chasis" id="chasis">
+                                                <input type="text" class="form-control" placeholder="Enter vehiclename" name="chasis" id="chasis">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
 
                                             <div class="form-group">
                                                 <label>DriverName</label>
-                                                <input type="text" class="form-control" placeholder="Enter Driver name"
-                                                    name="Dname" id="Dname">
+                                                <input type="text" class="form-control" placeholder="Enter Driver name" name="Dname" id="Dname">
                                             </div>
                                         </div>
                                     </div>
@@ -212,15 +204,13 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>DLnumber</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter Driver DL number" name="DLno" id="DLno">
+                                                <input type="text" class="form-control" placeholder="Enter Driver DL number" name="DLno" id="DLno">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>DriverNumber</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter driver number" name="Dno" id="Dno">
+                                                <input type="text" class="form-control" placeholder="Enter driver number" name="Dno" id="Dno">
                                             </div>
                                         </div>
                                     </div>
@@ -228,8 +218,7 @@ if (isset($_POST['owner_submit'])) {
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Price/day</label>
-                                            <input type="text" class="form-control" placeholder="Enter Priceperday"
-                                                name="price" id="price">
+                                            <input type="text" class="form-control" placeholder="Enter Priceperday" name="price" id="price">
                                         </div>
                                     </div>
                                 </div>
@@ -237,15 +226,13 @@ if (isset($_POST['owner_submit'])) {
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>ModelYear</label>
-                                            <input type="text" class="form-control" placeholder="Enter vehiclename"
-                                                name="year" id="year">
+                                            <input type="text" class="form-control" placeholder="Enter vehiclename" name="year" id="year">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>OwnerName</label>
-                                            <input type="text" class="form-control" placeholder="Enter ownername"
-                                                name="ownname" id="ownname">
+                                            <input type="text" class="form-control" placeholder="Enter ownername" name="ownname" id="ownname">
                                         </div>
                                     </div>
                                 </div>
@@ -253,15 +240,13 @@ if (isset($_POST['owner_submit'])) {
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>OwnerAdharNumber</label>
-                                            <input type="text" class="form-control" placeholder="Enter ownerAdharNo"
-                                                name="ownadhar" id="ownadhar">
+                                            <input type="text" class="form-control" placeholder="Enter ownerAdharNo" name="ownadhar" id="ownadhar">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>OwnerNumber</label>
-                                            <input type="text" class="form-control" placeholder="Enter owner number"
-                                                name="ownno" id="ownno">
+                                            <input type="text" class="form-control" placeholder="Enter owner number" name="ownno" id="ownno">
                                         </div>
                                     </div>
                                 </div>
@@ -270,8 +255,7 @@ if (isset($_POST['owner_submit'])) {
                                         <!-- text input -->
                                         <div class="form-group">
                                             <label>Owneremail</label>
-                                            <input type="text" class="form-control" placeholder="Enter owneremail"
-                                                name="email" id="email">
+                                            <input type="text" class="form-control" placeholder="Enter owneremail" name="email" id="email">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -279,8 +263,7 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="form-group">
                                             <label for="customFile">UploadOwnerAdharCard</label>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="Adharimage1"
-                                                    name="Adharimage1">
+                                                <input type="file" class="custom-file-input" id="Adharimage1" name="Adharimage1">
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
@@ -295,8 +278,7 @@ if (isset($_POST['owner_submit'])) {
                                             <label for="customFile">UploadDriverDL</label>
 
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="DLimage"
-                                                    name="DLimage">
+                                                <input type="file" class="custom-file-input" id="DLimage" name="DLimage">
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
@@ -307,8 +289,7 @@ if (isset($_POST['owner_submit'])) {
                                             <label for="customFile">UploadDriverAdharCard</label>
 
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="Adharimage"
-                                                    name="Adharimage">
+                                                <input type="file" class="custom-file-input" id="Adharimage" name="Adharimage">
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
@@ -321,8 +302,7 @@ if (isset($_POST['owner_submit'])) {
                                             <label for="customFile">CarFrontImage</label>
 
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="frontimage"
-                                                    name="frontimage">
+                                                <input type="file" class="custom-file-input" id="frontimage" name="frontimage">
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
@@ -333,16 +313,14 @@ if (isset($_POST['owner_submit'])) {
                                             <label for="customFile">CarBackImage</label>
 
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="backimage"
-                                                    name="backimage">
+                                                <input type="file" class="custom-file-input" id="backimage" name="backimage">
                                                 <label class="custom-file-label" for="customFile">Choose
                                                     file</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary"
-                                            name="owner_submit">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="owner_submit">Submit</button>
                                     </div>
                                 </div>
 
@@ -380,83 +358,84 @@ if (isset($_POST['owner_submit'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- Page specific script -->
     <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
-    </script>
-    <script>
-    $(document).ready(function() {
-        $('select[name="SeatingCapacity"]').change(function() {
-            var VehicleName = $('option:selected', this).attr('VehicleName');
-            $("#VehicleName").val(VehicleName);
-
-            var VehicleNumber = $('option:selected', this).attr('VehicleNumber');
-            $("#VehicleNumber").val(VehicleNumber);
-
-            var PricePerDay = $('option:selected', this).attr('PricePerDay');
-            $("#PricePerDay").val(PricePerDay);
-
-            var OwnerName = $('option:selected', this).attr('OwnerName');
-            $("#OwnerName").val(OwnerName);
-
-            var owner_mobile = $('option:selected', this).attr('owner_mobile');
-            $("#owner_mobile").val(owner_mobile);
+        $(function() {
+            bsCustomFileInput.init();
         });
-    });
     </script>
     <script>
-    $(document).ready(function() {
-        $('select[name="name"]').change(function() {
-            var number = $('option:selected', this).attr('number');
-            $("#number").val(number);
+        $(document).ready(function() {
+            $('select[name="SeatingCapacity"]').change(function() {
+                var VehicleName = $('option:selected', this).attr('VehicleName');
+                $("#VehicleName").val(VehicleName);
+
+                var VehicleNumber = $('option:selected', this).attr('VehicleNumber');
+                $("#VehicleNumber").val(VehicleNumber);
+
+                var PricePerDay = $('option:selected', this).attr('PricePerDay');
+                $("#PricePerDay").val(PricePerDay);
+
+                var OwnerName = $('option:selected', this).attr('OwnerName');
+                $("#OwnerName").val(OwnerName);
+
+                var owner_mobile = $('option:selected', this).attr('owner_mobile');
+                $("#owner_mobile").val(owner_mobile);
+            });
         });
-    });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('select[name="name"]').change(function() {
+                var number = $('option:selected', this).attr('number');
+                $("#number").val(number);
+            });
+        });
     </script>
 
     <script>
-    function getbrand() {
-        var str = '';
-        var val = document.getElementById('SeatingCapacity');
-        for (i = 0; i < val.length; i++) {
-            if (val[i].selected) {
-                str += val[i].value + ',';
+        function getbrand() {
+            var str = '';
+            var val = document.getElementById('brand');
+            for (i = 0; i < val.length; i++) {
+                if (val[i].selected) {
+                    str += val[i].value + ',';
+                }
             }
+            var str = str.slice(0, str.length - 1);
+            // $('#SeatingCapacity').on('change', function() {
+            //     var seat_id = this.value;
+            $.ajax({
+                type: "GET",
+                url: "get-brand.php",
+                data: 'id=' + str,
+                success: function(data) {
+                    $("#brand").html(data);
+                    // $("#VehicleName").html(data);
+                }
+            });
         }
-        var str = str.slice(0, str.length - 1);
-        // $('#SeatingCapacity').on('change', function() {
-        //     var seat_id = this.value;
-        $.ajax({
-            type: "GET",
-            url: "get-brand.php",
-            data: 'id=' + str,
-            success: function(data) {
-                $("#brand").html(data);
-                // $("#VehicleName").html(data);
-            }
-        });
-    }
 
-    function getname() {
-        var str = '';
-        var val = document.getElementById('brand');
-        for (i = 0; i < val.length; i++) {
-            if (val[i].selected) {
-                str += val[i].value + ',';
+        function getname() {
+            var str = '';
+            var val = document.getElementById('VehicleName');
+            for (i = 0; i < val.length; i++) {
+                if (val[i].selected) {
+                    str += val[i].value + ',';
+                }
             }
+            var str = str.slice(0, str.length - 1);
+            // $('#SeatingCapacity').on('change', function() {
+            //     var seat_id = this.value;
+            $.ajax({
+                type: "GET",
+                url: "get-name.php",
+                data: 'id=' + str,
+                success: function(data) {
+                    $("#VehicleName").html(data);
+                }
+            });
         }
-        var str = str.slice(0, str.length - 1);
-        // $('#SeatingCapacity').on('change', function() {
-        //     var seat_id = this.value;
-        $.ajax({
-            type: "GET",
-            url: "get-name.php",
-            data: 'id=' + str,
-            success: function(data) {
-                $("#VehicleName").html(data);
-            }
-        });
-    }
     </script>
+
 </body>
 
 </html>
