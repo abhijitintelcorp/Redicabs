@@ -142,7 +142,7 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>VehicleName</label>
-                                                    <input type="text" class="form-control" placeholder="Enter vehiclename" name="VehicleName" id="VehicleName">
+                                                    <input type="text" class="form-control" placeholder="Enter vehiclename" name="VehicleName" id="VehicleName" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,13 +151,13 @@ if (isset($_POST['owner_submit'])) {
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>VehicleNumber</label>
-                                                    <input type="number" class="form-control" placeholder="Enter vehicle number" name="VehicleNumber" id="VehicleNumber">
+                                                    <input type="number" class="form-control" placeholder="Enter vehicle number" name="VehicleNumber" id="VehicleNumber" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>VehRCNo</label>
-                                                    <input type="number" class="form-control" placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo">
+                                                    <input type="number" class="form-control" placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -165,14 +165,14 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>VehChesisNo</label>
-                                                    <input type="number" class="form-control" placeholder="Enter vehiclechasis" name="chasis" id="chasis">
+                                                    <input type="number" class="form-control" placeholder="Enter vehiclechasis" name="chasis" id="chasis" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>DriverName</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Driver name" name="Dname" id="Dname">
+                                                    <input type="text" class="form-control" placeholder="Enter Driver name" name="Dname" id="Dname" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -180,13 +180,13 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>DLnumber</label>
-                                                    <input type="number" class="form-control" placeholder="Enter Driver DL number" name="DLno" id="DLno">
+                                                    <input type="number" class="form-control" placeholder="Enter Driver DL number" name="DLno" id="DLno" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>DriverNumber</label>
-                                                    <input type="number" class="form-control" placeholder="Enter driver number" name="Dno" id="Dno">
+                                                    <input type="number" class="form-control" placeholder="Enter driver number" name="Dno" id="Dno" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -195,7 +195,7 @@ if (isset($_POST['owner_submit'])) {
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>SeatingCapacity</label>
-                                                    <input type="number" class="form-control" placeholder="Enter seating capacity" name="seat" id="seat">
+                                                    <input type="number" class="form-control" placeholder="Enter seating capacity" name="seat" id="seat" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
