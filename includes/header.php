@@ -44,7 +44,7 @@
           <div class="logo-wraper">
             <div class="logo">
               <a href="index.php">
-                <img src="images/Redicabs.png" alt="carlogo" height="60px">
+                <img src="images/Redicabs.png" alt="carlogo" height="70px">
               </a>
             </div>
           </div>
@@ -53,7 +53,7 @@
         <div class="col-sm-4">
           <div id="languages" class="resister-social">
 
-            <div>
+            <div class="pull-right">
               <!-- <a href="#">Login</a> -->
               <button onclick="document.getElementById('id01').style.display='block'">Login</button>
               <?php
