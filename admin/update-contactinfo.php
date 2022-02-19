@@ -1,25 +1,27 @@
 <?php
+session_start();
+error_reporting(0);
 include("includes/config.php");
-$user_id = $_GET['id'];
-$u_query = "SELECT * FROM tblbooking WHERE id='$user_id'";
-$user_update_query = mysqli_query($conn, $u_query);
-$urows = mysqli_fetch_array($user_update_query);
-if (isset($_POST['update_cont'])) {
+
+// Code for change password	
+if (isset($_POST['contact_update'])) {
     $CAddress = htmlspecialchars($_POST['CAddress']);
-    $email = htmlspecialchars($_POST['email']);
-    $contact = htmlspecialchars($_POST['contact']);
-
-
-    $update_qry = "UPDATE   tblbooking SET CAddress='$CAddress', EmailId='$email',ContactNo='$contact'
-    WHERE id='$user_id'";
-    $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
-    if ($inst_u_fn1_qry) {
-
+    $CEmail = htmlspecialchars($_POST['CEmail']);
+    $CContact = htmlspecialchars($_POST['CContact']);
+    $query = "UPDATE tblbooking SET CompanyAddress='$CAddress',CompanyEmail='$CEmail',CompanyContact='$CContact' WHERE id=72";
+    $query_run = mysqli_query($conn, $query);
+    if ($query_run) {
         header("location:update-contactinfo.php");
+        echo "success";
+    } else {
+        echo "error";
     }
 }
-
+$query1 = "SELECT * FROM  tblbooking WHERE id='72'";
+$res = mysqli_query($conn, $query1);
+$rows = mysqli_fetch_assoc($res);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +41,7 @@ if (isset($_POST['update_cont'])) {
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Owner page</li>
+                                <li class="breadcrumb-item active">Update contact Information</li>
                             </ol>
                         </div>
                     </div>
@@ -68,36 +70,38 @@ if (isset($_POST['update_cont'])) {
                                                 <div class="col-sm-6 mx-auto">
                                                     <!-- text input -->
                                                     <div class="form-group">
-                                                        <label>Address </label>
-                                                        <input type="text" class="form-control" placeholder="Enter Address" name="CAddress" id="CAddress" value="<?php echo $urows['CAddress']; ?>" required>
+                                                        <label>Company Address </label>
+                                                        <input type="text" class="form-control" placeholder="Enter Address" name="CAddress" id="CAddress" value="<?php echo $rows['CompanyAddress']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 mx-auto">
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Email id</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Emailid" name="email" id="email" value="<?php echo $urows['EmailId']; ?>" required>
+                                                        <input type="text" class="form-control" placeholder="Enter Emailid" name="CEmail" id="CEmail" value="<?php echo $rows['CompanyEmail']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-6 mx-auto">
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Contact Number</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Contact Number" name="contact" id="contact" value="<?php echo $urows['ContactNo']; ?>" required>
+                                                        <input type="number" class="form-control" placeholder="Enter Contact Number" name="CContact" id="CContact" value="<?php echo $rows['CompanyContact']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary" id="update_cont" name="contact_update">Update</button>
+
+                                            <div class="form-group padding-right:10px text-center">
+                                                <button type="submit" class="btn btn-primary text-center" id="contact_update" name="contact_update">Update</button>
                                             </div>
                                     </div>
 
 
                                     </form>
+
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -128,11 +132,11 @@ if (isset($_POST['update_cont'])) {
 
     </script>
     <!-- Page specific script -->
-    <!-- <script>
+    <script>
         $(function() {
             bsCustomFileInput.init();
         });
-    </script> -->
+    </script>
 </body>
 
 </html>

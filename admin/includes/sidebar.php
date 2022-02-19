@@ -225,13 +225,13 @@
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="update-contactinfo.php" class="nav-link">
-                             <i class="fa fa-files-o"></i>
+                         <a href="./update-contactinfo.php" class="nav-link">
+                             <i class="fa fa-mobile" aria-hidden="true"></i>
                              <p>UpdateContactInfo</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="../update-contactinfo.php" class="nav-link">
+                         <a href="pages/manage-subscribers.php" class="nav-link">
                              <i class="fa fa-table"></i>
                              <p>ManageSubscriber</p>
                          </a>
