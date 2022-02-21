@@ -8,7 +8,7 @@ if (isset($_POST['contact_update'])) {
     $CAddress = htmlspecialchars($_POST['CAddress']);
     $CEmail = htmlspecialchars($_POST['CEmail']);
     $CContact = htmlspecialchars($_POST['CContact']);
-    $query = "UPDATE tblbooking SET CompanyAddress='$CAddress',CompanyEmail='$CEmail',CompanyContact='$CContact' WHERE id=72";
+    $query = "UPDATE tblbooking SET CompanyAddress='$CAddress',CompanyEmail='$CEmail',CompanyContact='$CContact' WHERE id=1";
     $query_run = mysqli_query($conn, $query);
     if ($query_run) {
         header("location:update-contactinfo.php");
@@ -17,7 +17,7 @@ if (isset($_POST['contact_update'])) {
         echo "error";
     }
 }
-$query1 = "SELECT * FROM  tblbooking WHERE id='72'";
+$query1 = "SELECT * FROM  tblbooking WHERE id='1'";
 $res = mysqli_query($conn, $query1);
 $rows = mysqli_fetch_assoc($res);
 ?>
