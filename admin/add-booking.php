@@ -1,6 +1,6 @@
 <?php
 include("includes/config.php");
-
+error_reporting(0);
 if (isset($_POST['owner_submit'])) {
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
@@ -156,7 +156,7 @@ if (isset($_POST['owner_submit'])) {
                                                     </select>
 
                                                 </div>
-                                            </div>
+                                          
 
                                             <div class="col-sm-6">
                                                 <div class="form-group">
@@ -182,6 +182,7 @@ if (isset($_POST['owner_submit'])) {
                                                         <?php }  ?>
                                                 </div>
                                             </div>
+                                        </div><br><br>
 
                                             <div class="row">
                                                 <div class="col-sm-6">
