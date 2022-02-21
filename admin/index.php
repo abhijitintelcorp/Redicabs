@@ -3,6 +3,7 @@ session_start();
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
+//this for not move a page
 ?>
 
 <!DOCTYPE html>

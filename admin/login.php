@@ -39,7 +39,7 @@ if (isset($_SESSION["EmailId"])) {
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index.php"><b>REDICAB</a>
+            <img src="images/Redicabs.png" height="70px">
         </div>
         <!-- /.login-logo -->
         <div class="card">
