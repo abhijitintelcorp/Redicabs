@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

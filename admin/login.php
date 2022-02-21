@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $message = "";
 if (count($_POST) > 0) {
     $conn = mysqli_connect("localhost", "root", "", "redicabs") or die('Unable To connect');
@@ -9,7 +10,7 @@ if (count($_POST) > 0) {
         $_SESSION["EmailId"] = $row['EmailId'];
         $_SESSION["Password"] = $row['Password'];
     } else {
-        $message = "Invalid Username or Password!";
+        $message = "<b style='color:red'>Invalid Username or Password!";
     }
 }
 if (isset($_SESSION["EmailId"])) {
@@ -67,18 +68,11 @@ if (isset($_SESSION["EmailId"])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="icheck-primary">
-                                    <input type="checkbox" id="remember">
-                                    <label for="remember">
-                                        Remember Me
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="row ">
+
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block" name="btnsubmit">Sign In</button>
+                                <button type="submit" class="btn btn-primary btn-block" style=" display: flex;" name="btnsubmit">Sign In</button>
                             </div>
                             <!-- /.col -->
                         </div>

@@ -1,4 +1,5 @@
 <?php
 session_start();
-session_destroy();
+unset($_SESSION["EmailId"]);
+unset($_SESSION["Password"]);
 header("location:login.php");
