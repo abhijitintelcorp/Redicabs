@@ -44,7 +44,7 @@ if (isset($_SESSION["EmailId"])) {
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <h2 class="login-box-msg"><b>Admin Login</b></h2>
 
                 <form action="" name="admin_signin" method="post">
                     <div class="message"><?php if ($message != "") {
