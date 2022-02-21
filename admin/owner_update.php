@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+?>
+<?php
 include("includes/config.php");
 $user_id = $_GET['id'];
 $u_query = "SELECT * FROM tblbooking WHERE id='$user_id'";

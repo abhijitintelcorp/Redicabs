@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+?>
+<?php
 include("includes/config.php");
 if (isset($_POST['owner_submit'])) {
     $category = htmlspecialchars($_POST['category']);
@@ -321,7 +327,7 @@ if (isset($_POST['owner_submit'])) {
         </aside>
         <!-- /.control-sidebar -->
     </div>
-  
+
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
