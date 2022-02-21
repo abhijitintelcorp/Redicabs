@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include("includes/config.php");
 
-// Code for change password	
+
 if (isset($_POST['contact_update'])) {
     $CAddress = htmlspecialchars($_POST['CAddress']);
     $CEmail = htmlspecialchars($_POST['CEmail']);
