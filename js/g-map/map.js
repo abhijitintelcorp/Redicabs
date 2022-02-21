@@ -15,7 +15,6 @@ function initialize() {
   var control = document.getElementById('control');
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 }
-
 function calcRoute() {
   var start = document.getElementById('start').value;
   var end = document.getElementById('end').value;
