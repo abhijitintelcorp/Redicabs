@@ -6,6 +6,10 @@ include("includes/config.php");
 
 <?php include("includes/headerlink.php"); ?>
 
+<head>
+    <title>Redicabs | Confirmed Bookings </title>
+</head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
@@ -21,8 +25,8 @@ include("includes/config.php");
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body" style="padding: 0px;">
-                                    <table id="example2" class="table table-bordered table-hover"
-                                        style="font-size: 1rem;">
+                                    <table border="1" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo</th>
@@ -30,10 +34,10 @@ include("includes/config.php");
                                                 <th>VehicleName</th>
                                                 <th>FromDate</th>
                                                 <th>ToDate</th>
+                                                <th>PickupTime</th>
                                                 <th>Drivername</th>
                                                 <th>DriverNumber</th>
-                                                <th>OwnerName</th>
-                                                <th>OwnerNumber</th>
+
                                                 <th>Status</th>
                                                 <th>Action</th>
                                         </thead>
@@ -60,14 +64,13 @@ include("includes/config.php");
                                                 </th>
                                                 <th><?php echo $row['ToDate']; ?>
                                                 </th>
+                                                <th><?php echo $row['pickuptime']; ?>
+                                                </th>
                                                 <th><?php echo $row['DriverName']; ?>
                                                 </th>
                                                 <th><?php echo $row['DriverMobile']; ?>
                                                 </th>
-                                                <th><?php echo $row['OwnerName'] ?>
-                                                </th>
-                                                <th><?php echo $row['owner_mobile'] ?>
-                                                </th>
+
                                                 <td><?php
                                                             if ($row['Status'] == 0) {
                                                                 echo htmlentities('Not Confirmed yet');
@@ -79,8 +82,7 @@ include("includes/config.php");
                                                                 echo htmlentities('Delayed');
                                                             }
                                                             ?></td>
-                                                <td><a href="bookig-details.php?bid=<?php echo $row['id']; ?>"><i
-                                                            class="fa fa-edit"></i></a>
+                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
                                                 </td>
                                             </tr>
                                         </tbody>
