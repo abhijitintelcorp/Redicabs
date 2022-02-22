@@ -304,7 +304,6 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="customFile">UploadDriverDL</label>
-
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="DLimage"
                                                         name="DLimage">
