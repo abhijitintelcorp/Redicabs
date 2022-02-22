@@ -152,8 +152,6 @@ if (isset($_POST['owner_submit'])) {
                                                         <option value="">Select Brand</option>
                                                     </select>
                                                 </div>
-                                          
-
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>VehicleName</label>
