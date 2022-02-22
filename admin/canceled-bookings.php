@@ -14,105 +14,89 @@ include("includes/config.php");
     <div class="wrapper">
         <?php include('includes/sidebar.php'); ?>
 
-        <div class="content-wrapper">
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
 
-                        <!-- <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">ManageOwner</li>
-                            </ol>
-                        </div> -->
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="page-title">Canceled Bookings</h2>
 
-            <!-- Main content -->
-            <section class="content" style="margin-left: -251px;">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="page-title">Canceled Bookings</h2>
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body" style="padding: 0px">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Booking No.</th>
+                                            <th>Vehicle</th>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>PickUp Time</th>
+                                            <th>Status</th>
+                                            <th>Posting Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
 
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body" style="padding: 0px">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Booking No.</th>
-                                                <th>Vehicle</th>
-                                                <th>From Date</th>
-                                                <th>To Date</th>
-                                                <th>PickUp Time</th>
-                                                <th>Status</th>
-                                                <th>Posting Date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
+                                    <?php
+                                    extract($_POST);
+                                    $status = 2;
+                                    $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
+                                    $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($retrive_fn_query)) {
+                                        $cnt++;
+                                    ?>
 
-                                        <?php
-                                        extract($_POST);
-                                        $status = 2;
-                                        $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
-                                        $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
-                                        $cnt = 1;
-                                        while ($row = mysqli_fetch_array($retrive_fn_query)) {
-                                            $cnt++;
-                                        ?>
-
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['OwnerName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><a
-                                                        href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
-                                                </td>
-                                                <td><?php echo htmlentities($row['FromDate']); ?></td>
-                                                <td><?php echo htmlentities($row['ToDate']); ?></td>
-                                                <td><?php echo htmlentities($row['Time']); ?></td>
-                                                <td><?php
-                                                        if ($row['Status'] == 0) {
-                                                            echo htmlentities('Not Confirmed yet');
-                                                        } else if ($row['Status'] == 1) {
-                                                            echo htmlentities('Confirmed');
-                                                        } else {
-                                                            echo htmlentities('Cancelled');
-                                                        }
-                                                        ?></td>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
-                                                <td>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo htmlentities($cnt); ?></td>
+                                            <td><?php echo $row['OwnerName'];  ?></td>
+                                            <td><?php echo $row['BookingNumber']; ?></td>
+                                            <td><a href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
+                                            </td>
+                                            <td><?php echo htmlentities($row['FromDate']); ?></td>
+                                            <td><?php echo htmlentities($row['ToDate']); ?></td>
+                                            <td><?php echo htmlentities($row['Time']); ?></td>
+                                            <td><?php
+                                                    if ($row['Status'] == 0) {
+                                                        echo htmlentities('Not Confirmed yet');
+                                                    } else if ($row['Status'] == 1) {
+                                                        echo htmlentities('Confirmed');
+                                                    } else {
+                                                        echo htmlentities('Cancelled');
+                                                    }
+                                                    ?></td>
+                                            <td><?php echo $row['CreatedDate']; ?></td>
+                                            <td>
 
 
-                                                    <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
-                                                        View</a>
-                                                    <a href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">
-                                                        Edit</a>
-                                                </td>
+                                                <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
+                                                    View</a>
 
-                                            </tr>
-                                            <?php $cnt = $cnt + 1;
-                                        } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
+                                            </td>
+
+                                        </tr>
+                                        <?php $cnt = $cnt + 1;
+                                    } ?>
+                                    </tbody>
+                                </table>
                             </div>
-
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.col -->
+
                     </div>
-                    <!-- /.row -->
+                    <!-- /.col -->
                 </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-        </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
     </div>
     <!-- ./wrapper -->
 
