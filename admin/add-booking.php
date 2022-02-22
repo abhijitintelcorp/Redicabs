@@ -207,51 +207,7 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>VehicleName</label>
-                                                    <select class="selectpicker" data-live-search="false"
-                                                        name="VehicleName" id="VehicleName">
-                                                        <option value="">Select Brand first</option>
-                                                        <?php
-                                                        $qry = "SELECT * from tblbooking";
-                                                        $exe = mysqli_query($conn, $qry);
-                                                        while ($row = mysqli_fetch_array($exe)) {
-                                                            $owner_vehicle_no = $row['owner_vehicle_no'];
-                                                            $owner_vehicle_RCno = $row['owner_vehicle_RCno'];
-                                                            $owner_vehicle_chesis_no = $row['owner_vehicle_chesis_no'];
-
-                                                        ?>
-                                                        <option
-                                                            owner_vehicle_no="<?php echo $row['owner_vehicle_no']; ?>"
-                                                            owner_vehicle_RCno="<?php echo $row['owner_vehicle_RCno']; ?>"
-                                                            owner_vehicle_chesis_no="<?php echo $row['owner_vehicle_chesis_no']; ?>"
-                                                            ; ?>
-                                                        </option>
-                                                        <?php }  ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>VehicleNumber</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter vehicle number" name="owner_vehicle_no"
-                                                            id="owner_vehicle_no"
-                                                            value="<?php echo $row['owner_vehicle_no']; ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>VehRCNo</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter vehicle RC no" name="owner_vehicle_RCno"
-                                                            id="owner_vehicle_RCno"
-                                                            value="<?php echo $row['owner_vehicle_RCno']; ?>">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
                                             <div class="row">
 
                                                 <div class="col-sm-6">
