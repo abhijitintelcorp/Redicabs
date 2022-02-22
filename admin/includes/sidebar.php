@@ -113,6 +113,7 @@
                          </ul>
                      </li> -->
 
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fa fa-user"></i>
@@ -245,6 +246,140 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+=======
+                     <li class="nav-item">
+                         <a href="owner.php" class="nav-link">
+                             <i class="fa fa-user"></i>
+                             <p>
+                                 Owner
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="owner.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Add Owner</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="manageowner.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageOwner</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="fa fa-user"></i>
+                             <p>
+                                 Booking
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="new-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>NewBooking</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="quick-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>QuickBooking</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="confirmed-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>confirmed</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="canceled-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Cancelled</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="delayed-bookings.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Delayed Pickup</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/add_feedback.php" class="nav-link">
+                             <i class="fas fa-comment"></i>
+                             <p>
+                                 FeedBack
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/add_feedback.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>AddFeedback</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="pages/manage_feedback.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>ManageFeedback</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/testimonials.php" class="nav-link">
+                             <i class="fa fa-table"></i>
+                             <p>ManageTestimonials</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/manage-conactusquery.php" class="nav-link">
+                             <i class="fa fa-desktop"></i>
+                             <p>ManageContactusQuery</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/reg-users.php" class="nav-link">
+                             <i class="fa fa-users"></i>
+                             <p>RegUser</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/manage-pages.php" class="nav-link">
+                             <i class="fa-solid fa-file"></i>
+                             <p>ManagePages</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/update-contactinfo.php" class="nav-link">
+                             <i class="fa fa-files-o"></i>
+                             <p>UpdateContactInfo</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="pages/manage-subscribers.php" class="nav-link">
+                             <i class="fa fa-table"></i>
+                             <p>ManageSubscriber</p>
+                         </a>
+                     </li>
+                     <!-- <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="nav-icon fas fa-book"></i>
+                             <p>
+                                 Pages
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+>>>>>>> pragyan
 
 
                             <li class="nav-item">
@@ -267,12 +402,75 @@
                             </li>
 
 
+<<<<<<< HEAD
                             <li class="nav-item">
                                 <a href="pages/examples/contact-us.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Contact us</p>
                                 </a>
                             </li>
+=======
+                             <li class="nav-item">
+                                 <a href="pages/examples/contact-us.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>Contact us</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li> -->
+                     <li class="nav-item">
+                         <a href="#" class="nav-link">
+                             <i class="nav-icon far fa-plus-square"></i>
+                             <p>
+                                 Extras
+                                 <i class="fas fa-angle-left right"></i>
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="pages/examples/login.php" class="nav-link">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p>
+                                         Login & Register
+                                         <i class="fas fa-angle-left right"></i>
+                                     </p>
+                                 </a>
+                                 <ul class="nav nav-treeview">
+                                     <li class="nav-item">
+                                         <a href="pages/examples/login.php" class="nav-link">
+                                             <i class="far fa-circle nav-icon"></i>
+                                             <p>Login </p>
+                                         </a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="pages/examples/register.php" class="nav-link">
+                                             <i class="far fa-circle nav-icon"></i>
+                                             <p>Register </p>
+                                         </a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="pages/examples/forgot-password.php" class="nav-link">
+                                             <i class="far fa-circle nav-icon"></i>
+                                             <p>Forgot Password </p>
+                                         </a>
+                                     </li>
+                                     <li class="nav-item">
+                                         <a href="pages/examples/recover-password.php" class="nav-link">
+                                             <i class="far fa-circle nav-icon"></i>
+                                             <p>Recover Password </p>
+                                         </a>
+                                     </li>
+                                 </ul>
+                             </li>
+                         </ul>
+                     </li>
+                 </ul>
+             </nav>
+             <!-- /.sidebar-menu -->
+         </div>
+         <!-- /.sidebar -->
+     </aside>
+>>>>>>> pragyan
 
                         </ul>
                     <li class="nav-item">
