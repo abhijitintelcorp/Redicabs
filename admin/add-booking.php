@@ -89,16 +89,13 @@ if (isset($_POST['owner_submit'])) {
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-
         <?php include('includes/sidebar.php'); ?>
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper" style="margin-left: 0px;">
             <!-- Content Header (Page header) -->
             <section class="content-header" style="padding:0px">
                 <div class="container-fluid">
                     <div class="row mb-2">
-
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
