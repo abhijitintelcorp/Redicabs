@@ -144,47 +144,34 @@ if (isset($_POST['submit'])) {
                                                         <select class="selectpicker" data-live-search="false"
                                                             name="VehicleName" id="VehicleName">
                                                             <option value="">Select Brand first</option>
-                                                            <?php
-                                                            // $VehicleName = $_POST['VehicleName'];
-                                                            $qry = "SELECT * from tblbooking";
+                                                           
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <?php
+                                                           $owner_vehicle_brand= $_POST['owner_vehicle_brand'];
+                                                            $qry = "SELECT * from tblbooking WHERE owner_vehicle_brand = '$owner_vehicle_brand' 
+	GROUP BY owner_vehicle_name ASC";
                                                             // WHERE owner_vehicle_name = '$VehicleName' ";
                                                             $exe = mysqli_query($conn, $qry);
                                                             //$userData = array();
-                                                            while ($row = mysqli_fetch_array($exe)) {
+                                                           $row = mysqli_fetch_array($exe);
                                                                 $owner_vehicle_no = $row['owner_vehicle_no'];
                                                                 $owner_vehicle_RCno = $row['owner_vehicle_RCno'];
                                                                 $owner_vehicle_chesis_no = $row['owner_vehicle_chesis_no'];
                                                                 $PricePerDay = $row['PricePerDay'];
                                                                 $ModelYear = $row['ModelYear'];
-                                                                $frontimage = $row['frontimage'];
-                                                                $backimage = $row['backimage'];
-
                                                             ?>
-                                                            <option
-                                                                owner_vehicle_no="<?php echo $row['owner_vehicle_no']; ?>"
-                                                                owner_vehicle_RCno="<?php echo $row['owner_vehicle_RCno']; ?>"
-                                                                owner_vehicle_chesis_no="<?php echo $row['owner_vehicle_chesis_no']; ?>"
-                                                                PricePerDay="<?php echo $row['PricePerDay']; ?>"
-                                                                ModelYear="<?php echo $row['ModelYear']; ?>"
-                                                                frontimage="<?php echo $row['frontimage']; ?>"
-                                                                backimage="<?php echo $row['backimage']; ?>"
-                                                                value="<?php echo $row['id'] ?>">
-                                                                <?php echo $row['owner_vehicle_name'] ?>
-                                                                <!-- ; ?> -->
-                                                            </option>
-                                                            <?php }  ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                            
+        
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehicleNumber</label>
                                                         <input type="text" class="form-control"
-                                                            placeholder="Enter vehicle number" name="owner_vehicle_no"
+                                                            placeholder="Enter vehicle Number" name="owner_vehicle_no"
                                                             id="owner_vehicle_no"
-                                                            value="<?php echo $row['owner_vehicle_no']; ?>"
                                                             readonly="readonly">
                                                     </div>
                                                 </div>
@@ -212,7 +199,6 @@ if (isset($_POST['submit'])) {
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
-
                                                     <div class="form-group">
                                                         <label>Price/day</label>
                                                         <input type="text" class="form-control"
@@ -260,9 +246,8 @@ if (isset($_POST['submit'])) {
                                                                 OwnerName="<?php echo $row['OwnerName']; ?>"
                                                                 Owner_Aadhar_No="<?php echo $row['Owner_Aadhar_No']; ?>"
                                                                 owner_email="<?php echo $row['owner_email']; ?>"
-                                                                value="<?php echo $row['id'] ?>">
-                                                                <?php echo $row['OwnerName'] ?>
-                                                                ; ?>
+                                                                value="<?php echo $row['id']; ?>">
+                                                                <?php echo $row['OwnerName']; ?>
                                                             </option>
                                                             <?php }  ?>
                                                         </select>
@@ -451,9 +436,7 @@ if (isset($_POST['submit'])) {
             // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
             // $("#owner_vehicle_name").val(owner_vehicle_name);
 
-            var owner_vehicle_no = $('option:selected', this).attr('owner_vehicle_no');
-            $("#owner_vehicle_no").val(owner_vehicle_no);
-
+           
             var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
             $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
 
@@ -572,6 +555,21 @@ if (isset($_POST['submit'])) {
                 });
             } else {
                 $('#OwnerName').html('<option value="">Select Brand first</option>');
+            }
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#owner_vehicle_no').html(html);
+                    }
+                });
+            } else {
+                $('#owner_vehicle_no').html('<input type="text" value="No Data Found" />');
             }
         });
 

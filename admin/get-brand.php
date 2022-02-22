@@ -30,7 +30,26 @@
         echo '<option value="">Select Vehicle Name</option>';
         while($rows = mysqli_fetch_array($run_query)){
 		$vehicle_name=$rows['owner_vehicle_name']; 
-        echo "<option value='$vehicle_name'>$vehicle_name</option>";
+        echo "<option  value='$vehicle_name'>$vehicle_name</option>";
+        }
+    }else{
+        echo '<option value="">Vehicle Name not available</option>';
+    }
+}
+if(isset($_POST["owner_vehicle_name"])){
+	$owner_vehicle_name= $_POST['owner_vehicle_name'];
+    //Get all city data
+
+    $query2 = "SELECT * FROM tblbooking WHERE owner_vehicle_name = '$owner_vehicle_name' 
+	GROUP BY owner_vehicle_name ASC";
+    $run_query2 = mysqli_query($conn, $query2);
+    //Count total number of rows
+    $count2 = mysqli_num_rows($run_query2);
+    //Display cities list
+    if($count2 > 0){
+        while($rows = mysqli_fetch_array($run_query2)){
+		$owner_name=$rows['OwnerName']; 
+        echo "<option  value='$owner_name'>$owner_name</option>";
         }
     }else{
         echo '<option value="">Vehicle Name not available</option>';
