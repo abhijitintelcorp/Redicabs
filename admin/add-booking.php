@@ -151,7 +151,6 @@ if (isset($_POST['owner_submit'])) {
                                                         id="brand">
                                                         <option value="">Select Brand</option>
                                                     </select>
-
                                                 </div>
                                           
 
