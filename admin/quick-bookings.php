@@ -2,6 +2,10 @@
 include("includes/config.php");
 error_reporting(0);
 if (isset($_POST['booking'])) {
+    $bookingNumber = mt_rand(100000000, 999999999);
+    $UserName = htmlspecialchars($_POST['UserName']);
+    $EmailId = htmlspecialchars($_POST['EmailId']);
+    $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
@@ -10,7 +14,7 @@ if (isset($_POST['booking'])) {
     $fromdate = htmlspecialchars($_POST['fromdate']);
     $todate = htmlspecialchars($_POST['todate']);
     $Time = htmlspecialchars($_POST['Time']);
-    $insert_qry = "INSERT INTO `tblbooking`(`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`pickuptime`) VALUES('$SeatingCapacity','$brand','$VehicleName','$puck_up_location','$drop_off_location','$fromdate','$todate','$Time')";
+    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`UserName`,`EmailId`,`ContactNo`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$UserName','$EmailId','$ContactNo','$SeatingCapacity','$brand','$VehicleName','$puck_up_location','$drop_off_location','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
         header("location:quick-bookings.php");
@@ -20,6 +24,7 @@ if (isset($_POST['booking'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +69,39 @@ if (isset($_POST['booking'])) {
                                     <!-- /.card-header -->
                                     <div class="card-body d-flex justify-content-center ">
                                         <form action="" method="post" name="quick_booking" id="quick_booking" class="form-horizontal" enctype="multipart/form-data">
+                                            <div class="row">
+                                                <div class="col-sm-6 ">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Customer User Name</label>
+                                                        <input type="text" style="height: 50px; width:450px;" name="UserName" id="UserName" required>
 
+                                                        </input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 ">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Customer Email Id</label>
+                                                        <input type="email" style="height: 50px; width:450px;" name="EmailId" id="EmailId" required>
+
+                                                        </input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 ">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Customer Contact No</label>
+                                                        <input type="number" style="height: 50px; width:450px;" name="ContactNo" id="ContactNo" required>
+
+                                                        </input>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <!-- text input -->
@@ -125,7 +162,7 @@ if (isset($_POST['booking'])) {
                                                 <div class="col-sm-6 ">
                                                     <!-- text input -->
                                                     <div class="form-group">
-                                                        <label>Puck-up location</label>
+                                                        <label>Pick-up location</label>
                                                         <input style="height: 50px; width:450px;" name="puck_up_location" id="puck_up_location" value="<?php echo $row['puck_up_location']; ?>" required>
 
                                                         </input>
