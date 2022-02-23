@@ -329,10 +329,7 @@ if (isset($_POST['submit'])) {
                                             <div class="form-group">
                                                 <label>CarFrontImage</label>
 
-
-                                                <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
-                                                    name="frontimage" id="frontimage">
-
+                                                <div id="frontimage"></div>
 
                                             </div>
                                         </div>
@@ -340,10 +337,8 @@ if (isset($_POST['submit'])) {
                                             <div class="form-group">
                                                 <label for="customFile">CarBackImage</label>
 
-
-                                                <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;"
-                                                    name="backimage" id="backimage">
-
+                                              <div id="backimage"></div>
+                                    
                                             </div>
                                         </div>
                                     </div>
@@ -394,60 +389,6 @@ if (isset($_POST['submit'])) {
         bsCustomFileInput.init();
     });
     </script>
-    <!-- <script src="jquery-ui/jquery-ui.js">
-    $(document).ready(function() {
-        $("#owner_vehicle_name").autocomplete({
-            source: "add-booking.php",
-            minLength: 1,
-            select: function(event, ui) {
-                $("#owner_vehicle_name").val(ui.item.value);
-                $("#userID").val(ui.item.id);
-            }
-        }).data("ui-autocomplete")._renderItem = function(ul, item) {
-            return $("<li class='ui-autocomplete-row'></li>")
-                .data("item.autocomplete", item)
-                .append(item.label)
-                .appendTo(ul);
-        };
-    });
-    </script> -->
-    <script>
-    $(document).ready(function() {
-        $('select[name="VehicleName"]').change(function() {
-            // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
-            // $("#owner_vehicle_name").val(owner_vehicle_name);
-
-           
-            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
-            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
-
-            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
-            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
-
-            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
-            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
-
-            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
-            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
-
-            var ModelYear = $('option:selected', this).attr('ModelYear');
-            $("#ModelYear").val(ModelYear);
-
-            var frontimage = $('option:selected', this).attr('frontimage');
-            $("#frontimage").val(frontimage);
-
-            var backimage = $('option:selected', this).attr('backimage');
-            $("#backimage").val(backimage);
-
-            // var owner_mobile = $('option:selected', this).attr('owner_mobile');
-            // $("#owner_mobile").val(owner_mobile);
-
-            // var owner_email = $('option:selected', this).attr('owner_email');
-            // $("#owner_email").val(owner_email);
-        });
-    });
-    </script>
-
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {
@@ -622,6 +563,37 @@ if (isset($_POST['submit'])) {
                     }
                 });
         });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+              if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-front-image.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#frontimage').html(html);
+                    }
+                });
+            } else {
+                $('#frontimage').html('No Image Found');
+            }
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+              if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-back-image.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#backimage').html(html);
+                    }
+                });
+            } else {
+                $('#frontimage').html('No Image Found');
+            }
+        });
+        
     });
     </script>
     <!-- <script type="text/javascript">
