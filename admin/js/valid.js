@@ -242,4 +242,58 @@ $(document).ready(function() {
             },
         });
     });
+
+    $(document).ready(function() {
+        $("#quick_booking").validate({
+            rules: {
+                SeatingCapacity: {
+                    required: true,
+                },
+                brand: {
+                    required: true,
+                },
+                VehicleName: {
+                    required: true,
+                },
+                puck_up_location: {
+                    required: true,
+                },
+                drop_off_location: {
+                    required: true,
+                },
+                date: {
+                    required: true,
+                },
+                Time: {
+                    required: true,
+                },
+            },
+            messages: {
+                SeatingCapacity: {
+                    required: "<b style='color:red'>Please enter yourSeatingCapacity</b>",
+                },
+                brand: {
+                    required: "<b style='color:red'>Please enter your brand</b>",
+                },
+                VehicleName: {
+                    required: "<b style='color:red'>Please enter your Vehicle Name</b>",
+                },
+                puck_up_location: {
+                    required: "<b style='color:red'>Please enter your puck_up_location</b>",
+                },
+                drop_off_location: {
+                    required: "<b style='color:red'>Please enter your drop_off_location</b>",
+                },
+                date: {
+                    required: "<b style='color:red'>Please enter your date</b>",
+                },
+                Time: {
+                    required: "<b style='color:red'>Please enter your Time</b>",
+                },
+            },
+            submitHandler: function(form) {
+                form.submit();
+            },
+        });
+    });
 });
