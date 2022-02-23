@@ -21,10 +21,7 @@ if (isset($_POST['login'])) {
         echo "<script>alert('Invalid Details');</script>";
     }
 }
-
-
 include("includes/headerlink.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
