@@ -261,7 +261,10 @@ $(document).ready(function() {
                 drop_off_location: {
                     required: true,
                 },
-                date: {
+                fromdate: {
+                    required: true,
+                },
+                todate: {
                     required: true,
                 },
                 Time: {
@@ -284,8 +287,11 @@ $(document).ready(function() {
                 drop_off_location: {
                     required: "<b style='color:red'>Please enter your drop_off_location</b>",
                 },
-                date: {
-                    required: "<b style='color:red'>Please enter your date</b>",
+                fromdate: {
+                    required: "<b style='color:red'>Please enter your From Date</b>",
+                },
+                todate: {
+                    required: "<b style='color:red'>Please enter your To Date</b>",
                 },
                 Time: {
                     required: "<b style='color:red'>Please enter your Time</b>",

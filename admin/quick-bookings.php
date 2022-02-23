@@ -5,11 +5,18 @@ if (isset($_POST['booking'])) {
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
-    $insert_qry = "INSERT INTO tblbooking(SeatingCapacity,brand,VehicleName) VALUES('$seat','$brand','$VehicleName')";
+    $puck_up_location = htmlspecialchars($_POST['puck_up_location']);
+    $drop_off_location = htmlspecialchars($_POST['drop_off_location']);
+    $fromdate = htmlspecialchars($_POST['fromdate']);
+    $todate = htmlspecialchars($_POST['todate']);
+    $Time = htmlspecialchars($_POST['Time']);
+    $insert_qry = "INSERT INTO `tblbooking`(`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`pickuptime`) VALUES('$SeatingCapacity','$brand','$VehicleName','$puck_up_location','$drop_off_location','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
-        header("location:quick_bookings.php");
+        header("location:quick-bookings.php");
         echo "success";
+    } else {
+        echo "error";
     }
 }
 ?>
@@ -65,7 +72,7 @@ if (isset($_POST['booking'])) {
 
                                                         <label>Seating Capacity</label>
                                                         <select id="SeatingCapacity" class="selectpicker" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity" style="height: 50px; width:450px" required>
-                                                            <option value="">SeatingCapacity</option>
+                                                            <option value=""> Select Seating Capacity</option>
                                                             <?php
                                                             $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                             $exe = mysqli_query($conn, $qry);
@@ -86,7 +93,7 @@ if (isset($_POST['booking'])) {
                                                     <div class="form-group">
                                                         <label>Vehicle Brand</label>
                                                         <select class="selectpicker" data-live-search="false" name="brand" id="brand" style="height: 50px; width:450px;" required>
-                                                            <option value="">Vehicle Brand</option>
+                                                            <option value=""> Select Vehicle Brand</option>
 
                                                         </select>
                                                     </div>
@@ -98,7 +105,7 @@ if (isset($_POST['booking'])) {
                                                     <div class="form-group">
                                                         <label>Vehicle Name</label>
                                                         <select class="selectpicker" data-live-search="false" name="VehicleName" id="VehicleName" style="height: 50px; width:450px;" required>
-                                                            <option value="">Vehicle Name</option>
+                                                            <option value=""> Select Vehicle Name</option>
                                                             <?php
                                                             $qry = "SELECT * from tblbooking";
                                                             $exe = mysqli_query($conn, $qry);
@@ -140,9 +147,18 @@ if (isset($_POST['booking'])) {
                                                 <div class="col-sm-6 ">
                                                     <!-- text input -->
                                                     <div class="form-group">
-                                                        <label>Date</label>
-                                                        <input type="date" name="date" id="date" style="height: 50px; width:450px" required>
+                                                        <label> From Date</label>
+                                                        <input type="date" name="fromdate" id="fromdate" style="height: 50px; width:450px" required>
+                                                        </input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 ">
 
+                                                    <div class="form-group">
+                                                        <label>To Date</label>
+                                                        <input type="date" name="todate" id="todate" style="height: 50px; width:450px" required>
                                                         </input>
                                                     </div>
                                                 </div>
@@ -265,7 +281,8 @@ if (isset($_POST['booking'])) {
         });
     </script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="../admin/js/valid.js"></script>
+    <script src="../../Redicabs//admin//js//valid.js"></script>
+
     <script src="js/additional-methods.min.js">
     </script>
     <script src="js/jquary.min.js">
