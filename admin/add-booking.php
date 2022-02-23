@@ -302,15 +302,7 @@ if (isset($_POST['submit'])) {
                                                                 $DriverMobile = $row['DriverMobile'];
                                                                 $owner_email = $row['owner_email'];
                                                             ?>
-                                                            <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
-                                                                owner_email="<?php echo $row['owner_email']; ?>"
-                                                                DriverName="<?php echo $row['DriverName']; ?>"
-                                                                DriverMobile="<?php echo $row['DriverMobile']; ?>"
-                                                                owner_email="<?php echo $row['owner_email']; ?>"
-                                                                OwnerName="<?php echo $row['OwnerName']; ?>"
-                                                                Owner_Aadhar_No="<?php echo $row['Owner_Aadhar_No']; ?>"
-                                                                owner_email="<?php echo $row['owner_email']; ?>"
-                                                                value="<?php echo $row['id']; ?>">
+                                                            <option value="<?php echo $row['id']; ?>">
                                                                 <?php echo $row['OwnerName']; ?>
                                                             </option>
                                                             <?php }  ?>
@@ -333,11 +325,7 @@ if (isset($_POST['submit'])) {
                                                     <div class="form-group">
                                                         <div class="form-group">
                                                             <label>Owneremail</label>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Enter owneremail" name="owner_email"
-                                                                id="owner_email"
-                                                                value="<?php echo $row['owner_email']; ?>"
-                                                                readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter owneremail" name="owner_email" id="owner_email" readonly="readonly">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -346,21 +334,14 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DriverName</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter Driver name" name="DriverName"
-                                                            id="DriverName" value="<?php echo $row['DriverName']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter Driver name" name="DriverName" id="DriverName" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DriverNumber</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter driver number" name="DriverMobile"
-                                                            id="DriverMobile"
-                                                            value="<?php echo $row['DriverMobile']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter driver number" name="DriverMobile" id="DriverMobile" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -410,10 +391,7 @@ if (isset($_POST['submit'])) {
                                             <div class="form-group">
                                                 <label>CarFrontImage</label>
 
-
-                                                <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
-                                                    name="frontimage" id="frontimage">
-
+                                                <div id="frontimage"></div>
 
                                             </div>
                                         </div>
@@ -421,10 +399,8 @@ if (isset($_POST['submit'])) {
                                             <div class="form-group">
                                                 <label for="customFile">CarBackImage</label>
 
-
-                                                <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;"
-                                                    name="backimage" id="backimage">
-
+                                              <div id="backimage"></div>
+                                    
                                             </div>
                                         </div>
                                     </div>
@@ -475,6 +451,7 @@ if (isset($_POST['submit'])) {
         bsCustomFileInput.init();
     });
     </script>
+<<<<<<< HEAD
     <!-- <script src="jquery-ui/jquery-ui.js">
     $(document).ready(function() {
         $("#owner_vehicle_name").autocomplete({
@@ -565,6 +542,8 @@ if (isset($_POST['submit'])) {
         });
     });
     </script>
+=======
+>>>>>>> abhijit
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {
@@ -698,6 +677,7 @@ if (isset($_POST['submit'])) {
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
+<<<<<<< HEAD
             $.ajax({
                 type: 'POST',
                 url: 'get-model-year.php',
@@ -708,8 +688,92 @@ if (isset($_POST['submit'])) {
                     $('#owner_mobile').val(data);
                 }
             });
+=======
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-mobile.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_mobile').val(data);
+                    }
+                });
+>>>>>>> abhijit
         });
-
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-mobile.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_mobile').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-email.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_email').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-driver-name.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#DriverName').val(data);
+                    }
+                });
+        });
+         $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-driver-mobile.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#DriverMobile').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+              if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-front-image.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#frontimage').html(html);
+                    }
+                });
+            } else {
+                $('#frontimage').html('No Image Found');
+            }
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+              if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-back-image.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#backimage').html(html);
+                    }
+                });
+            } else {
+                $('#frontimage').html('No Image Found');
+            }
+        });
+        
     });
     </script>
     <!-- <script type="text/javascript">
