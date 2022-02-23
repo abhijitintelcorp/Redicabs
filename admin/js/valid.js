@@ -39,6 +39,7 @@ $(document).ready(function() {
             },
             ownname: {
                 required: true,
+                minlength: 3,
             },
             ownadhar: {
                 required: true,
@@ -90,6 +91,7 @@ $(document).ready(function() {
             },
             ownname: {
                 required: "<b style='color:red'>Please enter Owner Name</b>",
+                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
             },
             ownadhar: {
                 required: "<b style='color:red'>Please enter Your Adhar Number</b>",
@@ -162,6 +164,7 @@ $(document).ready(function() {
                 },
                 ownname: {
                     required: true,
+                    minlength: 3,
                 },
                 ownadhar: {
                     required: true,
@@ -213,6 +216,7 @@ $(document).ready(function() {
                 },
                 ownname: {
                     required: "<b style='color:red'>Please enter Owner Name</b>",
+                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
                 },
                 ownadhar: {
                     required: "<b style='color:red'>Please enter Your Adhar Number</b>",
@@ -246,6 +250,18 @@ $(document).ready(function() {
     $(document).ready(function() {
         $("#quick_booking").validate({
             rules: {
+                UserName: {
+                    required: true,
+                    minlength: 3,
+                },
+                EmailId: {
+                    required: true,
+                    email: true,
+                },
+                ContactNo: {
+                    required: true,
+                    minlength: 10,
+                },
                 SeatingCapacity: {
                     required: true,
                 },
@@ -272,8 +288,20 @@ $(document).ready(function() {
                 },
             },
             messages: {
+                UserName: {
+                    required: "<b style='color:red'>Please enter your User Name</b>",
+                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+                },
+                EmailId: {
+                    required: "<b style='color:red'>Please enter Email Id</b>",
+                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+                },
+                ContactNo: {
+                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                    ContactNo: "<b style='color:red'>Please Enter numerical values Only</b>",
+                },
                 SeatingCapacity: {
-                    required: "<b style='color:red'>Please enter yourSeatingCapacity</b>",
+                    required: "<b style='color:red'>Please enter your Seating Capacity</b>",
                 },
                 brand: {
                     required: "<b style='color:red'>Please enter your brand</b>",
@@ -282,7 +310,7 @@ $(document).ready(function() {
                     required: "<b style='color:red'>Please enter your Vehicle Name</b>",
                 },
                 puck_up_location: {
-                    required: "<b style='color:red'>Please enter your puck_up_location</b>",
+                    required: "<b style='color:red'>Please enter your pick_up_location</b>",
                 },
                 drop_off_location: {
                     required: "<b style='color:red'>Please enter your drop_off_location</b>",
