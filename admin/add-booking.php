@@ -189,20 +189,13 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehicleNumber</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter vehicle Number" name="owner_vehicle_no"
-                                                            id="owner_vehicle_no"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter vehicle Number" name="owner_vehicle_no" id="owner_vehicle_no" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehRCNo</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter vehicle RC no" name="owner_vehicle_RCno"
-                                                            id="owner_vehicle_RCno"
-                                                            value="<?php echo $row['owner_vehicle_RCno']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter vehicle RC no" name="owner_vehicle_RCno" id="owner_vehicle_RCno" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,21 +206,13 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehChesisNo</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter vehiclename"
-                                                            name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no"
-                                                            value="<?php echo $row['owner_vehicle_chesis_no']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter vehiclename" name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Price/day</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter Priceperday" name="PricePerDay"
-                                                            id="PricePerDay" value="<?php echo $row['PricePerDay']; ?>"
-                                                            readonly="readonly">
-
+<input type="text" class="form-control" placeholder="Enter Priceperday" name="PricePerDay" id="PricePerDay" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,10 +220,7 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>ModelYear</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter vehiclename" name="ModelYear"
-                                                            id="ModelYear" value="<?php echo $row['ModelYear']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter vehiclename" name="ModelYear" id="ModelYear" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -279,12 +261,8 @@ if (isset($_POST['submit'])) {
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label>OwnerNumber</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter owner number" name="owner_mobile"
-                                                            id="owner_mobile"
-                                                            value="<?php echo $row['owner_mobile']; ?>"
-                                                            readonly="readonly">
+                                                        <label>Owner Number</label>
+<input type="text" class="form-control" placeholder="Enter owner number" name="owner_mobile" id="owner_mobile" readonly="readonly">
                                                     </div>
 
                                                 </div>
@@ -514,9 +492,6 @@ if (isset($_POST['submit'])) {
 
             var owner_email = $('option:selected', this).attr('owner_email');
             $("#owner_email").val(owner_email);
-
-
-
         });
     });
     </script>
@@ -583,18 +558,80 @@ if (isset($_POST['submit'])) {
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-            if (owner_vehicle_name) {
                 $.ajax({
                     type: 'POST',
-                    url: 'get-brand.php',
-                    data: 'owner_vehicle_name=' + owner_vehicle_name,
-                    success: function(html) {
-                        $('#owner_vehicle_no').html(html);
+                    url: 'get-vehicle.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_vehicle_no').val(data);
                     }
                 });
-            } else {
-                $('#owner_vehicle_no').html('<input type="text" value="No Data Found" />');
-            }
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle-RC-no.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_vehicle_RCno').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle-RC-no.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_vehicle_RCno').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle-chesis-no.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_vehicle_chesis_no').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-price-per-day.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#PricePerDay').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-model-year.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#ModelYear').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-model-year.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_mobile').val(data);
+                    }
+                });
         });
 
     });
