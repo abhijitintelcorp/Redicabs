@@ -1,5 +1,28 @@
 <?php
 include("includes/connection.php");
+error_reporting(0);
+if (isset($_POST['booking'])) {
+    $bookingNumber = mt_rand(100000000, 999999999);
+    $UserName = htmlspecialchars($_POST['UserName']);
+    $EmailId = htmlspecialchars($_POST['EmailId']);
+    $ContactNo = htmlspecialchars($_POST['ContactNo']);
+    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
+    $brand = htmlspecialchars($_POST['brand']);
+    $VehicleName = htmlspecialchars($_POST['VehicleName']);
+    $puck_up_location = htmlspecialchars($_POST['puck_up_location']);
+    $drop_off_location = htmlspecialchars($_POST['drop_off_location']);
+    $fromdate = htmlspecialchars($_POST['fromdate']);
+    $todate = htmlspecialchars($_POST['todate']);
+    $Time = htmlspecialchars($_POST['Time']);
+    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`UserName`,`EmailId`,`ContactNo`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$UserName','$EmailId','$ContactNo','$SeatingCapacity','$brand','$VehicleName','$puck_up_location','$drop_off_location','$fromdate','$todate','$Time')";
+    $res_query = mysqli_query($conn, $insert_qry);
+    if ($res_query) {
+        header("location:index.php");
+        echo "success";
+    } else {
+        echo "error";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,75 +41,58 @@ include("includes/header.php");
                             <div class="form-headr"></div>
                             <h2>Fill in the Details Below to Book Your Transfer.</h2>
                             <div class="form-select">
-                                <form name="form1" action="" method="post">
+                                <form action="" method="post" name="booking" id="booking" class="form-horizontal" enctype="multipart/form-data">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat1">
                                         <div class="row">
-                                            <select class="selectpicker" data-live-search="false">
-                                                <option>SeatingCapacity</option>
+                                            <select class="selectpicker" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity">
+                                                <option> Select Seating Capacity</option>
                                                 <?php
-                                                $qry = "SELECT DISTINCT SeatingCapacity from tblbooking ORDER BY id ASC";
+                                                $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                 $exe = mysqli_query($conn, $qry);
-                                                while ($row = mysqli_fetch_array($exe)) {
+                                                while ($row = mysqli_fetch_assoc($exe)) {
+
                                                 ?>
-                                                    <option value="<?php echo $row['id'] ?>">
+                                                    <option value="<?php echo $row['SeatingCapacity'] ?>">
                                                         <?php echo $row['SeatingCapacity'] ?>
                                                     </option>
                                                 <?php }  ?>
+
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
-                                            <select class="selectpicker" data-live-search="false">
-                                                <option>Vehicle Name</option>
-                                                <?php
-                                                $qry = "SELECT id,owner_vehicle_name from tblbooking";
-                                                $exe = mysqli_query($conn, $qry);
-                                                while ($row = mysqli_fetch_array($exe)) {
-                                                ?>
-                                                    <option value="<?php echo $row['id'] ?>">
-                                                        <?php echo $row['owner_vehicle_name'] ?>
-                                                    </option>
-                                                <?php }  ?>
+                                            <select class="selectpicker" data-live-search="false" name="brand" id="brand" required>
+                                                <option> Select Vehicle Brand</option>
+
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
-                                            <select class="selectpicker" data-live-search="false">
-                                                <option>Vehicle Brand</option>
+                                            <select class="selectpicker" data-live-search="false" name="VehicleName" id="VehicleName" required>
+                                                <option> Select Vehicle Name</option>
                                                 <?php
-                                                $qry = "SELECT id,owner_vehicle_brand from tblbooking";
+                                                $qry = "SELECT * from tblbooking";
                                                 $exe = mysqli_query($conn, $qry);
                                                 while ($row = mysqli_fetch_array($exe)) {
+                                                    $puck_up_location = $row['puck_up_location'];
+                                                    $drop_off_location = $row['drop_off_location'];
                                                 ?>
-                                                    <option value="<?php echo $row['id'] ?>">
-                                                        <?php echo $row['owner_vehicle_brand'] ?>
+                                                    <option puck_up_location="<?php echo $row['puck_up_location']; ?>" drop_off_location="<?php echo $row['drop_off_location']; ?>">
                                                     </option>
                                                 <?php }  ?>
                                             </select>
                                         </div>
                                     </div>
 
+
                                     <div class="col-sm-12 custom-select-box tec-domain-cat3">
                                         <div class="row">
                                             <div id="panel">
-                                                <select id="start" onchange="calcRoute();" class="selectpicker custom-select-box tec-domain-cat">
-                                                    <option value="">puck-up location</option>
-                                                    <option value="chicago, il">Chicago</option>
-                                                    <option value="st louis, mo">St Louis</option>
-                                                    <option value="joplin, mo">Joplin, MO</option>
-                                                    <option value="oklahoma city, ok">Oklahoma City</option>
-                                                    <option value="amarillo, tx">Amarillo</option>
-                                                    <option value="gallup, nm">Gallup, NM</option>
-                                                    <option value="flagstaff, az">Flagstaff, AZ</option>
-                                                    <option value="winona, az">Winona</option>
-                                                    <option value="kingman, az">Kingman</option>
-                                                    <option value="barstow, ca">Barstow</option>
-                                                    <option value="san bernardino, ca">San Bernardino</option>
-                                                    <option value="los angeles, ca">Los Angeles</option>
-                                                    <option value="khulna">Khulna, Bangladesh</option>
-                                                    <option value="terokhada">Terokhada, Bangladesh</option>
+                                                <select class="selectpicker custom-select-box tec-domain-cat" name="puck_up_location" id="puck_up_location" value="<?php echo $row['puck_up_location']; ?>" required>
+                                                    <option>pick-up location</option>
+
                                                 </select>
                                             </div>
 
@@ -95,22 +101,9 @@ include("includes/header.php");
                                     <div class="col-sm-12 custom-select-box tec-domain-cat4">
                                         <div class="row">
                                             <div>
-                                                <select id="end" onchange="calcRoute();" class="selectpicker custom-select-box tec-domain-cat">
-                                                    <option value="">drop-off location</option>
-                                                    <option value="chicago, il">Chicago</option>
-                                                    <option value="st louis, mo">St Louis</option>
-                                                    <option value="joplin, mo">Joplin, MO</option>
-                                                    <option value="oklahoma city, ok">Oklahoma City</option>
-                                                    <option value="amarillo, tx">Amarillo</option>
-                                                    <option value="gallup, nm">Gallup, NM</option>
-                                                    <option value="flagstaff, az">Flagstaff, AZ</option>
-                                                    <option value="winona, az">Winona</option>
-                                                    <option value="kingman, az">Kingman</option>
-                                                    <option value="barstow, ca">Barstow</option>
-                                                    <option value="san bernardino, ca">San Bernardino</option>
-                                                    <option value="los angeles, ca">Los Angeles</option>
-                                                    <option value="Satkhira">Satkhira, Bangladesh</option>
-                                                    <option value="terokhada">Terokhada, Bangladesh</option>
+                                                <select class="selectpicker custom-select-box tec-domain-cat" name="drop_off_location" id="drop_off_location" value="<?php echo $row['drop_off_location']; ?>" required>
+                                                    <option>drop-off location</option>
+
                                                 </select>
                                             </div>
                                         </div>
@@ -635,6 +628,77 @@ include("includes/header.php");
     <?php
     include("includes/footerlink.php");
     ?>
+
+
+    <script>
+        $(document).ready(function() {
+            $('select[name="VehicleName"]').change(function() {
+                // var VehicleName = $('option:selected', this).attr('VehicleName');
+                // $("#VehicleName").val(VehicleName);
+
+                var puck_up_location = $('option:selected', this).attr('puck_up_location');
+                $("#puck_up_location").val(puck_up_location);
+
+                var drop_off_location = $('option:selected', this).attr('drop_off_location');
+                $("#drop_off_location").val(drop_off_location);
+
+
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('select[name="name"]').change(function() {
+                var number = $('option:selected', this).attr('number');
+                $("#number").val(number);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#SeatingCapacity').on('change', function() {
+                var SeatingCapacity = $(this).val();
+                if (SeatingCapacity) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'get-brand.php',
+                        data: 'SeatingCapacity=' + SeatingCapacity,
+                        success: function(html) {
+                            $('#brand').html(html);
+                            $('#VehicleName').html(
+                                '<option value="">Select Brand first</option>');
+                        }
+                    });
+                } else {
+                    $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                    $('#VehicleName').html('<option value="">Select Brand first</option>');
+                }
+            });
+
+            $('#brand').on('change', function() {
+                var owner_vehicle_brand = $(this).val();
+                if (owner_vehicle_brand) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'get-brand.php',
+                        data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                        success: function(html) {
+                            $('#VehicleName').html(html);
+                        }
+                    });
+                } else {
+                    $('#VehicleName').html('<option value="">Select Brand first</option>');
+                }
+            });
+        });
+    </script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="../../Redicabs//admin//js//valid.js"></script>
+
+    <script src="js/additional-methods.min.js">
+    </script>
+    <script src="js/jquary.min.js">
+    </script>
 </body>
 
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
