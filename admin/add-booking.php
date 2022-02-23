@@ -242,15 +242,7 @@ if (isset($_POST['submit'])) {
                                                                 $DriverMobile = $row['DriverMobile'];
                                                                 $owner_email = $row['owner_email'];
                                                             ?>
-                                                            <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
-                                                                owner_email="<?php echo $row['owner_email']; ?>"
-                                                                DriverName="<?php echo $row['DriverName']; ?>"
-                                                                DriverMobile="<?php echo $row['DriverMobile']; ?>"
-                                                                owner_email="<?php echo $row['owner_email']; ?>"
-                                                                OwnerName="<?php echo $row['OwnerName']; ?>"
-                                                                Owner_Aadhar_No="<?php echo $row['Owner_Aadhar_No']; ?>"
-                                                                owner_email="<?php echo $row['owner_email']; ?>"
-                                                                value="<?php echo $row['id']; ?>">
+                                                            <option value="<?php echo $row['id']; ?>">
                                                                 <?php echo $row['OwnerName']; ?>
                                                             </option>
                                                             <?php }  ?>
@@ -271,11 +263,7 @@ if (isset($_POST['submit'])) {
                                                     <div class="form-group">
                                                         <div class="form-group">
                                                             <label>Owneremail</label>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Enter owneremail" name="owner_email"
-                                                                id="owner_email"
-                                                                value="<?php echo $row['owner_email']; ?>"
-                                                                readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter owneremail" name="owner_email" id="owner_email" readonly="readonly">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -284,21 +272,14 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DriverName</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter Driver name" name="DriverName"
-                                                            id="DriverName" value="<?php echo $row['DriverName']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter Driver name" name="DriverName" id="DriverName" readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DriverNumber</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter driver number" name="DriverMobile"
-                                                            id="DriverMobile"
-                                                            value="<?php echo $row['DriverMobile']; ?>"
-                                                            readonly="readonly">
+<input type="text" class="form-control" placeholder="Enter driver number" name="DriverMobile" id="DriverMobile" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -467,42 +448,6 @@ if (isset($_POST['submit'])) {
     });
     </script>
 
-    <script>
-    $(document).ready(function() {
-        $('select[name="OwnerName"]').change(function() {
-
-            var DriverName = $('option:selected', this).attr('DriverName');
-            $("#DriverName").val(DriverName);
-
-            var DriverMobile = $('option:selected', this).attr('DriverMobile');
-            $("#DriverMobile").val(DriverMobile);
-
-            // var Driver_DL_No = $('option:selected', this).attr('Driver_DL_No');
-            // $("#Driver_DL_No").val(Driver_DL_No);
-
-
-            // var OwnerName = $('option:selected', this).attr('OwnerName');
-            // $("#OwnerName").val(OwnerName);
-
-            // var Owner_Aadhar_No = $('option:selected', this).attr('Owner_Aadhar_No');
-            // $("#Owner_Aadhar_No").val(Owner_Aadhar_No);
-
-            var owner_mobile = $('option:selected', this).attr('owner_mobile');
-            $("#owner_mobile").val(owner_mobile);
-
-            var owner_email = $('option:selected', this).attr('owner_email');
-            $("#owner_email").val(owner_email);
-        });
-    });
-    </script>
-    <script>
-    $(document).ready(function() {
-        $('select[name="name"]').change(function() {
-            var number = $('option:selected', this).attr('number');
-            $("#number").val(number);
-        });
-    });
-    </script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {
@@ -626,14 +571,57 @@ if (isset($_POST['submit'])) {
             var owner_vehicle_name = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: 'get-model-year.php',
+                    url: 'get-owner-mobile.php',
                     data:{owner_vehicle_name:owner_vehicle_name},
                     success: function(data) {
                         $('#owner_mobile').val(data);
                     }
                 });
         });
-
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-mobile.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_mobile').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-email.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#owner_email').val(data);
+                    }
+                });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-driver-name.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#DriverName').val(data);
+                    }
+                });
+        });
+         $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-driver-mobile.php',
+                    data:{owner_vehicle_name:owner_vehicle_name},
+                    success: function(data) {
+                        $('#DriverMobile').val(data);
+                    }
+                });
+        });
     });
     </script>
     <!-- <script type="text/javascript">
@@ -759,6 +747,7 @@ if (isset($_POST['submit'])) {
         document.addEventListener("click", function(e) {
             closeAllLists(e.target);
         });
+    }
 
     /*An array containing all the country names in the world:*/
     var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
