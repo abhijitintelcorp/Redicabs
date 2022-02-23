@@ -164,55 +164,64 @@ if (isset($_POST['submit'])) {
                                                         <select class="selectpicker" data-live-search="false"
                                                             name="VehicleName" id="VehicleName">
                                                             <option value="">Select Brand first</option>
-                                                           
+
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                             <?php
-                                                           $owner_vehicle_brand= $_POST['owner_vehicle_brand'];
-                                                            $qry = "SELECT * from tblbooking WHERE owner_vehicle_brand = '$owner_vehicle_brand' 
+                                            <?php
+                                            $owner_vehicle_brand = $_POST['owner_vehicle_brand'];
+                                            $qry = "SELECT * from tblbooking WHERE owner_vehicle_brand = '$owner_vehicle_brand' 
 	GROUP BY owner_vehicle_name ASC";
-                                                            // WHERE owner_vehicle_name = '$VehicleName' ";
-                                                            $exe = mysqli_query($conn, $qry);
-                                                            //$userData = array();
-                                                           $row = mysqli_fetch_array($exe);
-                                                                $owner_vehicle_no = $row['owner_vehicle_no'];
-                                                                $owner_vehicle_RCno = $row['owner_vehicle_RCno'];
-                                                                $owner_vehicle_chesis_no = $row['owner_vehicle_chesis_no'];
-                                                                $PricePerDay = $row['PricePerDay'];
-                                                                $ModelYear = $row['ModelYear'];
-                                                            ?>
-                                                            
-        
+                                            // WHERE owner_vehicle_name = '$VehicleName' ";
+                                            $exe = mysqli_query($conn, $qry);
+                                            //$userData = array();
+                                            $row = mysqli_fetch_array($exe);
+                                            $owner_vehicle_no = $row['owner_vehicle_no'];
+                                            $owner_vehicle_RCno = $row['owner_vehicle_RCno'];
+                                            $owner_vehicle_chesis_no = $row['owner_vehicle_chesis_no'];
+                                            $PricePerDay = $row['PricePerDay'];
+                                            $ModelYear = $row['ModelYear'];
+                                            ?>
+
+
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehicleNumber</label>
-<input type="text" class="form-control" placeholder="Enter vehicle Number" name="owner_vehicle_no" id="owner_vehicle_no" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle Number" name="owner_vehicle_no"
+                                                            id="owner_vehicle_no" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehRCNo</label>
-<input type="text" class="form-control" placeholder="Enter vehicle RC no" name="owner_vehicle_RCno" id="owner_vehicle_RCno" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle RC no" name="owner_vehicle_RCno"
+                                                            id="owner_vehicle_RCno" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                           
+
                                             <div class="row">
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehChesisNo</label>
-<input type="text" class="form-control" placeholder="Enter vehiclename" name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename"
+                                                            name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Price/day</label>
-<input type="text" class="form-control" placeholder="Enter Priceperday" name="PricePerDay" id="PricePerDay" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Priceperday" name="PricePerDay"
+                                                            id="PricePerDay" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,7 +229,9 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>ModelYear</label>
-<input type="text" class="form-control" placeholder="Enter vehiclename" name="ModelYear" id="ModelYear" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename" name="ModelYear"
+                                                            id="ModelYear" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -262,7 +273,9 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Owner Number</label>
-<input type="text" class="form-control" placeholder="Enter owner number" name="owner_mobile" id="owner_mobile" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter owner number" name="owner_mobile"
+                                                            id="owner_mobile" readonly="readonly">
                                                     </div>
 
                                                 </div>
@@ -436,7 +449,7 @@ if (isset($_POST['submit'])) {
             // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
             // $("#owner_vehicle_name").val(owner_vehicle_name);
 
-           
+
             var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
             $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
 
@@ -558,80 +571,94 @@ if (isset($_POST['submit'])) {
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_no').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_no').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle-RC-no.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_RCno').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-RC-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_RCno').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle-RC-no.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_RCno').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-RC-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_RCno').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle-chesis-no.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_chesis_no').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-chesis-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_chesis_no').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-price-per-day.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#PricePerDay').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-price-per-day.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#PricePerDay').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-model-year.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#ModelYear').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-model-year.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#ModelYear').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-model-year.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_mobile').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-model-year.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_mobile').val(data);
+                }
+            });
         });
 
     });
@@ -759,6 +786,7 @@ if (isset($_POST['submit'])) {
         document.addEventListener("click", function(e) {
             closeAllLists(e.target);
         });
+    }
 
     /*An array containing all the country names in the world:*/
     var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
