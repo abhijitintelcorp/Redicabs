@@ -71,8 +71,19 @@ if (isset($_POST['booking'])) {
                                                     <div class="form-group">
 
                                                         <label>Seating Capacity</label>
+
+                                                        <select id="SeatingCapacity" class="selectpicker"
+                                                            data-live-search="false" name="SeatingCapacity"
+                                                            id="SeatingCapacity" style="height: 50px; width:350px">
+                                                            <option>SeatingCapacity</option>
+
                                                         <select id="SeatingCapacity" class="selectpicker" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity" style="height: 50px; width:450px" required>
+
+                                                            <option value="">SeatingCapacity</option>
+
+
                                                             <option value=""> Select Seating Capacity</option>
+
                                                             <?php
                                                             $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                             $exe = mysqli_query($conn, $qry);
@@ -88,12 +99,27 @@ if (isset($_POST['booking'])) {
                                                 </div>
                                             </div>
                                             <div class="row">
+
+                                                <div class="col-sm-6 mx-auto">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
+                                                        <label>Vehicle Brand</label>
+                                                        <select class="selectpicker" data-live-search="false"
+                                                            name="brand" id="brand" style="height: 50px; width:350px"
+                                                            required>
+                                                            <option>Vehicle Brand</option>
+
                                                 <div class="col-sm-6">
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Vehicle Brand</label>
                                                         <select class="selectpicker" data-live-search="false" name="brand" id="brand" style="height: 50px; width:450px;" required>
+
+                                                            <option value="">Vehicle Brand</option>
+
+
                                                             <option value=""> Select Vehicle Brand</option>
+
 
                                                         </select>
                                                     </div>
@@ -125,6 +151,37 @@ if (isset($_POST['booking'])) {
                                                 <div class="col-sm-6 ">
                                                     <!-- text input -->
                                                     <div class="form-group">
+                                                        <label>Vehicle Name</label>
+                                                        <select class="selectpicker" data-live-search="false"
+                                                            name="VehicleName" id="VehicleName"
+                                                            style="height: 50px; width:350px">
+                                                            <option>Vehicle Name</option>
+                                                            <?php
+                                                            $qry = "SELECT * from tblbooking";
+                                                            $exe = mysqli_query($conn, $qry);
+                                                            while ($row = mysqli_fetch_array($exe)) {
+                                                                $puck_up_location = $row['puck_up_location'];
+                                                                $drop_off_location = $row['drop_off_location'];
+
+
+
+                                                            ?>
+                                                            <option
+                                                                puck_up_location="<?php echo $row['puck_up_location']; ?>"
+                                                                drop_off_location="<?php echo $row['drop_off_location']; ?>"
+                                                                value="<?php echo $row['id'] ?>"
+                                                                value="<?php echo $row['owner_vehicle_name'] ?>">
+                                                            </option>
+                                                            <?php }  ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-6 mx-auto">
+                                                    <!-- text input -->
+                                                    <div class="form-group">
                                                         <label>Puck-up location</label>
                                                         <input style="height: 50px; width:450px;" name="puck_up_location" id="puck_up_location" value="<?php echo $row['puck_up_location']; ?>" required>
 
@@ -147,6 +204,10 @@ if (isset($_POST['booking'])) {
                                                 <div class="col-sm-6 ">
                                                     <!-- text input -->
                                                     <div class="form-group">
+
+                                                        <label>Date</label>
+                                                        <input type="date" name="date" id="date" style="height: 50px; width:450px" required>
+
                                                         <label> From Date</label>
                                                         <input type="date" name="fromdate" id="fromdate" style="height: 50px; width:450px" required>
                                                         </input>
@@ -155,6 +216,7 @@ if (isset($_POST['booking'])) {
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6 ">
+
 
                                                     <div class="form-group">
                                                         <label>To Date</label>
@@ -213,9 +275,72 @@ if (isset($_POST['booking'])) {
     </script>
     <!-- Page specific script -->
     <script>
-        $(function() {
-            bsCustomFileInput.init();
+    $(function() {
+        bsCustomFileInput.init();
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('select[name="VehicleName"]').change(function() {
+            var VehicleName = $('option:selected', this).attr('VehicleName');
+            $("#VehicleName").val(VehicleName);
+
+            var puck_up_location = $('option:selected', this).attr('puck_up_location');
+            $("#puck_up_location").val(puck_up_location);
+
+            var drop_off_location = $('option:selected', this).attr('drop_off_location');
+            $("#drop_off_location").val(drop_off_location);
+
+
         });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('select[name="name"]').change(function() {
+            var number = $('option:selected', this).attr('number');
+            $("#number").val(number);
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#SeatingCapacity').on('change', function() {
+            var SeatingCapacity = $(this).val();
+            if (SeatingCapacity) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'SeatingCapacity=' + SeatingCapacity,
+                    success: function(html) {
+                        $('#brand').html(html);
+                        $('#VehicleName').html(
+                            '<option value="">Select Brand first</option>');
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
+        });
+
+        $('#brand').on('change', function() {
+            var owner_vehicle_brand = $(this).val();
+            if (owner_vehicle_brand) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                    success: function(html) {
+                        $('#VehicleName').html(html);
+                    }
+                });
+            } else {
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
+        });
+    });
     </script>
 
     <script>
