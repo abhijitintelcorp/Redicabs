@@ -183,7 +183,56 @@ if (isset($_POST['submit'])) {
                                             $PricePerDay = $row['PricePerDay'];
                                             $ModelYear = $row['ModelYear'];
                                             ?>
-
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>CustomerName</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter customername" name="UserName"
+                                                            id="UserName">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>ContactNo</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter contact number" name="ContactNo"
+                                                            id="ContactNo">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>EmailId</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter EmailId" name="EmailId" id="EmailId">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter password" name="Password" id="Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="textarea" class="form-control"
+                                                            placeholder="Enter address" name="address" id="address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control" placeholder="Enter city"
+                                                            name="City" id="City">
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <div class="row">
                                                 <div class="col-sm-6">
