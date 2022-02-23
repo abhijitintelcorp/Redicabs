@@ -22,11 +22,19 @@
     </div>
 </div>
 <div class="map-wapper-opacity">
+<<<<<<< HEAD
+  <div class="container">
+    <div class="row">
+      <div class="row">
+        <div class="col-sm-4">
+          <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
+=======
     <div class="container">
         <div class="row">
             <div class="row">
                 <div class="col-sm-4">
                     <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
+>>>>>>> pragyan
             <select class="selectpicker" data-live-search="false">
               <option>English</option>
               <option>Bangla</option>
@@ -39,6 +47,18 @@
                         <p>Call Us Now - 9776000769 </p>
                     </div>
 
+<<<<<<< HEAD
+        </div>
+        <div class="col-sm-3">
+          <div class="logo-wraper">
+            <div class="logo">
+              <a href="index.php">
+                <img src="images/Redicabs.png" alt="carlogo" height="70px">
+              </a>
+            </div>
+          </div>
+        </div>
+=======
                 </div>
                 <div class="col-sm-3">
                     <div class="logo-wraper">
@@ -49,10 +69,29 @@
                         </div>
                     </div>
                 </div>
+>>>>>>> pragyan
 
                 <div class="col-sm-4">
                     <div id="languages" class="resister-social">
 
+<<<<<<< HEAD
+            <div class="pull-right">
+              <!-- <a href="#">Login</a> -->
+              <button onclick="document.getElementById('id01').style.display='block'">Login</button>
+              <?php
+              include "login.php"
+              ?>
+
+              <!-- <a href="#">Register</a> -->
+              <button onclick="document.getElementById('id02').style.display='block'">Register</button>
+              <?php
+              include "register.php"
+              ?>
+
+            </div>
+            <!--             <div class="social-icon">
+              <p>paul@intelcorpsolutions.com</p>
+=======
                         <div>
                             <!-- <a href="#">Login</a> -->
                             <button onclick="document.getElementById('id01').style.display='block'">Login</button>
@@ -69,6 +108,7 @@
                         </div>
                         <!--             <div class="social-icon">
               <mailto:p>paul@intelcorpsolutions.com</p>
+>>>>>>> pragyan
             </div> -->
                     </div>
                 </div>
@@ -78,5 +118,9 @@
     </div>
 </div>
 <div class="google-image">
+<<<<<<< HEAD
+  <div id="map-canvas"></div>
+=======
     <div id="map-canvas"></div>
+>>>>>>> pragyan
 </div>

@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-
-include "includes/headerlink.php";
-
 session_start();
 include('includes/config.php');
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+?>
+<?php
+include("includes/headerlink.php");
 if (isset($_POST['login'])) {
     $email = htmlspecialchars($_POST['username']);
     $password = md5($_POST['password']);
@@ -21,12 +21,10 @@ if (isset($_POST['login'])) {
         echo "<script>alert('Invalid Details');</script>";
     }
 }
-
-
-include "includes/headerlink.php"
-
+include("includes/headerlink.php");
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
