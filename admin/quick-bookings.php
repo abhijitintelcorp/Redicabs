@@ -17,7 +17,7 @@ if (isset($_POST['booking'])) {
     $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`UserName`,`EmailId`,`ContactNo`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$UserName','$EmailId','$ContactNo','$SeatingCapacity','$brand','$VehicleName','$puck_up_location','$drop_off_location','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
-        header("location:quick-bookings.php");
+        header("location:new-bookings.php");
         echo "success";
     } else {
         echo "error";
