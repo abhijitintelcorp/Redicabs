@@ -108,7 +108,7 @@ if (isset($_POST['booking'])) {
                                                     <div class="form-group">
 
                                                         <label>Seating Capacity</label>
-                                                        <select id="SeatingCapacity" class="selectpicker" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity" style="height: 50px; width:450px" required>
+                                                        <select id="SeatingCapacity" class="selectpicker" data-live-search="false" name="SeatingCapacity" style="height: 50px; width:450px" required>
                                                             <option value=""> Select Seating Capacity</option>
                                                             <?php
                                                             $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
