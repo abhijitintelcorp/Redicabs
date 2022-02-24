@@ -10,7 +10,7 @@
         echo '<option value="">Select Brand</option>';
       while($row = mysqli_fetch_assoc($exe)){
 		$brand_name=$row['owner_vehicle_brand'];
-        echo "<option value=$brand_name>$brand_name</option>";
+        echo "<option value='$brand_name'>$brand_name</option>";
         }
     } else{
         echo '<option value="">Brand Name not available</option>';
