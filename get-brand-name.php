@@ -1,22 +1,22 @@
    <?php
    include("includes/connection.php");
-   if(isset($_POST["SeatingCapacity"])){
-   $SeatingCapacity = $_POST['SeatingCapacity'];
-   $qry = "SELECT  * FROM tblbooking WHERE SeatingCapacity='$SeatingCapacity' GROUP BY owner_vehicle_brand ASC";
+   if(isset($_POST["SeatingCapacity1"])){
+   $SeatingCapacity1 = $_POST['SeatingCapacity1'];
+   $qry = "SELECT  * FROM tblbooking WHERE SeatingCapacity='$SeatingCapacity1' GROUP BY owner_vehicle_brand ASC";
    $exe = mysqli_query($conn, $qry);
    $count = mysqli_num_rows($exe);
-
     if($count > 0){
-        echo '<option value="">Select Brand</option>';
-      while($row = mysqli_fetch_assoc($exe)){
+        echo "<option value=''>Select Brand</option>";
+      while($row = mysqli_fetch_array($exe)){
 		$brand_name=$row['owner_vehicle_brand'];
         echo "<option value='$brand_name'>$brand_name</option>";
         }
     } else{
-        echo '<option value="">Brand Name not available</option>';
+        echo "<option value=''>Brand Name not available</option>";
     }
-   }
-  if(isset($_POST["owner_vehicle_brand"])){
+}
+
+ if(isset($_POST["owner_vehicle_brand"])){
 	$owner_vehicle_brand= $_POST['owner_vehicle_brand'];
     //Get all city data
 
@@ -35,26 +35,7 @@
     }else{
         echo '<option value="">Vehicle Name not available</option>';
     }
-}
-/* if(isset($_POST["owner_vehicle_name"])){
-	$owner_vehicle_name= $_POST['owner_vehicle_name'];
-    //Get all city data
-
-    $query2 = "SELECT * FROM tblbooking WHERE owner_vehicle_name = '$owner_vehicle_name' 
-	GROUP BY owner_vehicle_name ASC";
-    $run_query2 = mysqli_query($conn, $query2);
-    //Count total number of rows
-    $count2 = mysqli_num_rows($run_query2);
-    //Display cities list
-    if($count2 > 0){
-        while($rows = mysqli_fetch_array($run_query2)){
-		$owner_name=$rows['OwnerName']; 
-        echo "<option  value='$owner_name'>$owner_name</option>";
-        }
-    }else{
-        echo '<option value="">Vehicle Name not available</option>';
-    }
-}  */
+} 
 ?>
 
    
