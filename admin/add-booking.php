@@ -31,48 +31,22 @@ if (isset($_POST['submit'])) {
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
     $dob = htmlspecialchars($_POST['dob']);
     $country = "India";
-    $frontimage = $_FILES['frontimage']['name'];
-    $type = $_FILES['frontimage']['type'];
-    $size = $_FILES['frontimage']['size'];
-    $img_file1 = $_FILES['frontimage']['tmp_name'];
-    $backimage = $_FILES['backimage']['name'];
-    $type = $_FILES['backimage']['type'];
-    $size = $_FILES['backimage']['size'];
-    $img_file2 = $_FILES['backimage']['tmp_name'];
-    $query_run = "";
-    $path1 = "images/" . $frontimage;
-    $path2 = "images/" . $backimage;
-
-
-
-    if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif') {
-        if ($size <= 7000000) {
-
-            $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
+    $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
              `Country`,`BookingNumber`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
-             `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`pickuptime`,`Status`,`frontimage`,'backimage') 
+             `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
+             `FromDate`,`ToDate`,`pickuptime`,`Status`) 
 	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$bookingno',
     '$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
-    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$pickuptime','$status','$frontimage','$backimage')";
-            echo $query;
-            exit;
+    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$pickuptime','$status')";
+    $query_run = mysqli_query($conn, $query);
 
-            $query_run = mysqli_query($conn, $query);
 
-            $path = "images/" . $backimage;
-            if (move_uploaded_file($img_file2, $path)) {
-                copy($path, "$path");
-            }
-            $path = "images/" . $frontimage;
-            if (move_uploaded_file($img_file1, $path)) {
-                copy($path, "$path");
-            }
-            if ($query_run) {
-                header("location:new-bookings.php");
-                echo "success";
-            }
-        }
-    }
+    // if ($query_run) {
+    //header("location:new-bookings.php");
+    echo "success";
+    // }
+
+
 }
 ?>
 <!DOCTYPE html>
@@ -162,7 +136,17 @@ if (isset($_POST['submit'])) {
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Categories</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter category" name="Categories"
+                                                            id="Categories">
+                                                    </div>
+                                                </div>
 
+                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">

@@ -7,7 +7,27 @@ include("includes/config.php");
 <?php include("includes/headerlink.php"); ?>
 
 <head>
+
     <title>Redicabs | Confirmed Bookings </title>
+    <style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+    </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -22,10 +42,13 @@ include("includes/config.php");
                         <div class="col-12">
                             <h2 class="page-title">ConfirmedBooking</h2>
 
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body" style="padding: 0px;">
-                                    <table border="1" class="display table table-striped table-bordered table-hover"
+                            <!-- <div class="card"> -->
+                            <!-- /.card-header -->
+                            <!-- <div class="card-body" style="padding: 0px;"> -->
+                            <div class="panel panel-default">
+                                <!-- <div class="panel-heading">Bookings Info</div> -->
+                                <div class="panel-body" style=" overflow-x:auto;">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
                                         cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
@@ -135,7 +158,7 @@ include("includes/config.php");
     <!-- AdminLTE for demo purposes -->
 
     <!-- Page specific script -->
-    <script>
+    <!-- <script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
@@ -149,14 +172,16 @@ include("includes/config.php");
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false,
             "responsive": true,
         });
     });
-    </script>
+    </script> -->
+
+
 </body>
 
 </html>
