@@ -10,10 +10,10 @@
             echo '<option value="">Select Brand</option>';
             while ($row = mysqli_fetch_assoc($exe)) {
                 $brand_name = $row['owner_vehicle_brand'];
-                echo "<option value=$brand_name>$brand_name</option>";
+                echo "<option value='$brand_name'>$brand_name</option>";
             }
         } else {
-            echo '<option value="">Brand Name not available</option>';
+            echo "<option value=''>Brand Name not available</option>";
         }
     }
     if (isset($_POST["owner_vehicle_brand"])) {
@@ -33,7 +33,7 @@
                 echo "<option value='$vehicle_name'>$vehicle_name</option>";
             }
         } else {
-            echo '<option value="">Vehicle Name not available</option>';
+            echo "<option value=''>Vehicle Name not available</option>";
         }
     }
     ?>
