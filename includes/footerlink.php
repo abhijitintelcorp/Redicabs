@@ -18,4 +18,3 @@
 <script src="js/jquery.validate.min.js"></script>
 <script src="admin/js/valid.js"></script>
 <script src="js/additional-methods.min.js"></script>
-<script src="js/validation.js"></script>
