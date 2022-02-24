@@ -136,17 +136,7 @@ if (isset($_POST['submit'])) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>Categories</label>
-                                                        <input type="text" class="form-control"
-                                                            placeholder="Enter category" name="Categories"
-                                                            id="Categories">
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                                            
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -205,11 +195,12 @@ if (isset($_POST['submit'])) {
                                                             name="dob" placeholder="date of birth" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
+                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label>Country</label>
-                                                        <input type="text" class="form-control" readonly="readonly"
-                                                            name="country" id="country">
+                                                        <label>Categories</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter category" name="Categories"
+                                                            id="Categories" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -735,6 +726,19 @@ if (isset($_POST['submit'])) {
                 },
                 success: function(data) {
                     $('#DriverMobile').val(data);
+                }
+            });
+        });
+         $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-categories.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#Categories').val(data);
                 }
             });
         });
