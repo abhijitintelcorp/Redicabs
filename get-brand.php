@@ -1,5 +1,5 @@
    <?php
-   include("includes/config.php");
+   include("includes/connection.php");
    if(isset($_POST["SeatingCapacity"])){
    $SeatingCapacity = $_POST['SeatingCapacity'];
    $qry = "SELECT  * FROM tblbooking WHERE SeatingCapacity='$SeatingCapacity' GROUP BY owner_vehicle_brand ASC";
