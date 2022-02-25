@@ -2,8 +2,8 @@
 session_start();
 //error_reporting(0);
 include("includes/config.php");
-if (strlen($_SESSION['alogin']) == 0) {
-    header('location:index.php');
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
 } else {
     if (isset($_REQUEST['eid'])) {
         $eid = intval($_GET['eid']);
