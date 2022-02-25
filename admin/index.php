@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-<?php
-session_start();
-if (strlen($_SESSION['EmailId']) == 0) {
-    header("location:login.php");
-}
-//this for not move a page
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<?php
-include "includes/headerlink.php"
-
-?>
-
-
-=======
 <?php
 session_start();
 include('includes/config.php');
@@ -44,7 +25,7 @@ include("includes/headerlink.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
->>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
