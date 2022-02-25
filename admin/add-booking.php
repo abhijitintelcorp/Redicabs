@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 
     // if ($query_run) {
-    //header("location:new-bookings.php");
+    header("location:new-bookings.php");
     echo "success";
     // }
 
@@ -100,8 +100,7 @@ if (isset($_POST['submit'])) {
 
                                                     <label>SeatingCapacity</label>
 
-                                                    <select class="selectpicker" data-live-search="false"
-                                                        name="SeatingCapacity" id="SeatingCapacity">
+                                                    <select class="selectpicker" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity">
                                                         <option>SeatingCapacity</option>
                                                         <?php
                                                         $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
@@ -109,17 +108,16 @@ if (isset($_POST['submit'])) {
                                                         while ($row = mysqli_fetch_assoc($exe)) {
 
                                                         ?>
-                                                        <option value="<?php echo $row['SeatingCapacity'] ?>">
-                                                            <?php echo $row['SeatingCapacity'] ?>
-                                                        </option>
+                                                            <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                                                <?php echo $row['SeatingCapacity'] ?>
+                                                            </option>
                                                         <?php }  ?>
                                                     </select>
 
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label>Brand</label>
-                                                    <select class="selectpicker" data-live-search="false" name="brand"
-                                                        id="brand">
+                                                    <select class="selectpicker" data-live-search="false" name="brand" id="brand">
                                                         <option value="">Select Brand</option>
                                                     </select>
 
@@ -201,6 +199,62 @@ if (isset($_POST['submit'])) {
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter category" name="Categories"
                                                             id="Categories" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>CustomerName</label>
+                                                        <input type="text" class="form-control" placeholder="Enter customername" name="UserName" id="UserName">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>ContactNo</label>
+                                                        <input type="text" class="form-control" placeholder="Enter contact number" name="ContactNo" id="ContactNo">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>EmailId</label>
+                                                        <input type="text" class="form-control" placeholder="Enter EmailId" name="EmailId" id="EmailId">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input type="text" class="form-control" placeholder="Enter password" name="Password" id="Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="textarea" class="form-control" placeholder="Enter address" name="address" id="address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control" placeholder="Enter city" name="City" id="City">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>DateOfBirth</label>
+                                                        <input type="date" class="form-control" id="datepicker" name="dob" placeholder="date of birth" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control" placeholder="Enter city" name="City" id="City">
                                                     </div>
                                                 </div>
                                             </div>
@@ -439,9 +493,9 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
     <!-- Page specific script -->
     <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+        $(function() {
+            bsCustomFileInput.init();
+        });
     </script>
     <!-- <script src="jquery-ui/jquery-ui.js">
     $(document).ready(function() {
@@ -461,78 +515,88 @@ if (isset($_POST['submit'])) {
     });
     </script> -->
     <script>
-    $(document).ready(function() {
-        $('select[name="VehicleName"]').change(function() {
-            // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
-            // $("#owner_vehicle_name").val(owner_vehicle_name);
+        $(document).ready(function() {
+            $('select[name="VehicleName"]').change(function() {
+                // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
+                // $("#owner_vehicle_name").val(owner_vehicle_name);
 
 
-            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
-            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
+                var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
+                $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
 
-            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
-            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
+                var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
+                $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
 
-            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
-            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
+                var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
+                $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
 
-            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
-            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
+                var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
+                $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
 
-            var ModelYear = $('option:selected', this).attr('ModelYear');
-            $("#ModelYear").val(ModelYear);
+                var ModelYear = $('option:selected', this).attr('ModelYear');
+                $("#ModelYear").val(ModelYear);
 
-            var frontimage = $('option:selected', this).attr('frontimage');
-            $("#frontimage").val(frontimage);
+                var frontimage = $('option:selected', this).attr('frontimage');
+                $("#frontimage").val(frontimage);
 
-            var backimage = $('option:selected', this).attr('backimage');
-            $("#backimage").val(backimage);
+                var backimage = $('option:selected', this).attr('backimage');
+                $("#backimage").val(backimage);
 
-            // var owner_mobile = $('option:selected', this).attr('owner_mobile');
-            // $("#owner_mobile").val(owner_mobile);
+                // var owner_mobile = $('option:selected', this).attr('owner_mobile');
+                // $("#owner_mobile").val(owner_mobile);
 
-            // var owner_email = $('option:selected', this).attr('owner_email');
-            // $("#owner_email").val(owner_email);
+                // var owner_email = $('option:selected', this).attr('owner_email');
+                // $("#owner_email").val(owner_email);
+            });
         });
-    });
     </script>
 
     <script>
-    $(document).ready(function() {
-        $('select[name="OwnerName"]').change(function() {
+        $(document).ready(function() {
+            $('select[name="OwnerName"]').change(function() {
 
-            var DriverName = $('option:selected', this).attr('DriverName');
-            $("#DriverName").val(DriverName);
+                var DriverName = $('option:selected', this).attr('DriverName');
+                $("#DriverName").val(DriverName);
 
-            var DriverMobile = $('option:selected', this).attr('DriverMobile');
-            $("#DriverMobile").val(DriverMobile);
+                var DriverMobile = $('option:selected', this).attr('DriverMobile');
+                $("#DriverMobile").val(DriverMobile);
 
-            // var Driver_DL_No = $('option:selected', this).attr('Driver_DL_No');
-            // $("#Driver_DL_No").val(Driver_DL_No);
+                // var Driver_DL_No = $('option:selected', this).attr('Driver_DL_No');
+                // $("#Driver_DL_No").val(Driver_DL_No);
 
 
-            // var OwnerName = $('option:selected', this).attr('OwnerName');
-            // $("#OwnerName").val(OwnerName);
+                // var OwnerName = $('option:selected', this).attr('OwnerName');
+                // $("#OwnerName").val(OwnerName);
 
-            // var Owner_Aadhar_No = $('option:selected', this).attr('Owner_Aadhar_No');
-            // $("#Owner_Aadhar_No").val(Owner_Aadhar_No);
+                // var Owner_Aadhar_No = $('option:selected', this).attr('Owner_Aadhar_No');
+                // $("#Owner_Aadhar_No").val(Owner_Aadhar_No);
 
-            var owner_mobile = $('option:selected', this).attr('owner_mobile');
-            $("#owner_mobile").val(owner_mobile);
+                var owner_mobile = $('option:selected', this).attr('owner_mobile');
+                $("#owner_mobile").val(owner_mobile);
 
-            var owner_email = $('option:selected', this).attr('owner_email');
-            $("#owner_email").val(owner_email);
+                var owner_email = $('option:selected', this).attr('owner_email');
+                $("#owner_email").val(owner_email);
+            });
         });
-    });
     </script>
-    <script>
+    <!-- <script src="jquery-ui/jquery-ui.js">
     $(document).ready(function() {
-        $('select[name="name"]').change(function() {
-            var number = $('option:selected', this).attr('number');
-            $("#number").val(number);
-        });
+        $("#owner_vehicle_name").autocomplete({
+            source: "add-booking.php",
+            minLength: 1,
+            select: function(event, ui) {
+                $("#owner_vehicle_name").val(ui.item.value);
+                $("#userID").val(ui.item.id);
+            }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+            return $("<li class='ui-autocomplete-row'></li>")
+                .data("item.autocomplete", item)
+                .append(item.label)
+                .appendTo(ul);
+        };
     });
-    </script>
+    </script> -->
+   
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {
@@ -555,22 +619,210 @@ if (isset($_POST['submit'])) {
             }
         });
 
-        $('#brand').on('change', function() {
-            var owner_vehicle_brand = $(this).val();
-            if (owner_vehicle_brand) {
+            $('#brand').on('change', function() {
+                var owner_vehicle_brand = $(this).val();
+                if (owner_vehicle_brand) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'get-brand.php',
+                        data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                        success: function(html) {
+                            $('#VehicleName').html(html);
+                        }
+                    });
+                } else {
+                    $('#VehicleName').html('<option value="">Select Brand first</option>');
+                }
+            });
+
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                if (owner_vehicle_name) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'get-brand.php',
+                        data: 'owner_vehicle_name=' + owner_vehicle_name,
+                        success: function(html) {
+                            $('#OwnerName').html(html);
+                        }
+                    });
+                } else {
+                    $('#OwnerName').html('<option value="">Select Brand first</option>');
+                }
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: 'get-brand.php',
-                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                    success: function(html) {
-                        $('#VehicleName').html(html);
+                    url: 'get-vehicle.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_vehicle_no').val(data);
                     }
                 });
-            } else {
-                $('#VehicleName').html('<option value="">Select Brand first</option>');
-            }
-        });
-
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle-RC-no.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_vehicle_RCno').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle-RC-no.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_vehicle_RCno').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-vehicle-chesis-no.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_vehicle_chesis_no').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-price-per-day.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#PricePerDay').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-model-year.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#ModelYear').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-mobile.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_mobile').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-mobile.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_mobile').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-owner-email.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#owner_email').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-driver-name.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#DriverName').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-driver-mobile.php',
+                    data: {
+                        owner_vehicle_name: owner_vehicle_name
+                    },
+                    success: function(data) {
+                        $('#DriverMobile').val(data);
+                    }
+                });
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                if (owner_vehicle_name) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'get-front-image.php',
+                        data: 'owner_vehicle_name=' + owner_vehicle_name,
+                        success: function(html) {
+                            $('#frontimage').html(html);
+                        }
+                    });
+                } else {
+                    $('#frontimage').html('No Image Found');
+                }
+            });
+            $('#VehicleName').on('change', function() {
+                var owner_vehicle_name = $(this).val();
+                if (owner_vehicle_name) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'get-back-image.php',
+                        data: 'owner_vehicle_name=' + owner_vehicle_name,
+                        success: function(html) {
+                            $('#backimage').html(html);
+                        }
+                    });
+                } else {
+                    $('#frontimage').html('No Image Found');
+                }
+            });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
             if (owner_vehicle_name) {
@@ -772,9 +1024,9 @@ if (isset($_POST['submit'])) {
                 $('#backimage').html('No Image Found');
             }
         });
-
     });
     </script>
+
     <script>
     function autocomplete(inp, arr) {
         /*the autocomplete function takes two arguments,
@@ -878,14 +1130,6 @@ if (isset($_POST['submit'])) {
         });
     }
 
-    /*An array containing all the country names in the world:*/
-    var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
-        "vanivihar", "Acaryavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
-    ];
-
-    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-    autocomplete(document.getElementById("myInput"), countries);
-    autocomplete(document.getElementById("myInput1"), countries);
     </script>
     <script>
     function myFunction() {
