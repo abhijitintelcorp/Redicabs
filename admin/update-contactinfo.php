@@ -2,21 +2,21 @@
 <?php
 session_start();
 error_reporting(0);
-include("includes/config.php");
-
-
-if (isset($_POST['contact_update'])) {
-    $CAddress = htmlspecialchars($_POST['CAddress']);
-    $CEmail = htmlspecialchars($_POST['CEmail']);
-    $CContact = htmlspecialchars($_POST['CContact']);
-    $query = "UPDATE tblbooking SET CompanyAddress='$CAddress',CompanyEmail='$CEmail',CompanyContact='$CContact' WHERE id=1";
-    $query_run = mysqli_query($conn, $query);
-    if ($query_run) {
-        header("location:update-contactinfo.php");
-        echo "success";
-    } else {
-        echo "error";
-    }
+include('includes/config.php');
+if(strlen($_SESSION['alogin'])==0)
+	{	
+header('location:index.php');
+}
+else{
+// Code for change password	
+if(isset($_POST['submit']))
+{
+$address=$_POST['address'];
+$email=$_POST['email'];	
+$contactno=$_POST['contactno'];
+$query="update tblcontactusinfo set Address='$address',EmailId='$email',ContactNo='$contactno'";
+$query_run = mysqli_query($conn,$query);
+$msg="Info Updateed successfully";
 }
 $query1 = "SELECT * FROM  tblbooking WHERE id='1'";
 $res = mysqli_query($conn, $query1);
@@ -141,6 +141,7 @@ $rows = mysqli_fetch_assoc($res);
 </body>
 
 </html>
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <?php
@@ -312,3 +313,6 @@ $msg="Info Updateed successfully";
 =======
 >>>>>>> 4e2c0c0dfe18c9255c427c1d6e337c15864efc1b
 >>>>>>> pragyan
+=======
+<?php } ?>
+>>>>>>> archana

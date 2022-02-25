@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 session_start();
 include('includes/config.php');
@@ -25,6 +26,45 @@ include("includes/headerlink.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+=======
+
+<?php
+include "includes/headerlink.php"
+
+?>
+
+
+=======
+<?php
+session_start();
+include('includes/config.php');
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+?>
+<?php
+include("includes/headerlink.php");
+if (isset($_POST['login'])) {
+    $email = htmlspecialchars($_POST['username']);
+    $password = md5($_POST['password']);
+    $sql = "SELECT * FROM admin WHERE UserName='$email' and Password='$password'";
+    $res = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($res);
+    $count = mysqli_num_rows($res);
+    if ($count > 0) {
+        $_SESSION['alogin'] = $_POST['username'];
+        echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+    } else {
+        echo "<script>alert('Invalid Details');</script>";
+    }
+}
+include("includes/headerlink.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
+>>>>>>> archana
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
