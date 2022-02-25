@@ -1,7 +1,15 @@
 <?php
 include("includes/config.php");
 error_reporting(0);
-
+$msg="";
+function dateDiff($FromDate, $ToDate)
+{
+    $date1_ts = strtotime($FromDate);
+    $date2_ts = strtotime($ToDate);
+    $si= 1;
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400)+1;
+}
 if (isset($_POST['submit'])) {
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
@@ -28,25 +36,30 @@ if (isset($_POST['submit'])) {
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
+    $totalnodays= dateDiff($FromDate,$ToDate);
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
     $dob = htmlspecialchars($_POST['dob']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
-    $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
+    $sql="SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' AND `EmailId`='$EmailId' LIMIT 1";
+    $res=mysqli_query($conn,$sql);
+    $count = mysqli_num_rows($res);
+
+        if($count > 0 ) {
+            $msg="<b style='color:red;'>Contact No Or Email Id Already Exists. Plaese give different Contact No or Email Id.</b>";
+           
+    } else {
+
+   $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
              `Country`,`Categories`,`BookingNumber`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
              `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
-             `FromDate`,`ToDate`,`Time`,`Status`) 
+             `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`Status`) 
 	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
     '$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
-    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$pickuptime','$status')";
+    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
     $query_run = mysqli_query($conn, $query);
-
-    // if ($query_run) {
-    header("location:new-bookings.php");
-    echo "success";
-    // }
-
-
+    header("location:new-bookings.php");   
+}
 }
 ?>
 <!DOCTYPE html>
@@ -93,6 +106,7 @@ if (isset($_POST['submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
+                                         <?php echo $msg; ?>
                                         <form action="" method="post" name="add_booking" id="add_booking" class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -146,6 +160,7 @@ if (isset($_POST['submit'])) {
                                                         <input type="number" class="form-control" placeholder="Enter contact number" name="ContactNo" id="ContactNo">
                                                     </div>
                                                 </div>
+                                               
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -153,6 +168,7 @@ if (isset($_POST['submit'])) {
                                                         <label>EmailId</label>
                                                         <input type="email" class="form-control" placeholder="Enter EmailId" name="EmailId" id="EmailId">
                                                     </div>
+                                                    
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -286,19 +302,19 @@ if (isset($_POST['submit'])) {
                                                     </div>
                                                 </div>
                                             </div>
-                                    </div>
+                                    
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>PickUp</label>
-                                                <input type="text" class="form-control" placeholder="enter pickup location" name="pickup" id="pickup" required>
+                                                <input type="text" class="form-control" placeholder="enter pickup location" name="pickup" id="pickup">
                                             </div>
                                         </div>
 
                                         <div class=" col-sm-6">
                                             <div class="form-group">
                                                 <label>DropOff</label>
-                                                <input type="text" class="form-control" placeholder="Enter drop off location" name="dropoff" id="dropoff" required>
+                                                <input type="text" class="form-control" placeholder="Enter drop off location" name="dropoff" id="dropoff">
                                             </div>
                                         </div>
                                     </div>
@@ -342,6 +358,7 @@ if (isset($_POST['submit'])) {
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" name="submit" style="margin-left: 332px;">Submit</button>
                                     </div>

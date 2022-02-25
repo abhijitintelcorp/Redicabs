@@ -298,19 +298,19 @@ $(document).ready(function() {
                 ContactNo: "<b style='color:red'>Please Enter numerical values Only</b>",
             },
             SeatingCapacity: {
-                required: "<b style='color:red'>Please enter your Seating Capacity</b>",
+                required: "<b style='color:red'>Please select your Seating Capacity</b>",
             },
             brand: {
-                required: "<b style='color:red'>Please enter your brand</b>",
+                required: "<b style='color:red'>Please select your brand</b>",
             },
             VehicleName: {
-                required: "<b style='color:red'>Please enter your Vehicle Name</b>",
+                required: "<b style='color:red'>Please select your Vehicle Name</b>",
             },
             puck_up_location: {
-                required: "<b style='color:red'>Please enter your pick_up_location</b>",
+                required: "<b style='color:red'>Please enter your Pick Up Location</b>",
             },
             drop_off_location: {
-                required: "<b style='color:red'>Please enter your drop_off_location</b>",
+                required: "<b style='color:red'>Please enter your Drop Off Location</b>",
             },
             fromdate: {
                 required: "<b style='color:red'>Please enter your From Date</b>",
@@ -354,7 +354,6 @@ $(document).ready(function() {
             },
             address: {
                 required: true,
-                maxlength: 8,
             },
             City: {
                 required: true,
@@ -374,16 +373,19 @@ $(document).ready(function() {
             ToDate: {
                 required: true,
             },
+            pickuptime: {
+                required: true,
+            },
         },
         messages: {
             SeatingCapacity: {
-                required: "<b style='color:red'>Please enter your Seating Capacity</b>",
+                required: "<b style='color:red'> Please Select your Seating Capacity</b>",
             },
             brand: {
-                required: "<b style='color:red'>Please enter your brand</b>",
+                required: "<b style='color:red'>Please Select your brand</b>",
             },
             VehicleName: {
-                required: "<b style='color:red'>Please enter your Vehicle Name</b>",
+                required: "<b style='color:red'>Please Select your Vehicle Name</b>",
             },
             UserName: {
                 required: "<b style='color:red'>Please enter your User Name</b>",
@@ -411,16 +413,19 @@ $(document).ready(function() {
                 required: "<b style='color:red'>Please enter your date of birth</b>",
             },
             pickup: {
-                required: "<b style='color:red'>Please enter your pick_off Location</b>",
+                required: "<b style='color:red'>Please enter your Pick Off Location</b>",
             },
             dropoff: {
-                required: "<b style='color:red'>Please enter your Drop_off Location</b>",
+                required: "<b style='color:red'>Please enter your Drop Off Location</b>",
             },
             FromDate: {
-                required: "<b style='color:red'>Please enter your FromDate</b>",
+                required: "<b style='color:red'>Please enter your From Date</b>",
             },
             ToDate: {
-                required: "<b style='color:red'>Please enter your ToDate</b>",
+                required: "<b style='color:red'>Please enter your To Date</b>",
+            },
+            pickuptime: {
+                required: "<b style='color:red'>Please enter Pick Up Time</b>",
             },
         },
         submitHandler: function(form) {
