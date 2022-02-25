@@ -1,6 +1,6 @@
 <?php
 include("includes/config.php");
-error_reporting(0);
+// error_reporting(0);
 
 if (isset($_POST['submit'])) {
     $UserName = htmlspecialchars($_POST['UserName']);
@@ -30,19 +30,19 @@ if (isset($_POST['submit'])) {
     $ToDate = htmlspecialchars($_POST['ToDate']);
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
     $dob = htmlspecialchars($_POST['dob']);
+    $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
     $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
-             `Country`,`BookingNumber`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
+             `Country`,`Categories`,`BookingNumber`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
              `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
-             `FromDate`,`ToDate`,`pickuptime`,`Status`) 
-	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$bookingno',
+             `FromDate`,`ToDate`,`Time`,`Status`) 
+	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
     '$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
     '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$pickuptime','$status')";
     $query_run = mysqli_query($conn, $query);
 
-
     // if ($query_run) {
-    //header("location:new-bookings.php");
+    header("location:new-bookings.php");
     echo "success";
     // }
 
