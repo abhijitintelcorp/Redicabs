@@ -359,6 +359,21 @@ $(document).ready(function() {
             City: {
                 required: true,
             },
+            dob: {
+                required: true,
+            },
+            pickup: {
+                required: true,
+            },
+            dropoff: {
+                required: true,
+            },
+            FromDate: {
+                required: true,
+            },
+            ToDate: {
+                required: true,
+            },
         },
         messages: {
             SeatingCapacity: {
@@ -391,6 +406,21 @@ $(document).ready(function() {
             },
             City: {
                 required: "<b style='color:red'>Please enter your City</b>",
+            },
+            dob: {
+                required: "<b style='color:red'>Please enter your date of birth</b>",
+            },
+            pickup: {
+                required: "<b style='color:red'>Please enter your pick_off Location</b>",
+            },
+            dropoff: {
+                required: "<b style='color:red'>Please enter your Drop_off Location</b>",
+            },
+            FromDate: {
+                required: "<b style='color:red'>Please enter your FromDate</b>",
+            },
+            ToDate: {
+                required: "<b style='color:red'>Please enter your ToDate</b>",
             },
         },
         submitHandler: function(form) {

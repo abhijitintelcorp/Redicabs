@@ -66,7 +66,7 @@ include("includes/config.php");
                                         <tbody>
                                             <tr>
                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['OwnerName'];  ?></td>
+                                                <td><?php echo $row['UserName'];  ?></td>
                                                 <td><?php echo $row['BookingNumber']; ?></td>
                                                 <td><a
                                                         href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
