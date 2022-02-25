@@ -1,12 +1,20 @@
 <?php
 include("includes/connection.php");
 error_reporting(0);
+<<<<<<< HEAD
 if (isset($_POST['taxi_booking'])) {
+=======
+if (isset($_POST['booking'])) {
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
     $bookingNumber = mt_rand(100000000, 999999999);
     $UserName = htmlspecialchars($_POST['UserName']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
+<<<<<<< HEAD
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
+=======
+    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
     $puck_up_location = htmlspecialchars($_POST['puck_up_location']);
@@ -41,10 +49,17 @@ include("includes/header.php");
                             <div class="form-headr"></div>
                             <h2>Fill in the Details Below to Book Your Transfer.</h2>
                             <div class="form-select">
+<<<<<<< HEAD
                                 <form action="" method="post" name="booking" id="booking" class="form-horizontal" enctype="multipart/form-data">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat1">
                                         <div class="row">
                                             <select class="selectpicker" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity">
+=======
+                                <form action="" method="post" name="booking" id="booking" class="form-horizontal">
+                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                        <div class="row">
+                                            <select class="selectpicker" name="SeatingCapacity1" id="SeatingCapacity1">
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
                                                 <option> Select Seating Capacity</option>
                                                 <?php
                                                 $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
@@ -62,16 +77,26 @@ include("includes/header.php");
                                     </div>
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
+<<<<<<< HEAD
                                             <select class="selectpicker" data-live-search="false" name="brand" id="brand" required>
                                                 <option> Select Vehicle Brand</option>
 
+=======
+                                            <select class="selectpicker"  name="brand" id="brand">
+                                                <option value=""> Select Vehicle Brand</option>
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
+<<<<<<< HEAD
                                             <select class="selectpicker" data-live-search="false" name="VehicleName" id="VehicleName" required>
                                                 <option> Select Vehicle Name</option>
+=======
+                                            <select class="selectpicker" name="VehicleName" id="VehicleName">
+                                                <option value=""> Select Vehicle Brand first</option>
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
                                             </select>
                                         </div>
                                     </div>
@@ -80,7 +105,11 @@ include("includes/header.php");
                                     <div class="col-sm-12 custom-select-box tec-domain-cat3">
                                         <div class="row">
                                             <div id="panel">
+<<<<<<< HEAD
                                                 <select class="selectpicker custom-select-box tec-domain-cat" name="puck_up_location" id="puck_up_location" value="<?php echo $row['puck_up_location']; ?>" required>
+=======
+                                                <select class="selectpicker custom-select-box tec-domain-cat" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
                                                     <option>pick-up location</option>
 
                                                 </select>
@@ -133,7 +162,11 @@ include("includes/header.php");
                                         <div class="row">
                                             <div class="col-sm-8 custom-select-box tec-domain-cat5 day">
                                                 <div class="row">
+<<<<<<< HEAD
                                                     <input class="form-control custom-select-box tec-domain-cat5" type="date" name="fromdate" id="fromdate" />
+=======
+                                                    <input class="form-control custom-select-box" type="date" name="date" />
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
 
                                                 </div>
                                             </div>
@@ -644,11 +677,9 @@ include("includes/header.php");
     <!-- ================ footer html start ================ -->
     <?php
     include("includes/footer.php");
-    ?>
-    <!-- ================ footer html Exit ================ -->
-    <?php
     include("includes/footerlink.php");
     ?>
+<<<<<<< HEAD
 
 
 
@@ -659,11 +690,61 @@ include("includes/header.php");
     </script>
     <script src="js/jquary.min.js">
     </script>
+=======
+    <!-- ================ footer html Exit ================ -->
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script>
+    $(document).ready(function() {
+     
+        $('#SeatingCapacity1').on('change', function() {
+            var SeatingCapacity1 =  $(this).val();
+             if (SeatingCapacity1) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand-name.php',
+                    data: { SeatingCapacity1: SeatingCapacity1 },
+                    success: function(html) {
+                        console.log(html)
+                        $('#brand').html(html);
+                        $('#VehicleName').html('<option value="">Select Brand first</option>');
+                        $('#brand').selectpicker('refresh'); 
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+
+            }
+        });
+
+        $('#brand').on('change', function() {
+            var owner_vehicle_brand = $(this).val();
+            if (owner_vehicle_brand) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand-name.php',
+                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                    success: function(html) {
+                        $('#VehicleName').html(html);
+                        $('#VehicleName').selectpicker('refresh'); 
+                    }
+                });
+            } else {
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
+        });
+
+    });
+</script>
+   
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0
 </body>
 
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 </html>
+<<<<<<< HEAD
 
 <script>
     $(function() {
@@ -709,3 +790,58 @@ include("includes/header.php");
         });
     });
 </script>
+=======
+<script>
+$(document).ready(function() {
+    $("#signup_form").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 3,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            contact: {
+                required: true,
+                minlength: 10,
+            },
+            password_id: {
+                required: true,
+                minlength: 8,
+            },
+            cpassword: {
+                minlength: 8,
+                equalTo: "#password_id",
+            },
+        },
+        messages: {
+            username: {
+                required: "<b style='color:red'>Please enter your Full Name</b>",
+                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+            },
+            email: {
+                required: "<b style='color:red'>Please enter Email Id</b>",
+                email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+            },
+            contact: {
+                required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                number: "<b style='color:red'>Please Enter numerical values Only</b>",
+            },
+            password_id: {
+                required: "<b style='color:red'>Please enter your Password</b>",
+                minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+            },
+            cpassword: {
+                minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
+                equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        },
+    }); 
+});
+    </script>
+>>>>>>> 4b5185a0ae191aba3d6154394f297aaf776faad0

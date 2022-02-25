@@ -6,6 +6,30 @@ include("includes/config.php");
 
 <?php include("includes/headerlink.php"); ?>
 
+<head>
+
+    <title>Redicabs | Confirmed Bookings </title>
+    <style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+    </style>
+
+</head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
@@ -18,11 +42,14 @@ include("includes/config.php");
                         <div class="col-12">
                             <h2 class="page-title">ConfirmedBooking</h2>
 
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body" style="padding: 0px;">
-                                    <table id="example2" class="table table-bordered table-hover"
-                                        style="font-size: 1rem;">
+                            <!-- <div class="card"> -->
+                            <!-- /.card-header -->
+                            <!-- <div class="card-body" style="padding: 0px;"> -->
+                            <div class="panel panel-default">
+                                <!-- <div class="panel-heading">Bookings Info</div> -->
+                                <div class="panel-body" style=" overflow-x:auto;">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo</th>
@@ -30,10 +57,10 @@ include("includes/config.php");
                                                 <th>VehicleName</th>
                                                 <th>FromDate</th>
                                                 <th>ToDate</th>
+                                                <th>PickupTime</th>
                                                 <th>Drivername</th>
                                                 <th>DriverNumber</th>
-                                                <th>OwnerName</th>
-                                                <th>OwnerNumber</th>
+
                                                 <th>Status</th>
                                                 <th>Action</th>
                                         </thead>
@@ -60,14 +87,13 @@ include("includes/config.php");
                                                 </th>
                                                 <th><?php echo $row['ToDate']; ?>
                                                 </th>
+                                                <th><?php echo $row['pickuptime']; ?>
+                                                </th>
                                                 <th><?php echo $row['DriverName']; ?>
                                                 </th>
                                                 <th><?php echo $row['DriverMobile']; ?>
                                                 </th>
-                                                <th><?php echo $row['OwnerName'] ?>
-                                                </th>
-                                                <th><?php echo $row['owner_mobile'] ?>
-                                                </th>
+
                                                 <td><?php
                                                             if ($row['Status'] == 0) {
                                                                 echo htmlentities('Not Confirmed yet');
@@ -79,8 +105,7 @@ include("includes/config.php");
                                                                 echo htmlentities('Delayed');
                                                             }
                                                             ?></td>
-                                                <td><a href="bookig-details.php?bid=<?php echo $row['id']; ?>"><i
-                                                            class="fa fa-edit"></i></a>
+                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -133,7 +158,7 @@ include("includes/config.php");
     <!-- AdminLTE for demo purposes -->
 
     <!-- Page specific script -->
-    <script>
+    <!-- <script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
@@ -147,14 +172,16 @@ include("includes/config.php");
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false,
             "responsive": true,
         });
     });
-    </script>
+    </script> -->
+
+
 </body>
 
 </html>
