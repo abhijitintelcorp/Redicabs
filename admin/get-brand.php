@@ -52,7 +52,8 @@ if(isset($_POST["owner_vehicle_name"])){
 		$owner_name=$rows['OwnerName']; 
         echo "<option  value='$owner_name'>$owner_name</option>";
         }
+    }else{
+        echo '<option value="">Owner Name not available</option>';
     }
+}
     ?>
-
-   
