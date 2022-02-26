@@ -401,7 +401,7 @@ $(document).ready(function() {
             },
             Password: {
                 required: "<b style='color:red'>Please enter your Password</b>",
-                maxlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+                maxlength: "<b style='color:red'>Password should be Maximum of 8 characters</b>",
             },
             address: {
                 required: "<b style='color:red'>Please enter your Address</b>",

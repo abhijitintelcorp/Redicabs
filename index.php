@@ -37,7 +37,7 @@ include("includes/header.php");
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <div class="form-wrap " style="height: 800px; width: 350px;">
+                        <div class="form-wrap " style="height: 798px; width: 350px;">
                             <div class="form-headr"></div>
                             <h2>Fill in the Details Below to Book Your Transfer.</h2>
                             <div class="form-select">

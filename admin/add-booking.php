@@ -1,14 +1,18 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
 include("includes/config.php");
 error_reporting(0);
-$msg = "";
+$msg="";
 function dateDiff($FromDate, $ToDate)
 {
     $date1_ts = strtotime($FromDate);
     $date2_ts = strtotime($ToDate);
-    $si = 1;
+    $si= 1;
     $diff = $date2_ts - $date1_ts;
-    return round($diff / 86400) + 1;
+    return round($diff / 86400)+1;
 }
 if (isset($_POST['submit'])) {
     $UserName = htmlspecialchars($_POST['UserName']);
@@ -36,29 +40,30 @@ if (isset($_POST['submit'])) {
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
-    $totalnodays = dateDiff($FromDate, $ToDate);
+    $totalnodays= dateDiff($FromDate,$ToDate);
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
     $dob = htmlspecialchars($_POST['dob']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
-    $sql = "SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' AND `EmailId`='$EmailId' LIMIT 1";
-    $res = mysqli_query($conn, $sql);
+    $sql="SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
+    $res=mysqli_query($conn,$sql);
     $count = mysqli_num_rows($res);
 
-    if ($count > 0) {
-        $msg = "<b style='color:red;'>Contact No Or Email Id Already Exists. Plaese give different Contact No or Email Id.</b>";
+        if($count > 0 ) {
+            $msg="<b style='color:red;'>Contact No Or Email Id Already Exists. Plaese give different Contact No or Email Id.</b>";
+           
     } else {
 
-        $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
+   $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
              `Country`,`Categories`,`BookingNumber`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
              `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
              `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`Status`) 
 	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
     '$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
     '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
-        $query_run = mysqli_query($conn, $query);
-        header("location:new-bookings.php");
-    }
+    $query_run = mysqli_query($conn, $query);
+    header("location:new-bookings.php");   
+}
 }
 ?>
 <!DOCTYPE html>
@@ -105,7 +110,7 @@ if (isset($_POST['submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <?php echo $msg; ?>
+                                         <?php echo $msg; ?>
                                         <form action="" method="post" name="add_booking" id="add_booking" class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -159,7 +164,7 @@ if (isset($_POST['submit'])) {
                                                         <input type="number" class="form-control" placeholder="Enter contact number" name="ContactNo" id="ContactNo">
                                                     </div>
                                                 </div>
-
+                                               
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -167,7 +172,7 @@ if (isset($_POST['submit'])) {
                                                         <label>EmailId</label>
                                                         <input type="email" class="form-control" placeholder="Enter EmailId" name="EmailId" id="EmailId">
                                                     </div>
-
+                                                    
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -180,7 +185,7 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Address</label>
-                                                        <input type="textarea" class="form-control" placeholder="Enter address" name="address" id="address">
+                                                        <input type="text" class="form-control" placeholder="Enter address" name="address" id="address">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -301,63 +306,63 @@ if (isset($_POST['submit'])) {
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>PickUp</label>
-                                                        <input type="text" class="form-control" placeholder="enter pickup location" name="pickup" id="pickup">
-                                                    </div>
-                                                </div>
-
-                                                <div class=" col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>DropOff</label>
-                                                        <input type="text" class="form-control" placeholder="Enter drop off location" name="dropoff" id="dropoff">
-                                                    </div>
-                                                </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>PickUp</label>
+                                                <input type="text" class="form-control" placeholder="enter pickup location" name="pickup" id="pickup">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <label>FromDate</label>
-                                                        <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="From Date" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <label>Todate</label>
-                                                        <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="To Date" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <label>Pick up time</label>
-                                                        <input class="form-control white_bg" id="pickuptime" placeholder="PickUp Time" name="pickuptime" type="time">
-                                                    </div>
-                                                </div>
+                                        </div>
+
+                                        <div class=" col-sm-6">
+                                            <div class="form-group">
+                                                <label>DropOff</label>
+                                                <input type="text" class="form-control" placeholder="Enter drop off location" name="dropoff" id="dropoff">
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>CarFrontImage</label>
-
-
-                                                        <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
-                                                    name="frontimage" id="frontimage"> -->
-                                                        <div id="frontimage" name="frontimage"></div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="customFile">CarBackImage</label>
-                                                        <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
-                                                        <div id="backimage" name="backimage"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>FromDate</label>
+                                                <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="From Date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Todate</label>
+                                                <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="To Date" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Pick up time</label>
+                                                <input class="form-control white_bg" id="pickuptime" placeholder="PickUp Time" name="pickuptime" type="time">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>CarFrontImage</label>
+
+
+                                                <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
+                                                    name="frontimage" id="frontimage"> -->
+                                                <div id="frontimage" name="frontimage"></div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="customFile">CarBackImage</label>
+                                                <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
+                                                <div id="backimage" name="backimage"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" name="submit" style="margin-left: 332px;">Submit</button>
                                     </div>
@@ -497,37 +502,9 @@ if (isset($_POST['submit'])) {
     </script>
     <script>
         $(document).ready(function() {
-            $('select[name="VehicleName"]').change(function() {
-                // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
-                // $("#owner_vehicle_name").val(owner_vehicle_name);
-
-
-                var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
-                $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
-
-                var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
-                $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
-
-                var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
-                $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
-
-                var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
-                $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
-
-                var ModelYear = $('option:selected', this).attr('ModelYear');
-                $("#ModelYear").val(ModelYear);
-
-                var frontimage = $('option:selected', this).attr('frontimage');
-                $("#frontimage").val(frontimage);
-
-                var backimage = $('option:selected', this).attr('backimage');
-                $("#backimage").val(backimage);
-
-                // var owner_mobile = $('option:selected', this).attr('owner_mobile');
-                // $("#owner_mobile").val(owner_mobile);
-
-                // var owner_email = $('option:selected', this).attr('owner_email');
-                // $("#owner_email").val(owner_email);
+            $('select[name="name"]').change(function() {
+                var number = $('option:selected', this).attr('number');
+                $("#number").val(number);
             });
         });
     </script>
