@@ -97,7 +97,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                 <td><?php echo $row['owner_vehicle_brand']; ?>
                                                     / <?php echo $row['owner_vehicle_name']; ?></td>
                                                 <th>Booking Date</th>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
+                                                <td><?php echo $row['RegDate']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>DriverName</th>
