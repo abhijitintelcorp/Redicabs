@@ -1,10 +1,11 @@
 <?php
 session_start();
+error_reporting(0);
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
 include("includes/config.php");
-error_reporting(0);
+date_default_timezone_set("Asia/Kolkata");
 $msg="";
 function dateDiff($FromDate, $ToDate)
 {
@@ -45,6 +46,7 @@ if (isset($_POST['submit'])) {
     $dob = htmlspecialchars($_POST['dob']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
+    $regdate = date("Y/m/d");
     $sql="SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
     $res=mysqli_query($conn,$sql);
     $count = mysqli_num_rows($res);
@@ -55,12 +57,12 @@ if (isset($_POST['submit'])) {
     } else {
 
    $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
-             `Country`,`Categories`,`BookingNumber`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
+             `Country`,`Categories`,`BookingNumber`,`OwnerName`,`DriverName`,`DriverMobile`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
              `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
-             `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`Status`) 
+             `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`RegDate`,`Status`) 
 	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
-    '$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
-    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
+    '$OwnerName','$DriverName','$DriverMobile','$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
+    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$regdate','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
     $query_run = mysqli_query($conn, $query);
     header("location:new-bookings.php");   
 }
