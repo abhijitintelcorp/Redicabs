@@ -17,12 +17,8 @@ if (isset($_POST['taxi_booking'])) {
     $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`UserName`,`EmailId`,`ContactNo`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$UserName','$EmailId','$ContactNo','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
-<<<<<<< HEAD
         header("location:register.php");
         echo "success";
-=======
-        header("location:includes/register.php");
->>>>>>> pragyan
     } else {
         echo "error";
     }
@@ -46,7 +42,6 @@ include("includes/header.php");
                             <h2>Fill in the Details Below to Book Your Transfer.</h2>
                             <div class="form-select">
                                 <form action="" method="post" name="booking" id="booking" class="form-horizontal">
-<<<<<<< HEAD
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
                                             <label>Seating Capacity</label>
@@ -73,48 +68,11 @@ include("includes/header.php");
                                             <label>Select Vehicle Brand</label>
                                             <select class="selectpicker" name="brand" id="brand">
                                                 <option value=""> Select Vehicle Brand</option>
-=======
-                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
-                                        <div class="row">
-                                            <label>Seating Capacity</label>
-                                            <select class="selectpicker" name="SeatingCapacity1" id="SeatingCapacity1"
-                                                style="width: 305px;">
-                                                <option> Select Seating Capacity</option>
-                                                <?php
-                                                $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
-                                                $exe = mysqli_query($conn, $qry);
-                                                while ($row = mysqli_fetch_assoc($exe)) {
-
-                                                ?>
-                                                <option value="<?php echo $row['SeatingCapacity'] ?>">
-                                                    <?php echo $row['SeatingCapacity'] ?>
-                                                </option>
-                                                <?php }  ?>
-
->>>>>>> pragyan
                                             </select>
                                         </div>
                                     </div>
                                     <br>
                                     <br>
-                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
-                                        <div class="row">
-<<<<<<< HEAD
-                                            <label>Select Vehicle Brand first</label>
-                                            <select class="selectpicker" name="VehicleName" id="VehicleName">
-                                                <option value=""> Select Vehicle Brand first</option>
-=======
-                                            <label>Select Vehicle Brand</label>
-                                            <select class="selectpicker" name="brand" id="brand">
-                                                <option value=""> Select Vehicle Brand</option>
->>>>>>> pragyan
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-<<<<<<< HEAD
-=======
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
                                             <label>Select Vehicle Brand first</label>
@@ -125,18 +83,11 @@ include("includes/header.php");
                                     </div>
                                     <br>
                                     <br>
->>>>>>> pragyan
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-<<<<<<< HEAD
                                                 <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
-=======
-                                                <input class="selectpicker custom-select-box tec-domain-cat"
-                                                    style="width: 305px;" name="dropoff" id="dropoff"
-                                                    value="<?php echo $row['dropoff']; ?>" required>
->>>>>>> pragyan
                                                 </input>
                                             </div>
                                         </div>
@@ -145,13 +96,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-<<<<<<< HEAD
                                                 <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
-=======
-                                                <input class="selectpicker custom-select-box tec-domain-cat"
-                                                    style="width: 305px;" name="pickup" id="pickup"
-                                                    value="<?php echo $row['pickup']; ?>" required>
->>>>>>> pragyan
                                                 </input>
                                             </div>
                                         </div>
@@ -160,13 +105,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>From Date</label>
-<<<<<<< HEAD
                                                 <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="fromdate" id="fromdate" type="date" required>
-=======
-                                                <input class="selectpicker custom-select-box tec-domain-cat"
-                                                    style="width: 305px;" name="fromdate" id="fromdate" type="date"
-                                                    required>
->>>>>>> pragyan
                                                 </input>
                                             </div>
 
@@ -176,13 +115,9 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>To Date</label>
-<<<<<<< HEAD
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="todate" id="todate" type="date" required>
-=======
                                                 <input class="selectpicker custom-select-box tec-domain-cat"
                                                     style="width: 305px;" name="todate" id="todate" type="date"
                                                     required>
->>>>>>> pragyan
                                                 </input>
                                             </div>
                                         </div>
@@ -191,12 +126,8 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Time</label>
-<<<<<<< HEAD
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="Time" id="Time" type="time" required>
-=======
                                                 <input class="selectpicker custom-select-box tec-domain-cat"
                                                     style="width: 305px;" name="Time" id="Time" type="time" required>
->>>>>>> pragyan
                                                 </input>
                                             </div>
 
@@ -227,12 +158,8 @@ include("includes/header.php");
                                     </div> -->
 
                                     <div class="form-button">
-<<<<<<< HEAD
-                                        <button type="submit" id="taxi_booking" name="taxi_booking" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
-=======
                                         <button type="submit" id="taxi_booking" name="taxi_booking"
                                             class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
->>>>>>> pragyan
                                     </div>
                                 </form>
 
@@ -737,181 +664,6 @@ include("includes/header.php");
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script>
-<<<<<<< HEAD
-        $(document).ready(function() {
-
-            $('#SeatingCapacity1').on('change', function() {
-                var SeatingCapacity1 = $(this).val();
-                if (SeatingCapacity1) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'get-brand-name.php',
-                        data: {
-                            SeatingCapacity1: SeatingCapacity1
-                        },
-                        success: function(html) {
-                            console.log(html)
-                            $('#brand').html(html);
-                            $('#VehicleName').html('<option value="">Select Brand first</option>');
-                            $('#brand').selectpicker('refresh');
-                        }
-                    });
-                } else {
-                    $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                    $('#VehicleName').html('<option value="">Select Brand first</option>');
-
-                }
-            });
-
-            $('#brand').on('change', function() {
-                var owner_vehicle_brand = $(this).val();
-                if (owner_vehicle_brand) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'get-brand-name.php',
-                        data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                        success: function(html) {
-                            $('#VehicleName').html(html);
-                            $('#VehicleName').selectpicker('refresh');
-                        }
-                    });
-                } else {
-                    $('#VehicleName').html('<option value="">Select Brand first</option>');
-                }
-            });
-
-        });
-    </script>
-    <script>
-        function autocomplete(inp, arr) {
-            /*the autocomplete function takes two arguments,
-            the text field element and an array of possible autocompleted values:*/
-            var currentFocus;
-            /*execute a function when someone writes in the text field:*/
-            inp.addEventListener("input", function(e) {
-                var a, b, i, val = this.value;
-                /*close any already open lists of autocompleted values*/
-                closeAllLists();
-                if (!val) {
-                    return false;
-                }
-                currentFocus = -1;
-                /*create a DIV element that will contain the items (values):*/
-                a = document.createElement("DIV");
-                a.setAttribute("id", this.id + "autocomplete-list");
-                a.setAttribute("class", "autocomplete-items");
-                /*append the DIV element as a child of the autocomplete container:*/
-                this.parentNode.appendChild(a);
-                /*for each item in the array...*/
-                for (i = 0; i < arr.length; i++) {
-                    /*check if the item starts with the same letters as the text field value:*/
-                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                        /*create a DIV element for each matching element:*/
-                        b = document.createElement("DIV");
-                        /*make the matching letters bold:*/
-                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                        b.innerHTML += arr[i].substr(val.length);
-                        /*insert a input field that will hold the current array item's value:*/
-                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        /*execute a function when someone clicks on the item value (DIV element):*/
-                        b.addEventListener("click", function(e) {
-                            /*insert the value for the autocomplete text field:*/
-                            inp.value = this.getElementsByTagName("input")[0].value;
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
-                            closeAllLists();
-                        });
-                        a.appendChild(b);
-                    }
-                }
-            });
-            /*execute a function presses a key on the keyboard:*/
-            inp.addEventListener("keydown", function(e) {
-                var x = document.getElementById(this.id + "autocomplete-list");
-                if (x) x = x.getElementsByTagName("div");
-                if (e.keyCode == 40) {
-                    /*If the arrow DOWN key is pressed,
-                    increase the currentFocus variable:*/
-                    currentFocus++;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 38) { //up
-                    /*If the arrow UP key is pressed,
-                    decrease the currentFocus variable:*/
-                    currentFocus--;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 13) {
-                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                    e.preventDefault();
-                    if (currentFocus > -1) {
-                        /*and simulate a click on the "active" item:*/
-                        if (x) x[currentFocus].click();
-                    }
-                }
-            });
-
-            function addActive(x) {
-                /*a function to classify an item as "active":*/
-                if (!x) return false;
-                /*start by removing the "active" class on all items:*/
-                removeActive(x);
-                if (currentFocus >= x.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = (x.length - 1);
-                /*add class "autocomplete-active":*/
-                x[currentFocus].classList.add("autocomplete-active");
-            }
-
-            function removeActive(x) {
-                /*a function to remove the "active" class from all autocomplete items:*/
-                for (var i = 0; i < x.length; i++) {
-                    x[i].classList.remove("autocomplete-active");
-                }
-            }
-
-            function closeAllLists(elmnt) {
-                /*close all autocomplete lists in the document,
-                except the one passed as an argument:*/
-                var x = document.getElementsByClassName("autocomplete-items");
-                for (var i = 0; i < x.length; i++) {
-                    if (elmnt != x[i] && elmnt != inp) {
-                        x[i].parentNode.removeChild(x[i]);
-                    }
-                }
-            }
-            /*execute a function when someone clicks in the document:*/
-            document.addEventListener("click", function(e) {
-                closeAllLists(e.target);
-            });
-        }
-
-        /*An array containing all the country names in the world:*/
-        var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
-            "vanivihar", "Acaryavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
-        ];
-
-        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-        autocomplete(document.getElementById("pickup"), countries);
-        autocomplete(document.getElementById("dropoff"), countries);
-    </script>
-    <script>
-        $(function() {
-            var dtToday = new Date();
-
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
-            if (month < 10)
-                month = '0' + month.toString();
-            if (day < 10)
-                day = '0' + day.toString();
-
-            var minDate = year + '-' + month + '-' + day;
-
-            $('#fromdate').attr('min', minDate);
-            $('#todate').attr('min', minDate);
-        });
-=======
     $(document).ready(function() {
 
         $('#SeatingCapacity1').on('change', function() {
@@ -1086,7 +838,6 @@ include("includes/header.php");
         $('#fromdate').attr('min', minDate);
         $('#todate').attr('min', minDate);
     });
->>>>>>> pragyan
     </script>
 
 </body>
@@ -1095,59 +846,6 @@ include("includes/header.php");
 
 </html>
 <script>
-<<<<<<< HEAD
-    $(document).ready(function() {
-        $("#signup_form").validate({
-            rules: {
-                username: {
-                    required: true,
-                    minlength: 3,
-                },
-                email: {
-                    required: true,
-                    email: true,
-                },
-                contact: {
-                    required: true,
-                    minlength: 10,
-                },
-                password_id: {
-                    required: true,
-                    minlength: 8,
-                },
-                cpassword: {
-                    minlength: 8,
-                    equalTo: "#password_id",
-                },
-            },
-            messages: {
-                username: {
-                    required: "<b style='color:red'>Please enter your Full Name</b>",
-                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-                },
-                email: {
-                    required: "<b style='color:red'>Please enter Email Id</b>",
-                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
-                },
-                contact: {
-                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
-                    number: "<b style='color:red'>Please Enter numerical values Only</b>",
-                },
-                password_id: {
-                    required: "<b style='color:red'>Please enter your Password</b>",
-                    minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-                },
-                cpassword: {
-                    minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
-                    equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
-                },
-            },
-            submitHandler: function(form) {
-                form.submit();
-            },
-        });
-    });
-=======
 $(document).ready(function() {
     $("#signup_form").validate({
         rules: {
@@ -1199,5 +897,4 @@ $(document).ready(function() {
         },
     });
 });
->>>>>>> pragyan
 </script>
