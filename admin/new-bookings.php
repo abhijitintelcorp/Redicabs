@@ -63,19 +63,6 @@ include("includes/config.php");
                                             $cnt++;
                                         ?>
 
-<<<<<<< HEAD
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['UserName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><?php echo htmlentities($row['owner_vehicle_name']); ?>
-                                                </td>
-                                                <td><?php echo htmlentities($row['FromDate']); ?></td>
-                                                <td><?php echo htmlentities($row['ToDate']); ?></td>
-                                                <td><?php echo htmlentities($row['Time']); ?></td>
-                                                <td><?php
-=======
                                             <tbody>
                                                 <tr>
                                                     <td><?php echo htmlentities($cnt); ?></td>
@@ -87,7 +74,6 @@ include("includes/config.php");
                                                     <td><?php echo htmlentities($row['ToDate']); ?></td>
                                                     <td><?php echo htmlentities($row['Time']); ?></td>
                                                     <td><?php
->>>>>>> archana
                                                         if ($row['Status'] == 0) {
                                                             echo htmlentities('Not Confirmed yet');
                                                         } else if ($row['Status'] == 1) {
