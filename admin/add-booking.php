@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
     $dob = htmlspecialchars($_POST['dob']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
-    $sql="SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' AND `EmailId`='$EmailId' LIMIT 1";
+    $sql="SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
     $res=mysqli_query($conn,$sql);
     $count = mysqli_num_rows($res);
 
@@ -185,7 +185,7 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Address</label>
-                                                        <input type="textarea" class="form-control" placeholder="Enter address" name="address" id="address">
+                                                        <input type="text" class="form-control" placeholder="Enter address" name="address" id="address">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
