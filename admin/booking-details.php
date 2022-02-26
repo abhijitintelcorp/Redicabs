@@ -1,9 +1,9 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include("includes/config.php");
-if (strlen($_SESSION['alogin']) == 0) {
-    header('location:index.php');
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
 } else {
     if (isset($_REQUEST['eid'])) {
         $eid = intval($_GET['eid']);
@@ -94,8 +94,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </tr>
                                             <tr>
                                                 <th>Vehicle Name</th>
-                                                <td><a href="edit-vehicle.php?id=<?php echo $row['vid']; ?>"><?php echo $row['owner_vehicle_brand']; ?>
-                                                        / <?php echo $row['owner_vehicle_name']; ?></td>
+                                                <td><?php echo $row['owner_vehicle_brand']; ?>
+                                                    / <?php echo $row['owner_vehicle_name']; ?></td>
                                                 <th>Booking Date</th>
                                                 <td><?php echo $row['CreatedDate']; ?></td>
                                             </tr>
@@ -107,7 +107,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </tr>
                                             <tr>
                                                 <th>Total Days</th>
-                                                <td><?php echo htmlentities($tdays = $row['totalnodays']); ?></td>
+                                                <td><?php echo htmlentities($tdays = $row['TotalNoDays']); ?></td>
                                                 <th>Rent Per Days</th>
                                                 <td><?php echo htmlentities($ppdays = $row['PricePerDay']); ?></td>
                                             </tr>
@@ -133,11 +133,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <?php if ($row['Status'] == 0) { ?>
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
-                                                    <a href="bookig-details.php?aeid=<?php echo htmlentities($row['id']); ?>"
+                                                    <a href="booking-details.php?aeid=<?php echo htmlentities($row['id']); ?>"
                                                         onclick="return confirm('Do you really want to Confirm this booking')"
                                                         class="btn btn-primary"> Confirm Booking</a>
 
-                                                    <a href="bookig-details.php?eid=<?php echo htmlentities($row['id']); ?>"
+                                                    <a href="booking-details.php?eid=<?php echo htmlentities($row['id']); ?>"
                                                         onclick="return confirm('Do you really want to Cancel this Booking')"
                                                         class="btn btn-danger"> Cancel Booking</a>
                                                 </td>
@@ -167,7 +167,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         </div>
 
         <!-- Loading Scripts -->
-        <script src="js/jquery.min.js"></script>
+        <!-- <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap-select.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.dataTables.min.js"></script>
@@ -175,7 +175,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         <script src="js/Chart.min.js"></script>
         <script src="js/fileinput.js"></script>
         <script src="js/chartData.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script> -->
         <script language="javascript" type="text/javascript">
         function f3() {
             window.print();
