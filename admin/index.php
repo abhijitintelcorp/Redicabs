@@ -25,6 +25,7 @@ include("includes/headerlink.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
