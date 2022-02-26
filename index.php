@@ -17,8 +17,7 @@ if (isset($_POST['taxi_booking'])) {
     $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`UserName`,`EmailId`,`ContactNo`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$UserName','$EmailId','$ContactNo','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
-        header("location:register.php");
-        echo "success";
+        header("location:includes/register.php");
     } else {
         echo "error";
     }
@@ -37,9 +36,9 @@ include("includes/header.php");
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <div class="form-wrap " style="height: 798px; width: 350px;">
+                        <div class="form-wrap " style="height: 680px; width: 350px;">
                             <div class="form-headr"></div>
-                            <h2>Fill in the Details Below to Book Your Transfer.</h2>
+                            <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
                                 <form action="" method="post" name="booking" id="booking" class="form-horizontal">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
