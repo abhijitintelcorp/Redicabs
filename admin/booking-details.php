@@ -97,7 +97,21 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                 <td><?php echo $row['owner_vehicle_brand']; ?>
                                                     / <?php echo $row['owner_vehicle_name']; ?></td>
                                                 <th>Booking Date</th>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
+                                                <td><?php echo $row['RegDate']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>DriverName</th>
+                                                <td><?php echo $row['DriverName']; ?>
+                                                </td>
+                                                <th>DriverNumber</th>
+                                                <td><?php echo $row['DriverMobile']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>OwnerName</th>
+                                                <td><?php echo $row['OwnerName']; ?>
+                                                </td>
+                                                <th>OwnerNumber</th>
+                                                <td><?php echo $row['owner_mobile']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>From Date</th>
@@ -115,6 +129,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                 <th colspan="3" style="text-align:center">Grand Total</th>
                                                 <td><?php echo htmlentities(($tdays + 1) * $ppdays); ?></td>
                                             </tr>
+
                                             <tr>
                                                 <th>Booking Status</th>
                                                 <td><?php

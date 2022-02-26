@@ -173,7 +173,8 @@ include("includes/header.php");
             <div class="anytime-wrap">
                 <h1>ANYTIME, <br />ANYWHERE!</h1>
                 <div class="anytime-text">
-                    <p><i class="fa fa-custom fa-circle-o"></i>Proin gravida nibh vel velit auctor aliquet sollicitudin.</p>
+                    <p><i class="fa fa-custom fa-circle-o"></i>Proin gravida nibh vel velit auctor aliquet sollicitudin.
+                    </p>
                     <p><i class="fa fa-custom fa-circle-o"></i>Qnec sagittis bibendum auctor sem nibh id.</p>
                     <p><i class="fa fa-custom fa-circle-o"></i>Rit amet nibh vulputate cursus nisi elit.</p>
                 </div>
@@ -585,7 +586,8 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Secure Booking</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                    non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -599,7 +601,8 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Reliable Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                    non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -613,7 +616,8 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Customer Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                    non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -627,7 +631,8 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>No Hidden Charges</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.</p>
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                    non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
                     </div>
@@ -659,7 +664,8 @@ include("includes/header.php");
                         success: function(html) {
                             console.log(html)
                             $('#brand').html(html);
-                            $('#VehicleName').html('<option value="">Select Brand first</option>');
+                            $('#VehicleName').html(
+                                '<option value="">Select Brand first</option>');
                             $('#brand').selectpicker('refresh');
                         }
                     });

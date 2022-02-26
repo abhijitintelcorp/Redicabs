@@ -8,6 +8,7 @@ $user_update_query = mysqli_query($conn, $u_query);
 $urows = mysqli_fetch_array($user_update_query);
 if (isset($_POST['owner_update_submit'])) {
     $priceperday = htmlspecialchars($_POST['priceperday']);
+<<<<<<< HEAD
     $driver_name = htmlspecialchars($_POST['driver_name']);
     $number = htmlspecialchars($_POST['number']);
 
@@ -16,6 +17,29 @@ if (isset($_POST['owner_update_submit'])) {
     $update_qry = "UPDATE tblbooking SET `PricePerDay`='$priceperday',`Driverid`='$driver_name',`DriverNo`='$number'
           WHERE tblbooking.id='$user_id'";
 
+=======
+    $UserName = htmlspecialchars($_POST['UserName']);
+    $EmailId = htmlspecialchars($_POST['EmailId']);
+    $ContactNo = htmlspecialchars($_POST['ContactNo']);
+    $address = htmlspecialchars($_POST['address']);
+    $City = htmlspecialchars($_POST['City']);
+    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
+    $brand = htmlspecialchars($_POST['brand']);
+    $VehicleName = htmlspecialchars($_POST['VehicleName']);
+    $CreatedDate = htmlspecialchars($_POST['CreatedDate']);
+    $FromDate = htmlspecialchars($_POST['FromDate']);
+    $ToDate = htmlspecialchars($_POST['ToDate']);
+    $pickuptime = htmlspecialchars($_POST['pickuptime']);
+    $TotalNoDays = htmlspecialchars($_POST['TotalNoDays']);
+    $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
+    $DriverName = htmlspecialchars($_POST['DriverName']);
+    $DriverNo = htmlspecialchars($_POST['DriverNo']);
+    $update_qry = "UPDATE tblbooking SET `PricePerDay`='$priceperday',`UserName`='$UserName',`EmailId`='$EmailId',
+    `ContactNo`='$ContactNo',`address`='$address',`City`='City',`SeatingCapacity`='$SeatingCapacity',
+    `owner_vehicle_brand` ='$brand',`owner_vehicle_name`='$VehicleName',`CreatedDate`='$CreatedDate',
+    `FromDate`='$FromDate',`ToDate`='$ToDate',`pickuptime`='$pickuptime',`TotalNoDays`='$TotalNoDays'
+      `PricePerDay`='$PricePerDay',`DriverName`,`DriverNo`='DriverNo' WHERE tblbooking.id='$user_id'";
+>>>>>>> pragyan
 
     $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
 
@@ -23,12 +47,21 @@ if (isset($_POST['owner_update_submit'])) {
         header("location:new-bookings.php");
     }
 }
+<<<<<<< HEAD
 if (isset($_POST['owner_update_time'])) {
     $time = htmlspecialchars($_POST['time']);
     $status = 3;
     $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
     $res_query = mysqli_query($conn, $upd_time);
 }
+=======
+// if (isset($_POST['owner_update_time'])) {
+//     $time = htmlspecialchars($_POST['time']);
+//     $status = 3;
+//     $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
+//     $res_query = mysqli_query($conn, $upd_time);
+// }
+>>>>>>> pragyan
 
 ?>
 <!doctype html>
@@ -73,6 +106,7 @@ if (isset($_POST['owner_update_time'])) {
                                                     <tr>
                                                         <th>Booking No.</th>
                                                         <td><input type="text" class="form-control" name="bookingno"
+<<<<<<< HEAD
                                                                 id="bookingno" readonly="readonly"
                                                                 value="<?php echo $row['BookingNumber']; ?>" required>
                                                         </td>
@@ -80,21 +114,41 @@ if (isset($_POST['owner_update_time'])) {
                                                         <td><input type="text" class="form-control" name="customerName"
                                                                 id="UserName" readonly="readonly"
                                                                 value="<?php echo $row['UserName']; ?>" required></td>
+=======
+                                                                id="bookingno"
+                                                                value="<?php echo $row['BookingNumber']; ?>"
+                                                                readonly="readonly" required>
+                                                        </td>
+                                                        <th>Name</th>
+                                                        <td><input type="text" class="form-control" name="UserName"
+                                                                id="UserName" value="<?php echo $row['UserName']; ?>"
+                                                                required></td>
+>>>>>>> pragyan
                                                     </tr>
                                                     <tr>
                                                         <th>Email Id</th>
                                                         <td><input type="text" class="form-control" name="EmailId"
+<<<<<<< HEAD
                                                                 id="EmailId" readonly="readonly"
                                                                 value="<?php echo $row['EmailId']; ?>" required></td>
                                                         <th>Contact No</th>
                                                         <td><input type="text" class="form-control" name="ContactNo"
                                                                 id="ContactNo" readonly="readonly"
                                                                 value="<?php echo $row['ContactNo']; ?>" required>
+=======
+                                                                id="EmailId" value="<?php echo $row['EmailId']; ?>"
+                                                                required></td>
+                                                        <th>Contact No</th>
+                                                        <td><input type="text" class="form-control" name="ContactNo"
+                                                                id="ContactNo" value="<?php echo $row['ContactNo']; ?>"
+                                                                required>
+>>>>>>> pragyan
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>Address</th>
                                                         <td><input type="text" class="form-control" name="address"
+<<<<<<< HEAD
                                                                 id="address" readonly="readonly"
                                                                 value="<?php echo $row['address']; ?>" required>
                                                         </td>
@@ -102,12 +156,24 @@ if (isset($_POST['owner_update_time'])) {
                                                         <td><input type="text" class="form-control" name="City"
                                                                 id="City" readonly="readonly"
                                                                 value="<?php echo $row['City']; ?>" required>
+=======
+                                                                id="address" value="<?php echo $row['address']; ?>"
+                                                                required>
+                                                        </td>
+                                                        <th>City</th>
+                                                        <td><input type="text" class="form-control" name="City"
+                                                                id="City" value="<?php echo $row['City']; ?>" required>
+>>>>>>> pragyan
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>Country</th>
                                                         <td colspan="3"><input type="text" class="form-control"
+<<<<<<< HEAD
                                                                 name="Country" id="Country" readonly="readonly"
+=======
+                                                                name="Country" id="Country"
+>>>>>>> pragyan
                                                                 value="<?php echo $row['Country']; ?>" required>
                                                         </td>
                                                     </tr>
@@ -118,6 +184,7 @@ if (isset($_POST['owner_update_time'])) {
                                                         </th>
                                                     </tr>
                                                     <tr>
+<<<<<<< HEAD
                                                         <th>Vehicle Name</th>
                                                         <td><input type="text" class="form-control"
                                                                 name="owner_vehicle_name" id="owner_vehicle_name"
@@ -125,6 +192,44 @@ if (isset($_POST['owner_update_time'])) {
                                                                 value="<?php echo $row['owner_vehicle_name']; ?>"
                                                                 required>
                                                         </td>
+=======
+                                                        <th>seatingCapacity</th>
+                                                        <td><select class="selectpicker" data-live-search="false"
+                                                                name="SeatingCapacity" id="SeatingCapacity">
+                                                                <option>SeatingCapacity</option>
+                                                                <?php
+                                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking
+                                                                         GROUP BY SeatingCapacity ASC";
+                                                                        $exe = mysqli_query($conn, $qry);
+                                                                        while ($row = mysqli_fetch_assoc($exe)) {
+                                                                        ?>
+                                                                <option value="<?php echo htmlentities($row['id']); ?>">
+                                                                    <?php echo htmlentities($row['SeatingCapacity']); ?>
+                                                                    <?php }  ?></option>
+                                                            </select>
+                                                        </td>
+
+                                                        <th>Brand</th>
+                                                        <td>
+                                                            <select class="selectpicker" data-live-search="false"
+                                                                name="brand" id="brand">
+                                                                <option value="">Select Brand</option>
+                                                            </select>
+                                                        </td>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th> <label>VehicleName</label></th>
+                                                        <td>
+                                                            <input type="hidden" id="userID" name="userID" value="" />
+
+                                                            <select class="selectpicker" data-live-search="false"
+                                                                name="VehicleName" id="VehicleName">
+                                                                <option value="">Select Brand first</option>
+                                                            </select>
+                                                        </td>
+
+>>>>>>> pragyan
                                                         <th>Booking Date</th>
                                                         <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
@@ -133,6 +238,7 @@ if (isset($_POST['owner_update_time'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>From Date</th>
+<<<<<<< HEAD
                                                         <td><input type="text" class="form-control" name="FromDate"
                                                                 id="FromDate" readonly="readonly"
                                                                 value="<?php echo $row['FromDate']; ?>" required>
@@ -140,14 +246,28 @@ if (isset($_POST['owner_update_time'])) {
                                                         <th>To Date</th>
                                                         <td><input type="text" class="form-control" name="ToDate"
                                                                 id="ToDate" readonly="readonly"
+=======
+                                                        <td><input type="date" class="form-control" id="datepicker"
+                                                                name="FromDate" placeholder="From Date"
+                                                                value="<?php echo $row['FromDate']; ?>" required>
+                                                        </td>
+                                                        <th>To Date</th>
+                                                        <td><input type="date" class="form-control" id="datepicker"
+                                                                name="ToDate" placeholder="To Date"
+>>>>>>> pragyan
                                                                 value="<?php echo $row['ToDate']; ?>" required>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>PickUp Time</th>
                                                         <td><input type="time" class="form-control" name="pickuptime"
+<<<<<<< HEAD
                                                                 id="pickuptime"
                                                                 value="<?php echo $row['pickuptime']; ?>" required></td>
+=======
+                                                                id="pickuptime" value="<?php echo $row['Time']; ?>"
+                                                                required></td>
+>>>>>>> pragyan
                                                         <td style="text-align:center" colspan="4">
                                                             <button class="btn btn-primary pull-left"
                                                                 name="owner_update_time" type="submit">Change Pickup
@@ -160,7 +280,11 @@ if (isset($_POST['owner_update_time'])) {
                                                     <tr>
                                                         <th>Total Days</th>
                                                         <td><input type="text" class="form-control" name="TotalNoDays"
+<<<<<<< HEAD
                                                                 id="TotalNoDays" readonly="readonly"
+=======
+                                                                id="TotalNoDays"
+>>>>>>> pragyan
                                                                 value="<?php echo htmlentities($tdays = $row['TotalNoDays']) + 1; ?>"
                                                                 required>
                                                         </td>
@@ -233,7 +357,11 @@ if (isset($_POST['owner_update_time'])) {
                                                     </tr>
 
 
+<<<<<<< HEAD
                                                     <?php if ($row['Status'] == 0) { ?>
+=======
+
+>>>>>>> pragyan
 
                                                     <tr>
                                                         <td style="text-align:center" colspan="4">
@@ -243,8 +371,13 @@ if (isset($_POST['owner_update_time'])) {
                                                     </tr>
                                                     <?php } ?>
                                                     <?php $cnt = $cnt + 1;
+<<<<<<< HEAD
                                                     }
                                                 } ?>
+=======
+                                                }
+                                                    ?>
+>>>>>>> pragyan
                                                 </form>
                                         </tbody>
                                     </table>
@@ -264,8 +397,13 @@ if (isset($_POST['owner_update_time'])) {
     </div>
     <script>
     function add() {
+<<<<<<< HEAD
         var x = parseInt(document.getElementById("totalnodays").value);
         var y = parseInt(document.getElementById("priceperday").value)
+=======
+        var x = parseInt(document.getElementById("TotalNoDays").value);
+        var y = parseInt(document.getElementById("PricePerDay").value)
+>>>>>>> pragyan
         document.getElementById("total").value = x * y;
     }
     </script>
@@ -294,6 +432,251 @@ if (isset($_POST['owner_update_time'])) {
         });
     });
     </script>
+<<<<<<< HEAD
+=======
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#SeatingCapacity').on('change', function() {
+            var SeatingCapacity = $(this).val();
+            if (SeatingCapacity) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'SeatingCapacity=' + SeatingCapacity,
+                    success: function(html) {
+                        $('#brand').html(html);
+                        $('#VehicleName').html(
+                            '<option value="">Select Brand first</option>');
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+
+            }
+        });
+
+        $('#brand').on('change', function() {
+            var owner_vehicle_brand = $(this).val();
+            if (owner_vehicle_brand) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                    success: function(html) {
+                        $('#VehicleName').html(html);
+                    }
+                });
+            } else {
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
+        });
+
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#OwnerName').html(html);
+                    }
+                });
+            } else {
+                $('#OwnerName').html('<option value="">Select Brand first</option>');
+            }
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_no').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-RC-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_RCno').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-RC-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_RCno').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-chesis-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_chesis_no').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-price-per-day.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#PricePerDay').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-model-year.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#ModelYear').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-owner-mobile.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_mobile').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-owner-mobile.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_mobile').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-owner-email.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_email').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-driver-name.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#DriverName').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-driver-mobile.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#DriverMobile').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-categories.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#Categories').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-front-image.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#frontimage').html(html);
+                    }
+                });
+            } else {
+                $('#frontimage').html('No Image Found');
+            }
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            if (owner_vehicle_name) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-back-image.php',
+                    data: 'owner_vehicle_name=' + owner_vehicle_name,
+                    success: function(html) {
+                        $('#backimage').html(html);
+                    }
+                });
+            } else {
+                $('#backimage').html('No Image Found');
+            }
+        });
+
+    });
+    </script>
+>>>>>>> pragyan
 </body>
 
 </html>
