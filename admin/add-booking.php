@@ -1,9 +1,31 @@
 <?php
-include("includes/config.php");
+session_start();
 error_reporting(0);
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+include("includes/config.php");
+date_default_timezone_set("Asia/Kolkata");
+$msg = "";
+function dateDiff($FromDate, $ToDate)
+{
+    $date1_ts = strtotime($FromDate);
+    $date2_ts = strtotime($ToDate);
+    $si = 1;
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400) + 1;
+}
 if (isset($_POST['submit'])) {
+    $UserName = htmlspecialchars($_POST['UserName']);
+    $ContactNo = htmlspecialchars($_POST['ContactNo']);
+    $EmailId = htmlspecialchars($_POST['EmailId']);
+    $Password = htmlspecialchars($_POST['Password']);
+    $address = htmlspecialchars($_POST['address']);
+    $City = htmlspecialchars($_POST['City']);
+    $bookingno = mt_rand(100000000, 999999999);
+    $status = 0;
     $brand = htmlspecialchars($_POST['brand']);
-    $owner_vehicle_name = htmlspecialchars($_POST['owner_vehicle_name']);
+    $VehicleName = htmlspecialchars($_POST['VehicleName']);
     $owner_vehicle_no = htmlspecialchars($_POST['owner_vehicle_no']);
     $owner_vehicle_RCno = htmlspecialchars($_POST['owner_vehicle_RCno']);
     $owner_vehicle_chesis_no = htmlspecialchars($_POST['owner_vehicle_chesis_no']);
@@ -19,66 +41,29 @@ if (isset($_POST['submit'])) {
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
+    $totalnodays = dateDiff($FromDate, $ToDate);
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
-    $frontimage = $_FILES['frontimage']['name'];
-    $type = $_FILES['frontimage']['type'];
-    $size = $_FILES['frontimage']['size'];
-    $img_file1 = $_FILES['frontimage']['tmp_name'];
-    $backimage = $_FILES['backimage']['name'];
-    $type = $_FILES['backimage']['type'];
-    $size = $_FILES['backimage']['size'];
-    $img_file2 = $_FILES['backimage']['tmp_name'];
+    $dob = htmlspecialchars($_POST['dob']);
+    $Categories = htmlspecialchars($_POST['Categories']);
+    $country = "India";
+    $regdate = date("Y/m/d");
+    $sql = "SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
+    $res = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($res);
 
-    $path1 = "images/" . $frontimage;
-    $path2 = "images/" . $backimage;
+    if ($count > 0) {
+        $msg = "<b style='color:red;'>Contact No Or Email Id Already Exists. Plaese give different Contact No or Email Id.</b>";
+    } else {
 
-
-
-    if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif') {
-        if ($size <= 7000000) {
-            $insert_qry = "UPDATE  tblbooking SET  OwnerName='$OwnerName',owner_mobile='$owner_mobile',
-            owner_email='$owner_email',owner_vehicle_no='$owner_vehicle_no',
-            owner_vehicle_RCno='$owner_vehicle_RCno', owner_vehicle_chesis_no='$owner_vehicle_chesis_no',
-            owner_vehicle_brand='$owner_vehicle_brand',owner_vehicle_name='$owner_vehicle_name'
-            ,PricePerDay='$PricePerDay', ModelYear='$ModelYear', pickup='$pickup', dropoff='$dropoff', FromDate='$FromDate', ToDate='$ToDate',pickuptime='$pickuptime' WHERE id='$id'";
-            $inst_u_fn1_qry = mysqli_query($conn, $insert_qry);
-
-            if ($inst_u_fn1_qry) {
-                header("location:new-booking.php");
-            }
-            $path = "images/" . $frontimage;
-            if (move_uploaded_file($img_file1, $path)) {
-                copy($path, "$path");
-            }
-            $path = "images/" . $backimage;
-            if (move_uploaded_file($img_file2, $path)) {
-                copy($path, "$path");
-            }
-        }
-        if ($res_query) {
-            header("location:new-booking.php");
-            echo "success";
-        }
-        $path = "images/" . $backimage;
-        if (move_uploaded_file($img_file2, $path)) {
-            copy($path, "$path");
-        }
-        $path = "images/" . $DLimage;
-        if (move_uploaded_file($img_file3, $path)) {
-            copy($path, "$path");
-        }
-        $path = "images/" . $Adharimage;
-        if (move_uploaded_file($img_file4, $path)) {
-            copy($path, "$path");
-        }
-        $path = "images/" . $Adharimage1;
-        if (move_uploaded_file($img_file4, $path)) {
-            copy($path, "$path");
-        }
-    }
-    if ($res_query) {
-        header("location:manageowner.php");
-        echo "success";
+        $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
+             `Country`,`Categories`,`BookingNumber`,`OwnerName`,`DriverName`,`DriverMobile`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
+             `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
+             `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`RegDate`,`Status`) 
+	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
+    '$OwnerName','$DriverName','$DriverMobile','$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
+    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$regdate','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
+        $query_run = mysqli_query($conn, $query);
+        header("location:new-bookings.php");
     }
 }
 ?>
@@ -126,6 +111,7 @@ if (isset($_POST['submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
+                                        <?php echo $msg; ?>
                                         <form action="" method="post" name="add_booking" id="add_booking"
                                             class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
@@ -135,7 +121,7 @@ if (isset($_POST['submit'])) {
 
                                                     <select class="selectpicker" data-live-search="false"
                                                         name="SeatingCapacity" id="SeatingCapacity">
-                                                        <option>SeatingCapacity</option>
+                                                        <option value="">SeatingCapacity</option>
                                                         <?php
                                                         $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                         $exe = mysqli_query($conn, $qry);
@@ -164,55 +150,118 @@ if (isset($_POST['submit'])) {
                                                         <select class="selectpicker" data-live-search="false"
                                                             name="VehicleName" id="VehicleName">
                                                             <option value="">Select Brand first</option>
-                                                           
+
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                             <?php
-                                                           $owner_vehicle_brand= $_POST['owner_vehicle_brand'];
-                                                            $qry = "SELECT * from tblbooking WHERE owner_vehicle_brand = '$owner_vehicle_brand' 
-	GROUP BY owner_vehicle_name ASC";
-                                                            // WHERE owner_vehicle_name = '$VehicleName' ";
-                                                            $exe = mysqli_query($conn, $qry);
-                                                            //$userData = array();
-                                                           $row = mysqli_fetch_array($exe);
-                                                                $owner_vehicle_no = $row['owner_vehicle_no'];
-                                                                $owner_vehicle_RCno = $row['owner_vehicle_RCno'];
-                                                                $owner_vehicle_chesis_no = $row['owner_vehicle_chesis_no'];
-                                                                $PricePerDay = $row['PricePerDay'];
-                                                                $ModelYear = $row['ModelYear'];
-                                                            ?>
-                                                            
-        
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>CustomerName</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter customername" name="UserName"
+                                                            id="UserName" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>ContactNo</label>
+                                                        <input type="number" class="form-control"
+                                                            placeholder="Enter contact number" name="ContactNo"
+                                                            id="ContactNo">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>EmailId</label>
+                                                        <input type="email" class="form-control"
+                                                            placeholder="Enter EmailId" name="EmailId" id="EmailId">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter password" name="Password" id="Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter address" name="address" id="address">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>City</label>
+                                                        <input type="text" class="form-control" placeholder="Enter city"
+                                                            name="City" id="City">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>DateOfBirth</label>
+                                                        <input type="date" class="form-control" id="dob" name="dob"
+                                                            placeholder="date of birth" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Categories</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter category" name="Categories"
+                                                            id="Categories" readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehicleNumber</label>
-<input type="text" class="form-control" placeholder="Enter vehicle Number" name="owner_vehicle_no" id="owner_vehicle_no" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle Number" name="owner_vehicle_no"
+                                                            id="owner_vehicle_no" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehRCNo</label>
-<input type="text" class="form-control" placeholder="Enter vehicle RC no" name="owner_vehicle_RCno" id="owner_vehicle_RCno" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle RC no" name="owner_vehicle_RCno"
+                                                            id="owner_vehicle_RCno" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                           
+
                                             <div class="row">
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehChesisNo</label>
-<input type="text" class="form-control" placeholder="Enter vehiclename" name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename"
+                                                            name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Price/day</label>
-<input type="text" class="form-control" placeholder="Enter Priceperday" name="PricePerDay" id="PricePerDay" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Priceperday" name="PricePerDay"
+                                                            id="PricePerDay" readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,7 +269,9 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>ModelYear</label>
-<input type="text" class="form-control" placeholder="Enter vehiclename" name="ModelYear" id="ModelYear" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename" name="ModelYear"
+                                                            id="ModelYear" readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -242,7 +293,15 @@ if (isset($_POST['submit'])) {
                                                                 $DriverMobile = $row['DriverMobile'];
                                                                 $owner_email = $row['owner_email'];
                                                             ?>
-                                                            <option value="<?php echo $row['id']; ?>">
+                                                            <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
+                                                                owner_email="<?php echo $row['owner_email']; ?>"
+                                                                DriverName="<?php echo $row['DriverName']; ?>"
+                                                                DriverMobile="<?php echo $row['DriverMobile']; ?>"
+                                                                owner_email="<?php echo $row['owner_email']; ?>"
+                                                                OwnerName="<?php echo $row['OwnerName']; ?>"
+                                                                Owner_Aadhar_No="<?php echo $row['Owner_Aadhar_No']; ?>"
+                                                                owner_email="<?php echo $row['owner_email']; ?>"
+                                                                value="<?php echo $row['id']; ?>">
                                                                 <?php echo $row['OwnerName']; ?>
                                                             </option>
                                                             <?php }  ?>
@@ -254,7 +313,9 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Owner Number</label>
-<input type="text" class="form-control" placeholder="Enter owner number" name="owner_mobile" id="owner_mobile" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter owner number" name="owner_mobile"
+                                                            id="owner_mobile" readonly="readonly">
                                                     </div>
 
                                                 </div>
@@ -263,7 +324,11 @@ if (isset($_POST['submit'])) {
                                                     <div class="form-group">
                                                         <div class="form-group">
                                                             <label>Owneremail</label>
-<input type="text" class="form-control" placeholder="Enter owneremail" name="owner_email" id="owner_email" readonly="readonly">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Enter owneremail" name="owner_email"
+                                                                id="owner_email"
+                                                                value="<?php echo $row['owner_email']; ?>"
+                                                                readonly="readonly">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -272,81 +337,94 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DriverName</label>
-<input type="text" class="form-control" placeholder="Enter Driver name" name="DriverName" id="DriverName" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Driver name" name="DriverName"
+                                                            id="DriverName" value="<?php echo $row['DriverName']; ?>"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>DriverNumber</label>
-<input type="text" class="form-control" placeholder="Enter driver number" name="DriverMobile" id="DriverMobile" readonly="readonly">
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter driver number" name="DriverMobile"
+                                                            id="DriverMobile"
+                                                            value="<?php echo $row['DriverMobile']; ?>"
+                                                            readonly="readonly">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>PickUp</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="enter pickup location" name="pickup"
+                                                            id="pickup">
+                                                    </div>
+                                                </div>
+
+                                                <div class=" col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>DropOff</label>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter drop off location" name="dropoff"
+                                                            id="dropoff">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>FromDate</label>
+                                                        <input type="date" class="form-control" id="FromDate"
+                                                            name="FromDate" placeholder="From Date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Todate</label>
+                                                        <input type="date" class="form-control" id="ToDate"
+                                                            name="ToDate" placeholder="To Date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Pick up time</label>
+                                                        <input class="form-control white_bg" id="pickuptime"
+                                                            placeholder="PickUp Time" name="pickuptime" type="time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>CarFrontImage</label>
+
+
+                                                        <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
+                                                    name="frontimage" id="frontimage"> -->
+                                                        <div id="frontimage" name="frontimage"></div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="customFile">CarBackImage</label>
+                                                        <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
+                                                        <div id="backimage" name="backimage"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>PickUp</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="enter pickup location" name="pickup" id="myInput">
-                                            </div>
-                                        </div>
-
-                                        <div class=" col-sm-6">
-                                            <div class="form-group">
-                                                <label>DropOff</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter drop off location" name="dropoff" id="myInput1">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label>FromDate</label>
-                                                <input type="date" class="form-control" id="datepicker" name="FromDate"
-                                                    placeholder="From Date" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label>Todate</label>
-                                                <input type="date" class="form-control" id="datepicker" name="ToDate"
-                                                    placeholder="To Date" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label>Pick up time</label>
-                                                <input class="form-control white_bg" id="pickuptime"
-                                                    placeholder="PickUp Time" name="pickuptime" type="time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>CarFrontImage</label>
-
-                                                <div id="frontimage"></div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="customFile">CarBackImage</label>
-
-                                              <div id="backimage"></div>
-                                    
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" name="submit"
+                                            style="margin-left: 332px;">Submit</button>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" name="submit"
-                                        style="margin-left: 332px;">Submit</button>
-                                </div>
+
                             </div>
 
                             </form>
@@ -383,10 +461,108 @@ if (isset($_POST['submit'])) {
     <!-- AdminLTE for demo purposes -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
+    </script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="../../Redicabs//admin//js//valid.js"></script>
+
+    <script src="js/additional-methods.min.js">
+    </script>
+    <script src="js/jquary.min.js">
+    </script>
     <!-- Page specific script -->
+    <!-- <script>
+        $(function() {
+            bsCustomFileInput.init();
+        });
+    </script> -->
+    <!-- <script src="jquery-ui/jquery-ui.js">
+    $(document).ready(function() {
+        $("#owner_vehicle_name").autocomplete({
+            source: "add-booking.php",
+            minLength: 1,
+            select: function(event, ui) {
+                $("#owner_vehicle_name").val(ui.item.value);
+                $("#userID").val(ui.item.id);
+            }
+        }).data("ui-autocomplete")._renderItem = function(ul, item) {
+            return $("<li class='ui-autocomplete-row'></li>")
+                .data("item.autocomplete", item)
+                .append(item.label)
+                .appendTo(ul);
+        };
+    });
+    </script> -->
     <script>
-    $(function() {
-        bsCustomFileInput.init();
+    $(document).ready(function() {
+        $('select[name="VehicleName"]').change(function() {
+            // var owner_vehicle_name = $('option:selected', this).attr('owner_vehicle_name');
+            // $("#owner_vehicle_name").val(owner_vehicle_name);
+
+
+            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
+            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
+
+            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
+            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
+
+            var owner_vehicle_RCno = $('option:selected', this).attr('owner_vehicle_RCno');
+            $("#owner_vehicle_RCno").val(owner_vehicle_RCno);
+
+            var owner_vehicle_chesis_no = $('option:selected', this).attr('owner_vehicle_chesis_no');
+            $("#owner_vehicle_chesis_no").val(owner_vehicle_chesis_no);
+
+            var ModelYear = $('option:selected', this).attr('ModelYear');
+            $("#ModelYear").val(ModelYear);
+
+            var frontimage = $('option:selected', this).attr('frontimage');
+            $("#frontimage").val(frontimage);
+
+            var backimage = $('option:selected', this).attr('backimage');
+            $("#backimage").val(backimage);
+
+            // var owner_mobile = $('option:selected', this).attr('owner_mobile');
+            // $("#owner_mobile").val(owner_mobile);
+
+            // var owner_email = $('option:selected', this).attr('owner_email');
+            // $("#owner_email").val(owner_email);
+        });
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $('select[name="OwnerName"]').change(function() {
+
+            var DriverName = $('option:selected', this).attr('DriverName');
+            $("#DriverName").val(DriverName);
+
+            var DriverMobile = $('option:selected', this).attr('DriverMobile');
+            $("#DriverMobile").val(DriverMobile);
+
+            // var Driver_DL_No = $('option:selected', this).attr('Driver_DL_No');
+            // $("#Driver_DL_No").val(Driver_DL_No);
+
+
+            // var OwnerName = $('option:selected', this).attr('OwnerName');
+            // $("#OwnerName").val(OwnerName);
+
+            // var Owner_Aadhar_No = $('option:selected', this).attr('Owner_Aadhar_No');
+            // $("#Owner_Aadhar_No").val(Owner_Aadhar_No);
+
+            var owner_mobile = $('option:selected', this).attr('owner_mobile');
+            $("#owner_mobile").val(owner_mobile);
+
+            var owner_email = $('option:selected', this).attr('owner_email');
+            $("#owner_email").val(owner_email);
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('select[name="name"]').change(function() {
+            var number = $('option:selected', this).attr('number');
+            $("#number").val(number);
+        });
     });
     </script>
     <script type="text/javascript">
@@ -444,128 +620,163 @@ if (isset($_POST['submit'])) {
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_no').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_no').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle-RC-no.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_RCno').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-RC-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_RCno').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle-RC-no.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_RCno').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-RC-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_RCno').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-vehicle-chesis-no.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_vehicle_chesis_no').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-vehicle-chesis-no.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_vehicle_chesis_no').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-price-per-day.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#PricePerDay').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-price-per-day.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#PricePerDay').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-model-year.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#ModelYear').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-model-year.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#ModelYear').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-owner-mobile.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_mobile').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-owner-mobile.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_mobile').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-owner-mobile.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_mobile').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-owner-mobile.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_mobile').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-owner-email.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#owner_email').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-owner-email.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#owner_email').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-driver-name.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#DriverName').val(data);
-                    }
-                });
-        });
-         $('#VehicleName').on('change', function() {
-            var owner_vehicle_name = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-driver-mobile.php',
-                    data:{owner_vehicle_name:owner_vehicle_name},
-                    success: function(data) {
-                        $('#DriverMobile').val(data);
-                    }
-                });
+            $.ajax({
+                type: 'POST',
+                url: 'get-driver-name.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#DriverName').val(data);
+                }
+            });
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-              if (owner_vehicle_name) {
+            $.ajax({
+                type: 'POST',
+                url: 'get-driver-mobile.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#DriverMobile').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'get-categories.php',
+                data: {
+                    owner_vehicle_name: owner_vehicle_name
+                },
+                success: function(data) {
+                    $('#Categories').val(data);
+                }
+            });
+        });
+        $('#VehicleName').on('change', function() {
+            var owner_vehicle_name = $(this).val();
+            if (owner_vehicle_name) {
                 $.ajax({
                     type: 'POST',
                     url: 'get-front-image.php',
@@ -580,7 +791,7 @@ if (isset($_POST['submit'])) {
         });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
-              if (owner_vehicle_name) {
+            if (owner_vehicle_name) {
                 $.ajax({
                     type: 'POST',
                     url: 'get-back-image.php',
@@ -590,34 +801,12 @@ if (isset($_POST['submit'])) {
                     }
                 });
             } else {
-                $('#frontimage').html('No Image Found');
+                $('#backimage').html('No Image Found');
             }
         });
-        
+
     });
     </script>
-    <!-- <script type="text/javascript">
-    $(document).ready(function() {
-        $('#owner_vehicle_name').on('change', function() {
-            var owner_vehicle_name = $(this).val();
-            if (owner_vehicle_name) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-owner.php',
-                    data: 'owner_vehicle_name=' + owner_vehicle_name,
-                    success: function(html) {
-                        $('#OwnerName').html(html);
-
-                    }
-                });
-            } else {
-                $('#OwnerName').html('<option value="">SelectVehicle</option>');
-
-
-            }
-        });
-    });
-    </script> -->
     <script>
     function autocomplete(inp, arr) {
         /*the autocomplete function takes two arguments,
@@ -727,13 +916,13 @@ if (isset($_POST['submit'])) {
     ];
 
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-    autocomplete(document.getElementById("myInput"), countries);
-    autocomplete(document.getElementById("myInput1"), countries);
+    autocomplete(document.getElementById("pickup"), countries);
+    autocomplete(document.getElementById("dropoff"), countries);
     </script>
     <script>
     function myFunction() {
         var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById("myInput");
+        input = document.getElementById("pickup");
         filter = input.value.toUpperCase();
         ul = document.getElementById("myUL");
         li = ul.getElementsByTagName("li");
@@ -748,6 +937,25 @@ if (isset($_POST['submit'])) {
         }
     }
     </script>
+    <script>
+    $(function() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+        $('#FromDate').attr('min', minDate);
+        $('#ToDate').attr('min', minDate);
+    });
+    </script>
+
 </body>
 
 </html>
