@@ -56,12 +56,12 @@ if (isset($_POST['submit'])) {
     } else {
 
         $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
-             `Country`,`Categories`,`BookingNumber`,`OwnerName`,`DriverName`,`DriverMobile`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
+             `Country`,`Categories`,`BookingNumber`,`SeatingCapacity`,`OwnerName`,`owner_mobile`,`DriverName`,`DriverMobile`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
              `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
              `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`RegDate`,`Status`) 
-	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
-    '$OwnerName','$DriverName','$DriverMobile','$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
-    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$regdate','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
+	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno','$SeatingCapacity',
+    '$OwnerName','$owner_mobile','$DriverName','$DriverMobile','$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
+    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$regdate','$status')";
         $query_run = mysqli_query($conn, $query);
         header("location:new-bookings.php");
     }
