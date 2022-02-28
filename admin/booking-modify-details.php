@@ -140,20 +140,18 @@ if (isset($_POST['update'])) {
                                                                         $exe = mysqli_query($conn, $qry);
                                                                         while ($row = mysqli_fetch_assoc($exe)) {
                                                                         ?>
-                                                                <<<<<<< HEAD <option
+                                                                <option
                                                                     value="<?php echo htmlentities($row['SeatingCapacity']); ?>">
                                                                     <?php echo htmlentities($row['SeatingCapacity']); ?>
                                                                     <?php }  ?></option>
                                                             </select>
                                                         </td>
-                                                        =======
+
                                                         <option value="<?php echo htmlentities($row['id']); ?>">
                                                             <?php echo htmlentities($row['SeatingCapacity']); ?>
                                                             <?php }  ?></option>
                                                         </select>
                                                         </td>
-                                                        >>>>>>> abhijit
-
                                                         <th>Brand</th>
                                                         <td>
                                                             <select class="selectpicker" data-live-search="false"
@@ -174,8 +172,8 @@ if (isset($_POST['update'])) {
                                                             </select>
                                                         </td>
 
-                                                        <<<<<<< HEAD <th>Booking Date</th>
-                                                            <!-- <td><input type="text" class="form-control" name="CreatedDate"
+                                                        <th>Booking Date</th>
+                                                        <!-- <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
                                                                 value="<?php echo $row['RegDate']; ?>" required>
                                                         </td> -->
@@ -307,8 +305,8 @@ if (isset($_POST['update'])) {
                                                     </tr>
                                                     <?php } ?>
                                                     <?php $cnt = $cnt + 1;
-                                                }
-                                                    ?>
+
+                                                        ?>
                                                 </form>
                                         </tbody>
                                     </table>
