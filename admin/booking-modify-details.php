@@ -3,9 +3,7 @@ session_start();
 //error_reporting(0);
 include("includes/config.php");
 $bid = $_GET['bid'];
-// $u_query = "SELECT * from tblbooking  where tblbooking.id='$aeid'";
-// $user_update_query = mysqli_query($conn, $u_query);
-// $urows = mysqli_fetch_array($user_update_query);
+
 if (isset($_POST['update'])) {
     $priceperday = htmlspecialchars($_POST['priceperday']);
     $UserName = htmlspecialchars($_POST['UserName']);
@@ -170,10 +168,10 @@ if (isset($_POST['update'])) {
                                                         </td>
 
                                                         <th>Booking Date</th>
-                                                        <td><input type="text" class="form-control" name="CreatedDate"
+                                                        <!-- <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
                                                                 value="<?php echo $row['RegDate']; ?>" required>
-                                                        </td>
+                                                        </td> -->
                                                     </tr>
                                                     <tr>
                                                         <th>From Date</th>
@@ -203,11 +201,11 @@ if (isset($_POST['update'])) {
 
                                                     <tr>
                                                         <th>Total Days</th>
-                                                        <td><input type="text" class="form-control" name="TotalNoDays"
+                                                        <!-- <td><input type="text" class="form-control" name="TotalNoDays"
                                                                 id="TotalNoDays"
                                                                 value="<?php echo htmlentities($tdays = $row['TotalNoDays']) + 1; ?>"
                                                                 required>
-                                                        </td>
+                                                        </td> -->
                                                         <th>Rent Per Days</th>
                                                         <td><input type="text" class="form-control" name="PricePerDay"
                                                                 id="PricePerDay" onkeyup="add()"
@@ -225,15 +223,16 @@ if (isset($_POST['update'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>Booking Status</th>
-                                                        <td><?php
-                                                                    if ($row['Status'] == 0) {
-                                                                        echo htmlentities('Not Confirmed yet');
-                                                                    } else if ($row['Status'] == 1) {
-                                                                        echo htmlentities('Confirmed');
-                                                                    } else {
-                                                                        echo htmlentities('Cancelled');
-                                                                    }
-                                                                    ?></td>
+                                                        <!-- <td><?php
+                                                                            if ($row['Status'] == 0) {
+                                                                                echo htmlentities('Not Confirmed yet');
+                                                                            } else if ($row['Status'] == 1) {
+                                                                                echo htmlentities('Confirmed');
+                                                                            } else {
+                                                                                echo htmlentities('Cancelled');
+                                                                            }
+                                                                            ?></td>
+                                                                     -->
                                                         <th>Last updation Date</th>
                                                         <td><?php echo htmlentities($row['UpdationDate']); ?></td>
                                                     </tr>
@@ -244,12 +243,12 @@ if (isset($_POST['update'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>Driver Name</th>
-                                                        <td><select name="DriverName" id="DriverName" type="text"
+                                                        <!-- <td><select name="DriverName" id="DriverName" type="text"
                                                                 class="selectpicker">
                                                                 <option value="<?php echo $row['DriverName']; ?>">
                                                                     <?php echo $row['DriverName']; ?></option>
                                                             </select>
-                                                        </td>
+                                                        </td> -->
                                                         <th>Phone Number</th>
                                                         <td><input class="form-control white_bg"
                                                                 placeholder="Driver Number" name="DriverNo"
