@@ -158,7 +158,7 @@ include("includes/config.php");
     <!-- AdminLTE for demo purposes -->
 
     <!-- Page specific script -->
-    <script>
+    <!-- <script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,

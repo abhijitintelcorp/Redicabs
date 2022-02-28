@@ -277,7 +277,6 @@ if (isset($_POST['owner_update_submit'])) {
 
 
 
-
                                                     <tr>
                                                         <td style="text-align:center" colspan="4">
                                                             <button class="btn btn-primary" name="owner_update_submit"

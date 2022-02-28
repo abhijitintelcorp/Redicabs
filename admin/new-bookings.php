@@ -1,17 +1,19 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
 include("includes/config.php");
 ?>
+<?php include("includes/headerlink.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<?php include("includes/headerlink.php"); ?>
-
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
 
 
-        <?php include('includes/sidebar.php'); ?>
+        <?php include("includes/sidebar.php"); ?>
 
         <div class="content-wrapper">
             <section class="content-header">
@@ -63,18 +65,17 @@ include("includes/config.php");
                                             $cnt++;
                                         ?>
 
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['OwnerName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><a
-                                                        href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
-                                                </td>
-                                                <td><?php echo htmlentities($row['FromDate']); ?></td>
-                                                <td><?php echo htmlentities($row['ToDate']); ?></td>
-                                                <td><?php echo htmlentities($row['Time']); ?></td>
-                                                <td><?php
+                                            <tbody>
+                                                <tr>
+                                                    <td><?php echo htmlentities($cnt); ?></td>
+                                                    <td><?php echo $row['UserName'];  ?></td>
+                                                    <td><?php echo $row['BookingNumber']; ?></td>
+                                                    <td><?php echo htmlentities($row['owner_vehicle_name']); ?>
+                                                    </td>
+                                                    <td><?php echo htmlentities($row['FromDate']); ?></td>
+                                                    <td><?php echo htmlentities($row['ToDate']); ?></td>
+                                                    <td><?php echo htmlentities($row['Time']); ?></td>
+                                                    <td><?php
                                                         if ($row['Status'] == 0) {
                                                             echo htmlentities('Not Confirmed yet');
                                                         } else if ($row['Status'] == 1) {
@@ -83,20 +84,20 @@ include("includes/config.php");
                                                             echo htmlentities('Cancelled');
                                                         }
                                                         ?></td>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
-                                                <td>
+                                                    <td><?php echo $row['CreatedDate']; ?></td>
+                                                    <td>
 
 
-                                                    <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
-                                                        View</a>
-                                                    <a href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">
-                                                        Edit</a>
-                                                </td>
+                                                        <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
+                                                            View</a>
+                                                        <a href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">
+                                                            Edit</a>
+                                                    </td>
 
-                                            </tr>
+                                                </tr>
                                             <?php $cnt = $cnt + 1;
                                         } ?>
-                                        </tbody>
+                                            </tbody>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -112,6 +113,9 @@ include("includes/config.php");
             <!-- /.content -->
         </div>
     </div>
+      <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
@@ -125,9 +129,6 @@ include("includes/config.php");
     <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../plugins/jszip/jszip.min.js"></script>
-    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
@@ -137,23 +138,23 @@ include("includes/config.php");
 
     <!-- Page specific script -->
     <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-    });
     </script>
 </body>
 
