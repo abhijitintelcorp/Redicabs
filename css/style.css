@@ -248,7 +248,7 @@ body,
     overflow: hidden;
     float: left;
     width: 100%;
-    height: 1034px;
+    height: 850px;
     position: relative;
 }
 
@@ -2993,4 +2993,22 @@ label.control-label span {
 .navbar-default .navbar-form {
     border: none !important;
     box-shadow: none !important;
+}
+
+.form-wrap {
+    background: #F1C40F;
+    margin-top: -119px;
+    line-height: 0.9;
+}
+
+.label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 200;
+}
+
+.form-btn {
+    color: #F1C40F !important;
+    background: #2C3E50;
+    margin-top: -16px;
 }

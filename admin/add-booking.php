@@ -6,14 +6,24 @@ if (strlen($_SESSION['EmailId']) == 0) {
 }
 include("includes/config.php");
 date_default_timezone_set("Asia/Kolkata");
+<<<<<<< HEAD
 $msg="";
+=======
+$msg = "";
+>>>>>>> archana
 function dateDiff($FromDate, $ToDate)
 {
     $date1_ts = strtotime($FromDate);
     $date2_ts = strtotime($ToDate);
+<<<<<<< HEAD
     $si= 1;
     $diff = $date2_ts - $date1_ts;
     return round($diff / 86400)+1;
+=======
+    $si = 1;
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400) + 1;
+>>>>>>> archana
 }
 if (isset($_POST['submit'])) {
     $UserName = htmlspecialchars($_POST['UserName']);
@@ -41,12 +51,17 @@ if (isset($_POST['submit'])) {
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
+<<<<<<< HEAD
     $totalnodays= dateDiff($FromDate,$ToDate);
+=======
+    $totalnodays = dateDiff($FromDate, $ToDate);
+>>>>>>> archana
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
     $dob = htmlspecialchars($_POST['dob']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
     $regdate = date("Y/m/d");
+<<<<<<< HEAD
     $sql="SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
     $res=mysqli_query($conn,$sql);
     $count = mysqli_num_rows($res);
@@ -57,15 +72,32 @@ if (isset($_POST['submit'])) {
     } else {
 
    $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
+=======
+    $sql = "SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
+    $res = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($res);
+
+    if ($count > 0) {
+        $msg = "<b style='color:red;'>Contact No Or Email Id Already Exists. Plaese give different Contact No or Email Id.</b>";
+    } else {
+
+        $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
+>>>>>>> archana
              `Country`,`Categories`,`BookingNumber`,`OwnerName`,`DriverName`,`DriverMobile`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
              `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
              `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`RegDate`,`Status`) 
 	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno',
     '$OwnerName','$DriverName','$DriverMobile','$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
     '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$regdate','$status')ON DUPLICATE KEY UPDATE ContactNo = '$ContactNo', EmailId = '$EmailId'";
+<<<<<<< HEAD
     $query_run = mysqli_query($conn, $query);
     header("location:new-bookings.php");   
 }
+=======
+        $query_run = mysqli_query($conn, $query);
+        header("location:new-bookings.php");
+    }
+>>>>>>> archana
 }
 ?>
 <!DOCTYPE html>
@@ -112,7 +144,11 @@ if (isset($_POST['submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
+<<<<<<< HEAD
                                          <?php echo $msg; ?>
+=======
+                                        <?php echo $msg; ?>
+>>>>>>> archana
                                         <form action="" method="post" name="add_booking" id="add_booking" class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-4">
@@ -166,7 +202,11 @@ if (isset($_POST['submit'])) {
                                                         <input type="number" class="form-control" placeholder="Enter contact number" name="ContactNo" id="ContactNo">
                                                     </div>
                                                 </div>
+<<<<<<< HEAD
                                                
+=======
+
+>>>>>>> archana
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -174,7 +214,11 @@ if (isset($_POST['submit'])) {
                                                         <label>EmailId</label>
                                                         <input type="email" class="form-control" placeholder="Enter EmailId" name="EmailId" id="EmailId">
                                                     </div>
+<<<<<<< HEAD
                                                     
+=======
+
+>>>>>>> archana
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -308,6 +352,7 @@ if (isset($_POST['submit'])) {
                                                     </div>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                     
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -365,6 +410,65 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
                                 </div>
+=======
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>PickUp</label>
+                                                        <input type="text" class="form-control" placeholder="enter pickup location" name="pickup" id="pickup">
+                                                    </div>
+                                                </div>
+
+                                                <div class=" col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>DropOff</label>
+                                                        <input type="text" class="form-control" placeholder="Enter drop off location" name="dropoff" id="dropoff">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>FromDate</label>
+                                                        <input type="date" class="form-control" id="FromDate" name="FromDate" placeholder="From Date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Todate</label>
+                                                        <input type="date" class="form-control" id="ToDate" name="ToDate" placeholder="To Date" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label>Pick up time</label>
+                                                        <input class="form-control white_bg" id="pickuptime" placeholder="PickUp Time" name="pickuptime" type="time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>CarFrontImage</label>
+
+
+                                                        <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
+                                                    name="frontimage" id="frontimage"> -->
+                                                        <div id="frontimage" name="frontimage"></div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="customFile">CarBackImage</label>
+                                                        <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
+                                                        <div id="backimage" name="backimage"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+>>>>>>> archana
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" name="submit" style="margin-left: 332px;">Submit</button>
                                     </div>
