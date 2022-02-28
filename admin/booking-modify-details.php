@@ -22,12 +22,14 @@ if (isset($_POST['update'])) {
     $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
     $DriverName = htmlspecialchars($_POST['DriverName']);
     $DriverNo = htmlspecialchars($_POST['DriverNo']);
+    $pickup = htmlspecialchars($_POST['pickup']);
+    $dropoff = htmlspecialchars($_POST['dropoff']);
 
     $update_qry = "UPDATE tblbooking SET `PricePerDay`='$priceperday',`UserName`='$UserName',`EmailId`='$EmailId',
-    `ContactNo`='$ContactNo',`address`='$address',`City`='City',`SeatingCapacity`='$SeatingCapacity',
+    `ContactNo`='$ContactNo',`address`='$address',`City`='$City',`SeatingCapacity`='$SeatingCapacity',
     `owner_vehicle_brand` ='$brand',`owner_vehicle_name`='$VehicleName',`CreatedDate`='$CreatedDate',
     `FromDate`='$FromDate',`ToDate`='$ToDate',`pickuptime`='$pickuptime',`TotalNoDays`='$TotalNoDays'
-      `PricePerDay`='$PricePerDay',`DriverName`,`DriverNo`='DriverNo' WHERE tblbooking.id='$bid'";
+      `PricePerDay`='$PricePerDay',`DriverName`='$DriverName',`DriverNo`='$DriverNo',`pickup`='$pickup',`dropoff`='$dropoff' WHERE tblbooking.id='$bid'";
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
         header("location:new-bookings.php");
@@ -73,7 +75,8 @@ if (isset($_POST['update'])) {
                                                 $cnt = 1;
                                                 if (mysqli_num_rows($query_run) > 0) {
                                                     while ($row = mysqli_fetch_array($query_run)) {
-                                                ?> <form action="" method="post">
+                                                ?>
+                                                <form action="" method="post">
                                                     <h3 style="text-align:center; color:red">
                                                         #<?php echo $row['BookingNumber']; ?> Booking Details </h3>
 
@@ -140,19 +143,12 @@ if (isset($_POST['update'])) {
                                                                         $exe = mysqli_query($conn, $qry);
                                                                         while ($row = mysqli_fetch_assoc($exe)) {
                                                                         ?>
-                                                                <option
-                                                                    value="<?php echo htmlentities($row['SeatingCapacity']); ?>">
-                                                                    <?php echo htmlentities($row['SeatingCapacity']); ?>
+                                                                <option value="<?php echo $row['SeatingCapacity']; ?>">
+                                                                    <?php echo $row['SeatingCapacity']; ?>
                                                                     <?php }
-                                                                    } ?></option>
+                                                                            ?></option>
                                                             </select>
                                                         </td>
-
-
-
-
-
-
                                                         <th>Brand</th>
                                                         <td>
                                                             <select class="selectpicker" data-live-search="false"
@@ -174,10 +170,20 @@ if (isset($_POST['update'])) {
                                                         </td>
 
                                                         <th>Booking Date</th>
-                                                        <!-- <td><input type="text" class="form-control" name="CreatedDate"
+                                                        <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
                                                                 value="<?php echo $row['RegDate']; ?>" required>
-                                                        </td> -->
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>PickUp</th>
+                                                        <td><input type="text" class="form-control" name="pickup"
+                                                                id="pickup" value="<?php echo $row['pickup']; ?>">
+                                                        </td>
+                                                        <th>DropOff</th>
+                                                        <td><input type="text" class="form-control" name="dropoff"
+                                                                id="dropoff" value="<?php echo $row['dropoff']; ?>">
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <th>From Date</th>
@@ -201,47 +207,15 @@ if (isset($_POST['update'])) {
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
                                                         </td> -->
-
-                                                        <th>Booking Date</th>
-                                                        <td><input type="text" class="form-control" name="CreatedDate"
-                                                                id="CreatedDate" readonly="readonly"
-                                                                value="<?php echo $row['CreatedDate']; ?>" required>
-                                                        </td>
                                                     </tr>
-                                                    <tr>
-                                                        <th>From Date</th>
-                                                        <td><input type="date" class="form-control" id="datepicker"
-                                                                name="FromDate" placeholder="From Date"
-                                                                value="<?php echo $row['FromDate']; ?>" required>
-                                                        </td>
-                                                        <th>To Date</th>
-                                                        <td><input type="date" class="form-control" id="datepicker"
-                                                                name="ToDate" placeholder="To Date"
-                                                                value="<?php echo $row['ToDate']; ?>" required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>PickUp Time</th>
-                                                        <td><input type="time" class="form-control" name="pickuptime"
-                                                                id="pickuptime" value="<?php echo $row['Time']; ?>"
-                                                                required></td>
-                                                        <td style="text-align:center" colspan="4">
-                                                            <button class="btn btn-primary pull-left"
-                                                                name="owner_update_time" type="submit">Change Pickup
-                                                                Time</button>
-                                                        </td>
-
-
-                                                    </tr>
-
 
                                                     <tr>
                                                         <th>Total Days</th>
-                                                        <!-- <td><input type="text" class="form-control" name="TotalNoDays"
+                                                        <td><input type="text" class="form-control" name="TotalNoDays"
                                                                 id="TotalNoDays"
                                                                 value="<?php echo htmlentities($tdays = $row['TotalNoDays']) + 1; ?>"
                                                                 required>
-                                                        </td> -->
+                                                        </td>
                                                         <th>Rent Per Days</th>
                                                         <td><input type="text" class="form-control" name="PricePerDay"
                                                                 id="PricePerDay" onkeyup="add()"
@@ -259,16 +233,16 @@ if (isset($_POST['update'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>Booking Status</th>
-                                                        <!-- <td><?php
-                                                                            if ($row['Status'] == 0) {
-                                                                                echo htmlentities('Not Confirmed yet');
-                                                                            } else if ($row['Status'] == 1) {
-                                                                                echo htmlentities('Confirmed');
-                                                                            } else {
-                                                                                echo htmlentities('Cancelled');
-                                                                            }
-                                                                            ?></td>
-                                                                     -->
+                                                        <td><?php
+                                                                    if ($row['Status'] == 0) {
+                                                                        echo htmlentities('Not Confirmed yet');
+                                                                    } else if ($row['Status'] == 1) {
+                                                                        echo htmlentities('Confirmed');
+                                                                    } else {
+                                                                        echo htmlentities('Cancelled');
+                                                                    }
+                                                                    ?></td>
+
                                                         <th>Last updation Date</th>
                                                         <td><?php echo htmlentities($row['UpdationDate']); ?></td>
                                                     </tr>
@@ -279,12 +253,12 @@ if (isset($_POST['update'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>Driver Name</th>
-                                                        <!-- <td><select name="DriverName" id="DriverName" type="text"
+                                                        <td><select name="DriverName" id="DriverName" type="text"
                                                                 class="selectpicker">
                                                                 <option value="<?php echo $row['DriverName']; ?>">
                                                                     <?php echo $row['DriverName']; ?></option>
                                                             </select>
-                                                        </td> -->
+                                                        </td>
                                                         <th>Phone Number</th>
                                                         <td><input class="form-control white_bg"
                                                                 placeholder="Driver Number" name="DriverNo"
@@ -295,7 +269,7 @@ if (isset($_POST['update'])) {
                                                                 id="driver_name" value="<?php echo $row['Driverid']; ?>"
                                                                 type="hidden" readonly="readonly"></td>
                                                     </tr>
-
+                                                    <?php } ?>
 
 
                                                     <tr>
@@ -307,7 +281,7 @@ if (isset($_POST['update'])) {
                                                     <?php } ?>
                                                     <?php $cnt = $cnt + 1;
 
-                                                        ?>
+                                                    ?>
                                                 </form>
                                         </tbody>
                                     </table>
