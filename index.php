@@ -85,7 +85,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
                                                 </input>
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
                                                 </input>
                                             </div>
                                         </div>
@@ -103,7 +103,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>From Date</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="fromdate" id="fromdate" type="date" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="fromdate" id="fromdate" type="date" required>
                                                 </input>
                                             </div>
 
@@ -113,7 +113,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>To Date</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="todate" id="todate" type="date">
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="todate" id="todate" type="date">
                                                 </input>
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Time</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="Time" id="Time" type="time">
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="Time" id="Time" type="time">
                                                 </input>
                                             </div>
 
