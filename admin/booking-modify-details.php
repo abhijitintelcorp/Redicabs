@@ -8,16 +8,6 @@ $user_update_query = mysqli_query($conn, $u_query);
 $urows = mysqli_fetch_array($user_update_query);
 if (isset($_POST['owner_update_submit'])) {
     $priceperday = htmlspecialchars($_POST['priceperday']);
-<<<<<<< HEAD
-    $driver_name = htmlspecialchars($_POST['driver_name']);
-    $number = htmlspecialchars($_POST['number']);
-
-
-
-    $update_qry = "UPDATE tblbooking SET `PricePerDay`='$priceperday',`Driverid`='$driver_name',`DriverNo`='$number'
-          WHERE tblbooking.id='$user_id'";
-
-=======
     $UserName = htmlspecialchars($_POST['UserName']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
@@ -39,7 +29,6 @@ if (isset($_POST['owner_update_submit'])) {
     `owner_vehicle_brand` ='$brand',`owner_vehicle_name`='$VehicleName',`CreatedDate`='$CreatedDate',
     `FromDate`='$FromDate',`ToDate`='$ToDate',`pickuptime`='$pickuptime',`TotalNoDays`='$TotalNoDays'
       `PricePerDay`='$PricePerDay',`DriverName`,`DriverNo`='DriverNo' WHERE tblbooking.id='$user_id'";
->>>>>>> pragyan
 
     $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
 
@@ -47,21 +36,12 @@ if (isset($_POST['owner_update_submit'])) {
         header("location:new-bookings.php");
     }
 }
-<<<<<<< HEAD
-if (isset($_POST['owner_update_time'])) {
-    $time = htmlspecialchars($_POST['time']);
-    $status = 3;
-    $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
-    $res_query = mysqli_query($conn, $upd_time);
-}
-=======
 // if (isset($_POST['owner_update_time'])) {
 //     $time = htmlspecialchars($_POST['time']);
 //     $status = 3;
 //     $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
 //     $res_query = mysqli_query($conn, $upd_time);
 // }
->>>>>>> pragyan
 
 ?>
 <!doctype html>
@@ -106,15 +86,6 @@ if (isset($_POST['owner_update_time'])) {
                                                     <tr>
                                                         <th>Booking No.</th>
                                                         <td><input type="text" class="form-control" name="bookingno"
-<<<<<<< HEAD
-                                                                id="bookingno" readonly="readonly"
-                                                                value="<?php echo $row['BookingNumber']; ?>" required>
-                                                        </td>
-                                                        <th>Name</th>
-                                                        <td><input type="text" class="form-control" name="customerName"
-                                                                id="UserName" readonly="readonly"
-                                                                value="<?php echo $row['UserName']; ?>" required></td>
-=======
                                                                 id="bookingno"
                                                                 value="<?php echo $row['BookingNumber']; ?>"
                                                                 readonly="readonly" required>
@@ -123,57 +94,33 @@ if (isset($_POST['owner_update_time'])) {
                                                         <td><input type="text" class="form-control" name="UserName"
                                                                 id="UserName" value="<?php echo $row['UserName']; ?>"
                                                                 required></td>
->>>>>>> pragyan
                                                     </tr>
                                                     <tr>
                                                         <th>Email Id</th>
                                                         <td><input type="text" class="form-control" name="EmailId"
-<<<<<<< HEAD
-                                                                id="EmailId" readonly="readonly"
-                                                                value="<?php echo $row['EmailId']; ?>" required></td>
-                                                        <th>Contact No</th>
-                                                        <td><input type="text" class="form-control" name="ContactNo"
-                                                                id="ContactNo" readonly="readonly"
-                                                                value="<?php echo $row['ContactNo']; ?>" required>
-=======
                                                                 id="EmailId" value="<?php echo $row['EmailId']; ?>"
                                                                 required></td>
                                                         <th>Contact No</th>
                                                         <td><input type="text" class="form-control" name="ContactNo"
                                                                 id="ContactNo" value="<?php echo $row['ContactNo']; ?>"
                                                                 required>
->>>>>>> pragyan
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>Address</th>
                                                         <td><input type="text" class="form-control" name="address"
-<<<<<<< HEAD
-                                                                id="address" readonly="readonly"
-                                                                value="<?php echo $row['address']; ?>" required>
-                                                        </td>
-                                                        <th>City</th>
-                                                        <td><input type="text" class="form-control" name="City"
-                                                                id="City" readonly="readonly"
-                                                                value="<?php echo $row['City']; ?>" required>
-=======
                                                                 id="address" value="<?php echo $row['address']; ?>"
                                                                 required>
                                                         </td>
                                                         <th>City</th>
                                                         <td><input type="text" class="form-control" name="City"
                                                                 id="City" value="<?php echo $row['City']; ?>" required>
->>>>>>> pragyan
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>Country</th>
                                                         <td colspan="3"><input type="text" class="form-control"
-<<<<<<< HEAD
-                                                                name="Country" id="Country" readonly="readonly"
-=======
                                                                 name="Country" id="Country"
->>>>>>> pragyan
                                                                 value="<?php echo $row['Country']; ?>" required>
                                                         </td>
                                                     </tr>
@@ -184,15 +131,6 @@ if (isset($_POST['owner_update_time'])) {
                                                         </th>
                                                     </tr>
                                                     <tr>
-<<<<<<< HEAD
-                                                        <th>Vehicle Name</th>
-                                                        <td><input type="text" class="form-control"
-                                                                name="owner_vehicle_name" id="owner_vehicle_name"
-                                                                readonly="readonly"
-                                                                value="<?php echo $row['owner_vehicle_name']; ?>"
-                                                                required>
-                                                        </td>
-=======
                                                         <th>seatingCapacity</th>
                                                         <td><select class="selectpicker" data-live-search="false"
                                                                 name="SeatingCapacity" id="SeatingCapacity">
@@ -229,7 +167,6 @@ if (isset($_POST['owner_update_time'])) {
                                                             </select>
                                                         </td>
 
->>>>>>> pragyan
                                                         <th>Booking Date</th>
                                                         <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
@@ -238,15 +175,6 @@ if (isset($_POST['owner_update_time'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>From Date</th>
-<<<<<<< HEAD
-                                                        <td><input type="text" class="form-control" name="FromDate"
-                                                                id="FromDate" readonly="readonly"
-                                                                value="<?php echo $row['FromDate']; ?>" required>
-                                                        </td>
-                                                        <th>To Date</th>
-                                                        <td><input type="text" class="form-control" name="ToDate"
-                                                                id="ToDate" readonly="readonly"
-=======
                                                         <td><input type="date" class="form-control" id="datepicker"
                                                                 name="FromDate" placeholder="From Date"
                                                                 value="<?php echo $row['FromDate']; ?>" required>
@@ -254,20 +182,14 @@ if (isset($_POST['owner_update_time'])) {
                                                         <th>To Date</th>
                                                         <td><input type="date" class="form-control" id="datepicker"
                                                                 name="ToDate" placeholder="To Date"
->>>>>>> pragyan
                                                                 value="<?php echo $row['ToDate']; ?>" required>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th>PickUp Time</th>
                                                         <td><input type="time" class="form-control" name="pickuptime"
-<<<<<<< HEAD
-                                                                id="pickuptime"
-                                                                value="<?php echo $row['pickuptime']; ?>" required></td>
-=======
                                                                 id="pickuptime" value="<?php echo $row['Time']; ?>"
                                                                 required></td>
->>>>>>> pragyan
                                                         <td style="text-align:center" colspan="4">
                                                             <button class="btn btn-primary pull-left"
                                                                 name="owner_update_time" type="submit">Change Pickup
@@ -280,11 +202,7 @@ if (isset($_POST['owner_update_time'])) {
                                                     <tr>
                                                         <th>Total Days</th>
                                                         <td><input type="text" class="form-control" name="TotalNoDays"
-<<<<<<< HEAD
-                                                                id="TotalNoDays" readonly="readonly"
-=======
                                                                 id="TotalNoDays"
->>>>>>> pragyan
                                                                 value="<?php echo htmlentities($tdays = $row['TotalNoDays']) + 1; ?>"
                                                                 required>
                                                         </td>
@@ -357,11 +275,6 @@ if (isset($_POST['owner_update_time'])) {
                                                     </tr>
 
 
-<<<<<<< HEAD
-                                                    <?php if ($row['Status'] == 0) { ?>
-=======
-
->>>>>>> pragyan
 
                                                     <tr>
                                                         <td style="text-align:center" colspan="4">
@@ -371,13 +284,8 @@ if (isset($_POST['owner_update_time'])) {
                                                     </tr>
                                                     <?php } ?>
                                                     <?php $cnt = $cnt + 1;
-<<<<<<< HEAD
-                                                    }
-                                                } ?>
-=======
                                                 }
                                                     ?>
->>>>>>> pragyan
                                                 </form>
                                         </tbody>
                                     </table>
@@ -397,13 +305,8 @@ if (isset($_POST['owner_update_time'])) {
     </div>
     <script>
     function add() {
-<<<<<<< HEAD
-        var x = parseInt(document.getElementById("totalnodays").value);
-        var y = parseInt(document.getElementById("priceperday").value)
-=======
         var x = parseInt(document.getElementById("TotalNoDays").value);
         var y = parseInt(document.getElementById("PricePerDay").value)
->>>>>>> pragyan
         document.getElementById("total").value = x * y;
     }
     </script>
@@ -432,8 +335,6 @@ if (isset($_POST['owner_update_time'])) {
         });
     });
     </script>
-<<<<<<< HEAD
-=======
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {
@@ -676,7 +577,6 @@ if (isset($_POST['owner_update_time'])) {
 
     });
     </script>
->>>>>>> pragyan
 </body>
 
 </html>

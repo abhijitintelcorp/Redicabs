@@ -6,7 +6,6 @@ if (strlen($_SESSION['EmailId']) == 0) {
 }
 ?>
 <?php
-include("includes/headerlink.php");
 if (isset($_POST['login'])) {
     $email = htmlspecialchars($_POST['username']);
     $password = md5($_POST['password']);
@@ -16,7 +15,7 @@ if (isset($_POST['login'])) {
     $count = mysqli_num_rows($res);
     if ($count > 0) {
         $_SESSION['alogin'] = $_POST['username'];
-        echo "<script type='text/javascript'> document.location = 'dashboard.php'; </script>";
+        echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
     } else {
         echo "<script>alert('Invalid Details');</script>";
     }
@@ -760,7 +759,7 @@ include("includes/headerlink.php");
     </div>
     <!-- /.content-wrapper -->
     <?php
-    include "includes/footerlink.php"
+    include("includes/footerlink.php");
     ?>
 </body>
 

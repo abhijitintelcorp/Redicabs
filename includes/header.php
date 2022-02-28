@@ -22,19 +22,11 @@
   </div>
 </div>
 <div class="map-wapper-opacity">
-<<<<<<< HEAD
-    <div class="container">
-        <div class="row">
-            <div class="row">
-                <div class="col-sm-4">
-                    <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
-=======
   <div class="container">
     <div class="row">
       <div class="row">
         <div class="col-sm-4">
           <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
->>>>>>> archana
             <select class="selectpicker" data-live-search="false">
               <option>English</option>
               <option>Bangla</option>
