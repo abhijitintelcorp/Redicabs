@@ -261,8 +261,8 @@ if (isset($_POST['update'])) {
                                                         </td>
                                                         <th>Phone Number</th>
                                                         <td><input class="form-control white_bg"
-                                                                placeholder="Driver Number" name="DriverNo"
-                                                                id="DriverNo" value="<?php echo $row['DriverMobile']; ?>"
+                                                                placeholder="Driver Number" name="DriverMobile"
+                                                                id="DriverMobile" value="<?php echo $row['DriverMobile']; ?>"
                                                                 type="text" readonly="readonly"></td>
                                                         <td><input class="form-control white_bg"
                                                                 placeholder="Driver Name" name="driver_name"
