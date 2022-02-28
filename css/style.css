@@ -463,7 +463,7 @@ body,
 .form-wrap h2 {
     font-family: SourceSansPro Light;
     text-align: center;
-    padding: 17px;
+    padding: 1px;
     font-size: 26px;
 }
 
@@ -1239,7 +1239,7 @@ margin-top:40px; */
 
 .google-image iframe {
     width: 100%;
-    height: 700px;
+    height: 680px;
 }
 
 .directions-card {
@@ -3003,7 +3003,7 @@ label.control-label span {
 
 .label {
     display: inline-block;
-    margin-bottom: 5px;
+    margin-bottom: -48px;
     font-weight: 200;
 }
 

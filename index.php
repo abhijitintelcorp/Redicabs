@@ -3,18 +3,16 @@ include("includes/connection.php");
 error_reporting(0);
 if (isset($_POST['taxi_booking'])) {
     $bookingNumber = mt_rand(100000000, 999999999);
-    $UserName = htmlspecialchars($_POST['UserName']);
-    $EmailId = htmlspecialchars($_POST['EmailId']);
-    $ContactNo = htmlspecialchars($_POST['ContactNo']);
+
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
     $pickup = htmlspecialchars($_POST['pickup']);
-    $drop_off_location = htmlspecialchars($_POST['dropoff']);
+    $dropoff = htmlspecialchars($_POST['dropoff']);
     $fromdate = htmlspecialchars($_POST['fromdate']);
     $todate = htmlspecialchars($_POST['todate']);
     $Time = htmlspecialchars($_POST['Time']);
-    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`UserName`,`EmailId`,`ContactNo`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$UserName','$EmailId','$ContactNo','$SeatingCapacity','$brand','$VehicleName','$pickup','$drop_off_location','$fromdate','$todate','$Time')";
+    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
         header("location:includes/register.php");
@@ -23,6 +21,7 @@ if (isset($_POST['taxi_booking'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -36,7 +35,7 @@ include("includes/header.php");
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <div class="form-wrap " style="height: 680px; width: 350px;">
+                        <div class="form-wrap " style="height: 620px; width: 350px;">
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
@@ -45,7 +44,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <label>Seating Capacity</label>
                                             <select class="selectpicker" name="SeatingCapacity1" id="SeatingCapacity1" style="width: 305px;">
-                                                <option> Select Seating Capacity</option>
+                                                <option value=" "> Select Seating Capacity</option>
                                                 <?php
                                                 $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                 $exe = mysqli_query($conn, $qry);
@@ -66,7 +65,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <label>Select Vehicle Brand</label>
                                             <select class="selectpicker" name="brand" id="brand">
-                                                <option value=""> Select Vehicle Brand</option>
+                                                <option value=" "> Select Vehicle Brand</option>
                                             </select>
                                         </div>
                                     </div>
@@ -76,7 +75,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <label>Select Vehicle Brand first</label>
                                             <select class="selectpicker" name="VehicleName" id="VehicleName">
-                                                <option value=""> Select Vehicle Brand first</option>
+                                                <option value=" "> Select Vehicle Brand first</option>
                                             </select>
                                         </div>
                                     </div>
@@ -86,7 +85,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
+                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
                                                 </input>
                                             </div>
                                         </div>
@@ -95,7 +94,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
+                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
                                                 </input>
                                             </div>
                                         </div>
@@ -129,7 +128,9 @@ include("includes/header.php");
 
                                         </div>
                                     </div>
+
                                     <!-- 
+
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-8 custom-select-box tec-domain-cat5">
@@ -155,6 +156,7 @@ include("includes/header.php");
 
                                     <div class="form-button">
                                         <button type="submit" id="taxi_booking" name="taxi_booking" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
+
                                     </div>
                                 </form>
 
@@ -800,7 +802,7 @@ include("includes/header.php");
 
         /*An array containing all the country names in the world:*/
         var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
-            "vanivihar", "Acaryavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
+            "vanivihar", "acharyavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
         ];
 
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
@@ -877,6 +879,54 @@ include("includes/header.php");
                     minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
                     equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
                 },
+            },
+            submitHandler: function(form) {
+                form.submit();
+            },
+        });
+        $("#booking").validate({
+            rules: {
+                SeatingCapacity1: {
+                    required: true,
+                },
+                brand: {
+                    required: true,
+                },
+                VehicleName: {
+                    required: true,
+                },
+                pickup: {
+                    required: true,
+                },
+                dropoff: {
+                    required: true,
+                },
+                fromdate: {
+                    required: true,
+                },
+
+            },
+            messages: {
+
+                SeatingCapacity1: {
+                    required: "<b style='color:red'>Please select your Seating Capacity</b>",
+                },
+                brand: {
+                    required: "<b style='color:red'>Please select your brand</b>",
+                },
+                VehicleName: {
+                    required: "<b style='color:red'>Please select your Vehicle Name</b>",
+                },
+                pickup: {
+                    required: "<b style='color:red'>Please enter your Pick Up Location</b>",
+                },
+                dropoff: {
+                    required: "<b style='color:red'>Please enter your Drop Off Location</b>",
+                },
+                fromdate: {
+                    required: "<b style='color:red'>Please enter your From Date</b>",
+                },
+
             },
             submitHandler: function(form) {
                 form.submit();
