@@ -141,7 +141,8 @@ if (isset($_POST['owner_update_submit'])) {
                                                                         $exe = mysqli_query($conn, $qry);
                                                                         while ($row = mysqli_fetch_assoc($exe)) {
                                                                         ?>
-                                                                <option value="<?php echo htmlentities($row['id']); ?>">
+                                                                <option
+                                                                    value="<?php echo htmlentities($row['SeatingCapacity']); ?>">
                                                                     <?php echo htmlentities($row['SeatingCapacity']); ?>
                                                                     <?php }  ?></option>
                                                             </select>

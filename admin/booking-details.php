@@ -2,6 +2,9 @@
 session_start();
 //error_reporting(0);
 include("includes/config.php");
+date_default_timezone_set("Asia/Kolkata");
+$msg = "";
+
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 } else {
@@ -53,6 +56,18 @@ if (strlen($_SESSION['EmailId']) == 0) {
 
                                             <?php
                                                 extract($_POST);
+                                                // $FromDate = htmlspecialchars($_POST['FromDate']);
+                                                // $ToDate = htmlspecialchars($_POST['ToDate']);
+
+                                                // function dateDiff($FromDate, $ToDate)
+                                                // {
+                                                //     $date1_ts = strtotime($FromDate);
+                                                //     $date2_ts = strtotime($ToDate);
+                                                //     $si = 1;
+                                                //     $diff = $date2_ts - $date1_ts;
+                                                //     return round($diff / 86400) + 1;
+                                                // }
+                                                // $totalnodays = dateDiff($FromDate, $ToDate);
                                                 $bid = intval($_GET['bid']);
                                                 $query = "SELECT * from tblbooking where tblbooking.id='$bid'";
                                                 $query_run = mysqli_query($conn, $query);
@@ -121,13 +136,14 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                             </tr>
                                             <tr>
                                                 <th>Total Days</th>
+
                                                 <td><?php echo htmlentities($tdays = $row['TotalNoDays']); ?></td>
                                                 <th>Rent Per Days</th>
                                                 <td><?php echo htmlentities($ppdays = $row['PricePerDay']); ?></td>
                                             </tr>
                                             <tr>
                                                 <th colspan="3" style="text-align:center">Grand Total</th>
-                                                <td><?php echo htmlentities(($tdays + 1) * $ppdays); ?></td>
+                                                <td><?php echo htmlentities(($tdays) * $ppdays); ?></td>
                                             </tr>
 
                                             <tr>
