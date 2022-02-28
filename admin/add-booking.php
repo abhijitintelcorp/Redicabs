@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     $dob = htmlspecialchars($_POST['dob']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $country = "India";
-    $regdate = date("Y/m/d");
+    $regdate = date("Y-m-d");
     $sql = "SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
     $res = mysqli_query($conn, $sql);
     $count = mysqli_num_rows($res);
