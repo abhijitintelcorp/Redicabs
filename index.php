@@ -43,8 +43,8 @@ include("includes/header.php");
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
                                             <label>Seating Capacity</label>
-                                            <select class="selectpicker" name="SeatingCapacity1" id="SeatingCapacity1" style="width: 305px;">
-                                                <option value=" "> Select Seating Capacity</option>
+                                            <select  name="SeatingCapacity1" id="SeatingCapacity1" style="width: 305px; height:30px;" required>
+                                                <option value=""> Select Seating Capacity</option>
                                                 <?php
                                                 $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                 $exe = mysqli_query($conn, $qry);
@@ -64,8 +64,8 @@ include("includes/header.php");
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
                                             <label>Select Vehicle Brand</label>
-                                            <select class="selectpicker" name="brand" id="brand">
-                                                <option value=" "> Select Vehicle Brand</option>
+                                            <select  name="brand" id="brand" style="width: 305px; height:30px;" required>
+                                                <option value=""> Select Vehicle Brand</option>
                                             </select>
                                         </div>
                                     </div>
@@ -73,9 +73,9 @@ include("includes/header.php");
                                     <br>
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <div class="row">
-                                            <label>Select Vehicle Brand first</label>
-                                            <select class="selectpicker" name="VehicleName" id="VehicleName">
-                                                <option value=" "> Select Vehicle Brand first</option>
+                                            <label>Select Vehicle Name</label>
+                                            <select name="VehicleName" id="VehicleName" style="width: 305px; height:30px;" required>
+                                                <option value=""> Select Vehicle Brand first</option>
                                             </select>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>To Date</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="todate" id="todate" type="date" required>
+                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="todate" id="todate" type="date">
                                                 </input>
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Time</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="Time" id="Time" type="time" required>
+                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="Time" id="Time" type="time">
                                                 </input>
                                             </div>
 
@@ -668,7 +668,7 @@ include("includes/header.php");
                             $('#brand').html(html);
                             $('#VehicleName').html(
                                 '<option value="">Select Brand first</option>');
-                            $('#brand').selectpicker('refresh');
+                           // $('#brand').selectpicker('refresh');
                         }
                     });
                 } else {
@@ -687,7 +687,7 @@ include("includes/header.php");
                         data: 'owner_vehicle_brand=' + owner_vehicle_brand,
                         success: function(html) {
                             $('#VehicleName').html(html);
-                            $('#VehicleName').selectpicker('refresh');
+                          //  $('#VehicleName').selectpicker('refresh');
                         }
                     });
                 } else {
@@ -904,15 +904,14 @@ include("includes/header.php");
                 fromdate: {
                     required: true,
                 },
-
             },
             messages: {
 
                 SeatingCapacity1: {
-                    required: "<b style='color:red'>Please select your Seating Capacity</b>",
+                    required: "<b style='color:red'>Please select  Seating Capacity</b>",
                 },
                 brand: {
-                    required: "<b style='color:red'>Please select your brand</b>",
+                    required: "<b style='color:red'>Please select your Brand</b>",
                 },
                 VehicleName: {
                     required: "<b style='color:red'>Please select your Vehicle Name</b>",
@@ -926,7 +925,6 @@ include("includes/header.php");
                 fromdate: {
                     required: "<b style='color:red'>Please enter your From Date</b>",
                 },
-
             },
             submitHandler: function(form) {
                 form.submit();
