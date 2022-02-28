@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include("includes/config.php");
 $bid = $_GET['bid'];
 
@@ -143,15 +143,16 @@ if (isset($_POST['update'])) {
                                                                 <option
                                                                     value="<?php echo htmlentities($row['SeatingCapacity']); ?>">
                                                                     <?php echo htmlentities($row['SeatingCapacity']); ?>
-                                                                    <?php }  ?></option>
+                                                                    <?php }
+                                                                    } ?></option>
                                                             </select>
                                                         </td>
 
-                                                        <option value="<?php echo htmlentities($row['id']); ?>">
-                                                            <?php echo htmlentities($row['SeatingCapacity']); ?>
-                                                            <?php }  ?></option>
-                                                        </select>
-                                                        </td>
+
+
+
+
+
                                                         <th>Brand</th>
                                                         <td>
                                                             <select class="selectpicker" data-live-search="false"
@@ -200,7 +201,7 @@ if (isset($_POST['update'])) {
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
                                                         </td> -->
-                                                        =======
+
                                                         <th>Booking Date</th>
                                                         <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
@@ -229,7 +230,7 @@ if (isset($_POST['update'])) {
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
                                                         </td>
-                                                        >>>>>>> abhijit
+
 
                                                     </tr>
 
