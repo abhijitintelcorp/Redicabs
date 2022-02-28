@@ -179,11 +179,7 @@ include("includes/config.php");
             "responsive": true,
         });
     });
-<<<<<<< HEAD
-    </script> -->
-=======
     </script>
->>>>>>> pragyan
 
 
 </body>

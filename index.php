@@ -10,7 +10,7 @@ if (isset($_POST['taxi_booking'])) {
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
     $pickup = htmlspecialchars($_POST['pickup']);
-    $drop_off_location = htmlspecialchars($_POST['dropoff']);
+    $dropoff = htmlspecialchars($_POST['dropoff']);
     $fromdate = htmlspecialchars($_POST['fromdate']);
     $todate = htmlspecialchars($_POST['todate']);
     $Time = htmlspecialchars($_POST['Time']);
@@ -23,6 +23,7 @@ if (isset($_POST['taxi_booking'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -36,7 +37,7 @@ include("includes/header.php");
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <div class="form-wrap " style="height: 680px; width: 350px;">
+                        <div class="form-wrap " style="height: 620px; width: 350px;">
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
@@ -86,7 +87,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
+                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
                                                 </input>
                                             </div>
                                         </div>
@@ -95,7 +96,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
+                                                <input class="selectpicker custom-select-box tec-domain-cat" style="width: 305px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
                                                 </input>
                                             </div>
                                         </div>
@@ -129,7 +130,9 @@ include("includes/header.php");
 
                                         </div>
                                     </div>
+
                                     <!-- 
+
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-8 custom-select-box tec-domain-cat5">
@@ -155,6 +158,7 @@ include("includes/header.php");
 
                                     <div class="form-button">
                                         <button type="submit" id="taxi_booking" name="taxi_booking" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
+
                                     </div>
                                 </form>
 
@@ -800,7 +804,7 @@ include("includes/header.php");
 
         /*An array containing all the country names in the world:*/
         var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
-            "vanivihar", "Acaryavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
+            "vanivihar", "acharyavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
         ];
 
         /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
