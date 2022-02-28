@@ -146,13 +146,13 @@ if (isset($_POST['update'])) {
                                                                     <?php }  ?></option>
                                                             </select>
                                                         </td>
-                                                        =======
+                                                    
                                                         <option value="<?php echo htmlentities($row['id']); ?>">
                                                             <?php echo htmlentities($row['SeatingCapacity']); ?>
                                                             <?php }  ?></option>
                                                         </select>
                                                         </td>
-                                                        >>>>>>> abhijit
+                                                       
 
                                                         <th>Brand</th>
                                                         <td>
@@ -202,7 +202,7 @@ if (isset($_POST['update'])) {
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
                                                         </td> -->
-                                                        =======
+                                                       
                                                         <th>Booking Date</th>
                                                         <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
@@ -231,7 +231,7 @@ if (isset($_POST['update'])) {
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
                                                         </td>
-                                                        >>>>>>> abhijit
+                                                    
 
                                                     </tr>
 
