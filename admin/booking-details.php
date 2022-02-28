@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include("includes/config.php");
 date_default_timezone_set("Asia/Kolkata");
 $msg = "";
@@ -56,18 +56,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
 
                                             <?php
                                                 extract($_POST);
-                                                // $FromDate = htmlspecialchars($_POST['FromDate']);
-                                                // $ToDate = htmlspecialchars($_POST['ToDate']);
 
-                                                // function dateDiff($FromDate, $ToDate)
-                                                // {
-                                                //     $date1_ts = strtotime($FromDate);
-                                                //     $date2_ts = strtotime($ToDate);
-                                                //     $si = 1;
-                                                //     $diff = $date2_ts - $date1_ts;
-                                                //     return round($diff / 86400) + 1;
-                                                // }
-                                                // $totalnodays = dateDiff($FromDate, $ToDate);
                                                 $bid = intval($_GET['bid']);
                                                 $query = "SELECT * from tblbooking where tblbooking.id='$bid'";
                                                 $query_run = mysqli_query($conn, $query);
@@ -196,7 +185,9 @@ if (strlen($_SESSION['EmailId']) == 0) {
                 </div>
             </div>
         </div>
-
+        <?php
+            include("includes/footerlink.php");
+            ?>
         <!-- Loading Scripts -->
         <!-- <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap-select.min.js"></script>

@@ -1,12 +1,12 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include("includes/config.php");
-$user_id = $_GET['bid'];
-$u_query = "SELECT * from tblbooking  where tblbooking.id='$user_id'";
-$user_update_query = mysqli_query($conn, $u_query);
-$urows = mysqli_fetch_array($user_update_query);
-if (isset($_POST['owner_update_submit'])) {
+$bid = $_GET['bid'];
+// $u_query = "SELECT * from tblbooking  where tblbooking.id='$aeid'";
+// $user_update_query = mysqli_query($conn, $u_query);
+// $urows = mysqli_fetch_array($user_update_query);
+if (isset($_POST['update'])) {
     $priceperday = htmlspecialchars($_POST['priceperday']);
     $UserName = htmlspecialchars($_POST['UserName']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
@@ -24,16 +24,17 @@ if (isset($_POST['owner_update_submit'])) {
     $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
     $DriverName = htmlspecialchars($_POST['DriverName']);
     $DriverNo = htmlspecialchars($_POST['DriverNo']);
+
     $update_qry = "UPDATE tblbooking SET `PricePerDay`='$priceperday',`UserName`='$UserName',`EmailId`='$EmailId',
     `ContactNo`='$ContactNo',`address`='$address',`City`='City',`SeatingCapacity`='$SeatingCapacity',
     `owner_vehicle_brand` ='$brand',`owner_vehicle_name`='$VehicleName',`CreatedDate`='$CreatedDate',
     `FromDate`='$FromDate',`ToDate`='$ToDate',`pickuptime`='$pickuptime',`TotalNoDays`='$TotalNoDays'
-      `PricePerDay`='$PricePerDay',`DriverName`,`DriverNo`='DriverNo' WHERE tblbooking.id='$user_id'";
-
-    $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
-
-    if ($inst_u_fn1_qry) {
+      `PricePerDay`='$PricePerDay',`DriverName`,`DriverNo`='DriverNo' WHERE tblbooking.id='$bid'";
+    $query_run = mysqli_query($conn, $update_qry);
+    if ($query_run) {
         header("location:new-bookings.php");
+    } else {
+        $msg = "updated failed";
     }
 }
 // if (isset($_POST['owner_update_time'])) {
@@ -171,7 +172,7 @@ if (isset($_POST['owner_update_submit'])) {
                                                         <th>Booking Date</th>
                                                         <td><input type="text" class="form-control" name="CreatedDate"
                                                                 id="CreatedDate" readonly="readonly"
-                                                                value="<?php echo $row['CreatedDate']; ?>" required>
+                                                                value="<?php echo $row['RegDate']; ?>" required>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -191,11 +192,11 @@ if (isset($_POST['owner_update_submit'])) {
                                                         <td><input type="time" class="form-control" name="pickuptime"
                                                                 id="pickuptime" value="<?php echo $row['Time']; ?>"
                                                                 required></td>
-                                                        <td style="text-align:center" colspan="4">
+                                                        <!-- <td style="text-align:center" colspan="4">
                                                             <button class="btn btn-primary pull-left"
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
-                                                        </td>
+                                                        </td> -->
 
                                                     </tr>
 
@@ -243,25 +244,10 @@ if (isset($_POST['owner_update_submit'])) {
                                                     </tr>
                                                     <tr>
                                                         <th>Driver Name</th>
-                                                        <td><select name="name" id="name" type="text"
+                                                        <td><select name="DriverName" id="DriverName" type="text"
                                                                 class="selectpicker">
-                                                                <option value="<?php echo $row['id']; ?>">
+                                                                <option value="<?php echo $row['DriverName']; ?>">
                                                                     <?php echo $row['DriverName']; ?></option>
-                                                                <?php
-                                                                        $qry1 = "SELECT DriverName from tblbooking";
-                                                                        $exe = mysqli_query($conn, $qry1);
-                                                                        while ($rows = mysqli_fetch_assoc($exe)) {
-                                                                            $number = $rows['number'];
-                                                                            $drivername = $rows['name'];
-                                                                        ?>
-                                                                <!-- <option value="<?php echo $rows['id'] ?>"
-                                                                    driver_name="<?php echo $rows['id'] ?>"
-                                                                    number="<?php echo $rows['number']; ?>">
-                                                                    <?php echo $rows['name'] ?>
-                                                                </option> -->
-
-                                                                <?php }  ?>
-
                                                             </select>
                                                         </td>
                                                         <th>Phone Number</th>
@@ -279,7 +265,7 @@ if (isset($_POST['owner_update_submit'])) {
 
                                                     <tr>
                                                         <td style="text-align:center" colspan="4">
-                                                            <button class="btn btn-primary" name="owner_update_submit"
+                                                            <button class="btn btn-primary" name="update"
                                                                 type="submit">Update</button>
                                                         </td>
                                                     </tr>
@@ -304,6 +290,9 @@ if (isset($_POST['owner_update_submit'])) {
             </div>
         </div>
     </div>
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <script>
     function add() {
         var x = parseInt(document.getElementById("TotalNoDays").value);
@@ -532,49 +521,7 @@ if (isset($_POST['owner_update_submit'])) {
                 }
             });
         });
-        $('#VehicleName').on('change', function() {
-            var owner_vehicle_name = $(this).val();
-            $.ajax({
-                type: 'POST',
-                url: 'get-categories.php',
-                data: {
-                    owner_vehicle_name: owner_vehicle_name
-                },
-                success: function(data) {
-                    $('#Categories').val(data);
-                }
-            });
-        });
-        $('#VehicleName').on('change', function() {
-            var owner_vehicle_name = $(this).val();
-            if (owner_vehicle_name) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-front-image.php',
-                    data: 'owner_vehicle_name=' + owner_vehicle_name,
-                    success: function(html) {
-                        $('#frontimage').html(html);
-                    }
-                });
-            } else {
-                $('#frontimage').html('No Image Found');
-            }
-        });
-        $('#VehicleName').on('change', function() {
-            var owner_vehicle_name = $(this).val();
-            if (owner_vehicle_name) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-back-image.php',
-                    data: 'owner_vehicle_name=' + owner_vehicle_name,
-                    success: function(html) {
-                        $('#backimage').html(html);
-                    }
-                });
-            } else {
-                $('#backimage').html('No Image Found');
-            }
-        });
+
 
     });
     </script>

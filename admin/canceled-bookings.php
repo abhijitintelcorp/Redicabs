@@ -1,5 +1,8 @@
 <?php
 include("includes/config.php");
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+} else {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,47 +45,45 @@ include("includes/config.php");
                                     </thead>
 
                                     <?php
-                                    extract($_POST);
-                                    $status = 2;
-                                    $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
-                                    $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
-                                    $cnt = 1;
-                                    while ($row = mysqli_fetch_array($retrive_fn_query)) {
-                                        $cnt++;
-                                    ?>
+                                        extract($_POST);
+                                        $status = 2;
+                                        $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
+                                        $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
+                                        $cnt = 1;
+                                        while ($row = mysqli_fetch_array($retrive_fn_query)) {
+                                            $cnt++;
+                                        ?>
 
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['OwnerName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><a href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
-                                                </td>
-                                                <td><?php echo htmlentities($row['FromDate']); ?></td>
-                                                <td><?php echo htmlentities($row['ToDate']); ?></td>
-                                                <td><?php echo htmlentities($row['Time']); ?></td>
-                                                <td><?php
-                                                    if ($row['Status'] == 0) {
-                                                        echo htmlentities('Not Confirmed yet');
-                                                    } else if ($row['Status'] == 1) {
-                                                        echo htmlentities('Confirmed');
-                                                    } else {
-                                                        echo htmlentities('Cancelled');
-                                                    }
-                                                    ?></td>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
-                                                <td>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo htmlentities($cnt); ?></td>
+                                            <td><?php echo $row['OwnerName'];  ?></td>
+                                            <td><?php echo $row['BookingNumber']; ?></td>
+                                            <td><?php echo htmlentities($row['FromDate']); ?></td>
+                                            <td><?php echo htmlentities($row['ToDate']); ?></td>
+                                            <td><?php echo htmlentities($row['Time']); ?></td>
+                                            <td><?php
+                                                        if ($row['Status'] == 0) {
+                                                            echo htmlentities('Not Confirmed yet');
+                                                        } else if ($row['Status'] == 1) {
+                                                            echo htmlentities('Confirmed');
+                                                        } else {
+                                                            echo htmlentities('Cancelled');
+                                                        }
+                                                        ?></td>
+                                            <td><?php echo $row['CreatedDate']; ?></td>
+                                            <td>
 
 
-                                                    <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
-                                                        View</a>
+                                                <!-- <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
+                                                        View</a> -->
 
-                                                </td>
+                                            </td>
 
-                                            </tr>
+                                        </tr>
                                         <?php $cnt = $cnt + 1;
-                                    } ?>
-                                        </tbody>
+                                        } ?>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -123,24 +124,25 @@ include("includes/config.php");
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
+    });
     </script>
 </body>
+<?php } ?>
 
 </html>
