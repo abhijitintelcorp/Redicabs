@@ -100,7 +100,9 @@ if (strlen($_SESSION['EmailId']) == 0) {
     </div>
     </div>
     <!-- ./wrapper -->
-
+    <?php
+        include("includes/footerlink.php");
+        ?>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
