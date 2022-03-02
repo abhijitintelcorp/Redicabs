@@ -1,11 +1,11 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include("includes/config.php");
-$bid = $_GET['bid'];
+$id = $_GET['bid'];
 
 if (isset($_POST['update'])) {
-    $priceperday = htmlspecialchars($_POST['priceperday']);
+    $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
     $UserName = htmlspecialchars($_POST['UserName']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
@@ -19,22 +19,23 @@ if (isset($_POST['update'])) {
     $ToDate = htmlspecialchars($_POST['ToDate']);
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
     $TotalNoDays = htmlspecialchars($_POST['TotalNoDays']);
-    $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
+
     $DriverName = htmlspecialchars($_POST['DriverName']);
-    $DriverNo = htmlspecialchars($_POST['DriverNo']);
+    $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
+    $id = $_GET['bid'];
 
-    $update_qry = "UPDATE tblbooking SET `PricePerDay`='$priceperday',`UserName`='$UserName',`EmailId`='$EmailId',
-    `ContactNo`='$ContactNo',`address`='$address',`City`='$City',`SeatingCapacity`='$SeatingCapacity',
-    `owner_vehicle_brand` ='$brand',`owner_vehicle_name`='$VehicleName',`CreatedDate`='$CreatedDate',
-    `FromDate`='$FromDate',`ToDate`='$ToDate',`pickuptime`='$pickuptime',`TotalNoDays`='$TotalNoDays'
-      `PricePerDay`='$PricePerDay',`DriverName`='$DriverName',`DriverNo`='$DriverNo',`pickup`='$pickup',`dropoff`='$dropoff' WHERE id='$bid'";
+    $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
+    ContactNo='$ContactNo',address='$address',City='$City',SeatingCapacity='$SeatingCapacity',
+    owner_vehicle_brand ='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
+    FromDate='$FromDate',ToDate='$ToDate',TotalNoDays='$TotalNoDays'
+      ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
+      dropoff='$dropoff' WHERE id='$id'";
+
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
         header("location:new-bookings.php");
-    } else {
-        $msg = "updated failed";
     }
 }
 // if (isset($_POST['owner_update_time'])) {
@@ -67,227 +68,225 @@ if (isset($_POST['update'])) {
                                         cellspacing="0" width="100%">
 
                                         <tbody>
-                                            <form method="post">
-                                                <?php
-                                                $bid = intval($_GET['bid']);
-                                                $query = "SELECT * from tblbooking where tblbooking.id='$bid'";
-                                                $query_run = mysqli_query($conn, $query);
-                                                $cnt = 1;
-                                                if (mysqli_num_rows($query_run) > 0) {
-                                                    while ($row = mysqli_fetch_array($query_run)) {
-                                                ?>
-                                                <form action="" method="post">
-                                                    <h3 style="text-align:center; color:red">
-                                                        #<?php echo $row['BookingNumber']; ?> Booking Details </h3>
 
-                                                    <tr>
-                                                        <th colspan="4" style="text-align:center;color:blue">User
-                                                            Details
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Booking No.</th>
-                                                        <td><input type="text" class="form-control" name="bookingno"
-                                                                id="bookingno"
-                                                                value="<?php echo $row['BookingNumber']; ?>"
-                                                                readonly="readonly" required>
-                                                        </td>
-                                                        <th>Name</th>
-                                                        <td><input type="text" class="form-control" name="UserName"
-                                                                id="UserName" value="<?php echo $row['UserName']; ?>"
-                                                                required></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Email Id</th>
-                                                        <td><input type="text" class="form-control" name="EmailId"
-                                                                id="EmailId" value="<?php echo $row['EmailId']; ?>"
-                                                                required></td>
-                                                        <th>Contact No</th>
-                                                        <td><input type="text" class="form-control" name="ContactNo"
-                                                                id="ContactNo" value="<?php echo $row['ContactNo']; ?>"
-                                                                required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Address</th>
-                                                        <td><input type="text" class="form-control" name="address"
-                                                                id="address" value="<?php echo $row['address']; ?>"
-                                                                required>
-                                                        </td>
-                                                        <th>City</th>
-                                                        <td><input type="text" class="form-control" name="City"
-                                                                id="City" value="<?php echo $row['City']; ?>" required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Country</th>
-                                                        <td colspan="3"><input type="text" class="form-control"
-                                                                name="Country" id="Country"
-                                                                value="<?php echo $row['Country']; ?>" required>
-                                                        </td>
-                                                    </tr>
+                                            <?php
+                                            $id = intval($_GET['bid']);
+                                            $query = "SELECT * from tblbooking where tblbooking.id='$id'";
+                                            $query_run = mysqli_query($conn, $query);
+                                            $cnt = 1;
+                                            if (mysqli_num_rows($query_run) > 0) {
+                                                while ($row = mysqli_fetch_array($query_run)) {
 
-                                                    <tr>
-                                                        <th colspan="4" style="text-align:center;color:blue">Booking
-                                                            Details
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>seatingCapacity</th>
-                                                        <td><select class="selectpicker" data-live-search="false"
-                                                                name="SeatingCapacity" id="SeatingCapacity">
-                                                                <option value="<?php echo $row['SeatingCapacity']; ?>">
-                                                                    <?php echo $row['SeatingCapacity']; ?></option>
-                                                                <?php
-                                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking
+                                            ?>
+                                            <form action="" method="post">
+                                                <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                                                <h3 style="text-align:center; color:red">
+                                                    #<?php echo $row['BookingNumber']; ?> Booking Details </h3>
+
+                                                <tr>
+                                                    <th colspan="4" style="text-align:center;color:blue">User
+                                                        Details
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Booking No.</th>
+                                                    <td><input type="text" class="form-control" name="bookingno"
+                                                            id="bookingno" value="<?php echo $row['BookingNumber']; ?>"
+                                                            readonly="readonly" required>
+                                                    </td>
+                                                    <th>Name</th>
+                                                    <td><input type="text" class="form-control" name="UserName"
+                                                            id="UserName" value="<?php echo $row['UserName']; ?>"
+                                                            required></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email Id</th>
+                                                    <td><input type="text" class="form-control" name="EmailId"
+                                                            id="EmailId" value="<?php echo $row['EmailId']; ?>"
+                                                            required></td>
+                                                    <th>Contact No</th>
+                                                    <td><input type="text" class="form-control" name="ContactNo"
+                                                            id="ContactNo" value="<?php echo $row['ContactNo']; ?>"
+                                                            required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Address</th>
+                                                    <td><input type="text" class="form-control" name="address"
+                                                            id="address" value="<?php echo $row['address']; ?>"
+                                                            required>
+                                                    </td>
+                                                    <th>City</th>
+                                                    <td><input type="text" class="form-control" name="City" id="City"
+                                                            value="<?php echo $row['City']; ?>" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Country</th>
+                                                    <td colspan="3"><input type="text" class="form-control"
+                                                            name="Country" id="Country"
+                                                            value="<?php echo $row['Country']; ?>" required>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <th colspan="4" style="text-align:center;color:blue">Booking
+                                                        Details
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th>seatingCapacity</th>
+                                                    <td><select class="selectpicker" data-live-search="false"
+                                                            name="SeatingCapacity" id="SeatingCapacity">
+                                                            <option value="<?php echo $row['SeatingCapacity']; ?>">
+                                                                <?php echo $row['SeatingCapacity']; ?></option>
+                                                            <?php
+                                                                    $qry = "SELECT DISTINCT SeatingCapacity from tblbooking
                                                                          GROUP BY SeatingCapacity ASC";
-                                                                        $exe = mysqli_query($conn, $qry);
-                                                                        while ($rows = mysqli_fetch_assoc($exe)) {
-                                                                        ?>
-                                                                <option value="<?php echo $rows['SeatingCapacity']; ?>">
-                                                                    <?php echo $rows['SeatingCapacity']; ?>
-                                                                    <?php }
-                                                                            ?></option>
-                                                            </select>
-                                                        </td>
-                                                        <th>Brand</th>
-                                                        <td>
-                                                            <select class="selectpicker" data-live-search="false"
-                                                                name="brand" id="brand">
-                                                                <option
-                                                                    value="<?php echo $row['owner_vehicle_brand']; ?>">
-                                                                    <?php echo $row['owner_vehicle_brand']; ?></option>
-                                                            </select>
-                                                        </td>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th> <label>VehicleName</label></th>
-                                                        <td>
-                                                            <input type="hidden" id="userID" name="userID" value="" />
+                                                                    $exe = mysqli_query($conn, $qry);
+                                                                    while ($rows = mysqli_fetch_assoc($exe)) {
+                                                                    ?>
+                                                            <option value="<?php echo $rows['SeatingCapacity']; ?>">
+                                                                <?php echo $rows['SeatingCapacity']; ?>
+                                                                <?php }
+                                                                        ?></option>
+                                                        </select>
+                                                    </td>
+                                                    <th>Brand</th>
+                                                    <td>
+                                                        <select class="selectpicker" data-live-search="false"
+                                                            name="brand" id="brand">
+                                                            <option value="<?php echo $row['owner_vehicle_brand']; ?>">
+                                                                <?php echo $row['owner_vehicle_brand']; ?></option>
+                                                        </select>
+                                                    </td>
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th> <label>VehicleName</label></th>
+                                                    <td>
+                                                        <input type="hidden" id="userID" name="userID" value="" />
 
-                                                            <select class="selectpicker" data-live-search="false"
-                                                                name="VehicleName" id="VehicleName">
-                                                                <option
-                                                                    value="<?php echo $row['owner_vehicle_name']; ?>">
-                                                                    <?php echo $row['owner_vehicle_name']; ?></option>
-                                                            </select>
-                                                        </td>
+                                                        <select class="selectpicker" data-live-search="false"
+                                                            name="VehicleName" id="VehicleName">
+                                                            <option value="<?php echo $row['owner_vehicle_name']; ?>">
+                                                                <?php echo $row['owner_vehicle_name']; ?></option>
+                                                        </select>
+                                                    </td>
 
-                                                        <th>Booking Date</th>
-                                                        <td><input type="text" class="form-control" name="CreatedDate"
-                                                                id="CreatedDate" readonly="readonly"
-                                                                value="<?php echo $row['RegDate']; ?>" required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>PickUp</th>
-                                                        <td><input type="text" class="form-control" name="pickup"
-                                                                id="pickup" value="<?php echo $row['pickup']; ?>">
-                                                        </td>
-                                                        <th>DropOff</th>
-                                                        <td><input type="text" class="form-control" name="dropoff"
-                                                                id="dropoff" value="<?php echo $row['dropoff']; ?>">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>From Date</th>
-                                                        <td><input type="date" class="form-control" id="datepicker"
-                                                                name="FromDate" placeholder="From Date"
-                                                                value="<?php echo $row['FromDate']; ?>" required>
-                                                        </td>
-                                                        <th>To Date</th>
-                                                        <td><input type="date" class="form-control" id="datepicker"
-                                                                name="ToDate" placeholder="To Date"
-                                                                value="<?php echo $row['ToDate']; ?>" required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>PickUp Time</th>
-                                                        <td><input type="time" class="form-control" name="pickuptime"
-                                                                id="pickuptime" value="<?php echo $row['Time']; ?>"
-                                                                required></td>
-                                                        <!-- <td style="text-align:center" colspan="4">
+                                                    <th>Booking Date</th>
+                                                    <td><input type="text" class="form-control" name="CreatedDate"
+                                                            id="CreatedDate" readonly="readonly"
+                                                            value="<?php echo $row['RegDate']; ?>" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PickUp</th>
+                                                    <td><input type="text" class="form-control" name="pickup"
+                                                            id="pickup" value="<?php echo $row['pickup']; ?>">
+                                                    </td>
+                                                    <th>DropOff</th>
+                                                    <td><input type="text" class="form-control" name="dropoff"
+                                                            id="dropoff" value="<?php echo $row['dropoff']; ?>">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>From Date</th>
+                                                    <td><input type="date" class="form-control" id="datepicker"
+                                                            name="FromDate" placeholder="From Date"
+                                                            value="<?php echo $row['FromDate']; ?>" required>
+                                                    </td>
+                                                    <th>To Date</th>
+                                                    <td><input type="date" class="form-control" id="datepicker"
+                                                            name="ToDate" placeholder="To Date"
+                                                            value="<?php echo $row['ToDate']; ?>" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PickUp Time</th>
+                                                    <td><input type="time" class="form-control" name="pickuptime"
+                                                            id="pickuptime" value="<?php echo $row['Time']; ?>"
+                                                            required></td>
+                                                    <!-- <td style="text-align:center" colspan="4">
                                                             <button class="btn btn-primary pull-left"
                                                                 name="owner_update_time" type="submit">Change Pickup
                                                                 Time</button>
                                                         </td> -->
-                                                    </tr>
+                                                </tr>
 
-                                                    <tr>
-                                                        <th>Total Days</th>
-                                                        <td><input type="text" class="form-control" name="TotalNoDays"
-                                                                id="TotalNoDays"
-                                                                value="<?php echo $row['TotalNoDays']; ?>" required>
-                                                        </td>
-                                                        <th>Rent Per Days</th>
-                                                        <td><input type="text" class="form-control" name="PricePerDay"
-                                                                id="PricePerDay" onkeyup="add()"
-                                                                value="<?php echo htmlentities($ppdays = $row['PricePerDay']); ?>"
-                                                                required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="3" style="text-align:center">Grand Total</th>
-                                                        <td><input type="text" class="form-control" name="total"
-                                                                id="total" readonly="readonly"
-                                                                value="<?php echo $row['TotalNoDays'] * $row['PricePerDay'] ?>"
-                                                                required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Booking Status</th>
-                                                        <td><?php
-                                                                    if ($row['Status'] == 0) {
-                                                                        echo htmlentities('Not Confirmed yet');
-                                                                    } else if ($row['Status'] == 1) {
-                                                                        echo htmlentities('Confirmed');
-                                                                    } else {
-                                                                        echo htmlentities('Cancelled');
-                                                                    }
-                                                                    ?></td>
+                                                <tr>
+                                                    <th>Total Days</th>
+                                                    <td><input type="text" class="form-control" name="TotalNoDays"
+                                                            id="TotalNoDays" value="<?php echo $row['TotalNoDays']; ?>"
+                                                            required>
+                                                    </td>
+                                                    <th>Rent Per Days</th>
+                                                    <td><input type="text" class="form-control" name="PricePerDay"
+                                                            id="PricePerDay" onkeyup="add()"
+                                                            value="<?php echo htmlentities($ppdays = $row['PricePerDay']); ?>"
+                                                            required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="3" style="text-align:center">Grand Total</th>
+                                                    <td><input type="text" class="form-control" name="total" id="total"
+                                                            readonly="readonly"
+                                                            value="<?php echo $row['TotalNoDays'] * $row['PricePerDay'] ?>"
+                                                            required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Booking Status</th>
+                                                    <td><?php
+                                                                if ($row['Status'] == 0) {
+                                                                    echo htmlentities('Not Confirmed yet');
+                                                                } else if ($row['Status'] == 1) {
+                                                                    echo htmlentities('Confirmed');
+                                                                } else {
+                                                                    echo htmlentities('Cancelled');
+                                                                }
+                                                                ?></td>
 
-                                                        <th>Last updation Date</th>
-                                                        <td><?php echo htmlentities($row['UpdationDate']); ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="4" style="text-align:center;color:blue">Assign
-                                                            Driver
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Driver Name</th>
-                                                        <td><select name="DriverName" id="DriverName" type="text"
-                                                                class="selectpicker">
-                                                                <option value="<?php echo $row['DriverName']; ?>">
-                                                                    <?php echo $row['DriverName']; ?></option>
-                                                            </select>
-                                                        </td>
-                                                        <th>Phone Number</th>
-                                                        <td><input class="form-control white_bg"
-                                                                placeholder="Driver Number" name="DriverMobile"
-                                                                id="DriverMobile"
-                                                                value="<?php echo $row['DriverMobile']; ?>" type="text"
-                                                                readonly="readonly"></td>
-                                                        <td><input class="form-control white_bg"
-                                                                placeholder="Driver Name" name="driver_name"
-                                                                id="driver_name" value="<?php echo $row['Driverid']; ?>"
-                                                                type="hidden" readonly="readonly"></td>
-                                                    </tr>
-                                                    <?php } ?>
+                                                    <!-- <th>Last updation Date</th>
+                                                    <td><?php echo htmlentities($row['UpdationDate']); ?></td> -->
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="4" style="text-align:center;color:blue">Assign
+                                                        Driver
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Driver Name</th>
+                                                    <td><select name="DriverName" id="DriverName" type="text"
+                                                            class="selectpicker">
+                                                            <option value="<?php echo $row['DriverName']; ?>">
+                                                                <?php echo $row['DriverName']; ?></option>
+                                                        </select>
+                                                    </td>
+                                                    <th>Phone Number</th>
+                                                    <td><input class="form-control white_bg" placeholder="Driver Number"
+                                                            name="DriverMobile" id="DriverMobile"
+                                                            value="<?php echo $row['DriverMobile']; ?>" type="text"
+                                                            readonly="readonly"></td>
+                                                    <td><input class="form-control white_bg" placeholder="Driver Name"
+                                                            name="driver_name" id="driver_name"
+                                                            value="<?php echo $row['Driverid']; ?>" type="hidden"
+                                                            readonly="readonly"></td>
+                                                </tr>
+                                                <?php } ?>
 
 
-                                                    <tr>
-                                                        <td style="text-align:center" colspan="4">
-                                                            <button class="btn btn-primary" name="update"
-                                                                type="submit">Update</button>
-                                                        </td>
-                                                    </tr>
-                                                    <?php } ?>
-                                                    <?php $cnt = $cnt + 1;
+                                                <tr>
+                                                    <td style="text-align:center" colspan="4">
+                                                        <button class="btn btn-primary" name="update"
+                                                            type="submit">Update</button>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                                <?php $cnt = $cnt + 1;
 
-                                                    ?>
-                                                </form>
+                                                ?>
+                                            </form>
                                         </tbody>
                                     </table>
 
