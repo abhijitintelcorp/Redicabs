@@ -77,49 +77,6 @@ if (isset($_POST['update'])) {
                                             if (mysqli_num_rows($query_run) > 0) {
                                                 while ($row = mysqli_fetch_array($query_run)) {
 
-<<<<<<< HEAD
-                                                    <tr>
-                                                        <th colspan="4" style="text-align:center;color:blue">Booking
-                                                            Details
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>seatingCapacity</th>
-                                                        <td><select class="selectpicker" data-live-search="false"
-                                                                name="SeatingCapacity" id="SeatingCapacity">
-                                                                <option value="<?php echo $row['SeatingCapacity']; ?>"><?php echo $row['SeatingCapacity']; ?></option>
-                                                                <?php
-                                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking
-                                                                         GROUP BY SeatingCapacity ASC";
-                                                                        $exe = mysqli_query($conn, $qry);
-                                                                        while ($rows = mysqli_fetch_assoc($exe)) {
-                                                                        ?>
-                                                                <option value="<?php echo $rows['SeatingCapacity']; ?>">
-                                                                    <?php echo $rows['SeatingCapacity']; ?>
-                                                                    <?php }
-                                                                            ?></option>
-                                                            </select>
-                                                        </td>
-                                                        <th>Brand</th>
-                                                        <td>
-                                                            <select class="selectpicker" data-live-search="false"
-                                                                name="brand" id="brand">
-                                                                <option value="<?php echo $row['owner_vehicle_brand']; ?>"><?php echo $row['owner_vehicle_brand']; ?></option>
-                                                            </select>
-                                                        </td>
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th> <label>VehicleName</label></th>
-                                                        <td>
-                                                            <input type="hidden" id="userID" name="userID" value="" />
-
-                                                            <select class="selectpicker" data-live-search="false"
-                                                                name="VehicleName" id="VehicleName">
-                                                                <option value="<?php echo $row['owner_vehicle_name']; ?>"><?php echo $row['owner_vehicle_name']; ?></option>
-                                                            </select>
-                                                        </td>
-=======
                                             ?>
                                             <form action="" method="post">
                                                 <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
@@ -216,7 +173,6 @@ if (isset($_POST['update'])) {
                                                                 <?php echo $row['owner_vehicle_name']; ?></option>
                                                         </select>
                                                     </td>
->>>>>>> pragyan
 
                                                     <th>Booking Date</th>
                                                     <td><input type="text" class="form-control" name="CreatedDate"
@@ -258,69 +214,6 @@ if (isset($_POST['update'])) {
                                                         </td> -->
                                                 </tr>
 
-<<<<<<< HEAD
-                                                    <tr>
-                                                        <th>Total Days</th>
-                                                        <td><input type="text" class="form-control" name="TotalNoDays"
-                                                                id="TotalNoDays"
-                                                                value="<?php echo $row['TotalNoDays']; ?>"
-                                                                required>
-                                                        </td>
-                                                        <th>Rent Per Days</th>
-                                                        <td><input type="text" class="form-control" name="PricePerDay"
-                                                                id="PricePerDay" onkeyup="add()"
-                                                                value="<?php echo htmlentities($ppdays = $row['PricePerDay']); ?>"
-                                                                required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="3" style="text-align:center">Grand Total</th>
-                                                        <td><input type="text" class="form-control" name="total"
-                                                                id="total" readonly="readonly"
-                                                                value="<?php echo $row['TotalNoDays'] * $row['PricePerDay'] ?>"
-                                                                required>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Booking Status</th>
-                                                        <td><?php
-                                                                    if ($row['Status'] == 0) {
-                                                                        echo htmlentities('Not Confirmed yet');
-                                                                    } else if ($row['Status'] == 1) {
-                                                                        echo htmlentities('Confirmed');
-                                                                    } else {
-                                                                        echo htmlentities('Cancelled');
-                                                                    }
-                                                                    ?></td>
-
-                                                        <th>Last updation Date</th>
-                                                        <td><?php echo htmlentities($row['UpdationDate']); ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="4" style="text-align:center;color:blue">Assign
-                                                            Driver
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Driver Name</th>
-                                                        <td><select name="DriverName" id="DriverName" type="text"
-                                                                class="selectpicker">
-                                                                <option value="<?php echo $row['DriverName']; ?>">
-                                                                    <?php echo $row['DriverName']; ?></option>
-                                                            </select>
-                                                        </td>
-                                                        <th>Phone Number</th>
-                                                        <td><input class="form-control white_bg"
-                                                                placeholder="Driver Number" name="DriverMobile"
-                                                                id="DriverMobile" value="<?php echo $row['DriverMobile']; ?>"
-                                                                type="text" readonly="readonly"></td>
-                                                        <td><input class="form-control white_bg"
-                                                                placeholder="Driver Name" name="driver_name"
-                                                                id="driver_name" value="<?php echo $row['Driverid']; ?>"
-                                                                type="hidden" readonly="readonly"></td>
-                                                    </tr>
-                                                    <?php } ?>
-=======
                                                 <tr>
                                                     <th>Total Days</th>
                                                     <td><input type="text" class="form-control" name="TotalNoDays"
@@ -381,7 +274,6 @@ if (isset($_POST['update'])) {
                                                             readonly="readonly"></td>
                                                 </tr>
                                                 <?php } ?>
->>>>>>> pragyan
 
 
                                                 <tr>
