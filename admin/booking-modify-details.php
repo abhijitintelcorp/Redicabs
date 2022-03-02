@@ -29,7 +29,7 @@ if (isset($_POST['update'])) {
     `ContactNo`='$ContactNo',`address`='$address',`City`='$City',`SeatingCapacity`='$SeatingCapacity',
     `owner_vehicle_brand` ='$brand',`owner_vehicle_name`='$VehicleName',`CreatedDate`='$CreatedDate',
     `FromDate`='$FromDate',`ToDate`='$ToDate',`pickuptime`='$pickuptime',`TotalNoDays`='$TotalNoDays'
-      `PricePerDay`='$PricePerDay',`DriverName`='$DriverName',`DriverNo`='$DriverNo',`pickup`='$pickup',`dropoff`='$dropoff' WHERE tblbooking.id='$bid'";
+      `PricePerDay`='$PricePerDay',`DriverName`='$DriverName',`DriverNo`='$DriverNo',`pickup`='$pickup',`dropoff`='$dropoff' WHERE id='$bid'";
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
         header("location:new-bookings.php");
@@ -136,15 +136,16 @@ if (isset($_POST['update'])) {
                                                         <th>seatingCapacity</th>
                                                         <td><select class="selectpicker" data-live-search="false"
                                                                 name="SeatingCapacity" id="SeatingCapacity">
-                                                                <option>SeatingCapacity</option>
+                                                                <option value="<?php echo $row['SeatingCapacity']; ?>">
+                                                                    <?php echo $row['SeatingCapacity']; ?></option>
                                                                 <?php
                                                                         $qry = "SELECT DISTINCT SeatingCapacity from tblbooking
                                                                          GROUP BY SeatingCapacity ASC";
                                                                         $exe = mysqli_query($conn, $qry);
-                                                                        while ($row = mysqli_fetch_assoc($exe)) {
+                                                                        while ($rows = mysqli_fetch_assoc($exe)) {
                                                                         ?>
-                                                                <option value="<?php echo $row['SeatingCapacity']; ?>">
-                                                                    <?php echo $row['SeatingCapacity']; ?>
+                                                                <option value="<?php echo $rows['SeatingCapacity']; ?>">
+                                                                    <?php echo $rows['SeatingCapacity']; ?>
                                                                     <?php }
                                                                             ?></option>
                                                             </select>
@@ -153,7 +154,9 @@ if (isset($_POST['update'])) {
                                                         <td>
                                                             <select class="selectpicker" data-live-search="false"
                                                                 name="brand" id="brand">
-                                                                <option value="">Select Brand</option>
+                                                                <option
+                                                                    value="<?php echo $row['owner_vehicle_brand']; ?>">
+                                                                    <?php echo $row['owner_vehicle_brand']; ?></option>
                                                             </select>
                                                         </td>
                                                         </th>
@@ -165,7 +168,9 @@ if (isset($_POST['update'])) {
 
                                                             <select class="selectpicker" data-live-search="false"
                                                                 name="VehicleName" id="VehicleName">
-                                                                <option value="">Select Brand first</option>
+                                                                <option
+                                                                    value="<?php echo $row['owner_vehicle_name']; ?>">
+                                                                    <?php echo $row['owner_vehicle_name']; ?></option>
                                                             </select>
                                                         </td>
 
@@ -213,8 +218,7 @@ if (isset($_POST['update'])) {
                                                         <th>Total Days</th>
                                                         <td><input type="text" class="form-control" name="TotalNoDays"
                                                                 id="TotalNoDays"
-                                                                value="<?php echo htmlentities($tdays = $row['TotalNoDays']) + 1; ?>"
-                                                                required>
+                                                                value="<?php echo $row['TotalNoDays']; ?>" required>
                                                         </td>
                                                         <th>Rent Per Days</th>
                                                         <td><input type="text" class="form-control" name="PricePerDay"
@@ -227,7 +231,7 @@ if (isset($_POST['update'])) {
                                                         <th colspan="3" style="text-align:center">Grand Total</th>
                                                         <td><input type="text" class="form-control" name="total"
                                                                 id="total" readonly="readonly"
-                                                                value="<?php echo htmlentities(($tdays) * $ppdays); ?>"
+                                                                value="<?php echo $row['TotalNoDays'] * $row['PricePerDay'] ?>"
                                                                 required>
                                                         </td>
                                                     </tr>
@@ -261,9 +265,10 @@ if (isset($_POST['update'])) {
                                                         </td>
                                                         <th>Phone Number</th>
                                                         <td><input class="form-control white_bg"
-                                                                placeholder="Driver Number" name="DriverNo"
-                                                                id="DriverNo" value="<?php echo $row['DriverNo']; ?>"
-                                                                type="text" readonly="readonly"></td>
+                                                                placeholder="Driver Number" name="DriverMobile"
+                                                                id="DriverMobile"
+                                                                value="<?php echo $row['DriverMobile']; ?>" type="text"
+                                                                readonly="readonly"></td>
                                                         <td><input class="form-control white_bg"
                                                                 placeholder="Driver Name" name="driver_name"
                                                                 id="driver_name" value="<?php echo $row['Driverid']; ?>"
