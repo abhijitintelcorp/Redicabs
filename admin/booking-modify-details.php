@@ -36,7 +36,7 @@ if (isset($_POST['update'])) {
     $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
     ContactNo='$ContactNo',address='$address',City='$City',SeatingCapacity='$SeatingCapacity',
     owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
-    FromDate='$FromDate',ToDate='$ToDate',TotalNoDays='$TotalNoDays',Categories='$Categories'
+    FromDate='$FromDate',ToDate='$ToDate',Time='$pickuptime',TotalNoDays='$TotalNoDays',Categories='$Categories'
       ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
       dropoff='$dropoff' WHERE id='$id'";
 
@@ -45,12 +45,12 @@ if (isset($_POST['update'])) {
         header("location:new-bookings.php");
     }
 }
-if (isset($_POST['owner_update_time'])) {
-    $Time = htmlspecialchars($_POST['Time']);
-    //$status = 3;
-    $upd_time = "UPDATE tblbooking SET `Time`='$Time' WHERE tblbooking.id='$id'";
-    $res_query = mysqli_query($conn, $upd_time);
-}
+// if (isset($_POST['owner_update_time'])) {
+//     $time = htmlspecialchars($_POST['time']);
+//     $status = 3;
+//     $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
+//     $res_query = mysqli_query($conn, $upd_time);
+// }
 
 ?>
 <!doctype html>
@@ -210,13 +210,14 @@ if (isset($_POST['owner_update_time'])) {
                                                 </tr>
                                                 <tr>
                                                     <th>PickUp Time</th>
-                                                    <td><input type="time" class="form-control" name="Time" id="Time"
-                                                            value="<?php echo $row['Time']; ?>" required>
-                                                        <button class="btn btn-primary pull-left"
-                                                            name="owner_update_time" type="submit">Change Pickup
-                                                            Time</button>
-                                                    </td>
-
+                                                    <td><input type="time" class="form-control" name="pickuptime"
+                                                            id="pickuptime" value="<?php echo $row['Time']; ?>"
+                                                            required></td>
+                                                    <!-- <td style="text-align:center" colspan="4">
+                                                            <button class="btn btn-primary pull-left"
+                                                                name="owner_update_time" type="submit">Change Pickup
+                                                                Time</button>
+                                                        </td> -->
                                                     <th>Booking Date</th>
                                                     <td><input type="text" class="form-control" name="CreatedDate"
                                                             id="CreatedDate" readonly="readonly"
