@@ -1,8 +1,6 @@
 <?php
 include("includes/config.php");
-if (strlen($_SESSION['EmailId']) == 0) {
-    header("location:login.php");
-} else {
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,34 +15,34 @@ if (strlen($_SESSION['EmailId']) == 0) {
     <div class="wrapper">
         <?php include('includes/sidebar.php'); ?>
 
+        <div class="content-wrapper">
+            <section class="content" style="margin-left: -251px;">
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="page-title">Canceled Bookings</h2>
 
-                        <div class="card">
-                            <!-- /.card-header -->
-                            <div class="card-body" style="padding: 0px">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Booking No.</th>
-                                            <th>Vehicle</th>
-                                            <th>From Date</th>
-                                            <th>To Date</th>
-                                            <th>PickUp Time</th>
-                                            <th>Status</th>
-                                            <th>Posting Date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="page-title">Canceled Bookings</h2>
+                            <div class="panel panel-default">
+                                <div class="panel-body" style=" overflow-x:auto;">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Booking No.</th>
+                                                <th>VehicleName</th>
+                                                <th>From Date</th>
+                                                <th>To Date</th>
+                                                <th>PickUp Time</th>
+                                                <th>Drivername</th>
+                                                <th>DriverNo</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
 
-                                    <?php
+                                        <?php
                                         extract($_POST);
                                         $status = 2;
                                         $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
@@ -54,15 +52,22 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                             $cnt++;
                                         ?>
 
-                                    <tbody>
-                                        <tr>
-                                            <td><?php echo htmlentities($cnt); ?></td>
-                                            <td><?php echo $row['OwnerName'];  ?></td>
-                                            <td><?php echo $row['BookingNumber']; ?></td>
-                                            <td><?php echo htmlentities($row['FromDate']); ?></td>
-                                            <td><?php echo htmlentities($row['ToDate']); ?></td>
-                                            <td><?php echo htmlentities($row['Time']); ?></td>
-                                            <td><?php
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo htmlentities($cnt); ?></td>
+                                                <td><?php echo $row['OwnerName'];  ?></td>
+                                                <td><?php echo $row['BookingNumber']; ?></td>
+                                                <td><?php echo $row['owner_vehicle_name']; ?></td>
+                                                <td><?php echo $row['FromDate']; ?></td>
+                                                <td><?php echo $row['ToDate']; ?> </td>
+                                                </td>
+                                                <td><?php echo $row['Time']; ?>
+                                                </td>
+                                                <td><?php echo $row['DriverName']; ?>
+                                                </td>
+                                                <td><?php echo $row['DriverMobile']; ?>
+                                                </td>
+                                                <td><?php
                                                         if ($row['Status'] == 0) {
                                                             echo htmlentities('Not Confirmed yet');
                                                         } else if ($row['Status'] == 1) {
@@ -71,20 +76,15 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                             echo htmlentities('Cancelled');
                                                         }
                                                         ?></td>
-                                            <td><?php echo $row['CreatedDate']; ?></td>
-                                            <td>
 
-
-                                                <!-- <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
-                                                        View</a> -->
-
-                                            </td>
-
-                                        </tr>
-                                        <?php $cnt = $cnt + 1;
+                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
+                                                </td>
+                                            </tr>
+                                            <?php $cnt = $cnt + 1;
                                         } ?>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -93,16 +93,16 @@ if (strlen($_SESSION['EmailId']) == 0) {
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+        </div>
+        <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
     </div>
     <!-- ./wrapper -->
     <?php
-        include("includes/footerlink.php");
-        ?>
+    include("includes/footerlink.php");
+    ?>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -145,6 +145,6 @@ if (strlen($_SESSION['EmailId']) == 0) {
     });
     </script>
 </body>
-<?php } ?>
+<?php  ?>
 
 </html>
