@@ -31,6 +31,8 @@ if (isset($_POST['update'])) {
     $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
+    $total =    htmlspecialchars($_POST['total']);
+    //($_POST['TotalNoDays'] * $_POST['PricePerDay']);
     $id = $_GET['bid'];
 
     $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
@@ -38,20 +40,13 @@ if (isset($_POST['update'])) {
     owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
     FromDate='$FromDate',ToDate='$ToDate',Time='$pickuptime',TotalNoDays='$TotalNoDays',Categories='$Categories'
       ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
-      dropoff='$dropoff' WHERE id='$id'";
+      dropoff='$dropoff',Total='$total' WHERE id='$id'";
 
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
         header("location:new-bookings.php");
     }
 }
-// if (isset($_POST['owner_update_time'])) {
-//     $time = htmlspecialchars($_POST['time']);
-//     $status = 3;
-//     $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
-//     $res_query = mysqli_query($conn, $upd_time);
-// }
-
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
