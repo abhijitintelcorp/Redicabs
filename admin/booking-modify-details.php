@@ -3,7 +3,14 @@ session_start();
 //error_reporting(0);
 include("includes/config.php");
 $id = $_GET['bid'];
-
+function dateDiff($FromDate, $ToDate)
+{
+    $date1_ts = strtotime($FromDate);
+    $date2_ts = strtotime($ToDate);
+    $si = 1;
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400) + 1;
+}
 if (isset($_POST['update'])) {
     $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
     $UserName = htmlspecialchars($_POST['UserName']);
@@ -18,8 +25,8 @@ if (isset($_POST['update'])) {
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
     $pickuptime = htmlspecialchars($_POST['pickuptime']);
-    $TotalNoDays = htmlspecialchars($_POST['TotalNoDays']);
-
+    $TotalNoDays = dateDiff($FromDate, $ToDate);
+    $Categories = htmlspecialchars($_POST['Categories']);
     $DriverName = htmlspecialchars($_POST['DriverName']);
     $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
     $pickup = htmlspecialchars($_POST['pickup']);
@@ -28,8 +35,8 @@ if (isset($_POST['update'])) {
 
     $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
     ContactNo='$ContactNo',address='$address',City='$City',SeatingCapacity='$SeatingCapacity',
-    owner_vehicle_brand ='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
-    FromDate='$FromDate',ToDate='$ToDate',TotalNoDays='$TotalNoDays'
+    owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
+    FromDate='$FromDate',ToDate='$ToDate',TotalNoDays='$TotalNoDays',Categories='$Categories'
       ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
       dropoff='$dropoff' WHERE id='$id'";
 
@@ -38,12 +45,12 @@ if (isset($_POST['update'])) {
         header("location:new-bookings.php");
     }
 }
-// if (isset($_POST['owner_update_time'])) {
-//     $time = htmlspecialchars($_POST['time']);
-//     $status = 3;
-//     $upd_time = "UPDATE tblbooking SET `Time`='$time',`Status`='$status' WHERE tblbooking.id='$user_id'";
-//     $res_query = mysqli_query($conn, $upd_time);
-// }
+if (isset($_POST['owner_update_time'])) {
+    $Time = htmlspecialchars($_POST['Time']);
+    //$status = 3;
+    $upd_time = "UPDATE tblbooking SET `Time`='$Time' WHERE tblbooking.id='$id'";
+    $res_query = mysqli_query($conn, $upd_time);
+}
 
 ?>
 <!doctype html>
@@ -174,10 +181,9 @@ if (isset($_POST['update'])) {
                                                         </select>
                                                     </td>
 
-                                                    <th>Booking Date</th>
-                                                    <td><input type="text" class="form-control" name="CreatedDate"
-                                                            id="CreatedDate" readonly="readonly"
-                                                            value="<?php echo $row['RegDate']; ?>" required>
+                                                    <th>Categories</th>
+                                                    <td><input type="text" class="form-control" name="Categories"
+                                                            id="Categories" value="<?php echo $row['Categories']; ?>">
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -204,14 +210,18 @@ if (isset($_POST['update'])) {
                                                 </tr>
                                                 <tr>
                                                     <th>PickUp Time</th>
-                                                    <td><input type="time" class="form-control" name="pickuptime"
-                                                            id="pickuptime" value="<?php echo $row['Time']; ?>"
-                                                            required></td>
-                                                    <!-- <td style="text-align:center" colspan="4">
-                                                            <button class="btn btn-primary pull-left"
-                                                                name="owner_update_time" type="submit">Change Pickup
-                                                                Time</button>
-                                                        </td> -->
+                                                    <td><input type="time" class="form-control" name="Time" id="Time"
+                                                            value="<?php echo $row['Time']; ?>" required>
+                                                        <button class="btn btn-primary pull-left"
+                                                            name="owner_update_time" type="submit">Change Pickup
+                                                            Time</button>
+                                                    </td>
+
+                                                    <th>Booking Date</th>
+                                                    <td><input type="text" class="form-control" name="CreatedDate"
+                                                            id="CreatedDate" readonly="readonly"
+                                                            value="<?php echo $row['RegDate']; ?>" required>
+                                                    </td>
                                                 </tr>
 
                                                 <tr>
@@ -493,6 +503,19 @@ if (isset($_POST['update'])) {
             },
             success: function(data) {
                 $('#owner_mobile').val(data);
+            }
+        });
+    });
+    $('#VehicleName').on('change', function() {
+        var owner_vehicle_name = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: 'get-categories.php',
+            data: {
+                owner_vehicle_name: owner_vehicle_name
+            },
+            success: function(data) {
+                $('#Categories').val(data);
             }
         });
     });
