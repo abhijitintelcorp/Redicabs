@@ -25,7 +25,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
 
         $query = "UPDATE tblbooking SET Status=:status WHERE  id='$id'";
         $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_array($result);
+        // $row = mysqli_fetch_array($result);
         echo "<script>alert('Booking Successfully Confirmed');</script>";
         echo "<script type='text/javascript'> document.location = 'confirmed-bookings.php'; </script>";
     }
@@ -153,7 +153,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                             <?php if ($row['Status'] == 0) { ?>
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
-                                                    <a href="booking-details.php?id=<?php echo htmlentities($row['id']); ?>"
+                                                    <a href="booking-details.php?id=<?php echo htmlentities($row['bid']); ?>"
                                                         onclick="return confirm('Do you really want to Confirm this booking')"
                                                         class="btn btn-primary"> Confirm Booking</a>
 
