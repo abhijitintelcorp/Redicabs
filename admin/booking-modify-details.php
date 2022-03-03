@@ -47,6 +47,15 @@ if (isset($_POST['update'])) {
         header("location:new-bookings.php");
     }
 }
+if (isset($_POST['delayed'])) {
+    $pickuptime = htmlspecialchars($_POST['pickuptime']);
+    $status = 4;
+    $upd_time = "UPDATE tblbooking SET `Time`='$pickuptime',`Status`='$status' WHERE tblbooking.id='$id'";
+    $res_query = mysqli_query($conn, $upd_time);
+    if ($res_query) {
+        header("location:delayed-bookings.php");
+    }
+}
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -208,11 +217,7 @@ if (isset($_POST['update'])) {
                                                     <td><input type="time" class="form-control" name="pickuptime"
                                                             id="pickuptime" value="<?php echo $row['Time']; ?>"
                                                             required></td>
-                                                    <!-- <td style="text-align:center" colspan="4">
-                                                            <button class="btn btn-primary pull-left"
-                                                                name="owner_update_time" type="submit">Change Pickup
-                                                                Time</button>
-                                                        </td> -->
+
                                                     <th>Booking Date</th>
                                                     <td><input type="text" class="form-control" name="CreatedDate"
                                                             id="CreatedDate" readonly="readonly"
@@ -286,7 +291,10 @@ if (isset($_POST['update'])) {
                                                     <td style="text-align:center" colspan="4">
                                                         <button class="btn btn-primary" name="update"
                                                             type="submit">Update</button>
+                                                        <button class="btn btn-primary" name="delayed"
+                                                            type="submit">DelayedPickup</button>
                                                     </td>
+
                                                 </tr>
                                                 <?php } ?>
                                                 <?php $cnt = $cnt + 1;

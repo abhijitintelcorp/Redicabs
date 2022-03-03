@@ -124,7 +124,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                 <td><?php echo $row['ToDate']; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>PickUpTime</th>
+                                                <th>PickUpTime(Delayed)</th>
                                                 <td><?php echo $row['Time']; ?></td>
 
                                             </tr>
@@ -156,7 +156,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                             </tr>
 
                                             <?php if ($row['Status'] == 0) { ?>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td style="text-align:center" colspan="4">
                                                     <a href="booking-details.php?id=<?php echo htmlentities($row['id']); ?>"
                                                         onclick="return confirm('Do you really want to Confirm this booking')"
@@ -166,7 +166,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                         onclick="return confirm('Do you really want to Cancel this Booking')"
                                                         class="btn btn-danger"> Cancel Booking</a>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                             <?php } ?>
                                             <?php $cnt = $cnt + 1;
                                                     }
