@@ -483,8 +483,8 @@ if (isset($_POST['submit'])) {
         $("#dob").on('change', function() {
             var selectedDate = $(this).val();
             var todaysDate = new Date().ddmmyyyy();
-            if (selectedDate < todaysDate) {
-                alert('Selected date must be greater than today date');
+            if (selectedDate > todaysDate) {
+                alert('Selected date must be less than today date');
                 $(this).val('');
             }
         });

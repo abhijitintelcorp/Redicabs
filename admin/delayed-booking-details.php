@@ -142,13 +142,8 @@ if (strlen($_SESSION['EmailId']) == 0) {
 
                                             <tr>
                                                 <th>Booking Status</th>
-                                                <td><?php
-                                                                if ($row['Status'] == 0) {
-                                                                    echo htmlentities('Not Confirmed yet');
-                                                                } else if ($row['Status'] == 1) {
-                                                                    echo htmlentities('Confirmed');
-                                                                } else {
-                                                                    echo htmlentities('Cancelled');
+                                                <td><?php if ($row['Status'] == 4) {
+                                                                    echo htmlentities('DelayedPickup');
                                                                 }
                                                                 ?></td>
                                                 <th>Last updation Date</th>
@@ -156,17 +151,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                             </tr>
 
                                             <?php if ($row['Status'] == 0) { ?>
-                                            <!-- <tr>
-                                                <td style="text-align:center" colspan="4">
-                                                    <a href="booking-details.php?id=<?php echo htmlentities($row['id']); ?>"
-                                                        onclick="return confirm('Do you really want to Confirm this booking')"
-                                                        class="btn btn-primary"> Confirm Booking</a>
 
-                                                    <a href="booking-details.php?eid=<?php echo htmlentities($row['id']); ?>"
-                                                        onclick="return confirm('Do you really want to Cancel this Booking')"
-                                                        class="btn btn-danger"> Cancel Booking</a>
-                                                </td>
-                                            </tr> -->
                                             <?php } ?>
                                             <?php $cnt = $cnt + 1;
                                                     }
