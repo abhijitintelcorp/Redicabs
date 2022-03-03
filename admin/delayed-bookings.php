@@ -27,6 +27,7 @@ include("includes/config.php");
                                         <thead>
                                             <tr>
                                                 <th>SlNo</th>
+                                                <th>Name</th>
                                                 <th>BookingNo</th>
                                                 <th>VehicleName</th>
                                                 <th>FromDate</th>
@@ -58,7 +59,8 @@ include("includes/config.php");
                                             ?>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
-
+                                                <th><?php echo $row['UserName']; ?>
+                                                </th>
                                                 <th><?php echo $row['BookingNumber']; ?>
                                                 </th>
                                                 <th><?php echo $row['owner_vehicle_name']; ?>
