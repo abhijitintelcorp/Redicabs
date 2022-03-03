@@ -90,6 +90,8 @@ include("includes/config.php");
                                                             }
                                                             ?></td>
                                                 <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
+                                                <td><a
+                                                        href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">Edit</a>
                                                 </td>
                                             </tr>
                                         </tbody>

@@ -2,10 +2,6 @@
 session_start();
 error_reporting(0);
 include("includes/config.php");
-if (strlen($_SESSION['alogin']) == 0) {
-    header('location:index.php');
-} else {
-
 ?>
 
 <!doctype html>
@@ -16,20 +12,16 @@ if (strlen($_SESSION['alogin']) == 0) {
     <div class="wrapper">
 
         <?php include('includes/sidebar.php'); ?>
-
         <div class="content-wrapper">
             <section class="content" style="margin-left: -251px;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="page-title">ConfirmedBooking</h2>
+                            <h2 class="page-title">DelayedPickup</h2>
 
-                            <!-- <div class="card"> -->
-                            <!-- /.card-header -->
-                            <!-- <div class="card-body" style="padding: 0px;"> -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">Bookings Info</div>
-                                <div class="panel-body">
+                                <div class="panel-body" style=" overflow-x:auto;">
                                     <table id="zctb" class="display table table-striped table-bordered table-hover"
                                         cellspacing="0" width="100%">
                                         <thead>
@@ -50,20 +42,20 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <tbody>
 
                                             <?php
-                                                extract($_POST);
-                                                $status = 3;
-                                                date_default_timezone_set('Asia/Kolkata');
-                                                $date = date('h:i:s');
-                                                echo $time;
-                                                $query = "SELECT * from tblbooking where Status='$status'";
-                                                $query_run = mysqli_query($conn, $query);
-                                                $cnt = 1;
-                                                if (mysqli_num_rows($query_run) > 0) {
-                                                    while ($row = mysqli_fetch_array($query_run)) {
-                                                        $time = htmlspecialchars($_POST['Time']);
+                                            extract($_POST);
+                                            $status = 4;
+                                            date_default_timezone_set('Asia/Kolkata');
+                                            //$date = date('h:i:s');
+                                            echo $time;
+                                            $query = "SELECT * from tblbooking where Status='$status'";
+                                            $query_run = mysqli_query($conn, $query);
+                                            $count = 1;
+                                            if (mysqli_num_rows($query_run) > 0) {
+                                                while ($row = mysqli_fetch_array($query_run)) {
+                                                    $time = htmlspecialchars($_POST['Time']);
 
 
-                                                ?>
+                                            ?>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
 
@@ -75,7 +67,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </th>
                                                 <th><?php echo $row['ToDate']; ?>
                                                 </th>
-                                                <th><?php echo $row['pickuptime']; ?>
+                                                <th><?php echo $row['Time']; ?>
                                                 </th>
                                                 <th><?php echo $row['DriverName']; ?>
                                                 </th>
@@ -83,41 +75,42 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </th>
 
                                                 <td><?php
-                                                                if ($row['Status'] == 0) {
-                                                                    echo htmlentities('Not Confirmed yet');
-                                                                } else if ($row['Status'] == 1) {
-                                                                    echo htmlentities('Confirmed');
-                                                                } else if ($row['Status'] == 2) {
-                                                                    echo htmlentities('Cancelled');
-                                                                } else {
-                                                                    echo htmlentities('Delayed');
-                                                                }
-                                                                ?></td>
-                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
+                                                            if ($row['Status'] == 0) {
+                                                                echo htmlentities('Not Confirmed yet');
+                                                            } else if ($row['Status'] == 1) {
+                                                                echo htmlentities('Confirmed');
+                                                            } else if ($row['Status'] == 2) {
+                                                                echo htmlentities('Cancelled');
+                                                            } else {
+                                                                echo htmlentities('Delayed');
+                                                            }
+                                                            ?></td>
+                                                <td><a
+                                                        href="delayed-booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
                                                 </td>
                                             </tr>
-                                            <?php $cnt = $cnt + 1;
-                                                    }
+                                            <?php $count = $count + 1;
                                                 }
-                                                ?>
+                                            }
+                                            ?>
 
                                         </tbody>
                                     </table>
-
-
-
                                 </div>
                             </div>
-
-
-
                         </div>
-                    </div>
 
+
+
+                    </div>
                 </div>
+
         </div>
     </div>
-
+    </div>
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- Loading Scripts -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
@@ -131,4 +124,4 @@ if (strlen($_SESSION['alogin']) == 0) {
 </body>
 
 </html>
-<?php } ?>
+<?php  ?>

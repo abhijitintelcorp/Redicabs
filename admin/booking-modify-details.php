@@ -47,6 +47,15 @@ if (isset($_POST['update'])) {
         header("location:new-bookings.php");
     }
 }
+if (isset($_POST['delayed'])) {
+    $pickuptime = htmlspecialchars($_POST['pickuptime']);
+    $status = 4;
+    $upd_time = "UPDATE tblbooking SET `Time`='$pickuptime',`Status`='$status' WHERE tblbooking.id='$id'";
+    $res_query = mysqli_query($conn, $upd_time);
+    if ($res_query) {
+        header("location:delayed-bookings.php");
+    }
+}
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -159,6 +168,7 @@ if (isset($_POST['update'])) {
                                                                 </select>
                                                             </td>
 
+<<<<<<< HEAD
                                                             <th>Categories</th>
                                                             <td><input type="text" class="form-control" name="Categories" id="Categories" value="<?php echo $row['Categories']; ?>">
                                                             </td>
@@ -191,6 +201,47 @@ if (isset($_POST['update'])) {
                                                             <td><input type="text" class="form-control" name="CreatedDate" id="CreatedDate" readonly="readonly" value="<?php echo $row['RegDate']; ?>" required>
                                                             </td>
                                                         </tr>
+=======
+                                                    <th>Categories</th>
+                                                    <td><input type="text" class="form-control" name="Categories"
+                                                            id="Categories" value="<?php echo $row['Categories']; ?>">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PickUp</th>
+                                                    <td><input type="text" class="form-control" name="pickup"
+                                                            id="pickup" value="<?php echo $row['pickup']; ?>">
+                                                    </td>
+                                                    <th>DropOff</th>
+                                                    <td><input type="text" class="form-control" name="dropoff"
+                                                            id="dropoff" value="<?php echo $row['dropoff']; ?>">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>From Date</th>
+                                                    <td><input type="date" class="form-control" id="datepicker"
+                                                            name="FromDate" placeholder="From Date"
+                                                            value="<?php echo $row['FromDate']; ?>" required>
+                                                    </td>
+                                                    <th>To Date</th>
+                                                    <td><input type="date" class="form-control" id="datepicker"
+                                                            name="ToDate" placeholder="To Date"
+                                                            value="<?php echo $row['ToDate']; ?>" required>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>PickUp Time</th>
+                                                    <td><input type="time" class="form-control" name="pickuptime"
+                                                            id="pickuptime" value="<?php echo $row['Time']; ?>"
+                                                            required></td>
+
+                                                    <th>Booking Date</th>
+                                                    <td><input type="text" class="form-control" name="CreatedDate"
+                                                            id="CreatedDate" readonly="readonly"
+                                                            value="<?php echo $row['RegDate']; ?>" required>
+                                                    </td>
+                                                </tr>
+>>>>>>> pragyan
 
                                                         <tr>
                                                             <th>Total Days</th>
@@ -239,11 +290,23 @@ if (isset($_POST['update'])) {
                                                     <?php } ?>
 
 
+<<<<<<< HEAD
                                                     <tr>
                                                         <td style="text-align:center" colspan="4">
                                                             <button class="btn btn-primary" name="update" type="submit">Update</button>
                                                         </td>
                                                     </tr>
+=======
+                                                <tr>
+                                                    <td style="text-align:center" colspan="4">
+                                                        <button class="btn btn-primary" name="update"
+                                                            type="submit">Update</button>
+                                                        <button class="btn btn-primary" name="delayed"
+                                                            type="submit">DelayedPickup</button>
+                                                    </td>
+
+                                                </tr>
+>>>>>>> pragyan
                                                 <?php } ?>
                                                 <?php $cnt = $cnt + 1;
 

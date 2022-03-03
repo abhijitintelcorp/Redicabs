@@ -401,6 +401,8 @@ if (isset($_POST['submit'])) {
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
     </script>
@@ -410,6 +412,27 @@ if (isset($_POST['submit'])) {
     <script src="js/additional-methods.min.js">
     </script>
     <script src="js/jquary.min.js">
+    </script>
+    <script type="text/javascript">
+    $(function() {
+        Date.prototype.ddmmyyyy = function() {
+            var dd = this.getDate().toString();
+            var mm = (this.getMonth() + 1).toString();
+            var yyyy = this.getFullYear().toString();
+            return (dd[1] ? dd : "0" + dd[0]) + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + yyyy;
+        };
+        $("#dob").datepicker({
+            dateFormat: "dd-mm-yy"
+        });
+        $("#dob").on('change', function() {
+            var selectedDate = $(this).val();
+            var todaysDate = new Date().ddmmyyyy();
+            if (selectedDate > todaysDate) {
+                alert('Selected date must be less than today date');
+                $(this).val('');
+            }
+        });
+    });
     </script>
     <!-- Page specific script -->
     <!-- <script>
