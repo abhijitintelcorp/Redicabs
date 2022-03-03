@@ -91,7 +91,6 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                             <td colspan="3"><?php echo $row['Country']; ?></td>
                                                         </tr>
 
-<<<<<<< HEAD
                                                         <tr>
                                                             <th colspan="4" style="text-align:center;color:blue">Booking Details
                                                             </th>
@@ -124,47 +123,12 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                             <td><?php echo $row['ToDate']; ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <th>Total Days</th>
-=======
-                                            <tr>
-                                                <th colspan="4" style="text-align:center;color:blue">Booking Details
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th>Vehicle Name</th>
-                                                <td><?php echo $row['owner_vehicle_brand']; ?>
-                                                    / <?php echo $row['owner_vehicle_name']; ?></td>
-                                                <th>Booking Date</th>
-                                                <td><?php echo $row['RegDate']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>DriverName</th>
-                                                <td><?php echo $row['DriverName']; ?>
-                                                </td>
-                                                <th>DriverNumber</th>
-                                                <td><?php echo $row['DriverMobile']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>OwnerName</th>
-                                                <td><?php echo $row['OwnerName']; ?>
-                                                </td>
-                                                <th>OwnerNumber</th>
-                                                <td><?php echo $row['owner_mobile']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>From Date</th>
-                                                <td><?php echo $row['FromDate']; ?></td>
-                                                <th>To Date</th>
-                                                <td><?php echo $row['ToDate']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>PickUpTime</th>
-                                                <td><?php echo $row['Time']; ?></td>
+                                                            <th>PickUpTime</th>
+                                                            <td><?php echo $row['Time']; ?></td>
 
-                                            </tr>
-                                            <tr>
-                                                <th>Total Days</th>
->>>>>>> pragyan
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Total Days</th>
 
                                                             <td><?php echo htmlentities($tdays = $row['TotalNoDays']); ?></td>
                                                             <th>Rent Per Days</th>
