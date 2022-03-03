@@ -15,6 +15,7 @@ function dateDiff($FromDate, $ToDate)
     $diff = $date2_ts - $date1_ts;
     return round($diff / 86400) + 1;
 }
+
 if (isset($_POST['submit'])) {
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
@@ -414,25 +415,25 @@ if (isset($_POST['submit'])) {
     <script src="js/jquary.min.js">
     </script>
     <script type="text/javascript">
-    $(function() {
-        Date.prototype.ddmmyyyy = function() {
-            var dd = this.getDate().toString();
-            var mm = (this.getMonth() + 1).toString();
-            var yyyy = this.getFullYear().toString();
-            return (dd[1] ? dd : "0" + dd[0]) + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + yyyy;
-        };
-        $("#dob").datepicker({
-            dateFormat: "dd-mm-yy"
+        $(function() {
+            Date.prototype.ddmmyyyy = function() {
+                var dd = this.getDate().toString();
+                var mm = (this.getMonth() + 1).toString();
+                var yyyy = this.getFullYear().toString();
+                return (dd[1] ? dd : "0" + dd[0]) + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + yyyy;
+            };
+            $("#dob").datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+            $("#dob").on('change', function() {
+                var selectedDate = $(this).val();
+                var todaysDate = new Date().ddmmyyyy();
+                if (selectedDate > todaysDate) {
+                    alert('Selected date must be less than today date');
+                    $(this).val('');
+                }
+            });
         });
-        $("#dob").on('change', function() {
-            var selectedDate = $(this).val();
-            var todaysDate = new Date().ddmmyyyy();
-            if (selectedDate > todaysDate) {
-                alert('Selected date must be less than today date');
-                $(this).val('');
-            }
-        });
-    });
     </script>
     <!-- Page specific script -->
     <!-- <script>
