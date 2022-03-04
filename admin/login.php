@@ -1,9 +1,10 @@
 <?php
+include("includes/config.php");
 session_start();
 
 $message = "";
 if (count($_POST) > 0) {
-    $conn = mysqli_connect("localhost", "root", "", "redicabs") or die('Unable To connect');
+   
     $result = mysqli_query($conn, "SELECT * FROM tblbooking   WHERE EmailId='" . $_POST["EmailId"] . "' and Password = '" . $_POST["Password"] . "'");
     $row  = mysqli_fetch_array($result);
     if (is_array($row)) {
