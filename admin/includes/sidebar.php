@@ -1,7 +1,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index.php" class="brand-link">
-            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                style="opacity: .8">
             <span class="brand-text font-weight-light">RediCab</span>
         </a>
 
@@ -12,7 +13,8 @@
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                        aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-sidebar">
                             <i class="fas fa-search fa-fw"></i>
@@ -23,7 +25,8 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     <li class="nav-item ">
@@ -187,13 +190,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/add_feedback.php" class="nav-link">
+                                <a href="add_feedback.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>AddFeedback</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/manage_feedback.php" class="nav-link">
+                                <a href="manage_feedback.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>ManageFeedback</p>
                                 </a>
@@ -201,25 +204,25 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/testimonials.php" class="nav-link">
+                        <a href="testimonials.php" class="nav-link">
                             <i class="fa fa-table"></i>
                             <p>ManageTestimonials</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/manage-conactusquery.php" class="nav-link">
+                        <a href="manage-conactusquery.php" class="nav-link">
                             <i class="fa fa-desktop"></i>
                             <p>ManageContactusQuery</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/reg-users.php" class="nav-link">
+                        <a href="reg-users.php" class="nav-link">
                             <i class="fa fa-users"></i>
                             <p>RegUser</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/manage-pages.php" class="nav-link">
+                        <a href="manage-pages.php" class="nav-link">
                             <i class="fa-solid fa-file"></i>
                             <p>ManagePages</p>
                         </a>
@@ -231,7 +234,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/manage-subscribers.php" class="nav-link">
+                        <a href="manage-subscribers.php" class="nav-link">
                             <i class="fa fa-table"></i>
                             <p>ManageSubscriber</p>
                         </a>

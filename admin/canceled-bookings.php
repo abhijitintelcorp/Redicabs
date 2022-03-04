@@ -55,7 +55,7 @@ include("includes/config.php");
                                         <tbody>
                                             <tr>
                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['OwnerName'];  ?></td>
+                                                <td><?php echo $row['UserName'];  ?></td>
                                                 <td><?php echo $row['BookingNumber']; ?></td>
                                                 <td><?php echo $row['owner_vehicle_name']; ?></td>
                                                 <td><?php echo $row['FromDate']; ?></td>

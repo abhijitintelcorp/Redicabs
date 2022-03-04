@@ -15,6 +15,7 @@ function dateDiff($FromDate, $ToDate)
     $diff = $date2_ts - $date1_ts;
     return round($diff / 86400) + 1;
 }
+
 if (isset($_POST['submit'])) {
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
