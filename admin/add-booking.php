@@ -344,7 +344,7 @@ if (isset($_POST['submit'])) {
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label>CarFrontImage</label>
+                                                        <label>VehicleFrontImage</label>
 
 
                                                         <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
@@ -355,7 +355,7 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="customFile">CarBackImage</label>
+                                                        <label for="customFile">VehicleBackImage</label>
                                                         <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
                                                         <div id="backimage" name="backimage"></div>
                                                     </div>
@@ -414,25 +414,25 @@ if (isset($_POST['submit'])) {
     <script src="js/jquary.min.js">
     </script>
     <script type="text/javascript">
-    $(function() {
-        Date.prototype.ddmmyyyy = function() {
-            var dd = this.getDate().toString();
-            var mm = (this.getMonth() + 1).toString();
-            var yyyy = this.getFullYear().toString();
-            return (dd[1] ? dd : "0" + dd[0]) + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + yyyy;
-        };
-        $("#dob").datepicker({
-            dateFormat: "dd-mm-yy"
+        $(function() {
+            Date.prototype.ddmmyyyy = function() {
+                var dd = this.getDate().toString();
+                var mm = (this.getMonth() + 1).toString();
+                var yyyy = this.getFullYear().toString();
+                return (dd[1] ? dd : "0" + dd[0]) + "-" + (mm[1] ? mm : "0" + mm[0]) + "-" + yyyy;
+            };
+            $("#dob").datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+            $("#dob").on('change', function() {
+                var selectedDate = $(this).val();
+                var todaysDate = new Date().ddmmyyyy();
+                if (selectedDate > todaysDate) {
+                    alert('Selected date must be less than today date');
+                    $(this).val('');
+                }
+            });
         });
-        $("#dob").on('change', function() {
-            var selectedDate = $(this).val();
-            var todaysDate = new Date().ddmmyyyy();
-            if (selectedDate > todaysDate) {
-                alert('Selected date must be less than today date');
-                $(this).val('');
-            }
-        });
-    });
     </script>
     <!-- Page specific script -->
     <!-- <script>
