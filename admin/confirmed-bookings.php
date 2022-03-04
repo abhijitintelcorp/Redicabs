@@ -73,7 +73,7 @@ include("includes/config.php");
                                                 </th>
                                                 <th><?php echo $row['ToDate']; ?>
                                                 </th>
-                                                <th><?php echo $row['pickuptime']; ?>
+                                                <th><?php echo $row['Time']; ?>
                                                 </th>
                                                 <th><?php echo $row['DriverName']; ?>
                                                 </th>
