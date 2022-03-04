@@ -84,11 +84,7 @@ if (isset($_POST['owner_submit'])) {
     }
     if ($res_query) {
         header("location:manageowner.php");
-<<<<<<< HEAD
-}
-=======
     }
->>>>>>> archana
 }
 ?>
 <!DOCTYPE html>
