@@ -84,46 +84,27 @@ include("includes/config.php");
                                             $count++;
                                         ?>
 
-<<<<<<< HEAD
                                         <tbody>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
-                                                <th><?php echo $row['Categories']; ?></th>
+                                                <th><?php echo $row['OwnerName']; ?></th>
+                                                <th><?php echo $row['owner_email']; ?></th>
+                                                <th><?php echo $row['DriverName']; ?></th>
+                                                <th><?php echo $row['DriverMobile']; ?></th>
+
                                                 <th><?php echo $row['SubCategories']; ?></th>
-                                                <th><?php echo $row['owner_vehicle_name']; ?></th>
-                                                <th><?php echo $row['owner_vehicle_no']; ?></th>
-                                                <th><?php echo $row['owner_vehicle_RCno']; ?></th>
+                                                <!-- <th><?php echo $row['owner_vehicle_name']; ?></th> -->
+                                                <!-- <th><?php echo $row['owner_vehicle_no']; ?></th>
+                                                    <th><?php echo $row['owner_vehicle_RCno']; ?></th> -->
                                                 <th><?php echo $row['owner_vehicle_chesis_no']; ?></th>
                                                 <!-- <th><?php echo $row['DriverName']; ?></th>
-=======
-                                            <tbody>
-                                                <tr>
-                                                    <td><?php echo $count; ?></td>
-                                                    <th><?php echo $row['OwnerName']; ?></th>
-                                                    <th><?php echo $row['owner_email']; ?></th>
-                                                    <th><?php echo $row['DriverName']; ?></th>
-                                                    <th><?php echo $row['DriverMobile']; ?></th>
-
-                                                    <th><?php echo $row['SubCategories']; ?></th>
-                                                    <!-- <th><?php echo $row['owner_vehicle_name']; ?></th> -->
-                                                    <!-- <th><?php echo $row['owner_vehicle_no']; ?></th>
-                                                    <th><?php echo $row['owner_vehicle_RCno']; ?></th> -->
-                                                    <th><?php echo $row['owner_vehicle_chesis_no']; ?></th>
-                                                    <!-- <th><?php echo $row['DriverName']; ?></th>
->>>>>>> archana
                                                 <th><?php echo $row['DriverMobile']; ?></th>
                                                 <th><?php echo $row['Driver_DL_No']; ?></th>
                                                 <th><?php echo $row['PricePerDay']; ?></th>
                                                 <th><?php echo $row['SeatingCapacity']; ?></th> -->
-<<<<<<< HEAD
-                                                <th><?php echo $row['OwnerName']; ?></th>
-                                                <th><?php echo $row['owner_mobile'] ?></th>
+                                                <th><?php echo $row['Categories']; ?></th>
+                                                <!-- <th><?php echo $row['owner_mobile'] ?></th> -->
                                                 <!-- <th><img src="images/<?php echo $row['frontimage']; ?>" width="30"
-=======
-                                                    <th><?php echo $row['Categories']; ?></th>
-                                                    <!-- <th><?php echo $row['owner_mobile'] ?></th> -->
-                                                    <!-- <th><img src="images/<?php echo $row['frontimage']; ?>" width="30"
->>>>>>> archana
                                                         height="30" alt=""></th>
                                                 <th><img src="images/<?php echo $row['backimage']; ?>" width="30"
                                                         height="30" alt=""></th>
