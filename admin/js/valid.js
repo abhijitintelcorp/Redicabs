@@ -27,6 +27,7 @@ $(document).ready(function() {
             },
             Dno: {
                 required: true,
+                maxlength: 10,
             },
             seat: {
                 required: true,
@@ -46,6 +47,7 @@ $(document).ready(function() {
             },
             ownno: {
                 required: true,
+                maxlength: 10,
             },
             email: {
                 required: true,
@@ -79,6 +81,7 @@ $(document).ready(function() {
             },
             Dno: {
                 required: "<b style='color:red'>Please enter your Driver Number</b>",
+                Dno: "<b style='color:red'>Please Enter numerical values Only</b>",
             },
             seat: {
                 required: "<b style='color:red'>Please enter your Sitting Capacity </b>",
@@ -98,6 +101,7 @@ $(document).ready(function() {
             },
             ownno: {
                 required: "<b style='color:red'>Please enter Owner Number</b>",
+                ownno: "<b style='color:red'>Please Enter numerical values Only</b>",
             },
             email: {
                 required: "<b style='color:red'>Please enter Email Id</b>",
@@ -151,6 +155,7 @@ $(document).ready(function() {
             },
             Dno: {
                 required: true,
+                maxlength: 10,
             },
             seat: {
                 required: true,
@@ -170,6 +175,7 @@ $(document).ready(function() {
             },
             ownno: {
                 required: true,
+                maxlength: 10,
             },
             email: {
                 required: true,
@@ -203,6 +209,7 @@ $(document).ready(function() {
             },
             Dno: {
                 required: "<b style='color:red'>Please enter your Driver Number</b>",
+                Dno: "<b style='color:red'>Please Enter numerical values Only</b>",
             },
             seat: {
                 required: "<b style='color:red'>Please enter your Sitting Capacity </b>",
@@ -222,6 +229,7 @@ $(document).ready(function() {
             },
             ownno: {
                 required: "<b style='color:red'>Please enter Owner Number</b>",
+                ownno: "<b style='color:red'>Please Enter numerical values Only</b>",
             },
             email: {
                 required: "<b style='color:red'>Please enter Email Id</b>",

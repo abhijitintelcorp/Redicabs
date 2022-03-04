@@ -48,20 +48,25 @@ include("includes/config.php");
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>count</th>
+                                                <th>Sl.No</th>
+                                                <th>Owner Name</th>
+                                                <th>Owner mail</th>
+                                                <th>Driver Name</th>
+                                                <th>Driver No.</th>
+
+                                                <th>Brand Name</th>
+                                                <th>Vehicle Name</th>
                                                 <th>Category Name</th>
-                                                <th>BrandName</th>
-                                                <th>VehicleName</th>
-                                                <th>VehicleNumber</th>
-                                                <th>VehicleRCnumber</th>
-                                                <th>VehicleChesisNumber</th>
+                                                <!-- <th>VehicleNumber</th> -->
+                                                <!-- <th>VehicleRCnumber</th>
+                                                <th>VehicleChesisNumber</th> -->
                                                 <!-- <th>DriverName</th>
                                                 <th>DriverNumber</th>
                                                 <th>DriverDLNo</th>
                                                 <th>Price</th>
                                                 <th>seat</th> -->
-                                                <th>OwnerName</th>
-                                                <th>OwnerNumber</th>
+
+                                                <!-- <th>OwnerNumber</th> -->
                                                 <!-- <th>frontimage</th>
                                                 <th>backimage</th>
                                                 <th>DLimage</th>
@@ -79,6 +84,7 @@ include("includes/config.php");
                                             $count++;
                                         ?>
 
+<<<<<<< HEAD
                                         <tbody>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
@@ -89,13 +95,35 @@ include("includes/config.php");
                                                 <th><?php echo $row['owner_vehicle_RCno']; ?></th>
                                                 <th><?php echo $row['owner_vehicle_chesis_no']; ?></th>
                                                 <!-- <th><?php echo $row['DriverName']; ?></th>
+=======
+                                            <tbody>
+                                                <tr>
+                                                    <td><?php echo $count; ?></td>
+                                                    <th><?php echo $row['OwnerName']; ?></th>
+                                                    <th><?php echo $row['owner_email']; ?></th>
+                                                    <th><?php echo $row['DriverName']; ?></th>
+                                                    <th><?php echo $row['DriverMobile']; ?></th>
+
+                                                    <th><?php echo $row['SubCategories']; ?></th>
+                                                    <!-- <th><?php echo $row['owner_vehicle_name']; ?></th> -->
+                                                    <!-- <th><?php echo $row['owner_vehicle_no']; ?></th>
+                                                    <th><?php echo $row['owner_vehicle_RCno']; ?></th> -->
+                                                    <th><?php echo $row['owner_vehicle_chesis_no']; ?></th>
+                                                    <!-- <th><?php echo $row['DriverName']; ?></th>
+>>>>>>> archana
                                                 <th><?php echo $row['DriverMobile']; ?></th>
                                                 <th><?php echo $row['Driver_DL_No']; ?></th>
                                                 <th><?php echo $row['PricePerDay']; ?></th>
                                                 <th><?php echo $row['SeatingCapacity']; ?></th> -->
+<<<<<<< HEAD
                                                 <th><?php echo $row['OwnerName']; ?></th>
                                                 <th><?php echo $row['owner_mobile'] ?></th>
                                                 <!-- <th><img src="images/<?php echo $row['frontimage']; ?>" width="30"
+=======
+                                                    <th><?php echo $row['Categories']; ?></th>
+                                                    <!-- <th><?php echo $row['owner_mobile'] ?></th> -->
+                                                    <!-- <th><img src="images/<?php echo $row['frontimage']; ?>" width="30"
+>>>>>>> archana
                                                         height="30" alt=""></th>
                                                 <th><img src="images/<?php echo $row['backimage']; ?>" width="30"
                                                         height="30" alt=""></th>
@@ -129,7 +157,9 @@ include("includes/config.php");
         </div>
     </div>
     <!-- ./wrapper -->
-
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
