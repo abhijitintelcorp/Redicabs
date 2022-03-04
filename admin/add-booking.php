@@ -345,7 +345,7 @@ if (isset($_POST['submit'])) {
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label>CarFrontImage</label>
+                                                        <label>VehicleFrontImage</label>
 
 
                                                         <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
@@ -356,7 +356,7 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="customFile">CarBackImage</label>
+                                                        <label for="customFile">VehicleBackImage</label>
                                                         <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
                                                         <div id="backimage" name="backimage"></div>
                                                     </div>
