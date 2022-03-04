@@ -185,7 +185,6 @@ if (isset($_POST['delayed'])) {
                                                         </select>
                                                     </td>
 
-<<<<<<< HEAD
                                                     <th>Categories</th>
                                                     <td><input type="text" class="form-control" name="Categories"
                                                             id="Categories" value="<?php echo $row['Categories']; ?>">
@@ -225,36 +224,6 @@ if (isset($_POST['delayed'])) {
                                                             value="<?php echo $row['RegDate']; ?>" required>
                                                     </td>
                                                 </tr>
-=======
-                                                            <th>Categories</th>
-                                                            <td><input type="text" class="form-control" name="Categories" id="Categories" value="<?php echo $row['Categories']; ?>">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>PickUp</th>
-                                                            <td><input type="text" class="form-control" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>">
-                                                            </td>
-                                                            <th>DropOff</th>
-                                                            <td><input type="text" class="form-control" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>">
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>From Date</th>
-                                                            <td><input type="date" class="form-control" id="datepicker" name="FromDate" placeholder="From Date" value="<?php echo $row['FromDate']; ?>" required>
-                                                            </td>
-                                                            <th>To Date</th>
-                                                            <td><input type="date" class="form-control" id="datepicker" name="ToDate" placeholder="To Date" value="<?php echo $row['ToDate']; ?>" required>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>PickUp Time</th>
-                                                            <td><input type="time" class="form-control" name="pickuptime" id="pickuptime" value="<?php echo $row['Time']; ?>" required></td>
-
-                                                            <th>Booking Date</th>
-                                                            <td><input type="text" class="form-control" name="CreatedDate" id="CreatedDate" readonly="readonly" value="<?php echo $row['RegDate']; ?>" required>
-                                                            </td>
-                                                        </tr>
->>>>>>> archana
 
                                                 <tr>
                                                     <th>Total Days</th>
@@ -318,7 +287,6 @@ if (isset($_POST['delayed'])) {
                                                 <?php } ?>
 
 
-<<<<<<< HEAD
                                                 <tr>
                                                     <td style="text-align:center" colspan="4">
                                                         <button class="btn btn-primary" name="update"
@@ -328,15 +296,6 @@ if (isset($_POST['delayed'])) {
                                                     </td>
 
                                                 </tr>
-=======
-                                                    <tr>
-                                                        <td style="text-align:center" colspan="4">
-                                                            <button class="btn btn-primary" name="update" type="submit">Update</button>
-                                                            <button class="btn btn-primary" name="delayed" type="submit">DelayedPickup</button>
-                                                        </td>
-
-                                                    </tr>
->>>>>>> archana
                                                 <?php } ?>
                                                 <?php $cnt = $cnt + 1;
 
