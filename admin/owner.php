@@ -85,8 +85,6 @@ if (isset($_POST['owner_submit'])) {
     if ($res_query) {
         header("location:manageowner.php");
         echo "success";
-    } else {
-        echo "error";
     }
 }
 ?>
@@ -249,62 +247,58 @@ if (isset($_POST['owner_submit'])) {
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
-                                                <!-- text input -->
                                                 <div class="form-group">
-                                                    <label for="customFile">Upload Owner AdharCard</label>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="Adharimage1" name="Adharimage1" required>
-                                                        <label class="custom-file-label" for="customFile">Choose
-                                                            file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- input states -->
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="customFile">Upload Driver Driving licence</label>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="DLimage" name="DLimage" required>
-                                                        <label class="custom-file-label" for="customFile">Choose
-                                                            file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="customFile">Upload Driver AdharCard</label>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="Adharimage" name="Adharimage" required>
-                                                        <label class="custom-file-label" for="customFile">Choose
-                                                            file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="customFile">Car Front Image</label>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="frontimage" name="frontimage" required>
-                                                        <label class="custom-file-label" for="customFile">Choose
-                                                            file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="customFile">Car Back Image</label>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="backimage" name="backimage" required>
-                                                        <label class="custom-file-label" for="customFile">Choose
-                                                            file</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    <div class="col-sm-18">
+                                                        <label class="col-sm-10 control-label">Upload Owner
+                                                            AdharCard</label>
 
+                                                        <input type="file" class="form-control" name="Adharimage1" id="Adharimage1" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-18">
+                                                        <label class="col-sm-10 control-label">Upload Driver Driving
+                                                            licence</label>
+
+                                                        <input type="file" class="form-control" name="DLimage" id="DLimage" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-18">
+                                                        <label class="col-sm-10 control-label">Upload Driver
+                                                            AdharCard</label>
+
+                                                        <input type="file" class="form-control" name="Adharimage" id="Adharimage" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-18">
+                                                        <label class="col-sm-10 control-label">Front Image</label>
+
+                                                        <input type="file" class="form-control" name="frontimage" id="frontimage" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-18">
+                                                        <label class="col-sm-10 control-label">Back Image </label>
+
+                                                        <input type="file" class="form-control" name="backimage" id="backimage" required>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary" name="owner_submit">Submit</button>
