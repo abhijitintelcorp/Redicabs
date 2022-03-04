@@ -52,7 +52,6 @@ include("includes/config.php");
                                                 <th>To Date</th>
                                                 <th>PickUp Time</th>
                                                 <th>Status</th>
-                                                <th>Posting Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -85,7 +84,7 @@ include("includes/config.php");
                                                             echo htmlentities('Cancelled');
                                                         }
                                                         ?></td>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
+
                                                 <td>
 
 
