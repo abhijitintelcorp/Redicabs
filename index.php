@@ -932,3 +932,8 @@ include("includes/header.php");
         });
     });
 </script>
+<script>
+    function PopUp(){
+    document.getElementById('signup_form').style.display="none"; 
+}
+</script>
