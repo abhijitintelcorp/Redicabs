@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }

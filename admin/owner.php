@@ -84,10 +84,7 @@ if (isset($_POST['owner_submit'])) {
     }
     if ($res_query) {
         header("location:manageowner.php");
-        echo "success";
-    } else {
-        echo "error";
-    }
+}
 }
 ?>
 <!DOCTYPE html>
