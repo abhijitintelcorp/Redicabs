@@ -514,16 +514,6 @@ if (isset($_POST['submit'])) {
         };
     });
     </script> -->
-    <script>
-    $(function() {
-        $('#pickuptime').datetimepicker({
-            format: ' HH:mm',
-            minDate: moment().add(1, 'h'),
-            enabledHours: [10, 11, 12, 13, 14, 15, 16, 17]
-        });
-
-    });
-    </script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {
