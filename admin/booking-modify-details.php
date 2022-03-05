@@ -197,6 +197,8 @@ if (isset($_POST['delayed'])) {
                                                             </td>
                                                         </tr>
 
+
+
                                                         <tr>
                                                             <th>Total Days</th>
                                                             <td><input type="text" class="form-control" name="TotalNoDays" id="TotalNoDays" value="<?php echo $row['TotalNoDays']; ?>" required>
@@ -251,6 +253,8 @@ if (isset($_POST['delayed'])) {
                                                         </td>
 
                                                     </tr>
+
+
                                                 <?php } ?>
                                                 <?php $cnt = $cnt + 1;
 

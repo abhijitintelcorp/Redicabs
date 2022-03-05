@@ -4,7 +4,7 @@ session_start();
 
 $message = "";
 if (count($_POST) > 0) {
-   
+
     $result = mysqli_query($conn, "SELECT * FROM tblbooking   WHERE EmailId='" . $_POST["EmailId"] . "' and Password = '" . $_POST["Password"] . "'");
     $row  = mysqli_fetch_array($result);
     if (is_array($row)) {
@@ -28,7 +28,8 @@ if (isset($_SESSION["EmailId"])) {
     <title>AdminLTE 3 | Log in</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- icheck bootstrap -->
@@ -62,7 +63,8 @@ if (isset($_SESSION["EmailId"])) {
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Password" name="Password" id="Password">
+                            <input type="password" class="form-control" placeholder="Password" name="Password"
+                                id="Password">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -73,7 +75,8 @@ if (isset($_SESSION["EmailId"])) {
 
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block" style=" display: flex;" name="btnsubmit">Sign In</button>
+                                <button type="submit" class="btn btn-primary btn-block" style=" display: flex;"
+                                    name="btnsubmit">Sign In</button>
                             </div>
                             <!-- /.col -->
                         </div>

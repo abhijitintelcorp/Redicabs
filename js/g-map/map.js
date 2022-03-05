@@ -5,15 +5,15 @@ function initialize() {
   directionsDisplay = new google.maps.DirectionsRenderer();
   var mapOptions = {
     zoom: 12,
-	scrollwheel: false,
+	scrollwheel: true,
     center: new google.maps.LatLng(20.9517, 85.0985)
   };
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('directions-panel'));
-  var control = document.getElementById('control');
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+ //  var control = document.getElementById('control');
+ // map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 }
 function calcRoute() {
   var start = document.getElementById('start').value;
