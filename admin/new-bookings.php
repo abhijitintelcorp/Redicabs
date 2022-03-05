@@ -40,9 +40,11 @@ include("includes/config.php");
                             <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
                             <!-- <input name="Submit" type="submit" class="txtbox4" value="Add Booking"
                                 href="add-booking.php" /> -->
+                                <div style="margin-left:90%">
                             <a href="add-booking.php">
-                                <input type="submit" value="Add Booking" style="background-color: lightblue;" />
+                                <button class="btn-danger">Add Booking</button>
                             </a>
+                                </div><br>
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body" style="padding: 0px">
