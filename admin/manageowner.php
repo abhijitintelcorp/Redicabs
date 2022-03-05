@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+
+?>
+<?php
 include("includes/config.php");
 ?>
 <!DOCTYPE html>
@@ -41,20 +48,25 @@ include("includes/config.php");
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>count</th>
+                                                <th>Sl.No</th>
+                                                <th>Owner Name</th>
+                                                <th>Owner mail</th>
+                                                <th>Driver Name</th>
+                                                <th>Driver No.</th>
+
+                                                <th>Brand Name</th>
+                                                <th>Vehicle Name</th>
                                                 <th>Category Name</th>
-                                                <th>BrandName</th>
-                                                <th>VehicleName</th>
-                                                <th>VehicleNumber</th>
-                                                <th>VehicleRCnumber</th>
-                                                <th>VehicleChesisNumber</th>
+                                                <!-- <th>VehicleNumber</th> -->
+                                                <!-- <th>VehicleRCnumber</th>
+                                                <th>VehicleChesisNumber</th> -->
                                                 <!-- <th>DriverName</th>
                                                 <th>DriverNumber</th>
                                                 <th>DriverDLNo</th>
                                                 <th>Price</th>
                                                 <th>seat</th> -->
-                                                <th>OwnerName</th>
-                                                <th>OwnerNumber</th>
+
+                                                <!-- <th>OwnerNumber</th> -->
                                                 <!-- <th>frontimage</th>
                                                 <th>backimage</th>
                                                 <th>DLimage</th>
@@ -65,30 +77,34 @@ include("includes/config.php");
                                         </thead>
 
                                         <?php
-                                        $retrive_qyr = "SELECT * FROM tblbooking";
+                                        $retrive_qyr = "SELECT * FROM tblbooking WHERE status='3'";
                                         $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
                                         $count = 0;
                                         while ($row = mysqli_fetch_array($retrive_fn_query)) {
                                             $count++;
                                         ?>
 
-                                            <tbody>
-                                                <tr>
-                                                    <td><?php echo $count; ?></td>
-                                                    <th><?php echo $row['Categories']; ?></th>
-                                                    <th><?php echo $row['SubCategories']; ?></th>
-                                                    <th><?php echo $row['owner_vehicle_name']; ?></th>
-                                                    <th><?php echo $row['owner_vehicle_no']; ?></th>
-                                                    <th><?php echo $row['owner_vehicle_RCno']; ?></th>
-                                                    <th><?php echo $row['owner_vehicle_chesis_no']; ?></th>
-                                                    <!-- <th><?php echo $row['DriverName']; ?></th>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $count; ?></td>
+                                                <th><?php echo $row['OwnerName']; ?></th>
+                                                <th><?php echo $row['owner_email']; ?></th>
+                                                <th><?php echo $row['DriverName']; ?></th>
+                                                <th><?php echo $row['DriverMobile']; ?></th>
+
+                                                <th><?php echo $row['SubCategories']; ?></th>
+                                                <!-- <th><?php echo $row['owner_vehicle_name']; ?></th> -->
+                                                <!-- <th><?php echo $row['owner_vehicle_no']; ?></th>
+                                                    <th><?php echo $row['owner_vehicle_RCno']; ?></th> -->
+                                                <th><?php echo $row['owner_vehicle_chesis_no']; ?></th>
+                                                <!-- <th><?php echo $row['DriverName']; ?></th>
                                                 <th><?php echo $row['DriverMobile']; ?></th>
                                                 <th><?php echo $row['Driver_DL_No']; ?></th>
                                                 <th><?php echo $row['PricePerDay']; ?></th>
                                                 <th><?php echo $row['SeatingCapacity']; ?></th> -->
-                                                    <th><?php echo $row['OwnerName']; ?></th>
-                                                    <th><?php echo $row['owner_mobile'] ?></th>
-                                                    <!-- <th><img src="images/<?php echo $row['frontimage']; ?>" width="30"
+                                                <th><?php echo $row['Categories']; ?></th>
+                                                <!-- <th><?php echo $row['owner_mobile'] ?></th> -->
+                                                <!-- <th><img src="images/<?php echo $row['frontimage']; ?>" width="30"
                                                         height="30" alt=""></th>
                                                 <th><img src="images/<?php echo $row['backimage']; ?>" width="30"
                                                         height="30" alt=""></th>
@@ -98,9 +114,10 @@ include("includes/config.php");
                                                         height="30" alt=""></th>
                                                 <th><img src="images/<?php echo $row['own_adhar_image']; ?>" width="30"
                                                         height="30" alt=""></th> -->
-                                                    <td><a href="owner_update.php?id=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a></td>
-                                                </tr>
-                                            </tbody>
+                                                <td><a href="owner_update.php?id=<?php echo $row['id']; ?>"><i
+                                                            class="fa fa-edit"></i></a></td>
+                                            </tr>
+                                        </tbody>
                                         <?php
                                         }
                                         ?>
@@ -121,7 +138,9 @@ include("includes/config.php");
         </div>
     </div>
     <!-- ./wrapper -->
-
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -145,23 +164,23 @@ include("includes/config.php");
 
     <!-- Page specific script -->
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
         });
+    });
     </script>
 </body>
 

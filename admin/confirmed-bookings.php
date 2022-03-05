@@ -1,10 +1,18 @@
 <?php
+error_reporting(0);
 include("includes/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <?php include("includes/headerlink.php"); ?>
+
+<head>
+
+    <title>Redicabs | Confirmed Bookings </title>
+
+
+</head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -18,22 +26,26 @@ include("includes/config.php");
                         <div class="col-12">
                             <h2 class="page-title">ConfirmedBooking</h2>
 
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body" style="padding: 0px;">
-                                    <table id="example2" class="table table-bordered table-hover"
-                                        style="font-size: 1rem;">
+                            <!-- <div class="card"> -->
+                            <!-- /.card-header -->
+                            <!-- <div class="card-body" style="padding: 0px;"> -->
+                            <div class="panel panel-default">
+                                <!-- <div class="panel-heading">Bookings Info</div> -->
+                                <div class="panel-body" style=" overflow-x:auto;">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo</th>
+                                                <th>Name</th>
                                                 <th>BookingNo</th>
                                                 <th>VehicleName</th>
                                                 <th>FromDate</th>
                                                 <th>ToDate</th>
+                                                <th>PickupTime</th>
                                                 <th>Drivername</th>
                                                 <th>DriverNumber</th>
-                                                <th>OwnerName</th>
-                                                <th>OwnerNumber</th>
+
                                                 <th>Status</th>
                                                 <th>Action</th>
                                         </thead>
@@ -51,7 +63,8 @@ include("includes/config.php");
                                         <tbody>
                                             <tr>
                                                 <td><?php echo $count; ?></td>
-
+                                                <th><?php echo $row['UserName']; ?>
+                                                </th>
                                                 <th><?php echo $row['BookingNumber']; ?>
                                                 </th>
                                                 <th><?php echo $row['owner_vehicle_name']; ?>
@@ -60,14 +73,13 @@ include("includes/config.php");
                                                 </th>
                                                 <th><?php echo $row['ToDate']; ?>
                                                 </th>
+                                                <th><?php echo $row['Time']; ?>
+                                                </th>
                                                 <th><?php echo $row['DriverName']; ?>
                                                 </th>
                                                 <th><?php echo $row['DriverMobile']; ?>
                                                 </th>
-                                                <th><?php echo $row['OwnerName'] ?>
-                                                </th>
-                                                <th><?php echo $row['owner_mobile'] ?>
-                                                </th>
+
                                                 <td><?php
                                                             if ($row['Status'] == 0) {
                                                                 echo htmlentities('Not Confirmed yet');
@@ -79,8 +91,9 @@ include("includes/config.php");
                                                                 echo htmlentities('Delayed');
                                                             }
                                                             ?></td>
-                                                <td><a href="bookig-details.php?bid=<?php echo $row['id']; ?>"><i
-                                                            class="fa fa-edit"></i></a>
+                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
+                                                <td><a
+                                                        href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">Edit</a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -106,7 +119,9 @@ include("includes/config.php");
     </div>
     </div>
     <!-- ./wrapper -->
-
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -133,7 +148,7 @@ include("includes/config.php");
     <!-- AdminLTE for demo purposes -->
 
     <!-- Page specific script -->
-    <script>
+    <!-- <script>
     $(function() {
         $("#example1").DataTable({
             "responsive": true,
@@ -147,7 +162,7 @@ include("includes/config.php");
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
-            "searching": false,
+            "searching": true,
             "ordering": true,
             "info": true,
             "autoWidth": false,
@@ -155,6 +170,8 @@ include("includes/config.php");
         });
     });
     </script>
+
+
 </body>
 
 </html>

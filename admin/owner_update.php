@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
+?>
+<?php
 include("includes/config.php");
 $user_id = $_GET['id'];
 $u_query = "SELECT * FROM tblbooking WHERE id='$user_id'";
@@ -261,21 +267,19 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="form-group">
                                                 <label for="customFile">Car Front Image</label>
                                                 <img src="images/<?php echo $urows['frontimage']; ?>" style="width:20%;">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="frontimage" name="frontimage" required>
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        file</label>
+                                                <div>
+                                                    <input type="file" class="form-control" id="frontimage" name="frontimage" required>
+
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="customFile">Car Back Image</label>
+                                                <label for="customFile">Vehicle Back Image</label>
                                                 <img src="images/<?php echo $urows['backimage']; ?>" style="width:20%;">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="backimage" name="backimage" required>
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        file</label>
+                                                <div>
+                                                    <input type="file" class="form-control" id="backimage" name="backimage" required>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -283,10 +287,9 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="form-group">
                                                 <label for="customFile">Driver Driving licence image</label>
                                                 <img src="images/<?php echo $urows['DLimage']; ?>" style="width:20%;">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="DLimage" name="DLimage" required>
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        file</label>
+                                                <div>
+                                                    <input type="file" class="form-control" id="DLimage" name="DLimage" required>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -294,21 +297,20 @@ if (isset($_POST['owner_submit'])) {
                                             <div class="form-group">
                                                 <label for="customFile">Owner Adhar Image</label>
                                                 <img src="images/<?php echo $urows['own_adhar_image']; ?>" style="width:20%;">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="Adharimage" name="Adharimage" required>
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        file</label>
+                                                <div>
+                                                    <input type="file" id="Adharimage" class="form-control" name="Adharimage" required>
+
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="customFile">Driver Adhar image</label>
                                                 <img src="images/<?php echo $urows['Driver_Adhar_image']; ?>" style="width:20%;">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="Adharimage1" name="Adharimage1" required>
-                                                    <label class="custom-file-label" for="customFile">Choose
-                                                        file</label>
+                                                <div>
+                                                    <input type="file" class="form-control" id="Adharimage1" name="Adharimage1" required>
+
                                                 </div>
                                             </div>
                                         </div>

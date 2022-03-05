@@ -1,43 +1,10 @@
-<?php
-include("./admin/includes/config.php");
-if (isset($_POST['signup'])) {
-    $username = htmlspecialchars($_POST['username']);
-    $email = htmlspecialchars($_POST['email']);
-    $password = md5($_POST['password']);
-    // $confirmpassword = md5($_POST['confirmpassword']);
-    $sql = "INSERT INTO  tblbooking(UserName,EmailId,Password) VALUES('$username','$email','$password')";
-    $query = mysqli_query($conn, $sql);
-
-    $insert_id = mysqli_insert_id($conn);
-    if ($insert_id) {
-        echo "<script>alert('Registration successfull. Now you can login');</script>";
-    } else {
-        echo "<script>alert('Something went wrong. Please try again');</script>";
-    }
-}
-?>
-<script>
-function checkAvailability() {
-    $("#loaderIcon").show();
-    jQuery.ajax({
-        url: "check_availability.php",
-        data: 'emailid=' + $("#emailid").val(),
-        type: "POST",
-        success: function(data) {
-            $("#user-availability-status").html(data);
-            $("#loaderIcon").hide();
-        },
-        error: function() {}
-    });
-}
-</script>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>REDICAB| Registration Page</title>
+    <title>AdminLTE 3 | Registration Page</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -53,16 +20,16 @@ function checkAvailability() {
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="../../index2.html">Redicabs</a>
+            <a href="../../index2.html"><b>Admin</b>LTE</a>
         </div>
 
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
 
-                <form action="../../index.php" method="post">
+                <form action="../../index.html" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Full name" name="username">
+                        <input type="text" class="form-control" placeholder="Full name">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -70,7 +37,7 @@ function checkAvailability() {
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -78,7 +45,7 @@ function checkAvailability() {
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <input type="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -104,14 +71,25 @@ function checkAvailability() {
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-blockname" name="signup"> Register</button>
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
+                <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook mr-2"></i>
+                        Sign up using Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus mr-2"></i>
+                        Sign up using Google+
+                    </a>
+                </div>
 
-                <a href="login.php" class="text-center">I already have a membership</a>
+                <a href="login.html" class="text-center">I already have a membership</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->

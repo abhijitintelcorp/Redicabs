@@ -1,17 +1,20 @@
 <?php
+session_start();
+if (strlen($_SESSION['EmailId']) == 0) {
+    header("location:login.php");
+}
 include("includes/config.php");
 ?>
+<?php include("includes/headerlink.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<?php include("includes/headerlink.php"); ?>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
 
 
-        <?php include('includes/sidebar.php'); ?>
+        <?php include("includes/sidebar.php"); ?>
 
         <div class="content-wrapper">
             <section class="content-header">
@@ -34,7 +37,14 @@ include("includes/config.php");
                     <div class="row">
                         <div class="col-12">
                             <h2 class="page-title">Booking info</h2>
-                            <a href="add-booking.php"><span class="pull-right">Add Booking</span></a>
+                            <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
+                            <!-- <input name="Submit" type="submit" class="txtbox4" value="Add Booking"
+                                href="add-booking.php" /> -->
+                                <div style="margin-left:90%">
+                            <a href="add-booking.php">
+                                <button class="btn-danger">Add Booking</button>
+                            </a>
+                                </div><br>
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body" style="padding: 0px">
@@ -49,7 +59,6 @@ include("includes/config.php");
                                                 <th>To Date</th>
                                                 <th>PickUp Time</th>
                                                 <th>Status</th>
-                                                <th>Posting Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -66,10 +75,9 @@ include("includes/config.php");
                                         <tbody>
                                             <tr>
                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['OwnerName'];  ?></td>
+                                                <td><?php echo $row['UserName'];  ?></td>
                                                 <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><a
-                                                        href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
+                                                <td><?php echo htmlentities($row['owner_vehicle_name']); ?>
                                                 </td>
                                                 <td><?php echo htmlentities($row['FromDate']); ?></td>
                                                 <td><?php echo htmlentities($row['ToDate']); ?></td>
@@ -83,7 +91,7 @@ include("includes/config.php");
                                                             echo htmlentities('Cancelled');
                                                         }
                                                         ?></td>
-                                                <td><?php echo $row['CreatedDate']; ?></td>
+
                                                 <td>
 
 
@@ -112,6 +120,9 @@ include("includes/config.php");
             <!-- /.content -->
         </div>
     </div>
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- ./wrapper -->
 
     <!-- jQuery -->
@@ -125,9 +136,6 @@ include("includes/config.php");
     <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="../../plugins/jszip/jszip.min.js"></script>
-    <script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="../../plugins/pdfmake/vfs_fonts.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
