@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include("includes/config.php");
 $id = $_GET['bid'];
 function dateDiff($FromDate, $ToDate)
@@ -260,8 +260,7 @@ if (isset($_POST['delayed'])) {
                                                                 }
                                                                 ?></td>
 
-                                                    <!-- <th>Last updation Date</th>
-                                                    <td><?php echo htmlentities($row['UpdationDate']); ?></td> -->
+
                                                 </tr>
                                                 <tr>
                                                     <th colspan="4" style="text-align:center;color:blue">Assign
@@ -290,13 +289,21 @@ if (isset($_POST['delayed'])) {
 
 
                                                 <tr>
-                                                    <td style="text-align:center" colspan="4">
+
+                                                    <!-- <td style="text-align:center" colspan="4">
                                                         <button class="btn btn-primary" name="update"
                                                             type="submit">Update</button>
                                                         <button class="btn btn-primary" name="delayed"
                                                             type="submit">DelayedPickup</button>
-                                                    </td>
-
+                                                    </td> -->
+                                                    <?php
+                                                        if ($row['Status'] == 0) {
+                                                            echo '<button class="btn btn-primary" name="delayed" type="submit" download style="visibility:true   ">';
+                                                            echo '<button class="btn btn-primary" name="delayed" type="submit" download style="visibility: hidden">';
+                                                            //    else if ($row['Status'] == 1) {
+                                                            //         echo htmlentities('<button class="btn btn-primary" name="update" type="submit">bbbb</button>');
+                                                        }
+                                                        ?>
                                                 </tr>
 
 
