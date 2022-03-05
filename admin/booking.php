@@ -1,5 +1,6 @@
 <?php
 session_start();
+//error_reporting(0);
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
@@ -17,19 +18,7 @@ include("includes/config.php");
         <?php include("includes/sidebar.php"); ?>
 
         <div class="content-wrapper">
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
 
-                        <!-- <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">ManageOwner</li>
-                            </ol>
-                        </div> -->
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
 
             <!-- Main content -->
             <section class="content" style="margin-left: -251px;">
@@ -38,32 +27,48 @@ include("includes/config.php");
                         <div class="col-12">
                             <h2 class="page-title">Booking info</h2>
                             <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
-                            <!-- <input name="Submit" type="submit" class="txtbox4" value="Add Booking"
-                                href="add-booking.php" /> -->
-                            <a href="add-booking.php">
-                                <input type="submit" value="Add Booking" style="background-color: lightblue;" />
-                            </a>
+                            <div class="col-sm-4">
+
+                                <label>SeatingCapacity</label>
+
+                                <select class="selectpicker" data-live-search="false" name="SeatingCapacity"
+                                    id="SeatingCapacity">
+                                    <option value="">SeatingCapacity</option>
+                                    <?php
+                                    $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
+                                    $exe = mysqli_query($conn, $qry);
+                                    while ($row = mysqli_fetch_assoc($exe)) {
+
+                                    ?>
+                                    <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                        <?php echo $row['SeatingCapacity'] ?>
+                                    </option>
+                                    <?php }  ?>
+                                </select>
+
+                            </div>
                             <div class="card">
-                                <!-- /.card-header -->
+
                                 <div class="card-body" style="padding: 0px">
+
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Booking No.</th>
-                                                <th>Vehicle</th>
-                                                <th>From Date</th>
-                                                <th>To Date</th>
-                                                <th>PickUp Time</th>
-                                                <th>Status</th>
+                                                <th>SlNo.</th>
+                                                <th>Brand</th>
+                                                <th>VehicleName</th>
+                                                <th>OwnerName</th>
+                                                <th>DriverName</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
 
                                         <?php
                                         $status = 0;
-                                        $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
+                                        extract($_POST);
+                                        $SeatingCapacity = $_GET['SeatingCapacity'];
+
+                                        $retrive_qyr = "SELECT * FROM tblbooking  where SeatingCapacity='$SeatingCapacity'";
                                         $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
                                         $cnt = 0;
                                         while ($row = mysqli_fetch_array($retrive_fn_query)) {
