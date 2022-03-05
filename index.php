@@ -121,8 +121,8 @@ include("includes/header.php");
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
-                                                <label>Time</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="Time" onload="signup_form" id="Time" type="time">
+                                                <label>Pick up Time</label>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="Time" id="Time" type="time">
                                                 </input>
                                             </div>
 
@@ -933,7 +933,16 @@ include("includes/header.php");
     });
 </script>
 <script>
-    function PopUp(){
-    document.getElementById('signup_form').style.display="none"; 
-}
+    $(function() {
+        $('input[type="time"][value="Time"]').each(function() {
+            var d = new Date(),
+                h = d.getHours(),
+                m = d.getMinutes();
+            if (h < 10) h = '0' + h;
+            if (m < 10) m = '0' + m;
+            $(this).attr({
+                'value': h + ':' + m
+            });
+        });
+    });
 </script>
