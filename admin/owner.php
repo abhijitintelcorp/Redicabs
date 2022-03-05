@@ -368,7 +368,7 @@ if (isset($_POST['owner_submit'])) {
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="../../Redicabs//admin//js//valid.js"></script>
+    <script src="../../Redicabs//admin/js/valid.js"></script>
 
     <script src="js/additional-methods.min.js">
     </script>

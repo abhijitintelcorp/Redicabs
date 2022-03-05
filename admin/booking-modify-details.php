@@ -286,20 +286,28 @@ if (isset($_POST['delayed'])) {
                                                             value="<?php echo $row['Driverid']; ?>" type="hidden"
                                                             readonly="readonly"></td>
                                                 </tr>
-                                                <?php } ?>
+                                              
 
+                                                 <?php 
 
+                                                    if ($row['Status'] == 0) {
+                                                 ?>
                                                 <tr>
+                                                    <td style="text-align:center" colspan="4">
+                                                        <button class="btn btn-primary" name="update"
+                                                            type="submit">Update</button>
+                                                    </td>
+                                                    <?php } else if ($row['Status'] == 1) {  ?>
                                                     <td style="text-align:center" colspan="4">
                                                         <button class="btn btn-primary" name="update"
                                                             type="submit">Update</button>
                                                         <button class="btn btn-primary" name="delayed"
                                                             type="submit">DelayedPickup</button>
                                                     </td>
-
+                                                    <?php } ?>
                                                 </tr>
 
-
+                                                  <?php } ?>
                                                 <?php } ?>
                                                 <?php $cnt = $cnt + 1;
 
