@@ -8,6 +8,7 @@ include("includes/config.php");
 date_default_timezone_set("Asia/Kolkata");
 $msg = "";
 function dateDiff($FromDate, $ToDate)
+
 {
     $date1_ts = strtotime($FromDate);
     $date2_ts = strtotime($ToDate);
