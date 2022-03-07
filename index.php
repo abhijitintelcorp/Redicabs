@@ -185,30 +185,21 @@ include("includes/header.php");
     </div>
     <!-- anytime-anywhere html Exit -->
 
-    <!-- label white html start -->
+     <!-- label white html start -->
     <div class="label-white2 white-lable-m">
         <div class="container">
             <div class="row">
                 <div class="car-item-wrap">
                     <div class="car-type">
                         <div class="car-wrap"><img class="private-car" src="images/private-car.png" alt="" /></div>
-                        <h5>Private Car</h5>
+                        <h5> Car</h5>
                         <div class="car-type-btn">
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"><img class="morotbike-car" src="images/motorbike.png" alt="" /></div>
-                        <h5>Motorbike</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
                     <div class="car-type">
                         <div class="car-wrap"> <img class="minicar-car" src="images/minicar.png" alt="" /></div>
-                        <h5>Minicar</h5>
+                        <h5>Mini Car</h5>
                         <div class="car-type-btn">
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
@@ -216,52 +207,11 @@ include("includes/header.php");
 
                     <div class="car-type">
                         <div class="car-wrap"> <img class="mini-track-car" src="images/mini-track.png" alt="" /></div>
-                        <h5>Mini Truck</h5>
+                        <h5> Truck</h5>
                         <div class="car-type-btn">
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="boat-car" src="images/boat.png" alt="" /></div>
-                        <h5>Boat</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="snow-car" src="images/snow-bike.png" alt="" /></div>
-                        <h5>Snow Bike</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="tractor-car" src="images/tractor.png" alt="" /></div>
-                        <h5>Tractor</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="vihicel-car" src="images/vihicel.png" alt="" /></div>
-                        <h5>Large Vehicle</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="morotbike-car" src="images/motorbike.png" alt="" /></div>
-                        <h5>Motorbike</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
                     <div class="car-type">
                         <div class="car-wrap"> <img class="big-track-car" src="images/big-track.png" alt="" /></div>
                         <h5>Big Truck</h5>
@@ -269,7 +219,34 @@ include("includes/header.php");
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/vihicel.png" alt="" /></div>
+                        <h5>Crain </h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="mini-track-car" width="100px" src="images/auto.png" alt="" /></div>
+                        <h5> Auto</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" width="100px" src="images/bus.png" alt="" /></div>
+                        <h5>Bus</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/Lori.png" alt="" /></div>
+                        <h5>Lori </h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
