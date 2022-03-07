@@ -8,6 +8,13 @@ include("includes/config.php");
 <html lang="en" class="no-js">
 <?php include("includes/headerlink.php"); ?>
 
+<head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <title>Redicabs | Delayed Pickup </title>
+
+</head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
@@ -33,9 +40,6 @@ include("includes/config.php");
                                                 <th>FromDate</th>
                                                 <th>ToDate</th>
                                                 <th>PickupTime</th>
-                                                <th>Drivername</th>
-                                                <th>DriverNumber</th>
-
                                                 <th>Status</th>
                                                 <th>Action</th>
                                         </thead>
@@ -71,11 +75,6 @@ include("includes/config.php");
                                                 </th>
                                                 <th><?php echo $row['Time']; ?>
                                                 </th>
-                                                <th><?php echo $row['DriverName']; ?>
-                                                </th>
-                                                <th><?php echo $row['DriverMobile']; ?>
-                                                </th>
-
                                                 <td><?php
                                                             if ($row['Status'] == 0) {
                                                                 echo htmlentities('Not Confirmed yet');
@@ -123,6 +122,14 @@ include("includes/config.php");
     <script src="js/fileinput.js"></script>
     <script src="js/chartData.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#zctb').DataTable();
+    });
+    </script>
 </body>
 
 </html>
