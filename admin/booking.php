@@ -30,53 +30,73 @@ include("includes/config.php");
                             <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
                             <div class="col-sm-4">
 
-                                <label>SeatingCapacity</label>
+                                <form action="" method="POST"> <label>SeatingCapacity</label>
 
-                                <select class="selectpicker" data-live-search="false" name="SeatingCapacity"
-                                    id="SeatingCapacity">
-                                    <option value="" selected="selected">SeatingCapacity</option>
-                                    <?php
-                                    $qry = "SELECT  id, SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
-                                    $exe = mysqli_query($conn, $qry);
-                                    while ($row = mysqli_fetch_assoc($exe)) {
+                                    <select class="selectpicker" data-live-search="false" name="SeatingCapacity"
+                                        id="SeatingCapacity">
+                                        <option value="" selected="selected">SeatingCapacity</option>
+                                        <?php
+                                        $qry = "SELECT   SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
+                                        $exe = mysqli_query($conn, $qry);
+                                        while ($row = mysqli_fetch_assoc($exe)) {
 
-                                    ?>
-                                    <option value="<?php echo $row['id'] ?>">
-                                        <?php echo $row['SeatingCapacity'] ?>
-                                    </option>
-                                    <?php }  ?>
-                                </select>
-
+                                        ?>
+                                        <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                            <?php echo $row['SeatingCapacity'] ?>
+                                        </option>
+                                        <?php }  ?>
+                                    </select>
+                                    <button class="btn btn-primary" name="filter">Filter</button>
+                                </form>
                             </div>
                             <div class="card">
 
                                 <div class="card-body" style="padding: 0px">
 
-                                    <table id="example2" class="table table-bordered table-hover">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
-                                                <!-- <th>SlNo.</th> -->
+                                                <th>SlNo.</th>
                                                 <th>Brand</th>
                                                 <th>VehicleName</th>
-
+                                                <th>FrontImage</th>
+                                                <th>BackImage</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+
+                                        <!-- <?php include 'filter.php' ?> -->
+                                        <?php
+                                        include("includes/config.php");
+                                        $SeatingCapacity = $_POST['SeatingCapacity'];
+                                        $cnt = 0;
+                                        $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity") or die();
+                                        while ($fetch = mysqli_fetch_array($query)) {
+                                            $cnt++;
+                                        ?>
                                         <tbody>
                                             <tr>
-                                                <!-- <td><?php echo htmlentities($cnt); ?></td> -->
-                                                <!-- <td><?php echo $row['UserName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td> -->
-                                                <td id="vehiclename">
-                                                    <?php echo htmlentities($row['owner_vehicle_name']); ?>
-                                                <td id="ownername"><?php echo htmlentities($row['OwnerName']); ?>
+                                                <td><?php echo htmlentities($cnt); ?></td>
+                                                <td><?php echo $fetch['owner_vehicle_brand'];  ?></td>
+                                                <td><?php echo htmlentities($fetch['owner_vehicle_name']); ?>
                                                 </td>
 
+                                                <td><img src="images/<?php echo $fetch['frontimage']; ?>" width="30"
+                                                        height="30" alt=""></td>
+
+                                                <td><img src="images/<?php echo $fetch['backimage']; ?>" width="30"
+                                                        height="30" alt=""></td>
+                                                <td><a href="add-booking.php?id=<?php echo $fetch['id']; ?>">
+                                                        Edit</a>
+
+                                                </td>
 
                                             </tr>
-                                            <!-- <?php $cnt = $cnt + 1;
-                                                    ?> -->
-                                        </tbody> -->
+                                            <?php $cnt = $cnt + 1;
+                                        }
+                                            ?>
+                                        </tbody>
 
                                     </table>
                                 </div>
@@ -112,6 +132,9 @@ include("includes/config.php");
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -159,6 +182,12 @@ include("includes/config.php");
         });
     })
     </script>
+    <script>
+    $(document).ready(function() {
+        $('#zctb').DataTable();
+    });
+    </script>
+
 </body>
 
 

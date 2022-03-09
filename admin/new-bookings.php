@@ -40,15 +40,16 @@ include("includes/config.php");
                             <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
                             <!-- <input name="Submit" type="submit" class="txtbox4" value="Add Booking"
                                 href="add-booking.php" /> -->
-                                <div style="margin-left:90%">
-                            <a href="add-booking.php">
-                                <button class="btn-danger">Add Booking</button>
-                            </a>
-                                </div><br>
+                            <div style="margin-left:90%">
+                                <a href="booking.php">
+                                    <button class="btn-danger">Add Booking</button>
+                                </a>
+                            </div><br>
                             <div class="card">
                                 <!-- /.card-header -->
                                 <div class="card-body" style="padding: 0px">
-                                    <table id="example2" class="table table-bordered table-hover">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -139,6 +140,9 @@ include("includes/config.php");
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -161,6 +165,11 @@ include("includes/config.php");
             "autoWidth": false,
             "responsive": true,
         });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#zctb').DataTable();
     });
     </script>
 </body>

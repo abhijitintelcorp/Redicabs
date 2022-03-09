@@ -145,13 +145,16 @@ if (isset($_POST['owner_submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <form action="" method="post" name="add_owner_update" id="add_owner_update" class="form-horizontal" enctype="multipart/form-data">
+                                        <form action="" method="post" name="add_owner_update" id="add_owner_update"
+                                            class="form-horizontal" enctype="multipart/form-data">
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Cartegory name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter category" name="category" id="category" value="<?php echo $urows['Categories']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter category" name="category" id="category"
+                                                            value="<?php echo $urows['Categories']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,13 +163,19 @@ if (isset($_POST['owner_submit'])) {
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Brand Name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter BrandName" name="brand" id="brand" value="<?php echo $urows['SubCategories']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter BrandName" name="brand" id="brand"
+                                                            value="<?php echo $urows['SubCategories']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Vehicle Name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter vehiclename" name="VehicleName" id="VehicleName" value="<?php echo $urows['owner_vehicle_name']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename" name="VehicleName"
+                                                            id="VehicleName"
+                                                            value="<?php echo $urows['owner_vehicle_name']; ?>"
+                                                            required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,13 +184,20 @@ if (isset($_POST['owner_submit'])) {
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Vehicle Number</label>
-                                                        <input type="text" class="form-control" placeholder="Enter vehicle number" name="VehicleNumber" id="VehicleNumber" value="<?php echo $urows['owner_vehicle_no']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle number" name="VehicleNumber"
+                                                            id="VehicleNumber"
+                                                            value="<?php echo $urows['owner_vehicle_no']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Vehicle RC Number</label>
-                                                        <input type="text" class="form-control" placeholder="Enter vehicle RC no" name="VehRCNo" id="VehRCNo" value="<?php echo $urows['owner_vehicle_RCno']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehicle RC no" name="VehRCNo"
+                                                            id="VehRCNo"
+                                                            value="<?php echo $urows['owner_vehicle_RCno']; ?>"
+                                                            required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,14 +206,19 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Vehicle Chesis Number</label>
-                                                        <input type="text" class="form-control" placeholder="Enter vehiclename" name="chasis" id="chasis" value="<?php echo $urows['owner_vehicle_chesis_no']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter vehiclename" name="chasis" id="chasis"
+                                                            value="<?php echo $urows['owner_vehicle_chesis_no']; ?>"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Driver Name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Driver name" name="Dname" id="Dname" value="<?php echo $urows['DriverName']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Driver name" name="Dname" id="Dname"
+                                                            value="<?php echo $urows['DriverName']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,13 +227,17 @@ if (isset($_POST['owner_submit'])) {
                                                     <div class="form-group">
                                                         <label> <label>Driving licence Number</label>
                                                         </label>
-                                                        <input type="text" class="form-control" placeholder="Enter Driver DL number" name="DLno" id="DLno" value="<?php echo $urows['Driver_DL_No']; ?> " disabled>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Driver DL number" name="DLno" id="DLno"
+                                                            value="<?php echo $urows['Driver_DL_No']; ?> " disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Driver Number</label>
-                                                        <input type="number" class="form-control" placeholder="Enter driver number" name="Dno" id="Dno" value="<?php echo $urows['DriverMobile']; ?>" required>
+                                                        <input type="number" class="form-control"
+                                                            placeholder="Enter driver number" name="Dno" id="Dno"
+                                                            value="<?php echo $urows['DriverMobile']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -221,13 +246,17 @@ if (isset($_POST['owner_submit'])) {
                                                     <!-- text input -->
                                                     <div class="form-group">
                                                         <label>Seating Capacity</label>
-                                                        <input type="number" class="form-control" placeholder="Enter seating capacity" name="seat" id="seat" value="<?php echo $urows['SeatingCapacity']; ?>" required>
+                                                        <input type="number" class="form-control"
+                                                            placeholder="Enter seating capacity" name="seat" id="seat"
+                                                            value="<?php echo $urows['SeatingCapacity']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Price/day</label>
-                                                        <input type="text" class="form-control" placeholder="Enter Priceperday" name="price" id="price" value="<?php echo $urows['PricePerDay']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter Priceperday" name="price" id="price"
+                                                            value="<?php echo $urows['PricePerDay']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,13 +264,17 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>ModelYear</label>
-                                                        <input type="number" class="form-control" placeholder="Enter vehiclename" name="year" id="year" value="<?php echo $urows['ModelYear']; ?>" required>
+                                                        <input type="number" class="form-control"
+                                                            placeholder="Enter vehiclename" name="year" id="year"
+                                                            value="<?php echo $urows['ModelYear']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Owner Name</label>
-                                                        <input type="text" class="form-control" placeholder="Enter ownername" name="ownname" id="ownname" value="<?php echo $urows['OwnerName']; ?>" required>
+                                                        <input type="text" class="form-control"
+                                                            placeholder="Enter ownername" name="ownname" id="ownname"
+                                                            value="<?php echo $urows['OwnerName']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -250,14 +283,18 @@ if (isset($_POST['owner_submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Owner Number</label>
-                                                        <input type="number" class="form-control" placeholder="Enter owner number" name="ownno" id="ownno" value="<?php echo $urows['owner_mobile']; ?>" required>
+                                                        <input type="number" class="form-control"
+                                                            placeholder="Enter owner number" name="ownno" id="ownno"
+                                                            value="<?php echo $urows['owner_mobile']; ?>" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
 
                                                     <div class="form-group">
                                                         <label>Owner Email</label>
-                                                        <input type="email" class="form-control" placeholder="Enter owneremail" name="email" id="email" value="<?php echo $urows['owner_email']; ?>" required>
+                                                        <input type="email" class="form-control"
+                                                            placeholder="Enter owneremail" name="email" id="email"
+                                                            value="<?php echo $urows['owner_email']; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -266,9 +303,11 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="customFile">Car Front Image</label>
-                                                <img src="images/<?php echo $urows['frontimage']; ?>" style="width:20%;">
+                                                <img src="images/<?php echo $urows['frontimage']; ?>"
+                                                    style="width:20%;">
                                                 <div>
-                                                    <input type="file" class="form-control" id="frontimage" name="frontimage" required>
+                                                    <input type="file" class="form-control" id="frontimage"
+                                                        name="frontimage" required>
 
                                                 </div>
                                             </div>
@@ -278,7 +317,8 @@ if (isset($_POST['owner_submit'])) {
                                                 <label for="customFile">Vehicle Back Image</label>
                                                 <img src="images/<?php echo $urows['backimage']; ?>" style="width:20%;">
                                                 <div>
-                                                    <input type="file" class="form-control" id="backimage" name="backimage" required>
+                                                    <input type="file" class="form-control" id="backimage"
+                                                        name="backimage" required>
 
                                                 </div>
                                             </div>
@@ -288,7 +328,8 @@ if (isset($_POST['owner_submit'])) {
                                                 <label for="customFile">Driver Driving licence image</label>
                                                 <img src="images/<?php echo $urows['DLimage']; ?>" style="width:20%;">
                                                 <div>
-                                                    <input type="file" class="form-control" id="DLimage" name="DLimage" required>
+                                                    <input type="file" class="form-control" id="DLimage" name="DLimage"
+                                                        required>
 
                                                 </div>
                                             </div>
@@ -296,9 +337,11 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="customFile">Owner Adhar Image</label>
-                                                <img src="images/<?php echo $urows['own_adhar_image']; ?>" style="width:20%;">
+                                                <img src="images/<?php echo $urows['own_adhar_image']; ?>"
+                                                    style="width:20%;">
                                                 <div>
-                                                    <input type="file" id="Adharimage" class="form-control" name="Adharimage" required>
+                                                    <input type="file" id="Adharimage" class="form-control"
+                                                        name="Adharimage" required>
 
                                                 </div>
                                             </div>
@@ -307,15 +350,18 @@ if (isset($_POST['owner_submit'])) {
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="customFile">Driver Adhar image</label>
-                                                <img src="images/<?php echo $urows['Driver_Adhar_image']; ?>" style="width:20%;">
+                                                <img src="images/<?php echo $urows['Driver_Adhar_image']; ?>"
+                                                    style="width:20%;">
                                                 <div>
-                                                    <input type="file" class="form-control" id="Adharimage1" name="Adharimage1" required>
+                                                    <input type="file" class="form-control" id="Adharimage1"
+                                                        name="Adharimage1" required>
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary" name="owner_submit">Update</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                name="owner_submit">Update</button>
                                         </div>
                                     </div>
 
@@ -354,9 +400,9 @@ if (isset($_POST['owner_submit'])) {
     </script>
     <!-- Page specific script -->
     <script>
-        $(function() {
-            bsCustomFileInput.init();
-        });
+    $(function() {
+        bsCustomFileInput.init();
+    });
     </script>
 </body>
 
