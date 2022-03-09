@@ -6,13 +6,16 @@
             $email = htmlspecialchars($_POST['email']);
             $contact = htmlspecialchars($_POST['contact']);
             $password = htmlspecialchars($_POST['password_id']);
+
             $insert_qry = "INSERT INTO `tblbooking` (`UserName`,`EmailId`,`password`,`ContactNo`)
-    VALUES('$username','$email','$password','$contact')";
+              VALUES('$username','$email','$password','$contact')";
             $fn_qry = mysqli_query($conn, $insert_qry);
             if ($fn_qry) {
               header("Location:index.php");
             }
           }
+
+
           ?>
           <html>
 

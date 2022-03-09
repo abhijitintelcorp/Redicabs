@@ -420,8 +420,8 @@ body,
 }
 
 .dropdown-menu ul li {
-    width: 100%;
-    height: 30px;
+    width: 110%;
+    height: 102px;
 }
 
 .dropdown-menu ul li a {

@@ -458,6 +458,7 @@ if (isset($_POST['submit'])) {
         };
     });
     </script> -->
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#SeatingCapacity').on('change', function() {
