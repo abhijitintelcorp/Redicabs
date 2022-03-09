@@ -1,6 +1,8 @@
 <?php
 include("includes/connection.php");
 error_reporting(0);
+date_default_timezone_set("Asia/Kolkata");
+$msg = "";
 if (isset($_POST['taxi_booking'])) {
     $bookingNumber = mt_rand(100000000, 999999999);
 
@@ -12,6 +14,7 @@ if (isset($_POST['taxi_booking'])) {
     $fromdate = htmlspecialchars($_POST['fromdate']);
     $todate = htmlspecialchars($_POST['todate']);
     $Time = htmlspecialchars($_POST['Time']);
+
     $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromdate','$todate','$Time')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
@@ -121,8 +124,10 @@ include("includes/header.php");
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
-                                                <label>Time</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="Time" onload="signup_form" id="Time" type="time">
+                                                <label>Pick up Time</label>
+                                                <input class="custom-select-box tec-domain-cat form-control" style="width: 305px; height:30px; " name="Time" id="datetimepicker4" type="text">
+
+
                                                 </input>
                                             </div>
 
@@ -652,49 +657,48 @@ include("includes/header.php");
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script>
-        $(document).ready(function() {
+        // $(document).ready(function() {
+        //     $('#fromdate').datetimepicker();
 
-            $('#SeatingCapacity1').on('change', function() {
-                var SeatingCapacity1 = $(this).val();
-                if (SeatingCapacity1) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'get-brand-name.php',
-                        data: {
-                            SeatingCapacity1: SeatingCapacity1
-                        },
-                        success: function(html) {
-                            console.log(html)
-                            $('#brand').html(html);
-                            $('#VehicleName').html(
-                                '<option value="">Select Brand first</option>');
-                            // $('#brand').selectpicker('refresh');
-                        }
-                    });
-                } else {
-                    $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                    $('#VehicleName').html('<option value="">Select Brand first</option>');
+        $('#SeatingCapacity1').on('change', function() {
+            var SeatingCapacity1 = $(this).val();
+            if (SeatingCapacity1) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand-name.php',
+                    data: {
+                        SeatingCapacity1: SeatingCapacity1
+                    },
+                    success: function(html) {
+                        console.log(html)
+                        $('#brand').html(html);
+                        $('#VehicleName').html(
+                            '<option value="">Select Brand first</option>');
+                        // $('#brand').selectpicker('refresh');
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
 
-                }
-            });
+            }
+        });
 
-            $('#brand').on('change', function() {
-                var owner_vehicle_brand = $(this).val();
-                if (owner_vehicle_brand) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'get-brand-name.php',
-                        data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                        success: function(html) {
-                            $('#VehicleName').html(html);
-                            //  $('#VehicleName').selectpicker('refresh');
-                        }
-                    });
-                } else {
-                    $('#VehicleName').html('<option value="">Select Brand first</option>');
-                }
-            });
-
+        $('#brand').on('change', function() {
+            var owner_vehicle_brand = $(this).val();
+            if (owner_vehicle_brand) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand-name.php',
+                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                    success: function(html) {
+                        $('#VehicleName').html(html);
+                        //  $('#VehicleName').selectpicker('refresh');
+                    }
+                });
+            } else {
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
         });
     </script>
     <script>
@@ -833,8 +837,9 @@ include("includes/header.php");
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 </html>
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
+
         $("#signup_form").validate({
             rules: {
                 username: {
@@ -932,8 +937,10 @@ include("includes/header.php");
         });
     });
 </script>
-<script>
-    function PopUp(){
-    document.getElementById('signup_form').style.display="none"; 
-}
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker4').datetimepicker({
+            format: 'LT'
+        });
+    });
 </script>
