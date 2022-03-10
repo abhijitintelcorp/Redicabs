@@ -133,7 +133,7 @@ if (isset($_POST['submit'])) {
                                             class="form-horizontal" enctype="multipart/form-data">
                                             <input type="hidden" name="brand"
                                                 value="<?php echo $rows['SubCategories'] ?>">
-                                            <input type="hidden" name="	owner_vehicle_name"
+                                            <input type="hidden" name="owner_vehicle_name"
                                                 value="<?php echo $rows['owner_vehicle_name'] ?>">
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -265,7 +265,9 @@ if (isset($_POST['submit'])) {
                                                         <label>OwnerName</label>
                                                         <select class="selectpicker" data-live-search="false"
                                                             name="OwnerName" id="OwnerName">
-                                                            <option value="">Select owner</option>
+                                                            <option value="<?php echo $rows['OwnerName']; ?>">
+                                                                <?php echo $rows['OwnerName']; ?>
+                                                            </option>
                                                             <?php
                                                             $OwnerName = $_POST['OwnerName'];
                                                             $qry = "SELECT id,owner_mobile,owner_email,DriverName from tblbooking where OwnerName = '$OwnerName' ";
@@ -277,6 +279,7 @@ if (isset($_POST['submit'])) {
                                                                 //$Driver_DL_No = $row['Driver_DL_No'];
                                                                 $DriverMobile = $row['DriverMobile'];
                                                                 $owner_email = $row['owner_email'];
+                                                                $owner_vehicle_name = $row['owner_vehicle_name'];
                                                             ?>
                                                             <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
                                                                 owner_email="<?php echo $row['owner_email']; ?>"
@@ -286,8 +289,8 @@ if (isset($_POST['submit'])) {
                                                                 OwnerName="<?php echo $row['OwnerName']; ?>"
                                                                 Owner_Aadhar_No="<?php echo $row['Owner_Aadhar_No']; ?>"
                                                                 owner_email="<?php echo $row['owner_email']; ?>"
-                                                                value="<?php echo $row['id']; ?>">
-                                                                <?php echo $rows['OwnerName']; ?>
+                                                                $owner_vehicle_name="<?php echo $row['owner_vehicle_name']; ?>">
+
                                                             </option>
                                                             <?php }  ?>
                                                         </select>
