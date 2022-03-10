@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
@@ -9,6 +9,7 @@ include("includes/config.php");
 <?php include("includes/headerlink.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript" src="js/getData.js"></script>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -29,85 +30,74 @@ include("includes/config.php");
                             <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
                             <div class="col-sm-4">
 
-                                <label>SeatingCapacity</label>
+                                <form action="" method="POST"> <label>SeatingCapacity</label>
 
-                                <select class="selectpicker" data-live-search="false" name="SeatingCapacity"
-                                    id="SeatingCapacity">
-                                    <option value="">SeatingCapacity</option>
-                                    <?php
-                                    $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
-                                    $exe = mysqli_query($conn, $qry);
-                                    while ($row = mysqli_fetch_assoc($exe)) {
+                                    <select class="selectpicker" data-live-search="false" name="SeatingCapacity"
+                                        id="SeatingCapacity">
+                                        <option value="" selected="selected">SeatingCapacity</option>
+                                        <?php
+                                        $qry = "SELECT   SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
+                                        $exe = mysqli_query($conn, $qry);
+                                        while ($row = mysqli_fetch_assoc($exe)) {
 
-                                    ?>
-                                    <option value="<?php echo $row['SeatingCapacity'] ?>">
-                                        <?php echo $row['SeatingCapacity'] ?>
-                                    </option>
-                                    <?php }  ?>
-                                </select>
-
+                                        ?>
+                                        <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                            <?php echo $row['SeatingCapacity'] ?>
+                                        </option>
+                                        <?php }  ?>
+                                    </select>
+                                    <button class="btn btn-primary" name="filter">Filter</button>
+                                </form>
                             </div>
                             <div class="card">
 
                                 <div class="card-body" style="padding: 0px">
 
-                                    <table id="example2" class="table table-bordered table-hover">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                        cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo.</th>
                                                 <th>Brand</th>
                                                 <th>VehicleName</th>
-                                                <th>OwnerName</th>
-                                                <th>DriverName</th>
+                                                <th>FrontImage</th>
+                                                <th>BackImage</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
 
+                                        <!-- <?php include 'filter.php' ?> -->
                                         <?php
-                                        $status = 0;
-                                        extract($_POST);
-                                        $SeatingCapacity = $_GET['SeatingCapacity'];
-
-                                        $retrive_qyr = "SELECT * FROM tblbooking  where SeatingCapacity='$SeatingCapacity'";
-                                        $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
+                                        include("includes/config.php");
+                                        $SeatingCapacity = $_POST['SeatingCapacity'];
                                         $cnt = 0;
-                                        while ($row = mysqli_fetch_array($retrive_fn_query)) {
+                                        $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity") or die();
+                                        while ($fetch = mysqli_fetch_array($query)) {
                                             $cnt++;
                                         ?>
-
                                         <tbody>
                                             <tr>
                                                 <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['UserName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><?php echo htmlentities($row['owner_vehicle_name']); ?>
+                                                <td><?php echo $fetch['owner_vehicle_brand'];  ?></td>
+                                                <td><?php echo htmlentities($fetch['owner_vehicle_name']); ?>
                                                 </td>
-                                                <td><?php echo htmlentities($row['FromDate']); ?></td>
-                                                <td><?php echo htmlentities($row['ToDate']); ?></td>
-                                                <td><?php echo htmlentities($row['Time']); ?></td>
-                                                <td><?php
-                                                        if ($row['Status'] == 0) {
-                                                            echo htmlentities('Not Confirmed yet');
-                                                        } else if ($row['Status'] == 1) {
-                                                            echo htmlentities('Confirmed');
-                                                        } else {
-                                                            echo htmlentities('Cancelled');
-                                                        }
-                                                        ?></td>
 
-                                                <td>
+                                                <td><img src="images/<?php echo $fetch['frontimage']; ?>" width="30"
+                                                        height="30" alt=""></td>
 
-
-                                                    <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
-                                                        View</a>
-                                                    <a href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">
+                                                <td><img src="images/<?php echo $fetch['backimage']; ?>" width="30"
+                                                        height="30" alt=""></td>
+                                                <td><a href="add-booking.php?id=<?php echo $fetch['id']; ?>">
                                                         Edit</a>
+
                                                 </td>
 
                                             </tr>
                                             <?php $cnt = $cnt + 1;
-                                        } ?>
+                                        }
+                                            ?>
                                         </tbody>
+
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -142,6 +132,9 @@ include("includes/config.php");
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -166,6 +159,36 @@ include("includes/config.php");
         });
     });
     </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#SeatingCapacity').on('change', function() {
+            var SeatingCapacity = $(this).val();
+            if (SeatingCapacity) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'SeatingCapacity=' + SeatingCapacity,
+                    success: function(html) {
+                        $('#brand').html(html);
+                        $('#VehicleName').text(SeatingCapacity);
+
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+
+            }
+        });
+    })
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#zctb').DataTable();
+    });
+    </script>
+
 </body>
+
 
 </html>

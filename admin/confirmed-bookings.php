@@ -9,8 +9,8 @@ include("includes/config.php");
 
 <head>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <title>Redicabs | Confirmed Bookings </title>
-
 
 </head>
 
@@ -26,26 +26,18 @@ include("includes/config.php");
                         <div class="col-12">
                             <h2 class="page-title">ConfirmedBooking</h2>
 
-                            <!-- <div class="card"> -->
-                            <!-- /.card-header -->
-                            <!-- <div class="card-body" style="padding: 0px;"> -->
                             <div class="panel panel-default">
                                 <!-- <div class="panel-heading">Bookings Info</div> -->
                                 <div class="panel-body" style=" overflow-x:auto;">
-                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                        cellspacing="0" width="100%">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo</th>
                                                 <th>Name</th>
                                                 <th>BookingNo</th>
                                                 <th>VehicleName</th>
-                                                <th>FromDate</th>
-                                                <th>ToDate</th>
-                                                <th>PickupTime</th>
                                                 <th>Drivername</th>
                                                 <th>DriverNumber</th>
-
                                                 <th>Status</th>
                                                 <th>Action</th>
                                         </thead>
@@ -60,27 +52,22 @@ include("includes/config.php");
                                             while ($row = mysqli_fetch_array($query_run)) {
 
                                         ?>
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $count; ?></td>
-                                                <th><?php echo $row['UserName']; ?>
-                                                </th>
-                                                <th><?php echo $row['BookingNumber']; ?>
-                                                </th>
-                                                <th><?php echo $row['owner_vehicle_name']; ?>
-                                                </th>
-                                                <th><?php echo $row['FromDate']; ?>
-                                                </th>
-                                                <th><?php echo $row['ToDate']; ?>
-                                                </th>
-                                                <th><?php echo $row['Time']; ?>
-                                                </th>
-                                                <th><?php echo $row['DriverName']; ?>
-                                                </th>
-                                                <th><?php echo $row['DriverMobile']; ?>
-                                                </th>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><?php echo $count; ?></td>
+                                                        <th><?php echo $row['UserName']; ?>
+                                                        </th>
+                                                        <th><?php echo $row['BookingNumber']; ?>
+                                                        </th>
+                                                        <th><?php echo $row['owner_vehicle_name']; ?>
+                                                        </th>
 
-                                                <td><?php
+                                                        <th><?php echo $row['DriverName']; ?>
+                                                        </th>
+                                                        <th><?php echo $row['DriverMobile']; ?>
+                                                        </th>
+
+                                                        <td><?php
                                                             if ($row['Status'] == 0) {
                                                                 echo htmlentities('Not Confirmed yet');
                                                             } else if ($row['Status'] == 1) {
@@ -91,12 +78,11 @@ include("includes/config.php");
                                                                 echo htmlentities('Delayed');
                                                             }
                                                             ?></td>
-                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
-                                                <td><a
-                                                        href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">Edit</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                                        <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
+                                                            <a href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">Edit</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
                                         <?php $count = $count + 1;
                                             }
                                         }
@@ -143,32 +129,15 @@ include("includes/config.php");
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-
-    <!-- Page specific script -->
-    <!-- <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print",
-                "colvis"
-            ]
-        }).buttons().container().appendTo(
-            '#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+    <script>
+        $(document).ready(function() {
+            $('#zctb').DataTable();
         });
-    });
     </script>
 
 

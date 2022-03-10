@@ -1,7 +1,27 @@
-<?php
-error_reporting(0);
-include("includes/connection.php");
-?>
+          <?php
+          ob_start();
+          include("connection.php");
+          if (isset($_POST['submit'])) {
+            $username = htmlspecialchars($_POST['username']);
+            $email = htmlspecialchars($_POST['email']);
+            $contact = htmlspecialchars($_POST['contact']);
+            $password = htmlspecialchars($_POST['password_id']);
+            $insert_qry = "INSERT INTO `tblbooking` (`UserName`,`EmailId`,`password`,`ContactNo`)
+    VALUES('$username','$email','$password','$contact')";
+            $fn_qry = mysqli_query($conn, $insert_qry);
+            if ($fn_qry) {
+              header("Location:index.php");
+            }
+          }
+          ?>
+          <html>
+
+          <head>
+            <link rel="stylesheet" href="css/w3.css">
+          </head>
+
+
+          <body>
             <div id="id02" class="w3-modal">
               <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
@@ -9,32 +29,12 @@ include("includes/connection.php");
                   <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
                   <img src="images/icons/note.png" alt="Avatar" style="width:10%" class="w3-circle w3-margin-top">
                 </div>
-                <?php
-              // echo $insert_id;
-                if (isset($_POST['submit'])) {
-            $insert_id = htmlspecialchars($_POST['id']) ;     
-           $username = htmlspecialchars($_POST['username']);
-            $email = htmlspecialchars($_POST['email']);
-            $contact = htmlspecialchars($_POST['contact']);
-            $password = htmlspecialchars($_POST['password_id']);
 
-            $insert_qry = "UPDATE `tblbooking` SET `UserName`='$username',`EmailId`='$email',`Password`='$password',`ContactNo`='$contact' WHERE id='$insert_id'";
-            $fn_qry = mysqli_query($conn, $insert_qry);
-            if($fn_qry) {
-               $msg = "Submitted";
-            } else {
-         $msg = "Not Submitted";
-            }
-}
-?>
                 <form class="w3-container" action="" method="post" name="signup_form" id="signup_form">
-                 
                   <div class="w3-section">
                     <div>
                       <label><b>Full Name</b></label>
                       <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Full Name" name="username" id="username">
-                      <input type="hidden" name="id" value="<?php echo $insert_id; ?>"/>
-                     
                     </div>
                     <div>
                       <label><b>Email Address</b></label>
@@ -65,7 +65,10 @@ include("includes/connection.php");
               </div>
             </div>
 
-         
+          </body>
+
+          </html>
+
           <?php
           ob_flush();
           ?>

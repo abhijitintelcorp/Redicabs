@@ -7,6 +7,13 @@ if (strlen($_SESSION['EmailId']) == 0) {
 include("includes/config.php");
 date_default_timezone_set("Asia/Kolkata");
 $msg = "";
+?>
+<?php
+$id = intval($_GET['id']);
+$query = "SELECT * from tblbooking where tblbooking.id='$id'";
+$query_run = mysqli_query($conn, $query);
+$rows = mysqli_fetch_array($query_run);
+
 function dateDiff($FromDate, $ToDate)
 {
     $date1_ts = strtotime($FromDate);
@@ -26,7 +33,7 @@ if (isset($_POST['submit'])) {
     $bookingno = mt_rand(100000000, 999999999);
     $status = 0;
     $brand = htmlspecialchars($_POST['brand']);
-    $VehicleName = htmlspecialchars($_POST['VehicleName']);
+    $owner_vehicle_name = htmlspecialchars($_POST['owner_vehicle_name']);
     $owner_vehicle_no = htmlspecialchars($_POST['owner_vehicle_no']);
     $owner_vehicle_RCno = htmlspecialchars($_POST['owner_vehicle_RCno']);
     $owner_vehicle_chesis_no = htmlspecialchars($_POST['owner_vehicle_chesis_no']);
@@ -56,15 +63,18 @@ if (isset($_POST['submit'])) {
         $msg = "<b style='color:red;'>Contact No Or Email Id Already Exists. Plaese give different Contact No or Email Id.</b>";
     } else {
 
-        $query = "INSERT INTO  tblbooking (`UserName`, `ContactNo`, `EmailId` ,`password`, `address`, `dob`, `City`,
-             `Country`,`Categories`,`BookingNumber`,`SeatingCapacity`,`OwnerName`,`owner_mobile`,`DriverName`,`DriverMobile`,`owner_vehicle_no`,`owner_vehicle_RCno`,`owner_vehicle_chesis_no`,
-             `owner_vehicle_brand`,`owner_vehicle_name`,`PricePerDay`,`ModelYear`,`pickup`,`dropoff`,
-             `FromDate`,`ToDate`,`TotalNoDays`,`Time`,`RegDate`,`Status`) 
-	VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$dob','$City','$country','$Categories','$bookingno','$SeatingCapacity',
-    '$OwnerName','$owner_mobile','$DriverName','$DriverMobile','$owner_vehicle_no','$owner_vehicle_RCno','$owner_vehicle_chesis_no','$brand','$VehicleName',
-    '$PricePerDay','$ModelYear','$pickup','$dropoff','$FromDate','$ToDate','$totalnodays','$pickuptime','$regdate','$status')";
-        $query_run = mysqli_query($conn, $query);
-        header("location:new-bookings.php");
+        $update_qry = "UPDATE   tblbooking SET UserName='$UserName',ContactNo='$ContactNo',EmailId='$EmailId',
+        Password='$Password',address='$address',City='$City', Categories='$Categories', SubCategories='$brand',
+        owner_vehicle_name='$owner_vehicle_name', owner_vehicle_no='$owner_vehicle_no',owner_vehicle_RCno='$owner_vehicle_RCno',
+        owner_vehicle_chesis_no	='$owner_vehicle_chesis_no',OwnerName='$OwnerName', owner_mobile='$owner_mobile',
+        owner_email='$owner_email',DriverName='$DriverName',DriverMobile='$DriverMobile',FromDate='$FromDate',ToDate='$ToDate',
+         PricePerDay='$PricePerDay',owner_email='$owner_email',pickup='$pickup',dropoff='$dropoff',totalnodays='$totalnodays',
+         BookingNumber='$bookingno',status='$status',dob='$dob' WHERE id='$id'";
+        $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
+        if ($inst_u_fn1_qry) {
+
+            header("location:new-bookings.php");
+        }
     }
 }
 ?>
@@ -112,51 +122,19 @@ if (isset($_POST['submit'])) {
 
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <?php echo $msg; ?>
+                                        <?php echo $msg;
+                                        $id = intval($_GET['id']);
+                                        $query = "SELECT * from tblbooking where tblbooking.id='$id'";
+                                        $query_run = mysqli_query($conn, $query);
+                                        $rows = mysqli_fetch_array($query_run);
+
+                                        ?>
                                         <form action="" method="post" name="add_booking" id="add_booking"
                                             class="form-horizontal" enctype="multipart/form-data">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-
-                                                    <label>SeatingCapacity</label>
-
-                                                    <select class="selectpicker" data-live-search="false"
-                                                        name="SeatingCapacity" id="SeatingCapacity">
-                                                        <option value="">SeatingCapacity</option>
-                                                        <?php
-                                                        $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
-                                                        $exe = mysqli_query($conn, $qry);
-                                                        while ($row = mysqli_fetch_assoc($exe)) {
-
-                                                        ?>
-                                                        <option value="<?php echo $row['SeatingCapacity'] ?>">
-                                                            <?php echo $row['SeatingCapacity'] ?>
-                                                        </option>
-                                                        <?php }  ?>
-                                                    </select>
-
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label>Brand</label>
-                                                    <select class="selectpicker" data-live-search="false" name="brand"
-                                                        id="brand">
-                                                        <option value="">Select Brand</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="col-sm-5">
-                                                    <div class="form-group">
-                                                        <input type="hidden" id="userID" name="userID" value="" />
-                                                        <label>VehicleName</label>
-                                                        <select class="selectpicker" data-live-search="false"
-                                                            name="VehicleName" id="VehicleName">
-                                                            <option value="">Select Brand first</option>
-
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                            <input type="hidden" name="brand"
+                                                value="<?php echo $rows['SubCategories'] ?>">
+                                            <input type="hidden" name="owner_vehicle_name"
+                                                value="<?php echo $rows['owner_vehicle_name'] ?>">
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
@@ -220,7 +198,8 @@ if (isset($_POST['submit'])) {
                                                         <label>Categories</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter category" name="Categories"
-                                                            id="Categories" readonly="readonly">
+                                                            id="Categories" value="<?php echo $rows['Categories']; ?>"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -230,7 +209,9 @@ if (isset($_POST['submit'])) {
                                                         <label>VehicleNumber</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter vehicle Number" name="owner_vehicle_no"
-                                                            id="owner_vehicle_no" readonly="readonly">
+                                                            id="owner_vehicle_no"
+                                                            value="<?php echo $rows['owner_vehicle_no']; ?>"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -238,7 +219,9 @@ if (isset($_POST['submit'])) {
                                                         <label>VehRCNo</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter vehicle RC no" name="owner_vehicle_RCno"
-                                                            id="owner_vehicle_RCno" readonly="readonly">
+                                                            id="owner_vehicle_RCno"
+                                                            value="<?php echo $rows['owner_vehicle_RCno']; ?>"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,6 +235,7 @@ if (isset($_POST['submit'])) {
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter vehiclename"
                                                             name="owner_vehicle_chesis_no" id="owner_vehicle_chesis_no"
+                                                            value="<?php echo $rows['owner_vehicle_chesis_no']; ?>"
                                                             readonly="readonly">
                                                     </div>
                                                 </div>
@@ -260,7 +244,8 @@ if (isset($_POST['submit'])) {
                                                         <label>Price/day</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter Priceperday" name="PricePerDay"
-                                                            id="PricePerDay" readonly="readonly">
+                                                            id="PricePerDay" value="<?php echo $rows['PricePerDay']; ?>"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                             </div>
@@ -269,8 +254,9 @@ if (isset($_POST['submit'])) {
                                                     <div class="form-group">
                                                         <label>ModelYear</label>
                                                         <input type="text" class="form-control"
-                                                            placeholder="Enter vehiclename" name="ModelYear"
-                                                            id="ModelYear" readonly="readonly">
+                                                            placeholder="Enter modelyear" name="ModelYear"
+                                                            id="ModelYear" value="<?php echo $rows['ModelYear']; ?>"
+                                                            readonly="readonly">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -279,7 +265,9 @@ if (isset($_POST['submit'])) {
                                                         <label>OwnerName</label>
                                                         <select class="selectpicker" data-live-search="false"
                                                             name="OwnerName" id="OwnerName">
-                                                            <option value="">Select owner</option>
+                                                            <option value="<?php echo $rows['OwnerName']; ?>">
+                                                                <?php echo $rows['OwnerName']; ?>
+                                                            </option>
                                                             <?php
                                                             $OwnerName = $_POST['OwnerName'];
                                                             $qry = "SELECT id,owner_mobile,owner_email,DriverName from tblbooking where OwnerName = '$OwnerName' ";
@@ -291,6 +279,7 @@ if (isset($_POST['submit'])) {
                                                                 //$Driver_DL_No = $row['Driver_DL_No'];
                                                                 $DriverMobile = $row['DriverMobile'];
                                                                 $owner_email = $row['owner_email'];
+                                                                $owner_vehicle_name = $row['owner_vehicle_name'];
                                                             ?>
                                                             <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
                                                                 owner_email="<?php echo $row['owner_email']; ?>"
@@ -300,8 +289,8 @@ if (isset($_POST['submit'])) {
                                                                 OwnerName="<?php echo $row['OwnerName']; ?>"
                                                                 Owner_Aadhar_No="<?php echo $row['Owner_Aadhar_No']; ?>"
                                                                 owner_email="<?php echo $row['owner_email']; ?>"
-                                                                value="<?php echo $row['id']; ?>">
-                                                                <?php echo $row['OwnerName']; ?>
+                                                                $owner_vehicle_name="<?php echo $row['owner_vehicle_name']; ?>">
+
                                                             </option>
                                                             <?php }  ?>
                                                         </select>
@@ -314,7 +303,9 @@ if (isset($_POST['submit'])) {
                                                         <label>Owner Number</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter owner number" name="owner_mobile"
-                                                            id="owner_mobile" readonly="readonly">
+                                                            id="owner_mobile"
+                                                            value="<?php echo $rows['owner_mobile']; ?>"
+                                                            readonly="readonly">
                                                     </div>
 
                                                 </div>
@@ -326,7 +317,7 @@ if (isset($_POST['submit'])) {
                                                             <input type="text" class="form-control"
                                                                 placeholder="Enter owneremail" name="owner_email"
                                                                 id="owner_email"
-                                                                value="<?php echo $row['owner_email']; ?>"
+                                                                value="<?php echo $rows['owner_email']; ?>"
                                                                 readonly="readonly">
                                                         </div>
                                                     </div>
@@ -338,7 +329,7 @@ if (isset($_POST['submit'])) {
                                                         <label>DriverName</label>
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter Driver name" name="DriverName"
-                                                            id="DriverName" value="<?php echo $row['DriverName']; ?>"
+                                                            id="DriverName" value="<?php echo $rows['DriverName']; ?>"
                                                             readonly="readonly">
                                                     </div>
                                                 </div>
@@ -349,7 +340,7 @@ if (isset($_POST['submit'])) {
                                                         <input type="text" class="form-control"
                                                             placeholder="Enter driver number" name="DriverMobile"
                                                             id="DriverMobile"
-                                                            value="<?php echo $row['DriverMobile']; ?>"
+                                                            value="<?php echo $rows['DriverMobile']; ?>"
                                                             readonly="readonly">
                                                     </div>
                                                 </div>
@@ -403,17 +394,18 @@ if (isset($_POST['submit'])) {
                                                         <label>VehicleFrontImage</label>
 
 
-                                                        <!-- <img src="images/<?php echo $row['frontimage']; ?>" style="width:20%;"
-                                                    name="frontimage" id="frontimage"> -->
-                                                        <div id="frontimage" name="frontimage"></div>
+                                                        <img src="images/<?php echo $rows['frontimage']; ?>"
+                                                            style="width:20%;" name="frontimage" id="frontimage">
+
 
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="customFile">VehicleBackImage</label>
-                                                        <!-- <img src="images/<?php echo $row['backimage']; ?>" style="width:20%;" name="backimage" id="backimage"> -->
-                                                        <div id="backimage" name="backimage"></div>
+                                                        <img src="images/<?php echo $rows['backimage']; ?>"
+                                                            style="width:20%;" name="backimage" id="backimage">
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -491,29 +483,8 @@ if (isset($_POST['submit'])) {
         });
     });
     </script>
-    <!-- Page specific script -->
-    <!-- <script>
-        $(function() {
-            bsCustomFileInput.init();
-        });
-    </script> -->
-    <!-- <script src="jquery-ui/jquery-ui.js">
-    $(document).ready(function() {
-        $("#owner_vehicle_name").autocomplete({
-            source: "add-booking.php",
-            minLength: 1,
-            select: function(event, ui) {
-                $("#owner_vehicle_name").val(ui.item.value);
-                $("#userID").val(ui.item.id);
-            }
-        }).data("ui-autocomplete")._renderItem = function(ul, item) {
-            return $("<li class='ui-autocomplete-row'></li>")
-                .data("item.autocomplete", item)
-                .append(item.label)
-                .appendTo(ul);
-        };
-    });
-    </script> -->
+
+
     <script type="text/javascript">
     $(document).ready(function() {
         $('#SeatingCapacity').on('change', function() {

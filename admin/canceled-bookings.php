@@ -8,6 +8,7 @@ include("includes/config.php");
 <?php include("includes/headerlink.php"); ?>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <title>Redicabs | Canceled Bookings </title>
 </head>
 
@@ -33,11 +34,9 @@ include("includes/config.php");
                                                 <th>Name</th>
                                                 <th>Booking No.</th>
                                                 <th>VehicleName</th>
-                                                <th>From Date</th>
-                                                <th>To Date</th>
-                                                <th>PickUp Time</th>
                                                 <th>Drivername</th>
                                                 <th>DriverNo</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -58,11 +57,6 @@ include("includes/config.php");
                                                 <td><?php echo $row['UserName'];  ?></td>
                                                 <td><?php echo $row['BookingNumber']; ?></td>
                                                 <td><?php echo $row['owner_vehicle_name']; ?></td>
-                                                <td><?php echo $row['FromDate']; ?></td>
-                                                <td><?php echo $row['ToDate']; ?> </td>
-                                                </td>
-                                                <td><?php echo $row['Time']; ?>
-                                                </td>
                                                 <td><?php echo $row['DriverName']; ?>
                                                 </td>
                                                 <td><?php echo $row['DriverMobile']; ?>
@@ -120,6 +114,9 @@ include("includes/config.php");
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -142,6 +139,11 @@ include("includes/config.php");
             "autoWidth": false,
             "responsive": true,
         });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#zctb').DataTable();
     });
     </script>
 </body>
