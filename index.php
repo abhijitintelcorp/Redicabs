@@ -1,37 +1,44 @@
 <?php
+session_start();
 include("includes/connection.php");
-error_reporting(0);
+// error_reporting(0);
 date_default_timezone_set("Asia/Kolkata");
 $msg = "";
+$fromDate ="";
+function dateDiff($fromDate, $toDate)
+{
+    $date1_ts = strtotime($fromDate);
+    $date2_ts = strtotime($toDate);
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400) + 1;
+}
+
 if (isset($_POST['taxi_booking'])) {
     $bookingNumber = mt_rand(100000000, 999999999);
-
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
-    $fromdate = htmlspecialchars($_POST['fromdate']);
-    $todate = htmlspecialchars($_POST['todate']);
+    $fromDate = htmlspecialchars($_POST['fromdate']);
+    $toDate = htmlspecialchars($_POST['todate']);
+    $totalnodays = dateDiff($fromDate, $toDate);
+    $regdate = date("Y-m-d");
     $Time = htmlspecialchars($_POST['Time']);
-
-    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromdate','$todate','$Time')";
+    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
     $res_query = mysqli_query($conn, $insert_qry);
-    if ($res_query) {
-        header("location:includes/register.php");
-    } else {
-        echo "error";
-    }
-}
+    $insert_id = mysqli_insert_id($conn); 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include("includes/header.php");
+<body onload="document.getElementById('id02').style.display='block'">
+<?php 
+include("includes/register.php");
+}
 ?>
-
-<body>
+<?php
+   include("includes/header.php");
+?>
     <!-- Booking now form wrapper html start -->
     <div class="booking-form-wrapper">
         <div class="container">
@@ -42,8 +49,9 @@ include("includes/header.php");
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
-                                <form action="" method="post" name="booking" id="booking" class="form-horizontal">
+                                <form action="" method="post" name="booking" id="booking" class="form-horizontal" onsubmit="openModal()">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                         <?php echo $msg; ?>
                                         <div class="row">
                                             <label>Seating Capacity</label>
                                             <select name="SeatingCapacity1" id="SeatingCapacity1" style="width: 305px; height:30px;" required>
@@ -88,7 +96,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup"  required>
                                                 </input>
                                             </div>
                                         </div>
@@ -97,7 +105,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff"  required>
                                                 </input>
                                             </div>
                                         </div>
@@ -124,8 +132,8 @@ include("includes/header.php");
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
-                                                <label>Pick up Time</label>
-                                                <input class="custom-select-box tec-domain-cat form-control" style="width: 305px; height:30px; " name="Time" id="datetimepicker4" type="text">
+                                                <label>Pick up Time <small>(You can select pickup time 30 minutes from Current Time)</small></label>
+                                                <input class="custom-select-box tec-domain-cat form-control" style="width: 305px; height:30px; " name="Time" id="datetimepicker4" type="time">
 
 
                                                 </input>
@@ -160,7 +168,7 @@ include("includes/header.php");
                                     </div> -->
 
                                     <div class="form-button">
-                                        <button type="submit" id="taxi_booking" name="taxi_booking" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
+                                        <button type="submit" id="taxi_booking" name="taxi_booking"   class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
 
                                     </div>
                                 </form>
@@ -653,6 +661,8 @@ include("includes/header.php");
     include("includes/footer.php");
     include("includes/footerlink.php");
     ?>
+    </body>
+</html>>
     <!-- ================ footer html Exit ================ -->
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
@@ -937,10 +947,11 @@ include("includes/header.php");
         });
     });
 </script>
-<script type="text/javascript">
-    $(function() {
-        $('#datetimepicker4').datetimepicker({
-            format: 'LT'
-        });
-    });
+<script>
+$(document).ready( function() {
+    let now = new Date();
+  
+    $('#datetimepicker4').val(now.getHours()+":"+ now.getMinutes());
+          });
 </script>
+ 

@@ -1,5 +1,4 @@
 <head>
-
   <title>Taksi</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
@@ -60,13 +59,13 @@
               <!-- <a href="#">Login</a> -->
               <button onclick="document.getElementById('id01').style.display='block'">Login</button>
               <?php
-              include "login.php"
+              include("login.php");
               ?>
 
               <!-- <a href="#">Register</a> -->
               <button onclick="document.getElementById('id02').style.display='block'">Register</button>
               <?php
-              include "register.php"
+              include("register.php");
               ?>
 
             </div>
