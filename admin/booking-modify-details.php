@@ -225,7 +225,7 @@ if (isset($_POST['delayed'])) {
                                                     <td><select name="OwnerName" id="OwnerName" type="text"
                                                             class="selectpicker">
 
-                                                            <option value="">Select owner</option>
+                                                            <option value="<?php echo $row['OwnerName']; ?>"><?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                     $OwnerName = $_POST['OwnerName'];
                                                                     $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile from tblbooking  GROUP BY OwnerName ASC";
@@ -277,7 +277,7 @@ if (isset($_POST['delayed'])) {
                                                     <th>Driver Name</th>
                                                     <td><select name="DriverName" id="DriverName" type="text"
                                                             class="selectpicker">
-                                                            <option value="">Select Driver</option>
+                                                            <option value="<?php echo $row['DriverName']; ?>"><?php echo $row['DriverName']; ?></option>
                                                             <?php
                                                                     $DriverName = $_POST['DriverName'];
                                                                     $qry = "SELECT DriverMobile from tblbooking  where DriverName=$DriverName";
