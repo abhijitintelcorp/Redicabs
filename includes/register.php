@@ -20,8 +20,23 @@ include("includes/connection.php");
 
             $insert_qry = "UPDATE `tblbooking` SET `UserName`='$username',`EmailId`='$email',`Password`='$password',`ContactNo`='$contact' WHERE id='$insert_id'";
             $fn_qry = mysqli_query($conn, $insert_qry);
+            $sel_qry = "SELECT * FROM `tblbooking` WHERE id='$insert_id'";
+            $res_qry = mysqli_query($conn, $sel_qry);
+            $rows = mysqli_fetch_assoc($res_qry);
+            $pickuptime = $rows['Time'];
+            $JourneyDate= $rows['FromDate'];
+            $pickuplocation = $rows['pickup'];
+            $droplocation = $rows['dropoff'];
+            $to = "$email";
+            $headers = "From : info@redicabs.com";
+            $subject = "Thank You For Booking";
+            $message = "Thank You ". $username. "For Booking. Here is your details below";
+            $message .= "Full Name: <b>". $username . "</b>\r\n". "Email: <b>" . $email ."</b>\r\n". "Contact No: <b>" . $contact. "</b>\r\n". 
+        "Pickup Time: <b>" . $pickuptime . "</b>\r\n". "Journey Date: <b>" . $JourneyDate . "</b>\r\n". "Pickup Location: <b>" . $pickuplocation . "</b>\r\n". "Drop Off Location: " .$droplocation ;
+            mail($to,$subject,$message,$headers);
+
             if($fn_qry) {
-               $msg = "Submitted";
+               $msg = "<b style='color:red;'>Mail Sent. Thank you " . $username . ", we will contact you shortly.</b>";
             } else {
          $msg = "Not Submitted";
             }
