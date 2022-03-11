@@ -262,7 +262,8 @@ body,
 .map-wapper-opacity {
     float: left;
     width: 100%;
-    height: 67px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     border-top: 6px solid #F1C40F;
     position: absolute;
     background: url(../images/blader-bg.png);
@@ -293,8 +294,7 @@ body,
     width: 70%;
     font-size: 14px;
     color: #2C3E50;
-    margin-top: 18px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .call-us span {
@@ -319,7 +319,7 @@ body,
 
 .logo {
     width: 186px !important;
-    margin: -6px auto 0 auto !important;
+    margin:-34px;
 }
 
 
@@ -329,25 +329,24 @@ body,
 /* Language & resister-social css start */
 
 .resister-social {
-    float: left;
+    float: right;
     width: 100%;
     position: relative;
     z-index: 1001;
-    margin-left: 10px;
-    margin-top: 8px;
+    margin: 0px -100px;
+    display: flex;
 }
 
 .resister-social .select-control {
-    float: left;
+    float: right;
     background: url('../images/select-bg-arro.png') no-repeat transparent 62% 52%;
     outline: 0px;
     padding: 10px;
     border: none;
     width: 100px;
     font-size: 14px;
-    appearence: none;
+    margin-left: 60px;
     -webkit-appearance: none;
-    -mox-appearance: none;
 }
 
 .resister-social .white-array {
@@ -3032,8 +3031,8 @@ label.control-label span {
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+  margin-top: -39px;
+  margin-left: 146px;
 }
 
 .dropdown-content {
@@ -3052,7 +3051,10 @@ label.control-label span {
   text-decoration: none;
   display: block;
 }
-
+.logo-row {
+margin:10px;
+width:100%;
+}
 .dropdown-content a:hover {background-color: #f1f1f1;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: #F1C40F;}

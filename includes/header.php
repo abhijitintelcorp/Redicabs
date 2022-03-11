@@ -27,7 +27,7 @@
 <div class="map-wapper-opacity">
   <div class="container">
     <div class="row">
-      <div class="row">
+      
         <div class="col-sm-4">
           <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
             <select class="selectpicker" data-live-search="false">
@@ -57,7 +57,7 @@
         <div class="col-sm-4">
           <div id="languages" class="resister-social">
 
-            <div>
+            <div class="pull-right">
               <!-- <a href="#">Login</a> -->
               <button class="dropbtn" onclick="document.getElementById('id01').style.display='block'">Login</button>
               <?php
@@ -81,7 +81,7 @@
                   <a href="#" id="2" style="padding:10px; cursor:pointer;" onclick="myAP()">Andhra Pradesh</a>
                 </div>
             </div>
-          </div>
+          
         </div>
 
       </div>
