@@ -228,7 +228,7 @@ if (isset($_POST['delayed'])) {
                                                             <option value="<?php echo $row['OwnerName']; ?>"><?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                     $OwnerName = $_POST['OwnerName'];
-                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile from tblbooking  GROUP BY OwnerName ASC";
+                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile FROM tblbooking WHERE `Status`='3' GROUP BY OwnerName ASC";
                                                                     $exe = mysqli_query($conn, $qry);
                                                                     while ($row = mysqli_fetch_array($exe)) {
                                                                         $owner_mobile = $row['owner_mobile'];
@@ -248,7 +248,7 @@ if (isset($_POST['delayed'])) {
                                                     <th>Phone Number</th>
                                                     <td>
                                                         <input class="form-control white_bg" placeholder="Owner Number"
-                                                            name="owner_mobile" id="owner_mobile" type="text"
+                                                            name="owner_mobile" id="owner_mobile" value="<?php echo $row['owner_mobile']; ?>" type="text"
                                                             readonly="readonly">
                                                     </td>
                                                 </tr>
@@ -295,7 +295,7 @@ if (isset($_POST['delayed'])) {
                                                     </td>
                                                     <th>Phone Number</th>
                                                     <td><input class="form-control white_bg" placeholder="Driver Number"
-                                                            name="DriverMobile" id="DriverMobile" type="text"
+                                                            name="DriverMobile" id="DriverMobile" value="<?php echo $row['DriverMobile']; ?>" type="text"
                                                             readonly="readonly"></td>
 
                                                 </tr>
