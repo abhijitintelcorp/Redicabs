@@ -228,18 +228,18 @@ if (isset($_POST['delayed'])) {
                                                             <option value="<?php echo $row['OwnerName']; ?>"><?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                     $OwnerName = $_POST['OwnerName'];
-                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile FROM tblbooking WHERE `Status`='3' GROUP BY OwnerName ASC";
+                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile FROM tblbooking WHERE `Status`='3' AND `OwnerName`='$OwnerName' GROUP BY OwnerName ASC";
                                                                     $exe = mysqli_query($conn, $qry);
-                                                                    while ($row = mysqli_fetch_array($exe)) {
-                                                                        $owner_mobile = $row['owner_mobile'];
-                                                                        $DriverName = $row['DriverName'];
-                                                                        $DriverMobile = $row['DriverMobile'];
+                                                                    while ($rows = mysqli_fetch_array($exe)) {
+                                                                        $owner_mobile = $rows['owner_mobile'];
+                                                                        $DriverName = $rows['DriverName'];
+                                                                        $DriverMobile = $rows['DriverMobile'];
                                                                     ?>
-                                                            <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
-                                                                DriverName="<?php echo $row['DriverName']; ?>"
-                                                                DriverMobile="<?php echo $row['DriverMobile']; ?>"
-                                                                value="<?php echo $row['OwnerName']; ?>">
-                                                                <?php echo $row['OwnerName']; ?>
+                                                            <option owner_mobile="<?php echo $rows['owner_mobile']; ?>"
+                                                                DriverName="<?php echo $rows['DriverName']; ?>"
+                                                                DriverMobile="<?php echo $rows['DriverMobile']; ?>"
+                                                                value="<?php echo $rows['OwnerName']; ?>">
+                                                                <?php echo $rows['OwnerName']; ?>
                                                             </option>
                                                             <?php }  ?>
                                                             <?php } ?>
@@ -248,7 +248,7 @@ if (isset($_POST['delayed'])) {
                                                     <th>Phone Number</th>
                                                     <td>
                                                         <input class="form-control white_bg" placeholder="Owner Number"
-                                                            name="owner_mobile" id="owner_mobile" value="<?php echo $row['owner_mobile']; ?>" type="text"
+                                                            name="owner_mobile" id="owner_mobile" value="<?php echo $rows['owner_mobile']; ?>" type="text"
                                                             readonly="readonly">
                                                     </td>
                                                 </tr>
@@ -282,12 +282,12 @@ if (isset($_POST['delayed'])) {
                                                                     $DriverName = $_POST['DriverName'];
                                                                     $qry = "SELECT DriverMobile from tblbooking  where DriverName=$DriverName";
                                                                     $exe = mysqli_query($conn, $qry);
-                                                                    while ($row = mysqli_fetch_array($exe)) {
+                                                                    while ($rowss = mysqli_fetch_array($exe)) {
 
-                                                                        $DriverMobile = $row['DriverMobile'];
+                                                                        $DriverMobile = $rowss['DriverMobile'];
                                                                     ?>
-                                                            <option DriverMobile="<?php echo $row['DriverMobile']; ?>"
-                                                                value="<?php echo $row['DriverMobile']; ?>">
+                                                            <option DriverMobile="<?php echo $rowss['DriverMobile']; ?>"
+                                                                value="<?php echo $rowss['DriverMobile']; ?>">
 
                                                             </option>
                                                             <?php }  ?>
@@ -295,7 +295,7 @@ if (isset($_POST['delayed'])) {
                                                     </td>
                                                     <th>Phone Number</th>
                                                     <td><input class="form-control white_bg" placeholder="Driver Number"
-                                                            name="DriverMobile" id="DriverMobile" value="<?php echo $row['DriverMobile']; ?>" type="text"
+                                                            name="DriverMobile" id="DriverMobile" value="<?php echo $rowss['DriverMobile']; ?>" type="text"
                                                             readonly="readonly"></td>
 
                                                 </tr>
