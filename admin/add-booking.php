@@ -456,7 +456,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="jquery-ui/jquery-ui.css">
     </script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="../../Redicabs//admin//js//valid.js"></script>
+    <script src="js/valid.js"></script>
 
     <script src="js/additional-methods.min.js">
     </script>
