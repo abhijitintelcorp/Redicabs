@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 include("includes/config.php");
 $id = $_GET['bid'];
 function dateDiff($FromDate, $ToDate)
@@ -32,6 +32,10 @@ if (isset($_POST['update'])) {
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $total =    htmlspecialchars($_POST['total']);
+    $OwnerName = htmlspecialchars($_POST['OwnerName']);
+    $owner_mobile = htmlspecialchars($_POST['owner_mobile']);
+    $DriverName = htmlspecialchars($_POST['DriverName']);
+    $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
     //($_POST['TotalNoDays'] * $_POST['PricePerDay']);
     $id = $_GET['bid'];
 
@@ -40,7 +44,7 @@ if (isset($_POST['update'])) {
     owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
     FromDate='$FromDate',ToDate='$ToDate',Time='$pickuptime',TotalNoDays='$TotalNoDays',Categories='$Categories'
       ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
-      dropoff='$dropoff',Total='$total' WHERE id='$id'";
+      dropoff='$dropoff',Total='$total', OwnerName ='$OwnerName',owner_mobile= '$owner_mobile', DriverName = '$DriverName', DriverMobile = '$DriverMobile' WHERE id='$id'";
 
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
@@ -241,13 +245,42 @@ if (isset($_POST['delayed'])) {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th colspan="3" style="text-align:center">Grand Total</th>
-                                                    <td><input type="text" class="form-control" name="total" id="total"
-                                                            readonly="readonly"
-                                                            value="<?php echo $row['TotalNoDays'] * $row['PricePerDay'] ?>"
-                                                            required>
+                                                    <th colspan="4" style="text-align:center;color:blue">Owner Details
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <th>Owner Name</th>
+                                                    <td><select name="OwnerName" id="OwnerName" type="text"
+                                                            class="selectpicker">
+
+                                                            <option value="">Select owner</option>
+                                                            <?php
+                                                                    $OwnerName = $_POST['OwnerName'];
+                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile from tblbooking  GROUP BY OwnerName ASC";
+                                                                    $exe = mysqli_query($conn, $qry);
+                                                                    while ($row = mysqli_fetch_array($exe)) {
+                                                                        $owner_mobile = $row['owner_mobile'];
+                                                                        $DriverName = $row['DriverName'];
+                                                                        $DriverMobile = $row['DriverMobile'];
+                                                                    ?>
+                                                            <option owner_mobile="<?php echo $row['owner_mobile']; ?>"
+                                                                DriverName="<?php echo $row['DriverName']; ?>"
+                                                                DriverMobile="<?php echo $row['DriverMobile']; ?>"
+                                                                value="<?php echo $row['OwnerName']; ?>">
+                                                                <?php echo $row['OwnerName']; ?>
+                                                            </option>
+                                                            <?php }  ?>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </td>
+                                                    <th>Phone Number</th>
+                                                    <td>
+                                                        <input class="form-control white_bg" placeholder="Owner Number"
+                                                            name="owner_mobile" id="owner_mobile" type="text"
+                                                            readonly="readonly">
                                                     </td>
                                                 </tr>
+                                                <?php   ?>
                                                 <tr>
                                                     <th>Booking Status</th>
                                                     <td><?php
@@ -272,26 +305,41 @@ if (isset($_POST['delayed'])) {
                                                     <th>Driver Name</th>
                                                     <td><select name="DriverName" id="DriverName" type="text"
                                                             class="selectpicker">
-                                                            <option value="<?php echo $row['DriverName']; ?>">
-                                                                <?php echo $row['DriverName']; ?></option>
+                                                            <option value="">Select Driver</option>
+                                                            <?php
+                                                                    $DriverName = $_POST['DriverName'];
+                                                                    $qry = "SELECT DriverMobile from tblbooking  where DriverName=$DriverName";
+                                                                    $exe = mysqli_query($conn, $qry);
+                                                                    while ($row = mysqli_fetch_array($exe)) {
+
+                                                                        $DriverMobile = $row['DriverMobile'];
+                                                                    ?>
+                                                            <option DriverMobile="<?php echo $row['DriverMobile']; ?>"
+                                                                value="<?php echo $row['DriverMobile']; ?>">
+
+                                                            </option>
+                                                            <?php }  ?>
                                                         </select>
                                                     </td>
                                                     <th>Phone Number</th>
                                                     <td><input class="form-control white_bg" placeholder="Driver Number"
-                                                            name="DriverMobile" id="DriverMobile"
-                                                            value="<?php echo $row['DriverMobile']; ?>" type="text"
+                                                            name="DriverMobile" id="DriverMobile" type="text"
                                                             readonly="readonly"></td>
-                                                    <td><input class="form-control white_bg" placeholder="Driver Name"
-                                                            name="driver_name" id="driver_name"
-                                                            value="<?php echo $row['Driverid']; ?>" type="hidden"
-                                                            readonly="readonly"></td>
+
                                                 </tr>
-                                              
+                                                <tr>
+                                                    <th colspan="3" style="text-align:center">Grand Total</th>
+                                                    <td><input type="text" class="form-control" name="total" id="total"
+                                                            readonly="readonly"
+                                                            value="<?php echo $row['TotalNoDays'] * $row['PricePerDay'] ?>"
+                                                            required>
+                                                    </td>
+                                                </tr>
 
-                                                 <?php 
+                                                <?php
 
-                                                    if ($row['Status'] == 0) {
-                                                 ?>
+                                                        if ($row['Status'] == 0) {
+                                                        ?>
                                                 <tr>
                                                     <td style="text-align:center" colspan="4">
                                                         <button class="btn btn-primary" name="update"
@@ -307,11 +355,12 @@ if (isset($_POST['delayed'])) {
                                                     <?php } ?>
                                                 </tr>
 
-                                                  <?php } ?>
-                                                <?php } ?>
+                                                <?php }
+                                                        ?>
+                                                <?php  ?>
                                                 <?php $cnt = $cnt + 1;
 
-                                                ?>
+                                                        ?>
                                             </form>
                                         </tbody>
                                     </table>
@@ -417,6 +466,22 @@ if (isset($_POST['delayed'])) {
                 $('#OwnerName').html('<option value="">Select Brand first</option>');
             }
         });
+
+        $('#OwnerName').on('change', function() {
+            var OwnerName = $(this).val();
+            if (OwnerName) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand.php',
+                    data: 'OwnerName=' + OwnerName,
+                    success: function(html) {
+                        $('#DriverName').html(html);
+                    }
+                });
+            } else {
+                $('#DriverName').html('<option value="">Select driver</option>');
+            }
+        });
         $('#VehicleName').on('change', function() {
             var owner_vehicle_name = $(this).val();
             $.ajax({
@@ -496,26 +561,26 @@ if (isset($_POST['delayed'])) {
             }
         });
     });
-    $('#VehicleName').on('change', function() {
-        var owner_vehicle_name = $(this).val();
+    // $('#VehicleName').on('change', function() {
+    //     var owner_vehicle_name = $(this).val();
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'get-owner-mobile.php',
+    //         data: {
+    //             owner_vehicle_name: owner_vehicle_name
+    //         },
+    //         success: function(data) {
+    //             $('#owner_mobile').val(data);
+    //         }
+    //     });
+    // });
+    $('#OwnerName').on('change', function() {
+        var OwnerName = $(this).val();
         $.ajax({
             type: 'POST',
             url: 'get-owner-mobile.php',
             data: {
-                owner_vehicle_name: owner_vehicle_name
-            },
-            success: function(data) {
-                $('#owner_mobile').val(data);
-            }
-        });
-    });
-    $('#VehicleName').on('change', function() {
-        var owner_vehicle_name = $(this).val();
-        $.ajax({
-            type: 'POST',
-            url: 'get-owner-mobile.php',
-            data: {
-                owner_vehicle_name: owner_vehicle_name
+                OwnerName: OwnerName
             },
             success: function(data) {
                 $('#owner_mobile').val(data);
@@ -548,26 +613,52 @@ if (isset($_POST['delayed'])) {
             }
         });
     });
-    $('#VehicleName').on('change', function() {
-        var owner_vehicle_name = $(this).val();
+    // $('#VehicleName').on('change', function() {
+    //     var owner_vehicle_name = $(this).val();
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'get-driver-name.php',
+    //         data: {
+    //             owner_vehicle_name: owner_vehicle_name
+    //         },
+    //         success: function(data) {
+    //             $('#DriverName').val(data);
+    //         }
+    //     });
+    // });
+    $('#OwnerName').on('change', function() {
+        var OwnerName = $(this).val();
         $.ajax({
             type: 'POST',
             url: 'get-driver-name.php',
             data: {
-                owner_vehicle_name: owner_vehicle_name
+                OwnerName: OwnerName
             },
             success: function(data) {
                 $('#DriverName').val(data);
             }
         });
     });
-    $('#VehicleName').on('change', function() {
-        var owner_vehicle_name = $(this).val();
+    // $('#VehicleName').on('change', function() {
+    //     var owner_vehicle_name = $(this).val();
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'get-driver-mobile.php',
+    //         data: {
+    //             owner_vehicle_name: owner_vehicle_name
+    //         },
+    //         success: function(data) {
+    //             $('#DriverMobile').val(data);
+    //         }
+    //     });
+    // });
+    $('#DriverName').on('change', function() {
+        var DriverName = $(this).val();
         $.ajax({
             type: 'POST',
             url: 'get-driver-mobile.php',
             data: {
-                owner_vehicle_name: owner_vehicle_name
+                DriverName: DriverName
             },
             success: function(data) {
                 $('#DriverMobile').val(data);
