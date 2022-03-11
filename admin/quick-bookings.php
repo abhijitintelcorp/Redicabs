@@ -318,7 +318,7 @@ if (isset($_POST['booking'])) {
         });
     </script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="../../Redicabs//admin//js//valid.js"></script>
+    <script src="js/valid.js"></script>
 
     <script src="js/additional-methods.min.js">
     </script>
