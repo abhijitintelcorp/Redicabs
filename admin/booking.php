@@ -54,7 +54,7 @@ include("includes/config.php");
                                 <div class="card-body" style="padding: 0px">
 
                                     <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                        cellspacing="0" width="100%">
+                                        style="border: 1px solid #212529;" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo.</th>

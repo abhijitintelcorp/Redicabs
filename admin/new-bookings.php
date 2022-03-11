@@ -21,25 +21,17 @@ include("includes/config.php");
                 <div class="container-fluid">
                     <div class="row mb-2">
 
-                        <!-- <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">ManageOwner</li>
-                            </ol>
-                        </div> -->
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
 
-            <!-- Main content -->
+
             <section class="content" style="margin-left: -251px;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <h2 class="page-title">Booking info</h2>
-                            <!-- <a href="add-booking.php"><span class="pull-right">Add Booking</span></a> -->
-                            <!-- <input name="Submit" type="submit" class="txtbox4" value="Add Booking"
-                                href="add-booking.php" /> -->
+
                             <div style="margin-left:90%">
                                 <a href="booking.php">
                                     <button class="btn-danger">Add Booking</button>
@@ -49,7 +41,7 @@ include("includes/config.php");
                                 <!-- /.card-header -->
                                 <div class="card-body" style="padding: 0px">
                                     <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                        cellspacing="0" width="100%">
+                                        style="border: 1px solid #212529;" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
