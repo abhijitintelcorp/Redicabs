@@ -18,6 +18,7 @@ if (isset($_POST['update'])) {
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $address = htmlspecialchars($_POST['address']);
     $City = htmlspecialchars($_POST['City']);
+    $Country = htmlspecialchars($_POST['Country']);
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
@@ -37,10 +38,10 @@ if (isset($_POST['update'])) {
     $DriverName = htmlspecialchars($_POST['DriverName']);
     $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
     //($_POST['TotalNoDays'] * $_POST['PricePerDay']);
-    $id = $_GET['bid'];
+    
 
     $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
-    ContactNo='$ContactNo',address='$address',City='$City',SeatingCapacity='$SeatingCapacity',
+    ContactNo='$ContactNo',address='$address',City='$City',Country='$Country',SeatingCapacity='$SeatingCapacity',
     owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
     FromDate='$FromDate',ToDate='$ToDate',Time='$pickuptime',TotalNoDays='$TotalNoDays',Categories='$Categories'
       ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
@@ -256,7 +257,7 @@ if (isset($_POST['delayed'])) {
                                                                 <?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                     $OwnerName = $_POST['OwnerName'];
-                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile FROM tblbooking WHERE `Status`='3'  GROUP BY OwnerName ASC";
+                                                                    $qry = "SELECT DISTINCT * FROM tblbooking WHERE `Status`='3'  GROUP BY OwnerName ASC";
                                                                     $exe = mysqli_query($conn, $qry);
                                                                     while ($rows = mysqli_fetch_array($exe)) {
                                                                         $owner_mobile = $rows['owner_mobile'];
@@ -305,9 +306,8 @@ if (isset($_POST['delayed'])) {
                                                 <tr>
                                                     <th>Driver Name</th>
                                                     <td><select name="DriverName" id="DriverName" type="text"
-                                                            class="selectpicker"
-                                                            value="<?php echo $row['DriverName']; ?>">
-
+                                                            class="selectpicker">
+                                                           <option value="<?php echo $row['DriverName']; ?>"><?php echo $row['DriverName']; ?></option>
                                                         </select>
                                                     </td>
                                                     <th>Phone Number</th>
@@ -642,6 +642,19 @@ if (isset($_POST['delayed'])) {
             },
             success: function(data) {
                 $('#owner_mobile').val(data);
+            }
+        });
+    });
+    $('#OwnerName').on('change', function() {
+        var OwnerName = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: 'get-driver-mobile.php',
+            data: {
+                OwnerName: OwnerName
+            },
+            success: function(data) {
+                $('#DriverMobile').val(data);
             }
         });
     });
