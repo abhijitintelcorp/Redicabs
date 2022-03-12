@@ -1,6 +1,5 @@
 <?php
 include("includes/config.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +7,6 @@ include("includes/config.php");
 <?php include("includes/headerlink.php"); ?>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
     <title>Redicabs | Canceled Bookings </title>
 </head>
 
@@ -16,69 +14,76 @@ include("includes/config.php");
     <div class="wrapper">
         <?php include('includes/sidebar.php'); ?>
 
-        <div class="content-wrapper">
-            <section class="content" style="margin-left: -251px;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="page-title">Canceled Bookings</h2>
+
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body" style="padding: 0px">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Booking No.</th>
+                                            <th>Vehicle</th>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>PickUp Time</th>
+                                            <th>Status</th>
+                                            <th>Posting Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <?php
+                                    extract($_POST);
+                                    $status = 2;
+                                    $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
+                                    $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($retrive_fn_query)) {
+                                        $cnt++;
+                                    ?>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo htmlentities($cnt); ?></td>
+                                            <td><?php echo $row['OwnerName'];  ?></td>
+                                            <td><?php echo $row['BookingNumber']; ?></td>
+                                            <td><a href="edit-vehicle.php?id=<?php echo htmlentities($row['vid']); ?>"><?php echo htmlentities($row['owner_vehicle_name']); ?>
+                                            </td>
+                                            <td><?php echo htmlentities($row['FromDate']); ?></td>
+                                            <td><?php echo htmlentities($row['ToDate']); ?></td>
+                                            <td><?php echo htmlentities($row['Time']); ?></td>
+                                            <td><?php
+                                                    if ($row['Status'] == 0) {
+                                                        echo htmlentities('Not Confirmed yet');
+                                                    } else if ($row['Status'] == 1) {
+                                                        echo htmlentities('Confirmed');
+                                                    } else {
+                                                        echo htmlentities('Cancelled');
+                                                    }
+                                                    ?></td>
+                                            <td><?php echo $row['CreatedDate']; ?></td>
+                                            <td>
 
 
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="page-title">Canceled Bookings</h2>
-                            <div class="panel panel-default">
-                                <div class="panel-body" style=" overflow-x:auto;">
-                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                        cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Booking No.</th>
-                                                <th>VehicleName</th>
-                                                <th>Drivername</th>
-                                                <th>DriverNo</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
+                                                <a href="booking-details.php?bid=<?php echo $row['id']; ?>">
+                                                    View</a>
 
-                                        <?php
-                                        extract($_POST);
-                                        $status = 2;
-                                        $retrive_qyr = "SELECT * FROM tblbooking  where Status='$status'";
-                                        $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
-                                        $cnt = 1;
-                                        while ($row = mysqli_fetch_array($retrive_fn_query)) {
-                                            $cnt++;
-                                        ?>
+                                            </td>
 
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo htmlentities($cnt); ?></td>
-                                                <td><?php echo $row['UserName'];  ?></td>
-                                                <td><?php echo $row['BookingNumber']; ?></td>
-                                                <td><?php echo $row['owner_vehicle_name']; ?></td>
-                                                <td><?php echo $row['DriverName']; ?>
-                                                </td>
-                                                <td><?php echo $row['DriverMobile']; ?>
-                                                </td>
-                                                <td><?php
-                                                        if ($row['Status'] == 0) {
-                                                            echo htmlentities('Not Confirmed yet');
-                                                        } else if ($row['Status'] == 1) {
-                                                            echo htmlentities('Confirmed');
-                                                        } else {
-                                                            echo htmlentities('Cancelled');
-                                                        }
-                                                        ?></td>
-
-                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
-                                                </td>
-                                            </tr>
-                                            <?php $cnt = $cnt + 1;
-                                        } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        </tr>
+                                        <?php $cnt = $cnt + 1;
+                                    } ?>
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -87,16 +92,14 @@ include("includes/config.php");
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
+            </div>
+            <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
     </div>
     <!-- ./wrapper -->
-    <?php
-    include("includes/footerlink.php");
-    ?>
+
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -114,9 +117,6 @@ include("includes/config.php");
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js">
-    </script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
@@ -141,12 +141,6 @@ include("includes/config.php");
         });
     });
     </script>
-    <script>
-    $(document).ready(function() {
-        $('#zctb').DataTable();
-    });
-    </script>
 </body>
-<?php  ?>
 
 </html>
