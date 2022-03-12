@@ -58,14 +58,10 @@
 
     if (isset($_POST["OwnerName"])) {
         $OwnerName = $_POST['OwnerName'];
-        //Get all city data
-
         $query2 = "SELECT * FROM tblbooking WHERE OwnerName = '$OwnerName' 
 	GROUP BY OwnerName ASC";
         $run_query2 = mysqli_query($conn, $query2);
-        //Count total number of rows
         $count2 = mysqli_num_rows($run_query2);
-        //Display cities list
         if ($count2 > 0) {
             while ($rows = mysqli_fetch_array($run_query2)) {
                 $DriverName = $rows['DriverName'];

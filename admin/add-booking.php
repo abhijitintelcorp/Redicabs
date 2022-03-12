@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
         owner_vehicle_chesis_no	='$owner_vehicle_chesis_no',OwnerName='$OwnerName', owner_mobile='$owner_mobile',
         owner_email='$owner_email',DriverName='$DriverName',DriverMobile='$DriverMobile',FromDate='$FromDate',ToDate='$ToDate',
          PricePerDay='$PricePerDay',owner_email='$owner_email',pickup='$pickup',dropoff='$dropoff',totalnodays='$totalnodays',
-         BookingNumber='$bookingno',status='$status',dob='$dob' WHERE id='$id'";
+         BookingNumber='$bookingno',status='$status',dob='$dob',Time='$pickuptime' WHERE id='$id'";
         $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
         if ($inst_u_fn1_qry) {
 
