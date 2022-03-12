@@ -17,7 +17,6 @@ include("includes/connection.php");
             $email = htmlspecialchars($_POST['email']);
             $contact = htmlspecialchars($_POST['contact']);
             $password = htmlspecialchars($_POST['password_id']);
-
             $insert_qry = "UPDATE `tblbooking` SET `UserName`='$username',`EmailId`='$email',`Password`='$password',`ContactNo`='$contact' WHERE id='$insert_id'";
             $fn_qry = mysqli_query($conn, $insert_qry);
             $sel_qry = "SELECT * FROM `tblbooking` WHERE id='$insert_id'";
