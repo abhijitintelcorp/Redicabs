@@ -228,7 +228,7 @@ if (isset($_POST['delayed'])) {
                                                             <option value="<?php echo $row['OwnerName']; ?>"><?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                     $OwnerName = $_POST['OwnerName'];
-                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile FROM tblbooking WHERE `Status`='3' AND `OwnerName`='$OwnerName' GROUP BY OwnerName ASC";
+                                                                    $qry = "SELECT distinct id, OwnerName,owner_mobile,DriverName,DriverMobile FROM tblbooking WHERE `Status`='3'  GROUP BY OwnerName ASC";
                                                                     $exe = mysqli_query($conn, $qry);
                                                                     while ($rows = mysqli_fetch_array($exe)) {
                                                                         $owner_mobile = $rows['owner_mobile'];
@@ -287,7 +287,7 @@ if (isset($_POST['delayed'])) {
                                                                         $DriverMobile = $rowss['DriverMobile'];
                                                                     ?>
                                                             <option DriverMobile="<?php echo $rowss['DriverMobile']; ?>"
-                                                                value="<?php echo $rowss['DriverMobile']; ?>">
+                                                                value="<?php echo $rows['DriverName']; ?>"><?php echo $rows['DriverName']; ?>
 
                                                             </option>
                                                             <?php }  ?>
