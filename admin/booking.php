@@ -1,15 +1,15 @@
 <?php
 session_start();
-error_reporting(0);
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
 include("includes/config.php");
 ?>
-<?php include("includes/headerlink.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript" src="js/getData.js"></script>
+<?php include("includes/headerlink.php"); ?>
+
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -22,7 +22,7 @@ include("includes/config.php");
 
 
             <!-- Main content -->
-            <section class="content" style="margin-left: -251px;">
+            <section class="content" style="margin-left:-251px;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -36,7 +36,7 @@ include("includes/config.php");
                                         id="SeatingCapacity">
                                         <option value="" selected="selected">SeatingCapacity</option>
                                         <?php
-                                        $qry = "SELECT   SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
+                                        $qry = "SELECT   SeatingCapacity from tblbooking GROUP BY SeatingCapacity";
                                         $exe = mysqli_query($conn, $qry);
                                         while ($row = mysqli_fetch_assoc($exe)) {
 
@@ -65,15 +65,12 @@ include("includes/config.php");
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-
-                                        <!-- <?php include 'filter.php' ?> -->
                                         <?php
-                                        include("includes/config.php");
+                                        if(isset($_POST['filter'])) {
                                         $SeatingCapacity = $_POST['SeatingCapacity'];
-                                        $cnt = 0;
+                                        $cnt = 1;
                                         $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity") or die();
                                         while ($fetch = mysqli_fetch_array($query)) {
-                                            $cnt++;
                                         ?>
                                         <tbody>
                                             <tr>
@@ -93,8 +90,9 @@ include("includes/config.php");
                                                 </td>
 
                                             </tr>
-                                            <?php $cnt = $cnt + 1;
+                                            <?php $cnt++;
                                         }
+                                    }
                                             ?>
                                         </tbody>
 
@@ -124,6 +122,7 @@ include("includes/config.php");
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/getData.js"></script>
     <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
