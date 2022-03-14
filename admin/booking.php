@@ -36,7 +36,7 @@ include("includes/config.php");
                                         id="SeatingCapacity">
                                         <option value="" selected="selected">SeatingCapacity</option>
                                         <?php
-                                        $qry = "SELECT   SeatingCapacity from tblbooking GROUP BY SeatingCapacity";
+                                        $qry = "SELECT   SeatingCapacity from tblbooking WHERE Status='3' GROUP BY SeatingCapacity ";
                                         $exe = mysqli_query($conn, $qry);
                                         while ($row = mysqli_fetch_assoc($exe)) {
 
@@ -69,8 +69,8 @@ include("includes/config.php");
                                         if(isset($_POST['filter'])) {
                                         $SeatingCapacity = $_POST['SeatingCapacity'];
                                         $cnt = 1;
-                                        $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity") or die();
-                                        while ($fetch = mysqli_fetch_array($query)) {
+                                        $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity");
+                                        $fetch = mysqli_fetch_array($query);
                                         ?>
                                         <tbody>
                                             <tr>
@@ -92,7 +92,6 @@ include("includes/config.php");
                                             </tr>
                                             <?php $cnt++;
                                         }
-                                    }
                                             ?>
                                         </tbody>
 
