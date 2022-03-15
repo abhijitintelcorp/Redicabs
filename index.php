@@ -1,34 +1,44 @@
 <?php
+session_start();
 include("includes/connection.php");
-error_reporting(0);
+// error_reporting(0);
+date_default_timezone_set("Asia/Kolkata");
+$msg = "";
+$fromDate ="";
+function dateDiff($fromDate, $toDate)
+{
+    $date1_ts = strtotime($fromDate);
+    $date2_ts = strtotime($toDate);
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400) + 1;
+}
+
 if (isset($_POST['taxi_booking'])) {
     $bookingNumber = mt_rand(100000000, 999999999);
-
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
     $brand = htmlspecialchars($_POST['brand']);
     $VehicleName = htmlspecialchars($_POST['VehicleName']);
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
-    $fromdate = htmlspecialchars($_POST['fromdate']);
-    $todate = htmlspecialchars($_POST['todate']);
+    $fromDate = htmlspecialchars($_POST['fromdate']);
+    $toDate = htmlspecialchars($_POST['todate']);
+    $totalnodays = dateDiff($fromDate, $toDate);
+    $regdate = date("Y-m-d");
     $Time = htmlspecialchars($_POST['Time']);
-    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromdate','$todate','$Time')";
+    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
     $res_query = mysqli_query($conn, $insert_qry);
-    if ($res_query) {
-        header("location:includes/register.php");
-    } else {
-        echo "error";
-    }
-}
+    $insert_id = mysqli_insert_id($conn); 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include("includes/header.php");
+<body onload="document.getElementById('id02').style.display='block'">
+<?php 
+include("includes/register.php");
+}
 ?>
-
-<body>
+<?php
+   include("includes/header.php");
+?>
     <!-- Booking now form wrapper html start -->
     <div class="booking-form-wrapper">
         <div class="container">
@@ -39,8 +49,9 @@ include("includes/header.php");
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
-                                <form action="" method="post" name="booking" id="booking" class="form-horizontal">
+                                <form action="" method="post" name="booking" id="booking" class="form-horizontal" onsubmit="openModal()">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                         <?php echo $msg; ?>
                                         <div class="row">
                                             <label>Seating Capacity</label>
                                             <select name="SeatingCapacity1" id="SeatingCapacity1" style="width: 305px; height:30px;" required>
@@ -85,7 +96,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup" value="<?php echo $row['pickup']; ?>" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup"  required>
                                                 </input>
                                             </div>
                                         </div>
@@ -94,7 +105,7 @@ include("includes/header.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff" value="<?php echo $row['dropoff']; ?>" required>
+                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff"  required>
                                                 </input>
                                             </div>
                                         </div>
@@ -121,8 +132,10 @@ include("includes/header.php");
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
-                                                <label>Time</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="Time" onload="signup_form" id="Time" type="time">
+                                                <label>Pick up Time <small>(You can select pickup time 30 minutes from Current Time)</small></label>
+                                                <input class="custom-select-box tec-domain-cat form-control" style="width: 305px; height:30px; " name="Time" id="datetimepicker4" type="time">
+
+
                                                 </input>
                                             </div>
 
@@ -155,7 +168,7 @@ include("includes/header.php");
                                     </div> -->
 
                                     <div class="form-button">
-                                        <button type="submit" id="taxi_booking" name="taxi_booking" class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
+                                        <button type="submit" id="taxi_booking" name="taxi_booking"   class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
 
                                     </div>
                                 </form>
@@ -186,29 +199,20 @@ include("includes/header.php");
     <!-- anytime-anywhere html Exit -->
 
     <!-- label white html start -->
-    <div class="label-white2 white-lable-m">
+     <div class="label-white2 white-lable-m">
         <div class="container">
             <div class="row">
                 <div class="car-item-wrap">
                     <div class="car-type">
                         <div class="car-wrap"><img class="private-car" src="images/private-car.png" alt="" /></div>
-                        <h5>Private Car</h5>
+                        <h5> Car</h5>
                         <div class="car-type-btn">
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"><img class="morotbike-car" src="images/motorbike.png" alt="" /></div>
-                        <h5>Motorbike</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
                     <div class="car-type">
                         <div class="car-wrap"> <img class="minicar-car" src="images/minicar.png" alt="" /></div>
-                        <h5>Minicar</h5>
+                        <h5>Mini Car</h5>
                         <div class="car-type-btn">
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
@@ -216,52 +220,11 @@ include("includes/header.php");
 
                     <div class="car-type">
                         <div class="car-wrap"> <img class="mini-track-car" src="images/mini-track.png" alt="" /></div>
-                        <h5>Mini Truck</h5>
+                        <h5> Truck</h5>
                         <div class="car-type-btn">
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="boat-car" src="images/boat.png" alt="" /></div>
-                        <h5>Boat</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="snow-car" src="images/snow-bike.png" alt="" /></div>
-                        <h5>Snow Bike</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="tractor-car" src="images/tractor.png" alt="" /></div>
-                        <h5>Tractor</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="vihicel-car" src="images/vihicel.png" alt="" /></div>
-                        <h5>Large Vehicle</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="morotbike-car" src="images/motorbike.png" alt="" /></div>
-                        <h5>Motorbike</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
-
                     <div class="car-type">
                         <div class="car-wrap"> <img class="big-track-car" src="images/big-track.png" alt="" /></div>
                         <h5>Big Truck</h5>
@@ -269,7 +232,36 @@ include("includes/header.php");
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/vihicel.png" alt="" /></div>
+                        <h5>Crain </h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="mini-track-car" width="100px" src="images/auto.png" alt="" />
+                        </div>
+                        <h5> Auto</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" width="100px" src="images/bus.png" alt="" />
+                        </div>
+                        <h5>Bus</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/Lori.png" alt="" /></div>
+                        <h5>Lori </h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -278,7 +270,7 @@ include("includes/header.php");
     <!-- label white html exit -->
 
     <!-- label yellow html start -->
-    <div class="yellow-label-wrapper2">
+   <div class="yellow-label-wrapper2">
         <div class="label-yellow stellar" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="">
             <div class="container">
                 <div class="row">
@@ -295,13 +287,16 @@ include("includes/header.php");
                             <div class="item active">
                                 <div class="col-sm-4">
                                     <div class="row">
-                                        <div class="slider-item ">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider1.jpg" /></div>
+                                        <div class="slider-item">
+                                            <div id="slider1" class="slider-img"
+                                                style="background-image:url(images/slider/DB.png); background-size:cover;">
+
+                                            </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider1text">
+                                                        <h4>Daring Badi</h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -311,7 +306,7 @@ include("includes/header.php");
                                             </div>
                                             <div class="slider-text">
                                                 <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                    <h4 id="slider11">Daring Badi</h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -324,13 +319,15 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider2.jpg" /></div>
+                                            <div id="slider2" class="slider-img"
+                                                style="background-image:url(images/slider/Visakhapatnam.png); background-size:cover;">
+                                            </div>
 
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider2text">
+                                                        <h4>Visakhapatnam</h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -342,7 +339,7 @@ include("includes/header.php");
 
                                             <div class="slider-text">
                                                 <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                    <h4 id="slider12">Visakhapatnam</h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -357,13 +354,15 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item homepage-sllider-m">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider3.jpg" /></div>
+                                            <div id="slider3" class="slider-img"
+                                                style="background-image:url(images/slider/Kurnool.png); background-size:cover;">
+                                            </div>
 
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider3text">
+                                                        <h4>Kurnool</h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -373,7 +372,7 @@ include("includes/header.php");
                                             </div>
                                             <div class="slider-text">
                                                 <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                    <h4 id="slider13">Kurnool</h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -389,12 +388,14 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider4.jpg" /></div>
+                                            <div id="slider4" class="slider-img"
+                                                style="background-image:url(images/slider/Amaravathi.png); background-size:cover;">
+                                            </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider4text">
+                                                        <h4>Amaravathi </h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -405,7 +406,7 @@ include("includes/header.php");
 
                                             <div class="slider-text">
                                                 <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                    <h4 id="slider14">Amaravathi </h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -419,12 +420,14 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider5.jpg" /></div>
+                                            <div id="slider5" class="slider-img"
+                                                style="background-image:url(images/slider/NK.png); background-size:cover;">
+                                            </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider5text">
+                                                        <h4>Nandan Kanan</h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -433,8 +436,8 @@ include("includes/header.php");
                                                 </div>
                                             </div>
                                             <div class="slider-text">
-                                                <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                <div class="slider-text1" id="slider5text">
+                                                    <h4 id="slider15">Nandan Kanan</h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -448,13 +451,15 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item homepage-sllider-m">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider6.jpg" /></div>
+                                            <div id="slider6" class="slider-img"
+                                                style="background-image:url(images/slider/Puri.png); background-size:cover;">
+                                            </div>
 
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider6text">
+                                                        <h4>Puri</h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -463,8 +468,8 @@ include("includes/header.php");
                                                 </div>
                                             </div>
                                             <div class="slider-text">
-                                                <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                <div class="slider-text1" id="slider6text">
+                                                    <h4 id="slider16">Puri</h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -479,12 +484,14 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider7.jpg" /></div>
+                                            <div id="slider7" class="slider-img"
+                                                style="background-image:url(images/slider/Sambalpur.png); background-size:cover;">
+                                            </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider7text">
+                                                        <h4>Sambalpur </h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -493,8 +500,8 @@ include("includes/header.php");
                                                 </div>
                                             </div>
                                             <div class="slider-text">
-                                                <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                <div class="slider-text1" id="slider7text">
+                                                    <h4 id="slider17">Sambalpur </h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -507,13 +514,15 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider8.jpg" /></div>
+                                            <div id="slider8" class="slider-img"
+                                                style="background-image:url(images/slider/Vijayawada.png); background-size:cover;">
+                                            </div>
 
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
+                                                    <div class="slider-hover-content2" id="slider8text">
+                                                        <h4>Vijayawada </h4>
                                                         <p>Save upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
@@ -525,7 +534,7 @@ include("includes/header.php");
 
                                             <div class="slider-text">
                                                 <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                    <h4 id="slider18">Vijayawada </h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -540,13 +549,15 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item homepage-sllider-m">
-                                            <div class="slider-img"><img class="img-responsive" alt="First slide" src="images/slider/slider9.jpg" /></div>
+                                            <div id="slider9" class="slider-img"
+                                                style="background-image:url(images/slider/Tirupati.png); background-size:cover;">
+                                            </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
                                                 <div class="Orange">
-                                                    <div class="slider-hover-content2">
-                                                        <h4>Orange Skies</h4>
-                                                        <p>Save upto 50%</p>
+                                                    <div class="slider-hover-content2" id="slider9text">
+                                                        <h4>Tirupati</h4>
+                                                        <p>hgghhf upto 50%</p>
                                                     </div>
                                                     <div class="slider-hover-content3">
                                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -555,7 +566,7 @@ include("includes/header.php");
                                             </div>
                                             <div class="slider-text">
                                                 <div class="slider-text1">
-                                                    <h4>Orange Skies</h4>
+                                                    <h4 id="slider19">Tirupati</h4>
                                                     <p>Save upto 50%</p>
                                                 </div>
                                                 <div class="slider-text2">
@@ -648,53 +659,54 @@ include("includes/header.php");
     include("includes/footer.php");
     include("includes/footerlink.php");
     ?>
+    </body>
+</html>>
     <!-- ================ footer html Exit ================ -->
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script>
-        $(document).ready(function() {
+        // $(document).ready(function() {
+        //     $('#fromdate').datetimepicker();
 
-            $('#SeatingCapacity1').on('change', function() {
-                var SeatingCapacity1 = $(this).val();
-                if (SeatingCapacity1) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'get-brand-name.php',
-                        data: {
-                            SeatingCapacity1: SeatingCapacity1
-                        },
-                        success: function(html) {
-                            console.log(html)
-                            $('#brand').html(html);
-                            $('#VehicleName').html(
-                                '<option value="">Select Brand first</option>');
-                            // $('#brand').selectpicker('refresh');
-                        }
-                    });
-                } else {
-                    $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                    $('#VehicleName').html('<option value="">Select Brand first</option>');
+        $('#SeatingCapacity1').on('change', function() {
+            var SeatingCapacity1 = $(this).val();
+            if (SeatingCapacity1) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand-name.php',
+                    data: {
+                        SeatingCapacity1: SeatingCapacity1
+                    },
+                    success: function(html) {
+                        console.log(html)
+                        $('#brand').html(html);
+                        $('#VehicleName').html(
+                            '<option value="">Select Brand first</option>');
+                        // $('#brand').selectpicker('refresh');
+                    }
+                });
+            } else {
+                $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
 
-                }
-            });
+            }
+        });
 
-            $('#brand').on('change', function() {
-                var owner_vehicle_brand = $(this).val();
-                if (owner_vehicle_brand) {
-                    $.ajax({
-                        type: 'POST',
-                        url: 'get-brand-name.php',
-                        data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                        success: function(html) {
-                            $('#VehicleName').html(html);
-                            //  $('#VehicleName').selectpicker('refresh');
-                        }
-                    });
-                } else {
-                    $('#VehicleName').html('<option value="">Select Brand first</option>');
-                }
-            });
-
+        $('#brand').on('change', function() {
+            var owner_vehicle_brand = $(this).val();
+            if (owner_vehicle_brand) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get-brand-name.php',
+                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                    success: function(html) {
+                        $('#VehicleName').html(html);
+                        //  $('#VehicleName').selectpicker('refresh');
+                    }
+                });
+            } else {
+                $('#VehicleName').html('<option value="">Select Brand first</option>');
+            }
         });
     </script>
     <script>
@@ -833,8 +845,9 @@ include("includes/header.php");
 <!-- Mirrored from themeskanon.com/livedemo/html/taksi/index4.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 08:41:18 GMT -->
 
 </html>
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
+
         $("#signup_form").validate({
             rules: {
                 username: {
@@ -933,7 +946,124 @@ include("includes/header.php");
     });
 </script>
 <script>
-    function PopUp(){
-    document.getElementById('signup_form').style.display="none"; 
+$(document).ready( function() {
+    let now = new Date();
+  
+    $('#datetimepicker4').val(now.getHours()+":"+ now.getMinutes());
+          });
+</script>
+ <!-- Select state javascript codes -->
+
+<script>
+var map;
+
+function initialize() {
+    map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: new google.maps.LatLng(48.1293954, 12.556663), //Setting Initial Position
+        zoom: 10
+    });
+}
+
+function newLocation(newLat, newLng) {
+    map.setCenter({
+        lat: newLat,
+        lng: newLng
+    });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+//Setting Location with jQuery
+$(document).ready(function() {
+    $("#odisha").on('click', function() {
+        newLocation(20.64012280220996, 83.7516135646323);
+    });
+
+    $("#2").on('click', function() {
+        newLocation(14.901206653751029, 78.32374069508379);
+    });
+
+});
+</script>
+
+
+<script>
+function myOdisha() {
+    document.getElementById("slider1").style.backgroundImage = "url(images/slider/NK.png)";
+    document.getElementById("slider1text").innerHTML = ' <h4>Nandan Kanan (Bhubneswar) </h4>';
+    document.getElementById("slider12").innerText = "puri";
+
+    document.getElementById("slider2").style.backgroundImage = "url(images/slider/Puri.png)";
+    document.getElementById("slider2text").innerHTML = ' <h4> Jaganath Temple (Puri) </h4>';
+    document.getElementById("slider11").innerText = "Nandan Kanan (Bhubneswar)";
+
+    document.getElementById("slider3").style.backgroundImage = "url(images/slider/Chilika.png)";
+    document.getElementById("slider3text").innerHTML = ' <h4>Cilika (Bhubneswar) </h4>';
+    document.getElementById("slider13").innerText = "Cilika (Bhubneswar)";
+
+    document.getElementById("slider4").style.backgroundImage = "url(images/slider/Konark.png)";
+    document.getElementById("slider4text").innerHTML = ' <h4>Konark (Bhubaneswar) </h4>';
+    document.getElementById("slider14").innerText = "Konark (Bhubaneswar) ";
+
+    document.getElementById("slider5").style.backgroundImage = "url(images/slider/SNP.png)";
+    document.getElementById("slider5text").innerHTML = ' <h4> Similipal National Park (Odisha) </h4>';
+    document.getElementById("slider15").innerText = "Similipal National Park (Odisha)";
+
+    document.getElementById("slider6").style.backgroundImage = "url(images/slider/Cuttack.png)";
+    document.getElementById("slider6text").innerHTML = ' <h4>Cuttack (Odisha) </h4>';
+    document.getElementById("slider16").innerText = "Cuttack (Odisha)";
+
+    document.getElementById("slider7").style.backgroundImage = "url(images/slider/BK.png)";
+    document.getElementById("slider7text").innerHTML = ' <h4>Bhitar Kanika (Odisha) </h4>';
+    document.getElementById("slider17").innerText = "Bhitar Kanika  (Odisha)";
+
+    document.getElementById("slider8").style.backgroundImage = "url(images/slider/Sambalpur.png)";
+    document.getElementById("slider8text").innerHTML = ' <h4>Sambalpur (Odisha) </h4>';
+    document.getElementById("slider18").innerText = "Sambalpur (Odisha)";
+
+    document.getElementById("slider9").style.backgroundImage = "url(images/slider/DB.png)";
+    document.getElementById("slider9text").innerHTML = ' <h4>Daring Badi (Odisha) </h4>';
+    document.getElementById("slider19").innerText = "Daring Badi (Odisha)";
+
+}
+
+function myAP() {
+    document.getElementById("slider1").style.backgroundImage = "url(images/slider/ArakuValley.png)";
+    document.getElementById("slider1text").innerHTML = ' <h4>Araku Valley (Andhra Pradesh) </h4>';
+    document.getElementById("slider11").innerText = "Araku Valley (Andhra Pradesh) ";
+
+    document.getElementById("slider2").style.backgroundImage = "url(images/slider/Visakhapatnam.png)";
+    document.getElementById("slider2text").innerHTML = ' <h4> Visakhapatnam (Andhra Pradesh) </h4>'
+    document.getElementById("slider12").innerText = "Visakhapatnam (Andhra Pradesh)";
+
+    document.getElementById("slider3").style.backgroundImage = "url(images/slider/Amaravathi.png)";
+    document.getElementById("slider3text").innerHTML = ' <h4> Amaravathi (Andhra Pradesh) </h4>'
+    document.getElementById("slider13").innerText = "Amaravathi (Andhra Pradesh)";
+
+    document.getElementById("slider4").style.backgroundImage = "url(images/slider/Gandikota.png)";
+    document.getElementById("slider4text").innerHTML = ' <h4>Gandikota (Andhra Pradesh) </h4>'
+    document.getElementById("slider14").innerText = "Gandikota (Andhra Pradesh)";
+
+    document.getElementById("slider5").style.backgroundImage = "url(images/slider/Tirupati.png)";
+    document.getElementById("slider5text").innerHTML = ' <h4>  Tirupati (Andhra Pradesh) </h4>'
+    document.getElementById("slider15").innerText = "Tirupati (Andhra Pradesh)";
+
+    document.getElementById("slider6").style.backgroundImage = "url(images/slider/Vijayawada.png)";
+    document.getElementById("slider6text").innerHTML = ' <h4>Vijayawada (Andhra Pradesh) </h4>'
+    document.getElementById("slider16").innerText = "Vijayawada (Andhra Pradesh) ";
+
+    document.getElementById("slider7").style.backgroundImage = "url(images/slider/Anantapur.png)";
+    document.getElementById("slider7text").innerHTML = ' <h4>Anantapur (Andhra Pradesh) </h4>'
+    document.getElementById("slider17").innerText = "Anantapur (Andhra Pradesh) ";
+
+    document.getElementById("slider8").style.backgroundImage = "url(images/slider/Srisailam.png)";
+    document.getElementById("slider8text").innerHTML = ' <h4>Srisailam (Andhra Pradesh) </h4>'
+    document.getElementById("slider18").innerText = "Srisailam (Andhra Pradesh)";
+
+    document.getElementById("slider9").style.backgroundImage = "url(images/slider/Kurnool.png)";
+    document.getElementById("slider9text").innerHTML = ' <h4>Kurnool (Andhra Pradesh) </h4>'
+    document.getElementById("slider19").innerText = "Kurnool (Andhra Pradesh)";
 }
 </script>
+
+<!-- Select state javascript codes End -->

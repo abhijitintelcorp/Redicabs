@@ -239,7 +239,7 @@
                             <p>ManageSubscriber</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
@@ -277,7 +277,7 @@
                                 </a>
                             </li>
 
-                        </ul>
+                        </ul> -->
                     <li class="nav-item">
                         <a href="admin_logout.php" class="nav-link">
                             <i class="fa fa-power-off" aria-hidden="true"></i>
