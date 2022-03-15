@@ -38,7 +38,7 @@ if (isset($_POST['update'])) {
     $DriverName = htmlspecialchars($_POST['DriverName']);
     $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
     //($_POST['TotalNoDays'] * $_POST['PricePerDay']);
-    
+
 
     $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
     ContactNo='$ContactNo',address='$address',City='$City',Country='$Country',SeatingCapacity='$SeatingCapacity',
@@ -91,7 +91,7 @@ if (isset($_POST['delayed'])) {
                                             $query_run = mysqli_query($conn, $query);
                                             $cnt = 1;
                                             if (mysqli_num_rows($query_run) > 0) {
-                                            $row = mysqli_fetch_array($query_run);
+                                                $row = mysqli_fetch_array($query_run);
 
                                             ?>
                                             <form action="" method="post">
@@ -157,14 +157,14 @@ if (isset($_POST['delayed'])) {
                                                             <option value="<?php echo $row['SeatingCapacity']; ?>">
                                                                 <?php echo $row['SeatingCapacity']; ?></option>
                                                             <?php
-                                                                    $qry = "SELECT DISTINCT SeatingCapacity from tblbooking";
-                                                                    $exe = mysqli_query($conn, $qry);
-                                                                    while ($rows = mysqli_fetch_assoc($exe)) {
-                                                                    ?>
+                                                                $qry = "SELECT DISTINCT SeatingCapacity from tblbooking";
+                                                                $exe = mysqli_query($conn, $qry);
+                                                                while ($rows = mysqli_fetch_assoc($exe)) {
+                                                                ?>
                                                             <option value="<?php echo $rows['SeatingCapacity']; ?>">
                                                                 <?php echo $rows['SeatingCapacity']; ?>
                                                                 <?php }
-                                                                        ?></option>
+                                                                    ?></option>
                                                         </select>
                                                     </td>
                                                     <th>Brand</th>
@@ -255,14 +255,14 @@ if (isset($_POST['delayed'])) {
                                                             <option value="<?php echo $row['OwnerName']; ?>">
                                                                 <?php echo $row['OwnerName']; ?></option>
                                                             <?php
-                                                                    $OwnerName = $_POST['OwnerName'];
-                                                                    $qry = "SELECT DISTINCT OwnerName FROM tblbooking WHERE `Status`='3'";
-                                                                    $exe = mysqli_query($conn, $qry);
-                                                                    while ($rows = mysqli_fetch_array($exe)) {
-                                                                        $owner_mobile = $rows['owner_mobile'];
-                                                                        $DriverName = $rows['DriverName'];
-                                                                        $DriverMobile = $rows['DriverMobile'];
-                                                                    ?>
+                                                                $OwnerName = $_POST['OwnerName'];
+                                                                $qry = "SELECT DISTINCT OwnerName FROM tblbooking WHERE `Status`='3'";
+                                                                $exe = mysqli_query($conn, $qry);
+                                                                while ($rows = mysqli_fetch_array($exe)) {
+                                                                    $owner_mobile = $rows['owner_mobile'];
+                                                                    $DriverName = $rows['DriverName'];
+                                                                    $DriverMobile = $rows['DriverMobile'];
+                                                                ?>
                                                             <option owner_mobile="<?php echo $rows['owner_mobile']; ?>"
                                                                 DriverName="<?php echo $rows['DriverName']; ?>"
                                                                 DriverMobile="<?php echo $rows['DriverMobile']; ?>"
@@ -277,7 +277,7 @@ if (isset($_POST['delayed'])) {
                                                     <td>
                                                         <?php
 
-                                                        ?>
+                                                            ?>
                                                         <input class="form-control white_bg" placeholder="Owner Number"
                                                             name="owner_mobile" id="owner_mobile" type="text"
                                                             readonly="readonly"
@@ -288,14 +288,14 @@ if (isset($_POST['delayed'])) {
                                                 <tr>
                                                     <th>Booking Status</th>
                                                     <td><?php
-                                                                if ($row['Status'] == 0) {
-                                                                    echo htmlentities('Not Confirmed yet');
-                                                                } else if ($row['Status'] == 1) {
-                                                                    echo htmlentities('Confirmed');
-                                                                } else {
-                                                                    echo htmlentities('Cancelled');
-                                                                }
-                                                                ?></td>
+                                                            if ($row['Status'] == 0) {
+                                                                echo htmlentities('Not Confirmed yet');
+                                                            } else if ($row['Status'] == 1) {
+                                                                echo htmlentities('Confirmed');
+                                                            } else {
+                                                                echo htmlentities('Cancelled');
+                                                            }
+                                                            ?></td>
 
                                                     <!-- <th>Last updation Date</th>
                                                     <td><?php echo htmlentities($row['UpdationDate']); ?></td> -->
@@ -309,7 +309,8 @@ if (isset($_POST['delayed'])) {
                                                     <th>Driver Name</th>
                                                     <td><select name="DriverName" id="DriverName" type="text"
                                                             class="selectpicker">
-                                                           <option value="<?php echo $row['DriverName']; ?>"><?php echo $row['DriverName']; ?></option>
+                                                            <option value="<?php echo $row['DriverName']; ?>">
+                                                                <?php echo $row['DriverName']; ?></option>
                                                         </select>
                                                     </td>
                                                     <th>Phone Number</th>
@@ -330,8 +331,8 @@ if (isset($_POST['delayed'])) {
 
                                                 <?php
 
-                                                        if ($row['Status'] == 0) {
-                                                        ?>
+                                                    if ($row['Status'] == 0) {
+                                                    ?>
                                                 <tr>
                                                     <td style="text-align:center" colspan="4">
                                                         <button class="btn btn-primary" name="update"

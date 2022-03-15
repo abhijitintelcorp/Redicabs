@@ -1,6 +1,8 @@
 <?php
 session_start();
 error_reporting(0);
+
+
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
@@ -24,6 +26,10 @@ function dateDiff($FromDate, $ToDate)
 }
 
 if (isset($_POST['submit'])) {
+
+
+    $Driver_DL_No = $_REQUEST['Driver_DL_No'];
+    $Driver_DL_No = htmlspecialchars($_POST['Driver_DL_No']);
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
@@ -69,7 +75,7 @@ if (isset($_POST['submit'])) {
         owner_vehicle_chesis_no	='$owner_vehicle_chesis_no',OwnerName='$OwnerName', owner_mobile='$owner_mobile',
         owner_email='$owner_email',DriverName='$DriverName',DriverMobile='$DriverMobile',FromDate='$FromDate',ToDate='$ToDate',
          PricePerDay='$PricePerDay',owner_email='$owner_email',pickup='$pickup',dropoff='$dropoff',totalnodays='$totalnodays',
-         BookingNumber='$bookingno',status='$status',dob='$dob',Time='$pickuptime' WHERE id='$id'";
+         BookingNumber='$bookingno',status='$status',dob='$dob',Time='$pickuptime',Driver_DL_No='$Driver_DL_No' WHERE id='$id'";
         $inst_u_fn1_qry = mysqli_query($conn, $update_qry);
         if ($inst_u_fn1_qry) {
 
@@ -135,6 +141,8 @@ if (isset($_POST['submit'])) {
                                                 value="<?php echo $rows['SubCategories'] ?>">
                                             <input type="hidden" name="owner_vehicle_name"
                                                 value="<?php echo $rows['owner_vehicle_name'] ?>">
+                                            <input type="hidden" name="Driver_DL_No"
+                                                value="<?php echo $rows['Driver_DL_No'] ?>">
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
