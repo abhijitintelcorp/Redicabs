@@ -1,6 +1,11 @@
 <?php
 session_start();
 error_reporting(0);
+$_SESSION['Driver_DL_No'] = $_POST['Driver_DL_No'];
+$_SESSION['driver_location'] = $_POST['driver_location'];
+$_SESSION['driver_adhar'] = $_POST['driver_adhar'];
+$_SESSION['driver_licence'] = $_POST['driver_licence'];
+
 if (strlen($_SESSION['EmailId']) == 0) {
     header("location:login.php");
 }
@@ -24,6 +29,11 @@ function dateDiff($FromDate, $ToDate)
 }
 
 if (isset($_POST['submit'])) {
+    $Driver_DL_No = isset($_POST['Driver_DL_No']) ? $_POST['Driver_DL_No'] : "";
+    $driver_location = isset($_POST['driver_location']) ? $_POST['driver_location'] : "";
+    $driver_adhar = isset($_POST['driver_adhar']) ? $_POST['driver_adhar'] : "";
+    $driver_licence = isset($_POST['driver_licence']) ? $_POST['driver_licence'] : "";
+
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
