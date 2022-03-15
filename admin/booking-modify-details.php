@@ -91,7 +91,7 @@ if (isset($_POST['delayed'])) {
                                             $query_run = mysqli_query($conn, $query);
                                             $cnt = 1;
                                             if (mysqli_num_rows($query_run) > 0) {
-                                                while ($row = mysqli_fetch_array($query_run)) {
+                                            $row = mysqli_fetch_array($query_run);
 
                                             ?>
                                             <form action="" method="post">
@@ -157,8 +157,7 @@ if (isset($_POST['delayed'])) {
                                                             <option value="<?php echo $row['SeatingCapacity']; ?>">
                                                                 <?php echo $row['SeatingCapacity']; ?></option>
                                                             <?php
-                                                                    $qry = "SELECT DISTINCT SeatingCapacity from tblbooking
-                                                                         GROUP BY SeatingCapacity ASC";
+                                                                    $qry = "SELECT DISTINCT SeatingCapacity from tblbooking";
                                                                     $exe = mysqli_query($conn, $qry);
                                                                     while ($rows = mysqli_fetch_assoc($exe)) {
                                                                     ?>
@@ -257,7 +256,7 @@ if (isset($_POST['delayed'])) {
                                                                 <?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                     $OwnerName = $_POST['OwnerName'];
-                                                                    $qry = "SELECT DISTINCT * FROM tblbooking WHERE `Status`='3'  GROUP BY OwnerName ASC";
+                                                                    $qry = "SELECT DISTINCT OwnerName FROM tblbooking WHERE `Status`='3'";
                                                                     $exe = mysqli_query($conn, $qry);
                                                                     while ($rows = mysqli_fetch_array($exe)) {
                                                                         $owner_mobile = $rows['owner_mobile'];
@@ -276,6 +275,9 @@ if (isset($_POST['delayed'])) {
                                                     </td>
                                                     <th>Phone Number</th>
                                                     <td>
+                                                        <?php
+
+                                                        ?>
                                                         <input class="form-control white_bg" placeholder="Owner Number"
                                                             name="owner_mobile" id="owner_mobile" type="text"
                                                             readonly="readonly"
@@ -344,13 +346,6 @@ if (isset($_POST['delayed'])) {
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
-
-                                                <?php }
-                                                        ?>
-                                                <?php  ?>
-                                                <?php $cnt = $cnt + 1;
-
-                                                        ?>
                                             </form>
                                         </tbody>
                                     </table>
