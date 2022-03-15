@@ -9,3 +9,4 @@ if (isset($_POST["OwnerName"])) {
     $owner_mobile = $rows['owner_mobile'];
     echo $owner_mobile;
 }
+?>

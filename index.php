@@ -240,7 +240,7 @@ include("includes/register.php");
                         </div>
                     </div>
                     <div class="car-type">
-                        <div class="car-wrap"> <img class="mini-track-car" width="100px" src="images/auto.png" alt="" />
+                        <div class="car-wrap"> <img class="mini-track-car" width="100px" src="images/Auto.png" alt="" />
                         </div>
                         <h5> Auto</h5>
                         <div class="car-type-btn">
@@ -248,7 +248,7 @@ include("includes/register.php");
                         </div>
                     </div>
                     <div class="car-type">
-                        <div class="car-wrap"> <img class="big-track-car" width="100px" src="images/bus.png" alt="" />
+                        <div class="car-wrap"> <img class="big-track-car" width="100px" src="images/Bus.png" alt="" />
                         </div>
                         <h5>Bus</h5>
                         <div class="car-type-btn">

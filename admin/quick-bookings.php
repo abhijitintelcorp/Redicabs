@@ -18,9 +18,6 @@ if (isset($_POST['booking'])) {
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
         header("location:new-bookings.php");
-        echo "success";
-    } else {
-        echo "error";
     }
 }
 ?>
@@ -318,7 +315,7 @@ if (isset($_POST['booking'])) {
         });
     </script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="../../Redicabs//admin//js//valid.js"></script>
+    <script src="js/valid.js"></script>
 
     <script src="js/additional-methods.min.js">
     </script>
