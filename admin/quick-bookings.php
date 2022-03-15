@@ -18,9 +18,6 @@ if (isset($_POST['booking'])) {
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
         header("location:new-bookings.php");
-        echo "success";
-    } else {
-        echo "error";
     }
 }
 ?>

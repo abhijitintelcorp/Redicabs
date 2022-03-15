@@ -28,8 +28,7 @@ include("includes/config.php");
 
                             <div class="panel panel-default">
                                 <div class="panel-body" style=" overflow-x:auto;">
-                                    <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                        style="border: 1px solid #212529;" cellspacing="0" width="100%">
+                                    <table id="zctb" class="display table table-striped table-bordered table-hover" style="border: 1px solid #212529;" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>SlNo</th>
@@ -52,22 +51,22 @@ include("includes/config.php");
                                             while ($row = mysqli_fetch_array($query_run)) {
 
                                         ?>
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $count; ?></td>
-                                                <th><?php echo $row['UserName']; ?>
-                                                </th>
-                                                <th><?php echo $row['BookingNumber']; ?>
-                                                </th>
-                                                <th><?php echo $row['owner_vehicle_name']; ?>
-                                                </th>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><?php echo $count; ?></td>
+                                                        <th><?php echo $row['UserName']; ?>
+                                                        </th>
+                                                        <th><?php echo $row['BookingNumber']; ?>
+                                                        </th>
+                                                        <th><?php echo $row['owner_vehicle_name']; ?>
+                                                        </th>
 
-                                                <th><?php echo $row['DriverName']; ?>
-                                                </th>
-                                                <th><?php echo $row['DriverMobile']; ?>
-                                                </th>
+                                                        <th><?php echo $row['DriverName']; ?>
+                                                        </th>
+                                                        <th><?php echo $row['DriverMobile']; ?>
+                                                        </th>
 
-                                                <td><?php
+                                                        <td><?php
                                                             if ($row['Status'] == 0) {
                                                                 echo htmlentities('Not Confirmed yet');
                                                             } else if ($row['Status'] == 1) {
@@ -78,12 +77,11 @@ include("includes/config.php");
                                                                 echo htmlentities('Delayed');
                                                             }
                                                             ?></td>
-                                                <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
-                                                    <a
-                                                        href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">Edit</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                                        <td><a href="booking-details.php?bid=<?php echo $row['id']; ?>">View</a>
+                                                            <a href="booking-modify-details.php?bid=<?php echo $row['id']; ?>">Edit</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
                                         <?php $count = $count + 1;
                                             }
                                         }
@@ -136,9 +134,9 @@ include("includes/config.php");
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#zctb').DataTable();
-    });
+        $(document).ready(function() {
+            $('#zctb').DataTable();
+        });
     </script>
 
 
