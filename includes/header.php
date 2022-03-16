@@ -17,6 +17,7 @@
   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
   <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!-- &key=YOUR_API_KEY -->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 </head>
 <div id="preloader">
