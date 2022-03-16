@@ -4,7 +4,7 @@ include("includes/connection.php");
 // error_reporting(0);
 date_default_timezone_set("Asia/Kolkata");
 $msg = "";
-$fromDate ="";
+$fromDate = "";
 function dateDiff($fromDate, $toDate)
 {
     $date1_ts = strtotime($fromDate);
@@ -16,8 +16,7 @@ function dateDiff($fromDate, $toDate)
 if (isset($_POST['taxi_booking'])) {
     $bookingNumber = mt_rand(100000000, 999999999);
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
-    $brand = htmlspecialchars($_POST['brand']);
-    $VehicleName = htmlspecialchars($_POST['VehicleName']);
+
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $fromDate = htmlspecialchars($_POST['fromdate']);
@@ -25,78 +24,67 @@ if (isset($_POST['taxi_booking'])) {
     $totalnodays = dateDiff($fromDate, $toDate);
     $regdate = date("Y-m-d");
     $Time = htmlspecialchars($_POST['Time']);
-    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`owner_vehicle_brand`,`owner_vehicle_name`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$brand','$VehicleName','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
+    $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
     $res_query = mysqli_query($conn, $insert_qry);
-    $insert_id = mysqli_insert_id($conn); 
+    $insert_id = mysqli_insert_id($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <body onload="document.getElementById('id02').style.display='block'">
-<?php 
-include("includes/register.php");
+
+    <?php
+    include("includes/register.php");
+    include("show_cars.php");
 }
-?>
-<?php
-   include("includes/header.php");
-?>
+    ?>
+    <?php
+    include("includes/header.php");
+    ?>
     <!-- Booking now form wrapper html start -->
     <div class="booking-form-wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <div class="form-wrap " style="height: 620px; width: 350px;">
+                        <div class="form-wrap " style="height: 501px; width: 350px; background:#0e8fd5">
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
-                                <form action="" method="post" name="booking" id="booking" class="form-horizontal" onsubmit="openModal()">
+                                <form action="" method="post" name="booking" id="booking" class="form-horizontal"
+                                    onsubmit="openModal()">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
-                                         <?php echo $msg; ?>
+                                        <?php echo $msg; ?>
                                         <div class="row">
                                             <label>Seating Capacity</label>
-                                            <select name="SeatingCapacity1" id="SeatingCapacity1" style="width: 305px; height:30px;" required>
-                                                <option value=""> Select Seating Capacity</option>
+                                            <select name="SeatingCapacity1" id="SeatingCapacity1"
+                                                style="width: 305px; height:30px;"
+                                                onload="document.getElementById('id03').style.display='block'" required>
+                                                <option value="">
+                                                    Select Seating Capacity
+                                                </option>
                                                 <?php
                                                 $qry = "SELECT DISTINCT SeatingCapacity from tblbooking GROUP BY SeatingCapacity ASC";
                                                 $exe = mysqli_query($conn, $qry);
                                                 while ($row = mysqli_fetch_assoc($exe)) {
 
                                                 ?>
-                                                    <option value="<?php echo $row['SeatingCapacity'] ?>">
-                                                        <?php echo $row['SeatingCapacity'] ?>
-                                                    </option>
+                                                <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                                    <?php echo $row['SeatingCapacity'] ?>
+                                                </option>
                                                 <?php }  ?>
 
                                             </select>
                                         </div>
                                     </div>
                                     <br>
-                                    <br>
-                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
-                                        <div class="row">
-                                            <label>Select Vehicle Brand</label>
-                                            <select name="brand" id="brand" style="width: 305px; height:30px;" required>
-                                                <option value=""> Select Vehicle Brand</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
-                                        <div class="row">
-                                            <label>Select Vehicle Name</label>
-                                            <select name="VehicleName" id="VehicleName" style="width: 305px; height:30px;" required>
-                                                <option value=""> Select Vehicle Brand first</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <br>
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
                                                 <label>pick-up location</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup"  required>
+                                                <input class="custom-select-box tec-domain-cat"
+                                                    style="width: 305px; height:30px;" name="pickup" id="pickup"
+                                                    required>
                                                 </input>
                                             </div>
                                         </div>
@@ -105,7 +93,9 @@ include("includes/register.php");
                                         <div class="row">
                                             <div>
                                                 <label>Drop off location</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff"  required>
+                                                <input class="custom-select-box tec-domain-cat"
+                                                    style="width: 305px; height:30px;" name="dropoff" id="dropoff"
+                                                    required>
                                                 </input>
                                             </div>
                                         </div>
@@ -114,7 +104,9 @@ include("includes/register.php");
                                         <div class="row">
                                             <div>
                                                 <label>From Date</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="fromdate" id="fromdate" type="date" required>
+                                                <input class="custom-select-box tec-domain-cat"
+                                                    style="width: 305px; height:30px;" name="fromdate" id="fromdate"
+                                                    type="date" required>
                                                 </input>
                                             </div>
 
@@ -124,7 +116,9 @@ include("includes/register.php");
                                         <div class="row">
                                             <div>
                                                 <label>To Date</label>
-                                                <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="todate" id="todate" type="date">
+                                                <input class="custom-select-box tec-domain-cat"
+                                                    style="width: 305px; height:30px;" name="todate" id="todate"
+                                                    type="date">
                                                 </input>
                                             </div>
                                         </div>
@@ -132,8 +126,11 @@ include("includes/register.php");
                                     <div class="col-sm-12 ">
                                         <div class="row">
                                             <div>
-                                                <label>Pick up Time <small>(You can select pickup time 30 minutes from Current Time)</small></label>
-                                                <input class="custom-select-box tec-domain-cat form-control" style="width: 305px; height:30px; " name="Time" id="datetimepicker4" type="time">
+                                                <label>Pick up Time <small>(You can select pickup time 30 minutes from
+                                                        Current Time)</small></label>
+                                                <input class="custom-select-box tec-domain-cat form-control"
+                                                    style="width: 305px; height:30px; " name="Time" id="datetimepicker4"
+                                                    type="time">
 
 
                                                 </input>
@@ -142,33 +139,9 @@ include("includes/register.php");
                                         </div>
                                     </div>
 
-                                    <!-- 
-
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="col-sm-8 custom-select-box tec-domain-cat5">
-                                                <div class="row">
-
-                                                    <input class="form-control custom-select-box" type="date" name="date" />
-
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-4 custom-select-box tec-domain-cat6 time">
-                                                <div class="row">
-                                                    <select class="selectpicker" data-live-search="false">
-                                                        <option class="time1"> 08:00</option>
-                                                        <option class="time1"> 09:00</option>
-                                                        <option class="time1"> 10:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
-
                                     <div class="form-button">
-                                        <button type="submit" id="taxi_booking" name="taxi_booking"   class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
+                                        <button type="submit" id="taxi_booking" name="taxi_booking"
+                                            class="btn form-btn btn-lg btn-block">Book Your Taxi Now</button>
 
                                     </div>
                                 </form>
@@ -199,7 +172,7 @@ include("includes/register.php");
     <!-- anytime-anywhere html Exit -->
 
     <!-- label white html start -->
-     <div class="label-white2 white-lable-m">
+    <div class="label-white2 white-lable-m">
         <div class="container">
             <div class="row">
                 <div class="car-item-wrap">
@@ -270,7 +243,7 @@ include("includes/register.php");
     <!-- label white html exit -->
 
     <!-- label yellow html start -->
-   <div class="yellow-label-wrapper2">
+    <div class="yellow-label-wrapper2" style="background-color: #1799df;">
         <div class="label-yellow stellar" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="">
             <div class="container">
                 <div class="row">
@@ -659,186 +632,188 @@ include("includes/register.php");
     include("includes/footer.php");
     include("includes/footerlink.php");
     ?>
-    </body>
+</body>
+
 </html>>
-    <!-- ================ footer html Exit ================ -->
+<!-- ================ footer html Exit ================ -->
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script>
-        // $(document).ready(function() {
-        //     $('#fromdate').datetimepicker();
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
-        $('#SeatingCapacity1').on('change', function() {
-            var SeatingCapacity1 = $(this).val();
-            if (SeatingCapacity1) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-brand-name.php',
-                    data: {
-                        SeatingCapacity1: SeatingCapacity1
-                    },
-                    success: function(html) {
-                        console.log(html)
-                        $('#brand').html(html);
-                        $('#VehicleName').html(
-                            '<option value="">Select Brand first</option>');
-                        // $('#brand').selectpicker('refresh');
-                    }
-                });
-            } else {
-                $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                $('#VehicleName').html('<option value="">Select Brand first</option>');
+<script>
+// $(document).ready(function() {
+//     $('#fromdate').datetimepicker();
 
+$('#SeatingCapacity1').on('change', function() {
+    var SeatingCapacity1 = $(this).val();
+    if (SeatingCapacity1) {
+        $.ajax({
+            type: 'POST',
+            url: 'get-brand-name.php',
+            data: {
+                SeatingCapacity1: SeatingCapacity1
+            },
+            success: function(html) {
+                console.log(html)
+                $('#brand').html(html);
+                $('#VehicleName').html(
+                    '<option value="">Select Brand first</option>');
+                // $('#brand').selectpicker('refresh');
             }
         });
+    } else {
+        $('#brand').html('<option value="">Select Seating Capacity first</option>');
+        $('#VehicleName').html('<option value="">Select Brand first</option>');
 
-        $('#brand').on('change', function() {
-            var owner_vehicle_brand = $(this).val();
-            if (owner_vehicle_brand) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'get-brand-name.php',
-                    data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                    success: function(html) {
-                        $('#VehicleName').html(html);
-                        //  $('#VehicleName').selectpicker('refresh');
-                    }
-                });
-            } else {
-                $('#VehicleName').html('<option value="">Select Brand first</option>');
+    }
+});
+
+$('#brand').on('change', function() {
+    var owner_vehicle_brand = $(this).val();
+    if (owner_vehicle_brand) {
+        $.ajax({
+            type: 'POST',
+            url: 'get-brand-name.php',
+            data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+            success: function(html) {
+                $('#VehicleName').html(html);
+                //  $('#VehicleName').selectpicker('refresh');
             }
         });
-    </script>
-    <script>
-        function autocomplete(inp, arr) {
-            /*the autocomplete function takes two arguments,
-            the text field element and an array of possible autocompleted values:*/
-            var currentFocus;
-            /*execute a function when someone writes in the text field:*/
-            inp.addEventListener("input", function(e) {
-                var a, b, i, val = this.value;
-                /*close any already open lists of autocompleted values*/
-                closeAllLists();
-                if (!val) {
-                    return false;
-                }
-                currentFocus = -1;
-                /*create a DIV element that will contain the items (values):*/
-                a = document.createElement("DIV");
-                a.setAttribute("id", this.id + "autocomplete-list");
-                a.setAttribute("class", "autocomplete-items");
-                /*append the DIV element as a child of the autocomplete container:*/
-                this.parentNode.appendChild(a);
-                /*for each item in the array...*/
-                for (i = 0; i < arr.length; i++) {
-                    /*check if the item starts with the same letters as the text field value:*/
-                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                        /*create a DIV element for each matching element:*/
-                        b = document.createElement("DIV");
-                        /*make the matching letters bold:*/
-                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                        b.innerHTML += arr[i].substr(val.length);
-                        /*insert a input field that will hold the current array item's value:*/
-                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        /*execute a function when someone clicks on the item value (DIV element):*/
-                        b.addEventListener("click", function(e) {
-                            /*insert the value for the autocomplete text field:*/
-                            inp.value = this.getElementsByTagName("input")[0].value;
-                            /*close the list of autocompleted values,
-                            (or any other open lists of autocompleted values:*/
-                            closeAllLists();
-                        });
-                        a.appendChild(b);
-                    }
-                }
-            });
-            /*execute a function presses a key on the keyboard:*/
-            inp.addEventListener("keydown", function(e) {
-                var x = document.getElementById(this.id + "autocomplete-list");
-                if (x) x = x.getElementsByTagName("div");
-                if (e.keyCode == 40) {
-                    /*If the arrow DOWN key is pressed,
-                    increase the currentFocus variable:*/
-                    currentFocus++;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 38) { //up
-                    /*If the arrow UP key is pressed,
-                    decrease the currentFocus variable:*/
-                    currentFocus--;
-                    /*and and make the current item more visible:*/
-                    addActive(x);
-                } else if (e.keyCode == 13) {
-                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
-                    e.preventDefault();
-                    if (currentFocus > -1) {
-                        /*and simulate a click on the "active" item:*/
-                        if (x) x[currentFocus].click();
-                    }
-                }
-            });
-
-            function addActive(x) {
-                /*a function to classify an item as "active":*/
-                if (!x) return false;
-                /*start by removing the "active" class on all items:*/
-                removeActive(x);
-                if (currentFocus >= x.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = (x.length - 1);
-                /*add class "autocomplete-active":*/
-                x[currentFocus].classList.add("autocomplete-active");
-            }
-
-            function removeActive(x) {
-                /*a function to remove the "active" class from all autocomplete items:*/
-                for (var i = 0; i < x.length; i++) {
-                    x[i].classList.remove("autocomplete-active");
-                }
-            }
-
-            function closeAllLists(elmnt) {
-                /*close all autocomplete lists in the document,
-                except the one passed as an argument:*/
-                var x = document.getElementsByClassName("autocomplete-items");
-                for (var i = 0; i < x.length; i++) {
-                    if (elmnt != x[i] && elmnt != inp) {
-                        x[i].parentNode.removeChild(x[i]);
-                    }
-                }
-            }
-            /*execute a function when someone clicks in the document:*/
-            document.addEventListener("click", function(e) {
-                closeAllLists(e.target);
-            });
+    } else {
+        $('#VehicleName').html('<option value="">Select Brand first</option>');
+    }
+});
+</script>
+<script>
+function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) {
+            return false;
         }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+                /*make the matching letters bold:*/
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function(e) {
+                    /*insert the value for the autocomplete text field:*/
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    /*close the list of autocompleted values,
+                    (or any other open lists of autocompleted values:*/
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+        } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+                /*and simulate a click on the "active" item:*/
+                if (x) x[currentFocus].click();
+            }
+        }
+    });
 
-        /*An array containing all the country names in the world:*/
-        var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
-            "vanivihar", "acharyavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
-        ];
+    function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+    }
 
-        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-        autocomplete(document.getElementById("pickup"), countries);
-        autocomplete(document.getElementById("dropoff"), countries);
-    </script>
-    <script>
-        $(function() {
-            var dtToday = new Date();
+    function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+        }
+    }
 
-            var month = dtToday.getMonth() + 1;
-            var day = dtToday.getDate();
-            var year = dtToday.getFullYear();
-            if (month < 10)
-                month = '0' + month.toString();
-            if (day < 10)
-                day = '0' + day.toString();
+    function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function(e) {
+        closeAllLists(e.target);
+    });
+}
 
-            var minDate = year + '-' + month + '-' + day;
+/*An array containing all the country names in the world:*/
+var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
+    "vanivihar", "acharyavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
+];
 
-            $('#fromdate').attr('min', minDate);
-            $('#todate').attr('min', minDate);
-        });
-    </script>
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("pickup"), countries);
+autocomplete(document.getElementById("dropoff"), countries);
+</script>
+<script>
+$(function() {
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if (month < 10)
+        month = '0' + month.toString();
+    if (day < 10)
+        day = '0' + day.toString();
+
+    var minDate = year + '-' + month + '-' + day;
+
+    $('#fromdate').attr('min', minDate);
+    $('#todate').attr('min', minDate);
+});
+</script>
 
 </body>
 
@@ -846,113 +821,113 @@ include("includes/register.php");
 
 </html>
 <script type="text/javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
 
-        $("#signup_form").validate({
-            rules: {
-                username: {
-                    required: true,
-                    minlength: 3,
-                },
-                email: {
-                    required: true,
-                    email: true,
-                },
-                contact: {
-                    required: true,
-                    minlength: 10,
-                },
-                password_id: {
-                    required: true,
-                    minlength: 8,
-                },
-                cpassword: {
-                    minlength: 8,
-                    equalTo: "#password_id",
-                },
+    $("#signup_form").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 3,
             },
-            messages: {
-                username: {
-                    required: "<b style='color:red'>Please enter your Full Name</b>",
-                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-                },
-                email: {
-                    required: "<b style='color:red'>Please enter Email Id</b>",
-                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
-                },
-                contact: {
-                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
-                    number: "<b style='color:red'>Please Enter numerical values Only</b>",
-                },
-                password_id: {
-                    required: "<b style='color:red'>Please enter your Password</b>",
-                    minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-                },
-                cpassword: {
-                    minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
-                    equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
-                },
+            email: {
+                required: true,
+                email: true,
             },
-            submitHandler: function(form) {
-                form.submit();
+            contact: {
+                required: true,
+                minlength: 10,
             },
-        });
-        $("#booking").validate({
-            rules: {
-                SeatingCapacity1: {
-                    required: true,
-                },
-                brand: {
-                    required: true,
-                },
-                VehicleName: {
-                    required: true,
-                },
-                pickup: {
-                    required: true,
-                },
-                dropoff: {
-                    required: true,
-                },
-                fromdate: {
-                    required: true,
-                },
+            password_id: {
+                required: true,
+                minlength: 8,
             },
-            messages: {
-
-                SeatingCapacity1: {
-                    required: "<b style='color:red'>Please select  Seating Capacity</b>",
-                },
-                brand: {
-                    required: "<b style='color:red'>Please select your Brand</b>",
-                },
-                VehicleName: {
-                    required: "<b style='color:red'>Please select your Vehicle Name</b>",
-                },
-                pickup: {
-                    required: "<b style='color:red'>Please enter your Pick Up Location</b>",
-                },
-                dropoff: {
-                    required: "<b style='color:red'>Please enter your Drop Off Location</b>",
-                },
-                fromdate: {
-                    required: "<b style='color:red'>Please enter your From Date</b>",
-                },
+            cpassword: {
+                minlength: 8,
+                equalTo: "#password_id",
             },
-            submitHandler: function(form) {
-                form.submit();
+        },
+        messages: {
+            username: {
+                required: "<b style='color:red'>Please enter your Full Name</b>",
+                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
             },
-        });
+            email: {
+                required: "<b style='color:red'>Please enter Email Id</b>",
+                email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+            },
+            contact: {
+                required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                number: "<b style='color:red'>Please Enter numerical values Only</b>",
+            },
+            password_id: {
+                required: "<b style='color:red'>Please enter your Password</b>",
+                minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+            },
+            cpassword: {
+                minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
+                equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        },
     });
+    $("#booking").validate({
+        rules: {
+            SeatingCapacity1: {
+                required: true,
+            },
+            brand: {
+                required: true,
+            },
+            VehicleName: {
+                required: true,
+            },
+            pickup: {
+                required: true,
+            },
+            dropoff: {
+                required: true,
+            },
+            fromdate: {
+                required: true,
+            },
+        },
+        messages: {
+
+            SeatingCapacity1: {
+                required: "<b style='color:red'>Please select  Seating Capacity</b>",
+            },
+            brand: {
+                required: "<b style='color:red'>Please select your Brand</b>",
+            },
+            VehicleName: {
+                required: "<b style='color:red'>Please select your Vehicle Name</b>",
+            },
+            pickup: {
+                required: "<b style='color:red'>Please enter your Pick Up Location</b>",
+            },
+            dropoff: {
+                required: "<b style='color:red'>Please enter your Drop Off Location</b>",
+            },
+            fromdate: {
+                required: "<b style='color:red'>Please enter your From Date</b>",
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        },
+    });
+});
 </script>
 <script>
-$(document).ready( function() {
+$(document).ready(function() {
     let now = new Date();
-  
-    $('#datetimepicker4').val(now.getHours()+":"+ now.getMinutes());
-          });
+
+    $('#datetimepicker4').val(now.getHours() + ":" + now.getMinutes());
+});
 </script>
- <!-- Select state javascript codes -->
+<!-- Select state javascript codes -->
 
 <script>
 var map;
