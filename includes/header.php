@@ -1,5 +1,5 @@
 <head>
-    <title>Taksi</title>
+    <title>Redicabs</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
     <link href="css/bootstrap.css" rel="stylesheet">
