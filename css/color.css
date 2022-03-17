@@ -21,11 +21,11 @@ ul.sf-menu>li.parent>span:hover {
 }
 
 .map-wrapper {
-    border-top: 6px solid #f1c40f;
+    border-top: 6px solid #0e8fd5;
 }
 
 .form-wrap {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 h2 {
@@ -98,7 +98,7 @@ h4 {
 }
 
 .containt-text span {
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .containt-text p {
@@ -118,7 +118,7 @@ h4 {
 }
 
 .menu-item ul li a:hover {
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .social-item a {
@@ -128,8 +128,8 @@ h4 {
 
 .social-item a:hover {
     color: #ffffff;
-    border: 1px solid #F1C40F;
-    background: #F1C40F;
+    border: 1px solid #0e8fd5;
+    background: #0e8fd5;
     transition: all 200ms ease-in;
     -webkit-transition: all 200ms ease-in;
     -o-transition: all 200ms ease-in;
@@ -142,7 +142,7 @@ h4 {
 }
 
 .label-item:hover .containt-font a {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .minicar-promo-text-btnwrap2 .page26-button-wrap .minicar-promo-text-btn2:hover {
@@ -151,12 +151,12 @@ h4 {
 
 .car-btn {
     background: #2C3E50;
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .car-btn:hover {
     background: #2C3E50;
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .car-type h5 {
@@ -168,7 +168,7 @@ h4 {
 }
 
 .car-type:hover {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .destination h2 {
@@ -196,7 +196,7 @@ h4 {
 }
 
 .form-btn {
-    color: #F1C40F !important;
+    color: #0e8fd5 !important;
     background: #2C3E50;
     -webkit-transition: all 400ms ease-in;
     -o-transition: all 400ms ease-in;
@@ -221,7 +221,7 @@ h4 {
 }
 
 .slide-btn {
-    background: #F1C40F;
+    background: #0e8fd5;
     color: #000000;
 }
 
@@ -234,7 +234,7 @@ h4 {
 }
 
 .yellow-label-wrapper2 {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .counter {
@@ -246,10 +246,10 @@ h4 {
 }
 
 
-/* .yellow-label-wrapper{ background:#F1C40F;} */
+/* .yellow-label-wrapper{ background:#0e8fd5;} */
 
 .menu-header p {
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .containt-text-man a {
@@ -299,32 +299,32 @@ h4 {
 }
 
 .item-details-man3 a {
-    color: #F1C40F;
-    border: 1px solid #F1C40F;
+    color: #0e8fd5;
+    border: 1px solid #0e8fd5;
 }
 
 .item-details-bag3 a {
-    color: #F1C40F;
-    border: 1px solid #F1C40F;
+    color: #0e8fd5;
+    border: 1px solid #0e8fd5;
 }
 
 .form-control:focus {
-    border-color: #F1C40F;
+    border-color: #0e8fd5;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(246, 247, 14, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(246, 247, 14, 0.6);
 }
 
 .car-type.active {
-    background: #F1C40F !important;
+    background: #0e8fd5 !important;
 }
 
 .containt-font a.active {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .contact-details-wrap-footer {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .contact-details-wrap-footer span {
@@ -348,11 +348,11 @@ h4 {
 }
 
 .contact-details-wrap-top {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .booking h5 {
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .booking h3 {
@@ -372,7 +372,7 @@ h4 {
 }
 
 .Transfer h5 {
-    color: #F1C40F;
+    color: #0e8fd5;
 }
 
 .control-label2 {
@@ -380,7 +380,7 @@ h4 {
 }
 
 .Roundtrip-Fare {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .service-wrap2 span {
@@ -396,7 +396,7 @@ h4 {
 }
 
 .item-details-content {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .minicar-promo-text-btnwrap2 {
@@ -404,15 +404,15 @@ h4 {
 }
 
 .minicar-promo-text-btn2 {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .minicar-promo-carwrap2 {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .minicar-promo-text-btn {
-    background: #F1C40F;
+    background: #0e8fd5;
     -webkit-transition: all 300ms ease-in;
     -o-transition: all 300ms ease-in;
     -moz-transition: all 300ms ease-in;
@@ -428,7 +428,7 @@ h4 {
 }
 
 .minicar-promo-carwrap {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 
@@ -475,7 +475,7 @@ h4 {
 }
 
 .page28-minicar-promo-carwrap {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .page28-clipart a {
@@ -483,7 +483,7 @@ h4 {
 }
 
 .p18minicar-btn {
-    background: #F1C40F;
+    background: #0e8fd5;
 }
 
 .Proin-text-wrap h6 {
@@ -495,7 +495,7 @@ h4 {
 }
 
 .pa25-btn {
-    color: #F1C40F;
+    color: #0e8fd5;
     background: #2C3E50;
     -webkit-transition: all 300ms ease-in;
     -o-transition: all 300ms ease-in;
@@ -520,7 +520,7 @@ h4 {
 }
 
 
-/* .header-menu-wrap a:hover{color:#F1C40F;} */
+/* .header-menu-wrap a:hover{color:#0e8fd5;} */
 
 .dropdown-menu ul li:hover a {
     color: #ffffff !important;
@@ -531,9 +531,9 @@ h4 {
 }
 
 .dropdown-menu ul li a:hover {
-    background: #F1C40F !important;
+    background: #0e8fd5 !important;
 }
 
 .copy-right p a {
-    color: #F1C40F;
+    color: #0e8fd5;
 }

@@ -1,7 +1,7 @@
 <div class="footer custom-footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-12">
                 <div class="row">
                     <div class="menu-wrap">
                         <div class="menu-col">
@@ -60,13 +60,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5">
-                <div class="row">
-                    <div class="footer-map-bg">
-
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="social-item">
@@ -87,7 +80,7 @@
                 </a>
             </div>
             <div class="copy-right">
-                <p><span>Redicabs</span>Copyright © 2021 Redicabs. All Rights Reserved </p>
+                <p><span>Redicabs</span> Copyright © 2022 Redicabs. All Rights Reserved </p>
             </div>
         </div>
     </div>
