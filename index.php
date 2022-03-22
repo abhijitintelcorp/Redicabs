@@ -141,10 +141,9 @@ $fromDate = "";
                                                                 <td><img src="images/<?php echo $fetch['backimage']; ?>"
                                                                         width="30" height="30" alt="">
                                                                 </td>
-                                                                <td><a
-                                                                        href="Add_booking.php?id=<?php echo $fetch['id']; ?>">
+                                                                <td><a href="Add_booking.php?id=137">
                                                                         Edit</a>
-
+                                                                    <!-- <?php echo $fetch['id']; ?> -->
                                                                 </td>
 
                                                             </tr>
