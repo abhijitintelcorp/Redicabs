@@ -5,6 +5,7 @@ include("includes/connection.php");
 date_default_timezone_set("Asia/Kolkata");
 $msg = "";
 $fromDate = "";
+
 // function dateDiff($fromDate, $toDate)
 // {
 //     $date1_ts = strtotime($fromDate);
@@ -47,11 +48,11 @@ $fromDate = "";
             <div class="row">
                 <div class="col-sm-4">
                     <div class="row">
-                        <div class="form-wrap " style="height: 201px; width: 350px; background:#0e8fd5">
+                        <div class="form-wrap" style="height: 201px; width: 350px; background:#0e8fd5">
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
                             <div class="form-select">
-                                <form action="" method="GET" name="booking" id="booking" class="form-horizontal" onsubmit="openModal()">
+                                <form action="search.php" method="POST" name="booking" id="booking" class="form-horizontal">
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <?php echo $msg; ?>
                                         <div class="row">
@@ -64,7 +65,6 @@ $fromDate = "";
                                                 $qry = "SELECT DISTINCT  id, SeatingCapacity FROM tblbooking WHERE Status = '3'  ORDER BY id ASC";
                                                 $exe = mysqli_query($conn, $qry);
                                                 while ($row = mysqli_fetch_assoc($exe)) {
-
                                                 ?>
                                                     <option value="<?php echo $row['SeatingCapacity'] ?>">
                                                         <?php echo $row['SeatingCapacity'] ?>
@@ -84,77 +84,12 @@ $fromDate = "";
 
                                     </div> -->
                                     <div class="form-button">
-                                        <button type="submit" class="btn form-btn btn-lg btn-block" id="taxi_booking" name="taxi_booking" data-toggle="modal" data-target="#myModal<?php echo $row['SeatingCapacity'] ?>">
+                                        <button type="submit" class="btn form-btn btn-lg btn-block" id="taxi_booking" name="taxi_booking">
                                             Book Your Taxi Now
                                         </button>
                                     </div>
-                                    <!-- The Modal -->
-                                    <div class="modal" id="myModal<?php echo $row['SeatingCapacity'] ?>">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-
-                                                <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">View Cars</h4>
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                </div>
-
-                                                <!-- Modal body -->
-                                                <div class="modal-body" id="modal-body">
-                                                    <table id="zctb" class="display table table-striped table-bordered table-hover" style="border: 1px solid #212529;" cellspacing="0" width="100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>SlNo.</th>
-                                                                <th>Brand</th>
-                                                                <th>VehicleName</th>
-                                                                <th>FrontImage</th>
-                                                                <th>BackImage</th>
-                                                                <th>Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <?php
-                                                        $SeatingCapacity = $_GET['SeatingCapacity'];
-                                                        echo "$SeatingCapacity";
-                                                        $cnt = 1;
-                                                        $query = mysqli_query($conn, "SELECT * FROM tblbooking WHERE SeatingCapacity=$SeatingCapacity");
-
-                                                        $fetch = mysqli_fetch_assoc($query);
-                                                        ?>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><?php echo $cnt; ?></td>
-                                                                <td><?php echo $fetch['owner_vehicle_brand'];  ?></td>
-                                                                <td><?php echo $fetch['owner_vehicle_name']; ?>
-                                                                </td>
-
-                                                                <td><img src="images/<?php echo $fetch['frontimage']; ?>" width="30" height="30" alt="">
-                                                                </td>
-
-                                                                <td><img src="images/<?php echo $fetch['backimage']; ?>" width="30" height="30" alt="">
-                                                                </td>
-                                                                <td><a href="Add_booking.php?id=<?php echo $fetch['id']; ?>">
-                                                                        Edit</a>
-
-                                                                </td>
-
-                                                            </tr>
-                                                            <?php $cnt++;
-
-                                                            ?>
-                                                        </tbody>
-
-                                                    </table>
-                                                </div>
-
-                                                <!-- Modal footer -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                                 </form>
+
 
                             </div>
                         </div>
@@ -166,19 +101,7 @@ $fromDate = "";
     <!-- Booking now form wrapper html Exit -->
 
     <!-- anytime-anywhere html start -->
-    <div class="anytime-anywhere">
-        <div class="row">
-            <div class="anytime-wrap">
-                <h1>ANYTIME, <br />ANYWHERE!</h1>
-                <div class="anytime-text">
-                    <p><i class="fa fa-custom fa-circle-o"></i>Proin gravida nibh vel velit auctor aliquet sollicitudin.
-                    </p>
-                    <p><i class="fa fa-custom fa-circle-o"></i>Qnec sagittis bibendum auctor sem nibh id.</p>
-                    <p><i class="fa fa-custom fa-circle-o"></i>Rit amet nibh vulputate cursus nisi elit.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- anytime-anywhere html Exit -->
 
     <!-- label white html start -->
@@ -1072,16 +995,6 @@ $fromDate = "";
 <script>
     $(document).ready(function() {
         $('#zctb').DataTable();
-    });
-</script>
-<script type="text/javascript">
-    $("#taxi_booking").click(function() {
-        var SeatingCapacity = $("#SeatingCapacity").val();
-
-        var str = "You Have Entered " +
-            "SeatingCapacity: " + SeatingCapacity
-        s;
-        $("#zctb").html(str);
     });
 </script>
 <!-- Select state javascript codes End -->
