@@ -18,6 +18,11 @@
     <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+        $(document).ready(function() {
+            $("#selectState").modal('show');
+        });
+    </script>
 </head>
 <div id="preloader">
     <div class="preloader-container">
@@ -61,31 +66,28 @@
 
                     <div class="pull-right">
                         <!-- <a href="#">Login</a> -->
-                        <button class="dropbtn" onclick="document.getElementById('id01').style.display='block'"
-                            style="background-color: #1799df;">Login</button>
+                        <button class="dropbtn" onclick="document.getElementById('id01').style.display='block'" style="background-color: #1799df;">Login</button>
                         <?php
-            include("login.php");
-            ?>
+                        include("login.php");
+                        ?>
 
                         <!-- <a href="#">Register</a> -->
-                        <button class="dropbtn" onclick="document.getElementById('id02').style.display='block'"
-                            style="background-color: #1799df;">Register</button>
+                        <button class="dropbtn" onclick="document.getElementById('id02').style.display='block'" style="background-color: #1799df;">Register</button>
                         <?php
-            include("register.php");
-            ?>
+                        include("register.php");
+                        ?>
 
                     </div>
                     <!--             <div class="social-icon">
               <p>paul@intelcorpsolutions.com</p>
             </div> -->
-                    <div class="dropdown">
+                    <!-- <div class="dropdown">
                         <button class="dropbtn2" style="background-color: #1799df;">Select State</button>
                         <div class="dropdown-content">
-                            <a href="#" id="odisha" style="padding:10px; cursor:pointer;"
-                                onclick="myOdisha()">Odisha</a>
+                            <a href="#" id="odisha" style="padding:10px; cursor:pointer;" onclick="myOdisha()">Odisha</a>
                             <a href="#" id="2" style="padding:10px; cursor:pointer;" onclick="myAP()">Andhra Pradesh</a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
