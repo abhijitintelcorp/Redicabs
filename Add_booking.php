@@ -30,16 +30,16 @@ if (isset($_POST['submit'])) {
     $brand = htmlspecialchars($_POST['brand']);
     $owner_vehicle_name = htmlspecialchars($_POST['owner_vehicle_name']);
     $owner_vehicle_no = htmlspecialchars($_POST['owner_vehicle_no']);
-    $owner_vehicle_RCno = htmlspecialchars($_POST['owner_vehicle_RCno']);
-    $owner_vehicle_chesis_no = htmlspecialchars($_POST['owner_vehicle_chesis_no']);
-    $DriverName = htmlspecialchars($_POST['DriverName']);
-    $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
-    $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
+    // $owner_vehicle_RCno = htmlspecialchars($_POST['owner_vehicle_RCno']);
+    // $owner_vehicle_chesis_no = htmlspecialchars($_POST['owner_vehicle_chesis_no']);
+    // $DriverName = htmlspecialchars($_POST['DriverName']);
+    // $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
+    // $PricePerDay = htmlspecialchars($_POST['PricePerDay']);
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
-    $ModelYear = htmlspecialchars($_POST['ModelYear']);
-    $OwnerName = htmlspecialchars($_POST['OwnerName']);
-    $owner_mobile = htmlspecialchars($_POST['owner_mobile']);
-    $owner_email = htmlspecialchars($_POST['owner_email']);
+    // $ModelYear = htmlspecialchars($_POST['ModelYear']);
+    // $OwnerName = htmlspecialchars($_POST['OwnerName']);
+    // $owner_mobile = htmlspecialchars($_POST['owner_mobile']);
+    // $owner_email = htmlspecialchars($_POST['owner_email']);
     $Categories = htmlspecialchars($_POST['Categories']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
@@ -47,7 +47,10 @@ if (isset($_POST['submit'])) {
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
 
-    $query = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time) values('$pickup','$dropoff','$FromDate','$ToDate','$Time')";
+    $query = "insert into tblbooking (UserName,ContactNo,EmailId,
+    Password,address,City,Categories,SubCategories,owner_vehicle_name,
+    pickup,dropoff,FromDate,ToDate,Time)
+     values('$UserName','$ContactNo','$EmailId','$pickup','$dropoff','$FromDate','$ToDate','$Time')";
 
     $query_run = mysqli_query($conn, $query);
     if ($query_run) {
