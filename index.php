@@ -27,6 +27,8 @@ $fromDate = "";
 // $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
 // $res_query = mysqli_query($conn, $insert_qry);
 // $insert_id = mysqli_insert_id($conn);
+$qry1 = "SELECT DISTINCT  id, SeatingCapacity FROM tblbooking WHERE Status = '3'  ORDER BY id ASC";
+$exe1 = mysqli_query($conn, $qry1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,8 +52,13 @@ $fromDate = "";
                         <div class="form-wrap " style="height: 201px; width: 350px; background:#0e8fd5">
                             <div class="form-headr"></div>
                             <h2> <b>Book Your Transfer</b></h2>
+<<<<<<< HEAD
                             <div class="form-select">
                                 <form action="" method="GET" name="booking" id="booking" class="form-horizontal" onsubmit="openModal()">
+=======
+                            <form name="Form1" action="" method="POST">
+                                <div class="form-select">
+>>>>>>> pragyan
                                     <div class="col-sm-12 custom-select-box tec-domain-cat2">
                                         <?php echo $msg; ?>
                                         <div class="row">
@@ -66,7 +73,11 @@ $fromDate = "";
                                                 while ($row = mysqli_fetch_assoc($exe)) {
 
                                                 ?>
+<<<<<<< HEAD
                                                     <option value="<?php echo $row['SeatingCapacity'] ?>">
+=======
+                                                    <option value="#<?php echo $row['SeatingCapacity'] ?>">
+>>>>>>> pragyan
                                                         <?php echo $row['SeatingCapacity'] ?>
                                                     </option>
                                                 <?php }  ?>
@@ -83,16 +94,21 @@ $fromDate = "";
                                             Taxi Now</button>
 
                                     </div> -->
+
                                     <div class="form-button">
+<<<<<<< HEAD
                                         <button type="submit" class="btn form-btn btn-lg btn-block" id="taxi_booking" name="taxi_booking" data-toggle="modal" data-target="#myModal<?php echo $row['SeatingCapacity'] ?>">
                                             Book Your Taxi Now
                                         </button>
-                                    </div>
-                                    <!-- The Modal -->
-                                    <div class="modal" id="myModal<?php echo $row['SeatingCapacity'] ?>">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
+=======
 
+                                        <button type="button" class="btn form-btn btn-lg btn-block" data-id="3" data-toggle="modal" data-target="#myModal<?php echo $rows['SeatingCapacity'] ?>">Book Your Taxi Now <?php echo $rows['SeatingCapacity'] ?></button>
+>>>>>>> pragyan
+                                    </div>
+                                </div>
+                            </form>
+
+<<<<<<< HEAD
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">View Cars</h4>
@@ -117,16 +133,15 @@ $fromDate = "";
                                                         echo "$SeatingCapacity";
                                                         $cnt = 1;
                                                         $query = mysqli_query($conn, "SELECT * FROM tblbooking WHERE SeatingCapacity=$SeatingCapacity");
+=======
 
-                                                        $fetch = mysqli_fetch_assoc($query);
-                                                        ?>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><?php echo $cnt; ?></td>
-                                                                <td><?php echo $fetch['owner_vehicle_brand'];  ?></td>
-                                                                <td><?php echo $fetch['owner_vehicle_name']; ?>
-                                                                </td>
+>>>>>>> pragyan
 
+                            <!-- The Modal -->
+                            <div id="3" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+<<<<<<< HEAD
                                                                 <td><img src="images/<?php echo $fetch['frontimage']; ?>" width="30" height="30" alt="">
                                                                 </td>
 
@@ -152,11 +167,86 @@ $fromDate = "";
                                                 </div>
 
                                             </div>
+=======
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                            <h4 class="modal-title">Apple Pear Company</h4>
+                                        </div>
+                                        <div class="modal-body info">
+                                            <p>Lorem lipsum
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer addHEIGHT">
+>>>>>>> pragyan
                                         </div>
                                     </div>
-                                </form>
+                                    <!-- <div class="modal-content">
 
+                                        
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">View Cars</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                       
+                                        <div class="modal-body">
+                                            <table id="zctb" class="display table table-striped table-bordered table-hover" style="border: 1px solid #212529;" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>SlNo.</th>
+                                                        <th>Brand</th>
+                                                        <th>VehicleName</th>
+                                                        <th>FrontImage</th>
+                                                        <th>BackImage</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <?php
+                                                echo $SeatingCapacity;
+                                                $cnt = 1;
+                                                $query = mysqli_query($conn, "SELECT * FROM tblbooking WHERE SeatingCapacity=$SeatingCapacity");
+
+                                                $fetch = mysqli_fetch_assoc($query);
+                                                $SeatingCapacity = $fetch['SeatingCapacity'];
+                                                ?>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><?php echo $cnt; ?></td>
+                                                        <td><?php echo $fetch['owner_vehicle_brand'];  ?></td>
+                                                        <td><?php echo $fetch['owner_vehicle_name']; ?>
+                                                        </td>
+
+                                                        <td><img src="images/<?php echo $fetch['frontimage']; ?>" width="30" height="30" alt="">
+                                                        </td>
+
+                                                        <td><img src="images/<?php echo $fetch['backimage']; ?>" width="30" height="30" alt="">
+                                                        </td>
+                                                        <td><a href="Add_booking.php?id=137">
+                                                                Edit</a>
+                                                           <?php echo $fetch['id']; ?> 
+                                                        </td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                                <?php $cnt++;
+
+                                                ?>
+                                            </table>
+                                        </div>
+
+                                       
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        </div>  
+
+                                    </div> -->
+                                </div>
                             </div>
+
+                            <!----   Modal End ---->
+
                         </div>
                     </div>
                 </div>
@@ -1046,6 +1136,7 @@ $fromDate = "";
         $('#zctb').DataTable();
     });
 </script>
+<<<<<<< HEAD
 <script type="text/javascript">
     $("#taxi_booking").click(function() {
         var SeatingCapacity = $("#SeatingCapacity").val();
@@ -1054,6 +1145,29 @@ $fromDate = "";
             "SeatingCapacity: " + SeatingCapacity
         s;
         $("#zctb").html(str);
+=======
+<script>
+    $('#addAttr').click(function() {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var duration = $(this).data('duration');
+        var date = $(this).data('date');
+
+        $('#id').val(id);
+        $('#name').val(name);
+        $('#duration').val(duration);
+        $('#date').val(date);
+>>>>>>> pragyan
     });
 </script>
+<script>
+    $("#SeatingCapacity").on("change", function() {
+        var sOptionVal = $(this).val();
+        if (/modal/i.test(sOptionVal)) {
+            var $selectedOption = $(sOptionVal);
+            $selectedOption.modal('show');
+        }
+    });
+</script>
+
 <!-- Select state javascript codes End -->
