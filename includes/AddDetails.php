@@ -8,7 +8,7 @@ include("includes/connection.php");
         <div class="w3-center"><br>
             <span onclick="document.getElementById('id03').style.display='none'"
                 class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-            <img src="images/icons/note.png" alt="Avatar" style="width:10%" class="w3-circle w3-margin-top">
+            <P>Enter your details</P>
         </div>
         <?php
         // echo $insert_id;

@@ -54,15 +54,11 @@ if (isset($_POST['submit'])) {
 <!doctype html>
 <html lang="en" class="no-js">
 
-<?php
-include("includes/search-header.php");
-?>
-
-<body class="hold-transition sidebar-mini" onload="document.getElementById('id03').style.display='block'">
+<body class="hold-transition sidebar-mini">
     <?php
-    include("includes/AddDetails.php");
-
+    include("includes/search-header.php");
     ?>
+
     <div class="wrapper">
 
         <section class="content">
