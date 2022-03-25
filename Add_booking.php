@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 
 include("includes/connection.php");
 $id = $_GET['id'];
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
     }
 </style>
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 
 <body class="hold-transition sidebar-mini">
     <?php
@@ -186,49 +186,10 @@ if (isset($_POST['submit'])) {
                 </div>
         </section>
     </div>
-    </div>
-    </div>
-    <?php
-    include("includes/footerlink.php");
-    ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-                    $('#SeatingCapacity').on('change', function() {
-                        var SeatingCapacity = $(this).val();
-                        if (SeatingCapacity) {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'get-brand-name.php',
-                                data: 'SeatingCapacity=' + SeatingCapacity,
-                                success: function(html) {
-                                    $('#brand').html(html);
-                                    $('#VehicleName').html(
-                                        '<option value="">Select Brand first</option>');
-                                }
-                            });
-                        } else {
-                            $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                            $('#VehicleName').html('<option value="">Select Brand first</option>');
-
-                        }
-                    });
-
-                    $('#brand').on('change', function() {
-                        var owner_vehicle_brand = $(this).val();
-                        if (owner_vehicle_brand) {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'get-brand-name.php',
-                                data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                                success: function(html) {
-                                    $('#VehicleName').html(html);
-                                }
-                            });
-                        } else {
-                            $('#VehicleName').html('<option value="">Select Brand first</option>');
-                        }
-                    });
-    </script>
 </body>
 
 </html>
+
+<?php
+include("includes/footerlink.php");
+?>
