@@ -321,7 +321,7 @@ $fromDate = "";
 
                                 <div class="col-sm-4">
                                     <div class="row">
-                                        <div class="slider-item ">
+                                        <div class="slider-item">
                                             <div id="slider5" class="slider-img" style="background-image:url(images/slider/NK.png); background-size:cover;">
                                             </div>
                                             <div class="slider-text-hover">
@@ -562,12 +562,12 @@ $fromDate = "";
                 <div class="modal-body">
                     <p>
 
-                        <button id="odisha" class="btn  btn-outline-primary" onclick="myOdisha()">
+                        <a href="#" id="odisha" class="btn  btn-outline-primary" onclick="myOdisha()">
                             Odisha
-                        </button>
-                        <button id="2" class="btn  btn-outline-primary" onclick="AP()">
+                        </a>
+                        <a href="#" id="AP" class="btn  btn-outline-primary" onclick="AP()">
                             Andhra Pradesh
-                        </button>
+                        </a>
 
                     </p>
 
