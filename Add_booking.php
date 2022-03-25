@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0);
+error_reporting(0);
 
 include("includes/connection.php");
 $id = $_GET['id'];
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 }
 </style>
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 
 <body class="hold-transition sidebar-mini">
     <?php
@@ -198,6 +198,7 @@ if (isset($_POST['submit'])) {
                 </div>
         </section>
     </div>
+<<<<<<< HEAD
     </div>
     </div>
 </body>
@@ -205,5 +206,12 @@ if (isset($_POST['submit'])) {
 </html>
 <?php
 include("includes/footer.php");
+=======
+</body>
+
+</html>
+
+<?php
+>>>>>>> abhijit
 include("includes/footerlink.php");
 ?>
