@@ -88,9 +88,8 @@ if (isset($_POST['submit'])) {
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <label>SeatingCapacity</label>
-                                                <select id="SeatingCapacity" class="selectpicker"
-                                                    data-live-search="false" name="SeatingCapacity"
-                                                    style="width: 70px; border: black;" required>
+                                                <select id="SeatingCapacity" data-live-search="false"
+                                                    name="SeatingCapacity" style="width: 70px; border: black;" required>
                                                     <option value="<?php echo $row['SeatingCapacity']; ?>">
                                                         <?php echo $row['SeatingCapacity']; ?></option>
                                                     <?php
@@ -109,8 +108,8 @@ if (isset($_POST['submit'])) {
                                             <div class="col-sm-4">
 
                                                 <label>Vehicle Brand</label>
-                                                <select class="selectpicker" data-live-search="false" name="brand"
-                                                    id="brand" style=" height: 26px;width: 134px;" required>
+                                                <select data-live-search="false" name="brand" id="brand"
+                                                    style=" height: 26px;width: 134px;" required>
                                                     <option value="<?php echo $row['owner_vehicle_brand']; ?>">
                                                         <?php echo $row['owner_vehicle_brand']; ?></option>
 
@@ -121,8 +120,8 @@ if (isset($_POST['submit'])) {
                                             <div class="col-sm-4 ">
 
                                                 <label>Vehicle Name</label>
-                                                <select class="selectpicker" data-live-search="false" name="VehicleName"
-                                                    id="VehicleName" style=" height: 26px;width: 134px;" required>
+                                                <select data-live-search="false" name="VehicleName" id="VehicleName"
+                                                    style=" height: 26px;width: 134px;" required>
                                                     <option value="<?php echo $row['owner_vehicle_name'] ?>">
                                                         <?php echo $row['owner_vehicle_name']; ?> </option>
 
@@ -201,49 +200,10 @@ if (isset($_POST['submit'])) {
     </div>
     </div>
     </div>
-    <?php
-    include("includes/footer.php");
-    include("includes/footerlink.php");
-    ?>
-    <script type="text/javascript">
-    $(document).ready(function() {
-                $('#SeatingCapacity').on('change', function() {
-                    var SeatingCapacity = $(this).val();
-                    if (SeatingCapacity) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'get-brand-name.php',
-                            data: 'SeatingCapacity=' + SeatingCapacity,
-                            success: function(html) {
-                                $('#brand').html(html);
-                                $('#VehicleName').html(
-                                    '<option value="">Select Brand first</option>');
-                            }
-                        });
-                    } else {
-                        $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                        $('#VehicleName').html('<option value="">Select Brand first</option>');
-
-                    }
-                });
-
-                $('#brand').on('change', function() {
-                    var owner_vehicle_brand = $(this).val();
-                    if (owner_vehicle_brand) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'get-brand-name.php',
-                            data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                            success: function(html) {
-                                $('#VehicleName').html(html);
-                            }
-                        });
-                    } else {
-                        $('#VehicleName').html('<option value="">Select Brand first</option>');
-                    }
-                });
-    </script>
 </body>
-}
 
 </html>
+<?php
+include("includes/footer.php");
+include("includes/footerlink.php");
+?>
