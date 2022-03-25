@@ -116,13 +116,7 @@ $fromDate = "";
                             <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
                         </div>
                     </div>
-                    <div class="car-type">
-                        <div class="car-wrap"> <img class="minicar-car" src="images/minicar.png" alt="" /></div>
-                        <h5>Mini Car</h5>
-                        <div class="car-type-btn">
-                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                        </div>
-                    </div>
+
 
                     <div class="car-type">
                         <div class="car-wrap"> <img class="mini-track-car" src="images/mini-track.png" alt="" /></div>
