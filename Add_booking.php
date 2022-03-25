@@ -47,9 +47,9 @@ if (isset($_POST['submit'])) {
 
 ?>
 <style>
-.bg {
-    background-color: #1799df;
-}
+    .bg {
+        background-color: #1799df;
+    }
 </style>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -84,106 +84,92 @@ if (isset($_POST['submit'])) {
                                         $row = mysqli_fetch_array($query_run);
 
                                     ?>
-                                    <form action="" method="post" name="add_booking" id="add_booking">
-                                        <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label>SeatingCapacity</label>
-                                                <select id="SeatingCapacity" class="selectpicker"
-                                                    data-live-search="false" name="SeatingCapacity"
-                                                    style="width: 70px; border: black;" required>
-                                                    <option value="<?php echo $row['SeatingCapacity']; ?>">
-                                                        <?php echo $row['SeatingCapacity']; ?></option>
-                                                    <?php
+                                        <form action="" method="post" name="add_booking" id="add_booking">
+                                            <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label>SeatingCapacity</label>
+                                                    <select id="SeatingCapacity" data-live-search="false" name="SeatingCapacity" style="width: 200px; border: black;" required>
+                                                        <option value="<?php echo $row['SeatingCapacity']; ?>">
+                                                            <?php echo $row['SeatingCapacity']; ?></option>
+                                                        <?php
                                                         $qry = "SELECT DISTINCT SeatingCapacity from tblbooking WHERE Status = '3'   ASC";
                                                         $exe = mysqli_query($conn, $qry);
                                                         while ($rows = mysqli_fetch_assoc($exe)) {
 
                                                         ?>
-                                                    <option value="<?php echo $rows['SeatingCapacity'] ?>">
-                                                        <?php echo $rows['SeatingCapacity'] ?>
-                                                    </option>
-                                                    <?php }  ?>
-                                                </select>
+                                                            <option value="<?php echo $rows['SeatingCapacity'] ?>">
+                                                                <?php echo $rows['SeatingCapacity'] ?>
+                                                            </option>
+                                                        <?php }  ?>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-sm-4">
+
+                                                    <label>Vehicle Brand</label>
+                                                    <select data-live-search="false" name="brand" id="brand" style=" height: 26px;width: 134px;" required>
+                                                        <option value="<?php echo $row['owner_vehicle_brand']; ?>">
+                                                            <?php echo $row['owner_vehicle_brand']; ?></option>
+
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="col-sm-4 ">
+
+                                                    <label>Vehicle Name</label>
+                                                    <select data-live-search="false" name="VehicleName" id="VehicleName" style=" height: 26px;width: 134px;" required>
+                                                        <option value="<?php echo $row['owner_vehicle_name'] ?>">
+                                                            <?php echo $row['owner_vehicle_name']; ?> </option>
+
+                                                    </select>
+                                                </div>
 
                                             </div>
-                                            <div class="col-sm-4">
 
-                                                <label>Vehicle Brand</label>
-                                                <select class="selectpicker" data-live-search="false" name="brand"
-                                                    id="brand" style=" height: 26px;width: 134px;" required>
-                                                    <option value="<?php echo $row['owner_vehicle_brand']; ?>">
-                                                        <?php echo $row['owner_vehicle_brand']; ?></option>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>pick-up location</label>
+                                                        <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="pickup" id="pickup" required>
+                                                        </input>
+                                                    </div>
+                                                </div>
 
-                                                </select>
 
-                                            </div>
-
-                                            <div class="col-sm-4 ">
-
-                                                <label>Vehicle Name</label>
-                                                <select class="selectpicker" data-live-search="false" name="VehicleName"
-                                                    id="VehicleName" style=" height: 26px;width: 134px;" required>
-                                                    <option value="<?php echo $row['owner_vehicle_name'] ?>">
-                                                        <?php echo $row['owner_vehicle_name']; ?> </option>
-
-                                                </select>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>pick-up location</label>
-                                                    <input class="custom-select-box tec-domain-cat"
-                                                        style="width: 305px; height:30px;" name="pickup" id="pickup"
-                                                        required>
-                                                    </input>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>Drop off location</label>
+                                                        <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="dropoff" id="dropoff" required>
+                                                        </input>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>From Date</label>
+                                                        <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="FromDate" id="FromDate" type="date" required>
+                                                        </input>
+                                                    </div>
+                                                </div>
 
 
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Drop off location</label>
-                                                    <input class="custom-select-box tec-domain-cat"
-                                                        style="width: 305px; height:30px;" name="dropoff" id="dropoff"
-                                                        required>
-                                                    </input>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label>To Date</label>
+                                                        <input class="custom-select-box tec-domain-cat" style="width: 305px; height:30px;" name="ToDate" id="ToDate" type="date">
+                                                        </input>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>From Date</label>
-                                                    <input class="custom-select-box tec-domain-cat"
-                                                        style="width: 305px; height:30px;" name="FromDate" id="FromDate"
-                                                        type="date" required>
-                                                    </input>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>To Date</label>
-                                                    <input class="custom-select-box tec-domain-cat"
-                                                        style="width: 305px; height:30px;" name="ToDate" id="ToDate"
-                                                        type="date">
-                                                    </input>
-                                                </div>
-                                            </div>
-                                        </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Pick up Time </label>
-                                            <input class="custom-select-box tec-domain-cat form-control"
-                                                style="width: 305px; height:30px; " name="Time" id="datetimepicker4"
-                                                type="time">
+                                            <input class="custom-select-box tec-domain-cat form-control" style="width: 305px; height:30px; " name="Time" id="datetimepicker4" type="time">
                                             </input>
                                         </div>
                                     </div>
@@ -192,7 +178,7 @@ if (isset($_POST['submit'])) {
                                 <button class="btn btn-primary" name="submit" type="submit">submit</button>
 
                                 </form>
-                                <?php } ?>
+                            <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -206,42 +192,42 @@ if (isset($_POST['submit'])) {
     include("includes/footerlink.php");
     ?>
     <script type="text/javascript">
-    $(document).ready(function() {
-                $('#SeatingCapacity').on('change', function() {
-                    var SeatingCapacity = $(this).val();
-                    if (SeatingCapacity) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'get-brand-name.php',
-                            data: 'SeatingCapacity=' + SeatingCapacity,
-                            success: function(html) {
-                                $('#brand').html(html);
-                                $('#VehicleName').html(
-                                    '<option value="">Select Brand first</option>');
-                            }
-                        });
-                    } else {
-                        $('#brand').html('<option value="">Select Seating Capacity first</option>');
-                        $('#VehicleName').html('<option value="">Select Brand first</option>');
+        $(document).ready(function() {
+                    $('#SeatingCapacity').on('change', function() {
+                        var SeatingCapacity = $(this).val();
+                        if (SeatingCapacity) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'get-brand-name.php',
+                                data: 'SeatingCapacity=' + SeatingCapacity,
+                                success: function(html) {
+                                    $('#brand').html(html);
+                                    $('#VehicleName').html(
+                                        '<option value="">Select Brand first</option>');
+                                }
+                            });
+                        } else {
+                            $('#brand').html('<option value="">Select Seating Capacity first</option>');
+                            $('#VehicleName').html('<option value="">Select Brand first</option>');
 
-                    }
-                });
+                        }
+                    });
 
-                $('#brand').on('change', function() {
-                    var owner_vehicle_brand = $(this).val();
-                    if (owner_vehicle_brand) {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'get-brand-name.php',
-                            data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-                            success: function(html) {
-                                $('#VehicleName').html(html);
-                            }
-                        });
-                    } else {
-                        $('#VehicleName').html('<option value="">Select Brand first</option>');
-                    }
-                });
+                    $('#brand').on('change', function() {
+                        var owner_vehicle_brand = $(this).val();
+                        if (owner_vehicle_brand) {
+                            $.ajax({
+                                type: 'POST',
+                                url: 'get-brand-name.php',
+                                data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                                success: function(html) {
+                                    $('#VehicleName').html(html);
+                                }
+                            });
+                        } else {
+                            $('#VehicleName').html('<option value="">Select Brand first</option>');
+                        }
+                    });
     </script>
 </body>
 
