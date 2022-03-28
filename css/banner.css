@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#hero {
+  /* height: 600px; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url("banner 2.jpg");
+  background-position: center;
+  background-size: cover;
+  /* position: absolute; */
+  color: white;
+}
+
+#form-box {
+  width: 480px;
+  height: 650px;
+  background-color: #0d4555;
+  position: relative;
+  overflow: hidden;
+  /* padding: 5px; */
+  /* margin: 6% auto; */
+}
+
+.button-box {
+  width: 100%;
+  margin: 35px auto;
+  position: relative;
+  padding: 0;
+  background-color: #f0f0f0;
+  border-radius: 30px;
+}
+
+.toggle-btn {
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  width: 49%;
+  border-radius: 30px;
+  margin: 0 auto;
+  position: relative;
+  font-weight: 600;
+  color: rgb(73, 72, 72);
+}
+
+#butn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 50%;
+  border-radius: 30px;
+  height: 100%;
+  background-color: #19bde3;
+  transition: 0.5s;
+}
+
+#hero .input-group {
+  top: 100px;
+  position: absolute;
+  width: 100%;
+
+  transition: 0.5s;
+}
+
+#hero .form-control1 {
+  padding: 10px 8px;
+  margin: 5px 0;
+  border: 1px solid white;
+  outline: none;
+  width: 90%;
+  color: #75665f;
+  background: transparent;
+}
+
+.submit-btn {
+  width: 90%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  color: white;
+  background-color: rgb(0, 132, 255);
+  margin-top: 20px;
+}
+
+#one {
+  left: 20px;
+}
+
+#two {
+  left: 500px;
+}
+
+.header-text {
+  margin-top: 50px;
+}
+#hero h1 {
+  font-size: 55px;
+  font-weight: 700;
+}
+#hero h2 {
+  font-size: 45px;
+}
+#hero label {
+  padding-top: 10px;
+}
+#hero2 img {
+  cursor: pointer;
+}

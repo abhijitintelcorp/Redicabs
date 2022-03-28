@@ -36,150 +36,106 @@ include("includes/header.php");
 
 <body>
     <!-- Booking now form wrapper html start -->
-    <div class="container-fluid" id="hero">
-        <div class="container">
-            <div class="row py-4">
-                <div class="col-md-6 px-2" id="form-box">
-                    <div class="button-box">
-                        <div id="butn"></div>
-                        <button type="button" class="toggle-btn" onclick="one()">OUTSTATION</button>
-                        <button type="button" class="toggle-btn" onclick="two()">RENTAL</button>
 
-                    </div>
-                    <form id="one" action="" class="input-group" id="">
+    <!-- Booking now form wrapper html Exit -->
 
-                        <label for="">Picking Up Location</label>
-                        <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)"
-                            aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
+    <!-- anytime-anywhere html start -->
 
-                        <label for=""> Dropping Off Location</label>
-                        <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)"
-                            aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-                        <div class="row p-0 m-0">
-                            <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate"
-                                    id="FromDate">
-                            </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate"
-                                    id="ToDate">
-                            </div>
+    <!-- anytime-anywhere html Exit -->
+    <section>
+        <div class="container-fluid" id="hero">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-md-6 px-2" id="form-box">
+                        <div class="button-box">
+                            <div id="butn"></div>
+                            <button type="button" class="toggle-btn" onclick="one()">OUTSTATION</button>
+                            <button type="button" class="toggle-btn" onclick="two()">RENTAL</button>
+
                         </div>
+                        <form id="one" action="" class="input-group" id="">
+
+                            <label for="">Picking Up Location</label>
+                            <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)"
+                                aria-label="Username" aria-describedby="basic-addon1">
+
+                            <label for=""> Dropping Off Location</label>
+                            <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                            <div class="row p-0 m-0">
+                                <div class="col-5 p-0">
+                                    <label for="">Picking Up Date</label>
+                                    <input type="DATE" class="form-control1" placeholder="Pick-up Date"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
+                                <div class="col-6 p-0">
+                                    <label for="">Return Date</label>
+                                    <input type="DATE" class="form-control1" placeholder="Pick-up Date"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
+                            </div>
 
 
-                        <label for="">Pick-up Time (Mandatory)</label>
-                        <input type="date" class="form-control1" placeholder="Username" aria-label="Username"
-                            aria-describedby="basic-addon1" name="Time" id="Time">
-                        <label for="">Select category</label>
-                        <select class="selectpicker" data-live-search="false" name="Categories" id="Categories">
-                            <option>Select Categories</option>
-                            <option value="<?php echo $rows['Categories']; ?>">
-                                <?php echo $rows['Categories']; ?>
-                            </option>
-                            <?php
-                            include("includes/connection.php");
-                            $qry = "SELECT distinct Categories from tblbooking ";
-                            $exe = mysqli_query($conn, $qry);
-                            while ($row = mysqli_fetch_array($exe)) {
 
-                            ?>
-                            <option value="<?php echo $row['Categories'] ?>">
-                                <?php echo $row['Categories'] ?>
-                            </option>
-                            <?php
-
-                            } ?>
+                            <label for="">Pick-up Time (Mandatory)</label>
+                            <input type="date" class="form-control1" placeholder="Username" aria-label="Username"
+                                aria-describedby="basic-addon1">
                             <label for="">Select Car Type</label>
                             <input type="text" class="form-control1" placeholder="Select type" aria-label="Username"
                                 aria-describedby="basic-addon1">
                             <button class="submit-btn btn">Submit</button>
 
 
-                    </form>
-                    <form id="two" action="" class="input-group" id="">
+                        </form>
+                        <form id="two" action="" class="input-group" id="">
 
 
-                        <label for="">Picking Up Location</label>
-                        <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)"
-                            aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
-                        <label for=""> Dropping Off Location</label>
-                        <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)"
-                            aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
+                            <label for="">Picking Up Location</label>
+                            <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)"
+                                aria-label="Username" aria-describedby="basic-addon1">
 
-                        <div class="row p-0 m-0">
-                            <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate"
-                                    id="FromDate">
+
+                            <div class="row p-0 m-0">
+                                <div class="col-5 p-0">
+                                    <label for="">Picking Up Date</label>
+                                    <input type="DATE" class="form-control1" placeholder="Pick-up Date"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
+                                <div class="col-6 p-0">
+                                    <label for="">Return Date</label>
+                                    <input type="DATE" class="form-control1" placeholder="Pick-up Date"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
+                                <div class="col-5 p-0">
+                                    <label for="">Picking Up Date</label>
+                                    <input type="DATE" class="form-control1" placeholder="Pick-up Date"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
+                                <div class="col-6 p-0">
+                                    <label for="">Return Date</label>
+                                    <input type="DATE" class="form-control1" placeholder="Pick-up Date"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                </div>
                             </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Drop-off Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate"
-                                    id="ToDate">
-                            </div>
-                            <!-- <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            </div> -->
-                            <label for="">Pick-up Time (Mandatory)</label>
-                            <input type="date" class="form-control1" placeholder="Username" aria-label="Username"
-                                aria-describedby="basic-addon1" name="Time" id="Time">
-                            <label for="">Select category</label>
-                            <select class="selectpicker" data-live-search="false" name="Categories" id="Categories">
-                                <option>Select Categories</option>
-                                <option value="<?php echo $rows['Categories']; ?>">
-                                    <?php echo $rows['Categories']; ?>
-                                </option>
-                                <?php
-                                include("includes/connection.php");
-                                $qry = "SELECT distinct Categories from tblbooking ";
-                                $exe = mysqli_query($conn, $qry);
-                                while ($row = mysqli_fetch_array($exe)) {
 
-                                ?>
-                                <option value="<?php echo $row['Categories'] ?>">
-                                    <?php echo $row['Categories'] ?>
-                                </option>
-                                <?php
-
-                                } ?>
-                        </div>
-
-                        <button class="submit-btn" name="submit">Submit</button>
+                            <button class="submit-btn">Submit</button>
 
 
-                    </form>
-                </div>
-                <div class="col-md-6 text-center header-text">
-                    <h2>
-                        Taxi & Cabs In Bhubaneswar
-                    </h2>
-                    <h4>CALL</h4>
-                    <h1>
-                        +91 0123456789
-                    </h1>
+                        </form>
+                    </div>
+                    <div class="col-md-6 text-center header-text">
+                        <h2>
+                            Taxi & Cabs In Bhubaneswar
+                        </h2>
+                        <h4>CALL</h4>
+                        <h1>
+                            +91 0123456789
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Booking now form wrapper html Exit -->
-
-    <!-- anytime-anywhere html start -->
-
-    <!-- anytime-anywhere html Exit -->
-
+    </section>
     <!-- label white html start -->
     <section>
         <div class="container" id="hero2">
@@ -193,7 +149,7 @@ include("includes/header.php");
                 <div class="col-md-3"><img src="lorry.png" width="70%" alt=""></div>
             </div>
             <div class="row py-4">
-                <div class="col"></div>
+                <div class="col"> </div>
                 <div class="col-md-3">
                     <img src="auto.png" width="70%" alt="">
                 </div>
@@ -647,7 +603,7 @@ include("includes/header.php");
     </script>
 </body>
 
-</html>
+
 <!-- ================ footer html Exit ================ -->
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
