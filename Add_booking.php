@@ -198,20 +198,10 @@ if (isset($_POST['submit'])) {
                 </div>
         </section>
     </div>
-<<<<<<< HEAD
-    </div>
-    </div>
-</body>
-
-</html>
-<?php
-include("includes/footer.php");
-=======
 </body>
 
 </html>
 
 <?php
->>>>>>> abhijit
 include("includes/footerlink.php");
 ?>

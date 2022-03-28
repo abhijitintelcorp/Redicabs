@@ -38,7 +38,6 @@ include("includes/config.php");
                                 </a>
                             </div><br>
                             <div class="card">
-                                <!-- /.card-header -->
                                 <div class="card-body" style="padding: 0px">
                                     <table id="zctb" class="display table table-striped table-bordered table-hover"
                                         style="border: 1px solid #212529;" cellspacing="0" width="100%">

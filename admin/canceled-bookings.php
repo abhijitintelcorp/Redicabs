@@ -25,7 +25,8 @@ include("includes/config.php");
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body" style="padding: 0px">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                    style="border: 1px solid #212529;" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -99,7 +100,9 @@ include("includes/config.php");
     </div>
     </div>
     <!-- ./wrapper -->
-
+    <?php
+    include("includes/footerlink.php");
+    ?>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -139,6 +142,11 @@ include("includes/config.php");
             "autoWidth": false,
             "responsive": true,
         });
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('#zctb').DataTable();
     });
     </script>
 </body>

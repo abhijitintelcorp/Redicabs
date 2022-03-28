@@ -66,11 +66,11 @@ include("includes/config.php");
                                             </tr>
                                         </thead>
                                         <?php
-                                        if(isset($_POST['filter'])) {
-                                        $SeatingCapacity = $_POST['SeatingCapacity'];
-                                        $cnt = 1;
-                                        $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity");
-                                        $fetch = mysqli_fetch_array($query);
+                                        if (isset($_POST['filter'])) {
+                                            $SeatingCapacity = $_POST['SeatingCapacity'];
+                                            $cnt = 1;
+                                            $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity");
+                                            $fetch = mysqli_fetch_array($query);
                                         ?>
                                         <tbody>
                                             <tr>
@@ -85,7 +85,7 @@ include("includes/config.php");
                                                 <td><img src="images/<?php echo $fetch['backimage']; ?>" width="30"
                                                         height="30" alt=""></td>
                                                 <td><a href="add-booking.php?id=<?php echo $fetch['id']; ?>">
-                                                        Edit</a>
+                                                        Book</a>
 
                                                 </td>
 
