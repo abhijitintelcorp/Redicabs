@@ -2,283 +2,105 @@
 session_start();
 include("includes/connection.php");
 // error_reporting(0);
-?>
-<?php
-//include("includes/register.php");
-//include("show_cars.php");
+date_default_timezone_set("Asia/Kolkata");
+$msg = "";
+$fromDate = "";
+
+// function dateDiff($fromDate, $toDate)
+// {
+//     $date1_ts = strtotime($fromDate);
+//     $date2_ts = strtotime($toDate);
+//     $diff = $date2_ts - $date1_ts;
+//     return round($diff / 86400) + 1;
 // }
-if (isset($_POST['submit'])) {
 
+// if (isset($_POST['taxi_booking'])) {
+// $bookingNumber = mt_rand(100000000, 999999999);
+// $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
 
-    $pickup = htmlspecialchars($_POST['pickup']);
-    $dropoff = htmlspecialchars($_POST['dropoff']);
-    $FromDate = htmlspecialchars($_POST['FromDate']);
-    $ToDate = htmlspecialchars($_POST['ToDate']);
-    $totalnodays = dateDiff($FromDate, $ToDate);
-    $Time = htmlspecialchars($_POST['Time']);
-    $Categories = htmlspecialchars($_POST['Categories']);
-    $regdate = date("Y-m-d");
-
-    $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories)
-        values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories')";
-    $inst_u_fn1_qry = mysqli_query($conn, $insert_qry);
-    if ($inst_u_fn1_qry) {
-
-        //header("location:new-bookings.php");
-    }
-}
-
+// $pickup = htmlspecialchars($_POST['pickup']);
+// $dropoff = htmlspecialchars($_POST['dropoff']);
+// $fromDate = htmlspecialchars($_POST['fromdate']);
+// $toDate = htmlspecialchars($_POST['todate']);
+// $totalnodays = dateDiff($fromDate, $toDate);
+// $regdate = date("Y-m-d");
+// $Time = htmlspecialchars($_POST['Time']);
+// $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
+// $res_query = mysqli_query($conn, $insert_qry);
+// $insert_id = mysqli_insert_id($conn);
 ?>
-<?php
-include("includes/header.php");
-?>
-
+<!DOCTYPE html>
+<html lang="en">
 <style>
-    * {
-        padding: 0;
-        margin: 0;
-    }
-
-    #hero {
-        /* height: 600px; */
-        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("banner 2.jpg");
-        background-position: center;
-        background-size: cover;
-        /* position: absolute; */
-        color: white;
-    }
-
-    #form-box {
-        width: 480px;
-        height: 750px;
-        background-color: #0D4555;
-        position: relative;
-        overflow: hidden;
-        /* padding: 5px; */
-        /* margin: 6% auto; */
-
-    }
-
-    .button-box {
-        width: 100%;
-        margin: 35px auto;
-        position: relative;
-        padding: 0;
-        background-color: #f0f0f0;
-        border-radius: 30px;
-    }
-
-    .toggle-btn {
-        padding: 10px 30px;
-        cursor: pointer;
-        background: transparent;
-        border: 0;
-        outline: none;
-        width: 49%;
-        border-radius: 30px;
-        margin: 0 auto;
-        position: relative;
-        font-weight: 600;
-        color: rgb(73, 72, 72);
-    }
-
-    #butn {
-        top: 0;
-        left: 0;
-        position: absolute;
-        width: 50%;
-        border-radius: 30px;
-        height: 100%;
-        background-color: #19bde3;
-        transition: .5s;
-
-    }
-
-    #hero .input-group {
-        top: 100px;
-        position: absolute;
-        width: 100%;
-
-        transition: .5s;
-    }
-
-    #hero .form-control1 {
-        padding: 10px 8px;
-        margin: 5px 0;
-        border: 1px solid white;
-        outline: none;
-        width: 90%;
-        color: #75665F;
-        background: transparent;
-    }
-
-    .submit-btn {
-        width: 90%;
-        padding: 10px 30px;
-        cursor: pointer;
-        display: block;
-        font-weight: bold;
-        outline: none;
-        border: none;
-        color: white;
-        background-color: rgb(0, 132, 255);
-        margin-top: 20px;
-    }
-
-
-    #one {
-        left: 20px;
-    }
-
-    #two {
-        left: 500px;
-    }
-
-    .header-text {
-        margin-top: 50px;
-
-    }
-
-    #hero h1 {
-        font-size: 55px;
-        font-weight: 700;
-    }
-
-    #hero h2 {
-        font-size: 45px;
-    }
-
-    #hero label {
-        padding-top: 10px;
-    }
-
     #hero2 img {
         cursor: pointer;
+        width: 180px;
+        height: 180px;
     }
 </style>
 
 <body>
+
+    <?php
+    //include("includes/register.php");
+    include("show_cars.php");
+    // }
+    ?>
+    <?php
+    include("includes/header.php");
+    ?>
     <!-- Booking now form wrapper html start -->
-    <div class="container-fluid" id="hero">
+    <div class="booking-form-wrapper">
         <div class="container">
-            <div class="row py-4">
-                <div class="col-md-6 px-2" id="form-box">
-                    <div class="button-box">
-                        <div id="butn"></div>
-                        <button type="button" class="toggle-btn" onclick="one()">OUTSTATION</button>
-                        <button type="button" class="toggle-btn" onclick="two()">RENTAL</button>
+            <div class="row">
 
+                <div class="col-md-6">
+                    <div class="form-box">
+                        <div class="butn" style="margin-top:-30px;margin-left:100px;">RENTAL</div>
+                        <fieldset>
+                            <form id="one" action="">
+
+                                <label for="">Picking Up Location</label>
+                                <input type="text" class="form-control" placeholder=" From (Area,Street,Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
+
+                                <label for=""> Dropping Off Location</label>
+                                <input type="text" class="form-control" placeholder="To(Area,Street, Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
+                                <div class="row p-0 m-0">
+                                    <div class="col-5 p-0">
+                                        <label for="">Picking Up Date</label>
+                                        <input type="DATE" class="form-control" placeholder="Pick-up Date" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
+                                    </div>
+                                    <div class="col-6 p-0">
+                                        <label for="">Return Date</label>
+                                        <input type="DATE" class="form-control" placeholder="Pick-up Date" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
+                                    </div>
+                                </div>
+
+
+
+                                <label for="">Pick-up Time (Mandatory)</label>
+                                <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
+                                <label for="">Select Vehicle Type</label>
+                                <input type="text" class="form-control" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
+                                <label for="">Select Seater Type</label>
+                                <input type="text" class="form-control" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
+                                <center><button class="submit-btn btn">Book Vehicle</button></center>
+
+
+                            </form>
+                        </fieldset>
                     </div>
-                    <form id="one" action="" class="input-group" id="">
-
-                        <label for="">Picking Up Location</label>
-                        <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
-
-                        <label for=""> Dropping Off Location</label>
-                        <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-                        <div class="row p-0 m-0">
-                            <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
-                            </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
-                            </div>
-                        </div>
-
-
-                        <label for="">Pick-up Time (Mandatory)</label>
-                        <input type="date" class="form-control1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
-                        <label for="">Select category</label>
-                        <select class="selectpicker" data-live-search="false" name="Categories" id="Categories">
-                            <option>Select Categories</option>
-                            <option value="<?php echo $rows['Categories']; ?>">
-                                <?php echo $rows['Categories']; ?>
-                            </option>
-                            <?php
-                            include("includes/connection.php");
-                            $qry = "SELECT distinct Categories from tblbooking ";
-                            $exe = mysqli_query($conn, $qry);
-                            while ($row = mysqli_fetch_array($exe)) {
-
-                            ?>
-                                <option value="<?php echo $row['Categories'] ?>">
-                                    <?php echo $row['Categories'] ?>
-                                </option>
-                            <?php
-
-                            } ?>
-                            <label for="">Select Car Type</label>
-                            <input type="text" class="form-control1" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
-                            <button class="submit-btn btn">Submit</button>
-
-
-                    </form>
-                    <form id="two" action="" class="input-group" id="">
-
-
-                        <label for="">Picking Up Location</label>
-                        <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
-                        <label for=""> Dropping Off Location</label>
-                        <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-
-                        <div class="row p-0 m-0">
-                            <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
-                            </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Drop-off Date" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
-                            </div>
-                            <!-- <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            </div> -->
-                            <label for="">Pick-up Time (Mandatory)</label>
-                            <input type="date" class="form-control1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
-                            <label for="">Select category</label>
-                            <select class="selectpicker" data-live-search="false" name="Categories" id="Categories">
-                                <option>Select Categories</option>
-                                <option value="<?php echo $rows['Categories']; ?>">
-                                    <?php echo $rows['Categories']; ?>
-                                </option>
-                                <?php
-                                include("includes/connection.php");
-                                $qry = "SELECT distinct Categories from tblbooking ";
-                                $exe = mysqli_query($conn, $qry);
-                                while ($row = mysqli_fetch_array($exe)) {
-
-                                ?>
-                                    <option value="<?php echo $row['Categories'] ?>">
-                                        <?php echo $row['Categories'] ?>
-                                    </option>
-                                <?php
-
-                                } ?>
-                        </div>
-
-                        <button class="submit-btn" name="submit">Submit</button>
-
-
-                    </form>
                 </div>
                 <div class="col-md-6 text-center header-text">
-                    <h2>
+                    <h2 style="color:white;">
                         Taxi & Cabs In Bhubaneswar
                     </h2>
-                    <h4>CALL</h4>
+                    <h4 style="color:white;">CALL</h4>
                     <h1>
                         +91 0123456789
                     </h1>
                 </div>
+
             </div>
         </div>
     </div>
@@ -289,29 +111,77 @@ include("includes/header.php");
     <!-- anytime-anywhere html Exit -->
 
     <!-- label white html start -->
-    <section>
+    <div class="label-white2 white-lable-m">
         <div class="container" id="hero2">
             <div class="row py-4">
-                <div class="col-md-3">
-                    <img src="car.png" width="70%" alt="">
+                <div class="car-item-wrap">
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
 
+
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"> <img class="mini-track-car" src="bus.png" alt="" /></div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"> <img class="big-track-car" src="truck.png" alt="" /></div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"> <img class="big-track-car" src="lorry.png" alt="" /></div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3"><img src="bus.png" width="70%" alt=""></div>
-                <div class="col-md-3"><img src="truck.png" width="70%" alt=""></div>
-                <div class="col-md-3"><img src="lorry.png" width="70%" alt=""></div>
-            </div>
-            <div class="row py-4">
-                <div class="col"></div>
-                <div class="col-md-3">
-                    <img src="auto.png" width="70%" alt="">
+                <div class="row">
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"> <img class="mini-track-car" width="100px" src="auto.png" alt="" />
+                            </div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"> <img class="big-track-car" width="100px" src="crain.png" alt="" />
+                            </div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="col-md-3">
+                            <div class="car-wrap"> <img class="big-track-car" src="big.png" alt="" /></div>
+                            <div class="car-type-btn">
+                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3"><img src="crain.png" width="70%" alt=""></div>
-                <div class="col-md-3"><img src="big.png" width="70%" alt=""></div>
-                <div class="col"></div>
+
             </div>
         </div>
-    </section>
-
+    </div>
     <!-- label white html exit -->
 
     <!-- label yellow html start -->
@@ -635,8 +505,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Secure Booking</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -651,8 +520,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Reliable Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -667,8 +535,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Customer Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -683,8 +550,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>No Hidden Charges</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -693,57 +559,12 @@ include("includes/header.php");
             </div>
         </div>
     </div>
-    <div id="selectState" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-
-                    <span class="modal-title-text">Select State</span>
-
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>
-
-                        <a href="#" id="odisha" class="btn  btn-outline-primary" onclick="myOdisha()">
-                            Odisha
-                        </a>
-                        <a href="#" id="AP" class="btn  btn-outline-primary" onclick="AP()">
-                            Andhra Pradesh
-                        </a>
-
-                    </p>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
     <!-- label white2 html Exit -->
     <!-- ================ footer html start ================ -->
     <?php
     include("includes/footer.php");
     include("includes/footerlink.php");
     ?>
-    <script>
-        var x = document.getElementById("one");
-        var y = document.getElementById("two");
-        var z = document.getElementById("butn");
-
-
-        function two() {
-            x.style.left = "-480px";
-            y.style.left = "20px";
-            z.style.left = "235px";
-        }
-
-        function one() {
-            x.style.left = "20px";
-            y.style.left = "530px";
-            z.style.left = "0px";
-        }
-    </script>
 </body>
 
 </html>
@@ -1154,10 +975,6 @@ include("includes/header.php");
         document.getElementById("slider19").innerText = "Kurnool (Andhra Pradesh)";
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
 <script>
     $(document).ready(function() {
         $('#zctb').DataTable();
