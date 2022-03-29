@@ -89,7 +89,6 @@ if (isset($_POST['submit'])) {
                                     <option>Select Categories</option>
 
                                     <?php
-                                    include("includes/connection.php");
                                     $qry = "SELECT distinct Categories from tblbooking ";
                                     $exe = mysqli_query($conn, $qry);
                                     while ($row = mysqli_fetch_array($exe)) {
