@@ -2,334 +2,163 @@
 session_start();
 include("includes/connection.php");
 // error_reporting(0);
-?>
-<?php
-//include("includes/register.php");
-//include("show_cars.php");
+date_default_timezone_set("Asia/Kolkata");
+$msg = "";
+$fromDate = "";
+
+// function dateDiff($fromDate, $toDate)
+// {
+//     $date1_ts = strtotime($fromDate);
+//     $date2_ts = strtotime($toDate);
+//     $diff = $date2_ts - $date1_ts;
+//     return round($diff / 86400) + 1;
 // }
-if (isset($_POST['submit'])) {
 
+// if (isset($_POST['taxi_booking'])) {
+// $bookingNumber = mt_rand(100000000, 999999999);
+// $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity1']);
 
-    $pickup = htmlspecialchars($_POST['pickup']);
-    $dropoff = htmlspecialchars($_POST['dropoff']);
-    $FromDate = htmlspecialchars($_POST['FromDate']);
-    $ToDate = htmlspecialchars($_POST['ToDate']);
-    $totalnodays = dateDiff($FromDate, $ToDate);
-    $Time = htmlspecialchars($_POST['Time']);
-    $Categories = htmlspecialchars($_POST['Categories']);
-    $regdate = date("Y-m-d");
-
-    $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories)
-        values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories')";
-    $inst_u_fn1_qry = mysqli_query($conn, $insert_qry);
-    if ($inst_u_fn1_qry) {
-
-        //header("location:new-bookings.php");
-    }
-}
-
+// $pickup = htmlspecialchars($_POST['pickup']);
+// $dropoff = htmlspecialchars($_POST['dropoff']);
+// $fromDate = htmlspecialchars($_POST['fromdate']);
+// $toDate = htmlspecialchars($_POST['todate']);
+// $totalnodays = dateDiff($fromDate, $toDate);
+// $regdate = date("Y-m-d");
+// $Time = htmlspecialchars($_POST['Time']);
+// $insert_qry = "INSERT INTO `tblbooking`(`BookingNumber`,`SeatingCapacity`,`pickup`,`dropoff`,`FromDate`,`ToDate`,`Time`,`TotalNoDays`,`RegDate`) VALUES( '$bookingNumber','$SeatingCapacity','$pickup','$dropoff','$fromDate','$toDate','$Time','$totalnodays','$regdate')";
+// $res_query = mysqli_query($conn, $insert_qry);
+// $insert_id = mysqli_insert_id($conn);
 ?>
-<?php
-include("includes/header.php");
-?>
-
-<style>
-* {
-    padding: 0;
-    margin: 0;
-}
-
-#hero {
-    /* height: 600px; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("banner 2.jpg");
-    background-position: center;
-    background-size: cover;
-    /* position: absolute; */
-    color: white;
-}
-
-#form-box {
-    width: 480px;
-    height: 750px;
-    background-color: #0D4555;
-    position: relative;
-    overflow: hidden;
-    /* padding: 5px; */
-    /* margin: 6% auto; */
-
-}
-
-.button-box {
-    width: 100%;
-    margin: 35px auto;
-    position: relative;
-    padding: 0;
-    background-color: #f0f0f0;
-    border-radius: 30px;
-}
-
-.toggle-btn {
-    padding: 10px 30px;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
-    outline: none;
-    width: 49%;
-    border-radius: 30px;
-    margin: 0 auto;
-    position: relative;
-    font-weight: 600;
-    color: rgb(73, 72, 72);
-}
-
-#butn {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 50%;
-    border-radius: 30px;
-    height: 100%;
-    background-color: #19bde3;
-    transition: .5s;
-
-}
-
-#hero .input-group {
-    top: 100px;
-    position: absolute;
-    width: 100%;
-
-    transition: .5s;
-}
-
-#hero .form-control1 {
-    padding: 10px 8px;
-    margin: 5px 0;
-    border: 1px solid white;
-    outline: none;
-    width: 90%;
-    color: #75665F;
-    background: transparent;
-}
-
-.submit-btn {
-    width: 90%;
-    padding: 10px 30px;
-    cursor: pointer;
-    display: block;
-    font-weight: bold;
-    outline: none;
-    border: none;
-    color: white;
-    background-color: rgb(0, 132, 255);
-    margin-top: 20px;
-}
-
-
-#one {
-    left: 20px;
-}
-
-#two {
-    left: 500px;
-}
-
-.header-text {
-    margin-top: 50px;
-
-}
-
-#hero h1 {
-    font-size: 55px;
-    font-weight: 700;
-}
-
-#hero h2 {
-    font-size: 45px;
-}
-
-#hero label {
-    padding-top: 10px;
-}
-
-#hero2 img {
-    cursor: pointer;
-}
-</style>
+<!DOCTYPE html>
+<html lang="en">
 
 <body>
+
+    <?php
+    //include("includes/register.php");
+    include("show_cars.php");
+    // }
+    ?>
+    <?php
+    include("includes/header.php");
+    ?>
     <!-- Booking now form wrapper html start -->
+    <div class="booking-form-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="form-wrap" style="height: 201px; width: 350px; background:#0e8fd5">
+                            <div class="form-headr"></div>
+                            <h2> <b>Book Your Transfer</b></h2>
+                            <div class="form-select">
+                                <form action="search.php" method="POST" name="booking" id="booking" class="form-horizontal">
+                                    <div class="col-sm-12 custom-select-box tec-domain-cat2">
+                                        <?php echo $msg; ?>
+                                        <div class="row">
+                                            <label>Seating Capacity</label>
+                                            <select name="SeatingCapacity" id="SeatingCapacity" style="width: 305px; height:30px;" required>
+                                                <option value="">
+                                                    Select Seating Capacity
+                                                </option>
+                                                <?php
+                                                $qry = "SELECT DISTINCT  id, SeatingCapacity FROM tblbooking WHERE Status = '3'  ORDER BY id ASC";
+                                                $exe = mysqli_query($conn, $qry);
+                                                while ($row = mysqli_fetch_assoc($exe)) {
+                                                ?>
+                                                    <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                                        <?php echo $row['SeatingCapacity'] ?>
+                                                    </option>
+                                                <?php }  ?>
 
-    <!-- Booking now form wrapper html Exit -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
 
-    <label for="">Picking Up Location</label>
-    <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)" aria-label="Username"
-        aria-describedby="basic-addon1" name="pickup" id="pickup">
+                                    <!-- <div class="form-button">
+                                        <button type="submit" id="taxi_booking" name="taxi_booking"
+                                            class="btn form-btn btn-lg btn-block"
+                                            onclick="document.getElementById('id02').style.display='block'">Book Your
+                                            Taxi Now</button>
 
-    <label for=""> Dropping Off Location</label>
-    <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)" aria-label="Username"
-        aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-    <div class="row p-0 m-0">
-        <div class="col-5 p-0">
-            <label for="">Picking Up Date</label>
-            <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username"
-                aria-describedby="basic-addon2" name="FromDate" id="FromDate">
-        </div>
-        <div class="col-6 p-0">
-            <label for="">Return Date</label>
-            <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username"
-                aria-describedby="basic-addon2" name="ToDate" id="ToDate">
-        </div>
-    </div>
-    <form id="one" action="" class="input-group" id="">
-
-        <label for="">Picking Up Location</label>
-        <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)" aria-label="Username"
-            aria-describedby="basic-addon1">
-
-        <label for=""> Dropping Off Location</label>
-        <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)" aria-label="Username"
-            aria-describedby="basic-addon1">
-        <div class="row p-0 m-0">
-            <div class="col-5 p-0">
-                <label for="">Picking Up Date</label>
-                <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username"
-                    aria-describedby="basic-addon2">
-            </div>
-            <div class="col-6 p-0">
-                <label for="">Return Date</label>
-                <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username"
-                    aria-describedby="basic-addon2">
-            </div>
-        </div>
-
-
-        <label for="">Pick-up Time (Mandatory)</label>
-        <input type="date" class="form-control1" placeholder="Username" aria-label="Username"
-            aria-describedby="basic-addon1" name="Time" id="Time">
-        <label for="">Select category</label>
-        <select class="selectpicker" data-live-search="false" name="Categories" id="Categories">
-            <option>Select Categories</option>
-            <option value="<?php echo $rows['Categories']; ?>">
-                <?php echo $rows['Categories']; ?>
-            </option>
-            <?php
-            include("includes/connection.php");
-            $qry = "SELECT distinct Categories from tblbooking ";
-            $exe = mysqli_query($conn, $qry);
-            while ($row = mysqli_fetch_array($exe)) {
-
-            ?>
-            <option value="<?php echo $row['Categories'] ?>">
-                <?php echo $row['Categories'] ?>
-            </option>
-            <?php
-
-            } ?>
-            <label for="">Select Car Type</label>
-            <input type="text" class="form-control1" placeholder="Select type" aria-label="Username"
-                aria-describedby="basic-addon1">
-            <button class="submit-btn btn">Submit</button>
+                                    </div> -->
+                                    <div class="form-button">
+                                        <button type="submit" class="btn form-btn btn-lg btn-block" id="taxi_booking" name="taxi_booking">
+                                            Book Your Taxi Now
+                                        </button>
+                                    </div>
+                                </form>
 
 
-    </form>
-    <form id="two" action="" class="input-group" id="">
-
-
-        <label for="">Picking Up Location</label>
-        <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)" aria-label="Username"
-            aria-describedby="basic-addon1" name="pickup" id="pickup">
-        <label for=""> Dropping Off Location</label>
-        <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)" aria-label="Username"
-            aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-
-        <div class="row p-0 m-0">
-            <div class="col-5 p-0">
-                <label for="">Picking Up Date</label>
-                <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username"
-                    aria-describedby="basic-addon2" name="FromDate" id="FromDate">
-            </div>
-            <div class="col-6 p-0">
-                <label for="">Return Date</label>
-                <input type="DATE" class="form-control1" placeholder="Drop-off Date" aria-label="Recipient's username"
-                    aria-describedby="basic-addon2" name="ToDate" id="ToDate">
-            </div>
-            <!-- <div class="col-5 p-0">
-                                <label for="">Picking Up Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
                             </div>
-                            <div class="col-6 p-0">
-                                <label for="">Return Date</label>
-                                <input type="DATE" class="form-control1" placeholder="Pick-up Date"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            </div> -->
-            <label for="">Pick-up Time (Mandatory)</label>
-            <input type="date" class="form-control1" placeholder="Username" aria-label="Username"
-                aria-describedby="basic-addon1" name="Time" id="Time">
-            <label for="">Select category</label>
-            <select class="selectpicker" data-live-search="false" name="Categories" id="Categories">
-                <option>Select Categories</option>
-                <option value="<?php echo $rows['Categories']; ?>">
-                    <?php echo $rows['Categories']; ?>
-                </option>
-                <?php
-                include("includes/connection.php");
-                $qry = "SELECT distinct Categories from tblbooking ";
-                $exe = mysqli_query($conn, $qry);
-                while ($row = mysqli_fetch_array($exe)) {
-
-                ?>
-                <option value="<?php echo $row['Categories'] ?>">
-                    <?php echo $row['Categories'] ?>
-                </option>
-                <?php
-
-                } ?>
-        </div>
-
-        <button class="submit-btn" name="submit">Submit</button>
-
-
-    </form>
-    </div>
-    <div class="col-md-6 text-center header-text">
-        <h2>
-            Taxi & Cabs In Bhubaneswar
-        </h2>
-        <h4>CALL</h4>
-        <h1>
-            +91 0123456789
-        </h1>
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
-    <!-- label white html start -->
-    <section>
-        <div class="container" id="hero2">
-            <div class="row py-4">
-                <div class="col-md-3">
-                    <img src="car.png" width="70%" alt="">
-
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3"><img src="bus.png" width="70%" alt=""></div>
-                <div class="col-md-3"><img src="truck.png" width="70%" alt=""></div>
-                <div class="col-md-3"><img src="lorry.png" width="70%" alt=""></div>
-            </div>
-            <div class="row py-4">
-                <div class="col"> </div>
-                <div class="col-md-3">
-                    <img src="auto.png" width="70%" alt="">
-                </div>
-                <div class="col-md-3"><img src="crain.png" width="70%" alt=""></div>
-                <div class="col-md-3"><img src="big.png" width="70%" alt=""></div>
-                <div class="col"></div>
             </div>
         </div>
-    </section>
+    </div>
 
+    <div class="label-white2 white-lable-m">
+        <div class="container">
+            <div class="row">
+                <div class="car-item-wrap">
+                    <div class="car-type">
+                        <div class="car-wrap"><img class="private-car" src="images/private-car.png" alt="" /></div>
+                        <h5> Car</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="mini-track-car" src="images/mini-track.png" alt="" /></div>
+                        <h5> Truck</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/big-track.png" alt="" /></div>
+                        <h5>Big Truck</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/vihicel.png" alt="" /></div>
+                        <h5>Crain </h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="mini-track-car" width="100px" src="images/Auto.png" alt="" />
+                        </div>
+                        <h5> Auto</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" width="100px" src="images/Bus.png" alt="" />
+                        </div>
+                        <h5>Bus</h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                    <div class="car-type">
+                        <div class="car-wrap"> <img class="big-track-car" src="images/Lori.png" alt="" /></div>
+                        <h5>Lori </h5>
+                        <div class="car-type-btn">
+                            <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- label white html exit -->
 
     <!-- label yellow html start -->
@@ -351,8 +180,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item">
-                                            <div id="slider1" class="slider-img"
-                                                style="background-image:url(images/slider/DB.png); background-size:cover;">
+                                            <div id="slider1" class="slider-img" style="background-image:url(images/slider/DB.png); background-size:cover;">
 
                                             </div>
                                             <div class="slider-text-hover">
@@ -382,8 +210,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div id="slider2" class="slider-img"
-                                                style="background-image:url(images/slider/Visakhapatnam.png); background-size:cover;">
+                                            <div id="slider2" class="slider-img" style="background-image:url(images/slider/Visakhapatnam.png); background-size:cover;">
                                             </div>
 
                                             <div class="slider-text-hover">
@@ -417,8 +244,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item homepage-sllider-m">
-                                            <div id="slider3" class="slider-img"
-                                                style="background-image:url(images/slider/Kurnool.png); background-size:cover;">
+                                            <div id="slider3" class="slider-img" style="background-image:url(images/slider/Kurnool.png); background-size:cover;">
                                             </div>
 
                                             <div class="slider-text-hover">
@@ -451,8 +277,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div id="slider4" class="slider-img"
-                                                style="background-image:url(images/slider/Amaravathi.png); background-size:cover;">
+                                            <div id="slider4" class="slider-img" style="background-image:url(images/slider/Amaravathi.png); background-size:cover;">
                                             </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
@@ -483,8 +308,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item">
-                                            <div id="slider5" class="slider-img"
-                                                style="background-image:url(images/slider/NK.png); background-size:cover;">
+                                            <div id="slider5" class="slider-img" style="background-image:url(images/slider/NK.png); background-size:cover;">
                                             </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
@@ -514,8 +338,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item homepage-sllider-m">
-                                            <div id="slider6" class="slider-img"
-                                                style="background-image:url(images/slider/Puri.png); background-size:cover;">
+                                            <div id="slider6" class="slider-img" style="background-image:url(images/slider/Puri.png); background-size:cover;">
                                             </div>
 
                                             <div class="slider-text-hover">
@@ -547,8 +370,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div id="slider7" class="slider-img"
-                                                style="background-image:url(images/slider/Sambalpur.png); background-size:cover;">
+                                            <div id="slider7" class="slider-img" style="background-image:url(images/slider/Sambalpur.png); background-size:cover;">
                                             </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
@@ -577,8 +399,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item ">
-                                            <div id="slider8" class="slider-img"
-                                                style="background-image:url(images/slider/Vijayawada.png); background-size:cover;">
+                                            <div id="slider8" class="slider-img" style="background-image:url(images/slider/Vijayawada.png); background-size:cover;">
                                             </div>
 
                                             <div class="slider-text-hover">
@@ -612,8 +433,7 @@ include("includes/header.php");
                                 <div class="col-sm-4">
                                     <div class="row">
                                         <div class="slider-item homepage-sllider-m">
-                                            <div id="slider9" class="slider-img"
-                                                style="background-image:url(images/slider/Tirupati.png); background-size:cover;">
+                                            <div id="slider9" class="slider-img" style="background-image:url(images/slider/Tirupati.png); background-size:cover;">
                                             </div>
                                             <div class="slider-text-hover">
                                                 <div class="slider-hover-content"></div>
@@ -662,8 +482,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Secure Booking</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -678,8 +497,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Reliable Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -694,8 +512,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>Customer Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -710,8 +527,7 @@ include("includes/header.php");
                             <div class="containt-text">
                                 <h3>No Hidden Charges</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
-                                    Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -746,31 +562,12 @@ include("includes/header.php");
             </div>
         </div>
     </div>
-    </div>
     <!-- label white2 html Exit -->
     <!-- ================ footer html start ================ -->
     <?php
     include("includes/footer.php");
     include("includes/footerlink.php");
     ?>
-    <script>
-    var x = document.getElementById("one");
-    var y = document.getElementById("two");
-    var z = document.getElementById("butn");
-
-
-    function two() {
-        x.style.left = "-480px";
-        y.style.left = "20px";
-        z.style.left = "235px";
-    }
-
-    function one() {
-        x.style.left = "20px";
-        y.style.left = "530px";
-        z.style.left = "0px";
-    }
-    </script>
 </body>
 
 </html>
@@ -779,179 +576,179 @@ include("includes/header.php");
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
 <script>
-// $(document).ready(function() {
-//     $('#fromdate').datetimepicker();
+    // $(document).ready(function() {
+    //     $('#fromdate').datetimepicker();
 
-$('#SeatingCapacity1').on('change', function() {
-    var SeatingCapacity1 = $(this).val();
-    if (SeatingCapacity1) {
-        $.ajax({
-            type: 'POST',
-            url: 'get-brand-name.php',
-            data: {
-                SeatingCapacity1: SeatingCapacity1
-            },
-            success: function(html) {
-                console.log(html)
-                $('#brand').html(html);
-                $('#VehicleName').html(
-                    '<option value="">Select Brand first</option>');
-                // $('#brand').selectpicker('refresh');
-            }
-        });
-    } else {
-        $('#brand').html('<option value="">Select Seating Capacity first</option>');
-        $('#VehicleName').html('<option value="">Select Brand first</option>');
+    $('#SeatingCapacity1').on('change', function() {
+        var SeatingCapacity1 = $(this).val();
+        if (SeatingCapacity1) {
+            $.ajax({
+                type: 'POST',
+                url: 'get-brand-name.php',
+                data: {
+                    SeatingCapacity1: SeatingCapacity1
+                },
+                success: function(html) {
+                    console.log(html)
+                    $('#brand').html(html);
+                    $('#VehicleName').html(
+                        '<option value="">Select Brand first</option>');
+                    // $('#brand').selectpicker('refresh');
+                }
+            });
+        } else {
+            $('#brand').html('<option value="">Select Seating Capacity first</option>');
+            $('#VehicleName').html('<option value="">Select Brand first</option>');
 
-    }
-});
+        }
+    });
 
-$('#brand').on('change', function() {
-    var owner_vehicle_brand = $(this).val();
-    if (owner_vehicle_brand) {
-        $.ajax({
-            type: 'POST',
-            url: 'get-brand-name.php',
-            data: 'owner_vehicle_brand=' + owner_vehicle_brand,
-            success: function(html) {
-                $('#VehicleName').html(html);
-                //  $('#VehicleName').selectpicker('refresh');
-            }
-        });
-    } else {
-        $('#VehicleName').html('<option value="">Select Brand first</option>');
-    }
-});
+    $('#brand').on('change', function() {
+        var owner_vehicle_brand = $(this).val();
+        if (owner_vehicle_brand) {
+            $.ajax({
+                type: 'POST',
+                url: 'get-brand-name.php',
+                data: 'owner_vehicle_brand=' + owner_vehicle_brand,
+                success: function(html) {
+                    $('#VehicleName').html(html);
+                    //  $('#VehicleName').selectpicker('refresh');
+                }
+            });
+        } else {
+            $('#VehicleName').html('<option value="">Select Brand first</option>');
+        }
+    });
 </script>
 <script>
-function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
-    var currentFocus;
-    /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", function(e) {
-        var a, b, i, val = this.value;
-        /*close any already open lists of autocompleted values*/
-        closeAllLists();
-        if (!val) {
-            return false;
+    function autocomplete(inp, arr) {
+        /*the autocomplete function takes two arguments,
+        the text field element and an array of possible autocompleted values:*/
+        var currentFocus;
+        /*execute a function when someone writes in the text field:*/
+        inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            /*close any already open lists of autocompleted values*/
+            closeAllLists();
+            if (!val) {
+                return false;
+            }
+            currentFocus = -1;
+            /*create a DIV element that will contain the items (values):*/
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            /*append the DIV element as a child of the autocomplete container:*/
+            this.parentNode.appendChild(a);
+            /*for each item in the array...*/
+            for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    /*create a DIV element for each matching element:*/
+                    b = document.createElement("DIV");
+                    /*make the matching letters bold:*/
+                    b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                    b.innerHTML += arr[i].substr(val.length);
+                    /*insert a input field that will hold the current array item's value:*/
+                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                    /*execute a function when someone clicks on the item value (DIV element):*/
+                    b.addEventListener("click", function(e) {
+                        /*insert the value for the autocomplete text field:*/
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        /*close the list of autocompleted values,
+                        (or any other open lists of autocompleted values:*/
+                        closeAllLists();
+                    });
+                    a.appendChild(b);
+                }
+            }
+        });
+        /*execute a function presses a key on the keyboard:*/
+        inp.addEventListener("keydown", function(e) {
+            var x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+            } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+            } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                    /*and simulate a click on the "active" item:*/
+                    if (x) x[currentFocus].click();
+                }
+            }
+        });
+
+        function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
         }
-        currentFocus = -1;
-        /*create a DIV element that will contain the items (values):*/
-        a = document.createElement("DIV");
-        a.setAttribute("id", this.id + "autocomplete-list");
-        a.setAttribute("class", "autocomplete-items");
-        /*append the DIV element as a child of the autocomplete container:*/
-        this.parentNode.appendChild(a);
-        /*for each item in the array...*/
-        for (i = 0; i < arr.length; i++) {
-            /*check if the item starts with the same letters as the text field value:*/
-            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-                /*create a DIV element for each matching element:*/
-                b = document.createElement("DIV");
-                /*make the matching letters bold:*/
-                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-                b.innerHTML += arr[i].substr(val.length);
-                /*insert a input field that will hold the current array item's value:*/
-                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                /*execute a function when someone clicks on the item value (DIV element):*/
-                b.addEventListener("click", function(e) {
-                    /*insert the value for the autocomplete text field:*/
-                    inp.value = this.getElementsByTagName("input")[0].value;
-                    /*close the list of autocompleted values,
-                    (or any other open lists of autocompleted values:*/
-                    closeAllLists();
-                });
-                a.appendChild(b);
+
+        function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("autocomplete-active");
             }
         }
-    });
-    /*execute a function presses a key on the keyboard:*/
-    inp.addEventListener("keydown", function(e) {
-        var x = document.getElementById(this.id + "autocomplete-list");
-        if (x) x = x.getElementsByTagName("div");
-        if (e.keyCode == 40) {
-            /*If the arrow DOWN key is pressed,
-            increase the currentFocus variable:*/
-            currentFocus++;
-            /*and and make the current item more visible:*/
-            addActive(x);
-        } else if (e.keyCode == 38) { //up
-            /*If the arrow UP key is pressed,
-            decrease the currentFocus variable:*/
-            currentFocus--;
-            /*and and make the current item more visible:*/
-            addActive(x);
-        } else if (e.keyCode == 13) {
-            /*If the ENTER key is pressed, prevent the form from being submitted,*/
-            e.preventDefault();
-            if (currentFocus > -1) {
-                /*and simulate a click on the "active" item:*/
-                if (x) x[currentFocus].click();
+
+        function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+                if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                }
             }
         }
-    });
-
-    function addActive(x) {
-        /*a function to classify an item as "active":*/
-        if (!x) return false;
-        /*start by removing the "active" class on all items:*/
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = (x.length - 1);
-        /*add class "autocomplete-active":*/
-        x[currentFocus].classList.add("autocomplete-active");
+        /*execute a function when someone clicks in the document:*/
+        document.addEventListener("click", function(e) {
+            closeAllLists(e.target);
+        });
     }
 
-    function removeActive(x) {
-        /*a function to remove the "active" class from all autocomplete items:*/
-        for (var i = 0; i < x.length; i++) {
-            x[i].classList.remove("autocomplete-active");
-        }
-    }
+    /*An array containing all the country names in the world:*/
+    var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
+        "vanivihar", "acharyavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
+    ];
 
-    function closeAllLists(elmnt) {
-        /*close all autocomplete lists in the document,
-        except the one passed as an argument:*/
-        var x = document.getElementsByClassName("autocomplete-items");
-        for (var i = 0; i < x.length; i++) {
-            if (elmnt != x[i] && elmnt != inp) {
-                x[i].parentNode.removeChild(x[i]);
-            }
-        }
-    }
-    /*execute a function when someone clicks in the document:*/
-    document.addEventListener("click", function(e) {
-        closeAllLists(e.target);
-    });
-}
-
-/*An array containing all the country names in the world:*/
-var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "barabati stadium", "lingaraj temple",
-    "vanivihar", "acharyavihar", "jaydevbihar", "CDA", "Kiit square", "CRP", "Firestation"
-];
-
-/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("pickup"), countries);
-autocomplete(document.getElementById("dropoff"), countries);
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("pickup"), countries);
+    autocomplete(document.getElementById("dropoff"), countries);
 </script>
 <script>
-$(function() {
-    var dtToday = new Date();
+    $(function() {
+        var dtToday = new Date();
 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-        month = '0' + month.toString();
-    if (day < 10)
-        day = '0' + day.toString();
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
 
-    var minDate = year + '-' + month + '-' + day;
+        var minDate = year + '-' + month + '-' + day;
 
-    $('#fromdate').attr('min', minDate);
-    $('#todate').attr('min', minDate);
-});
+        $('#fromdate').attr('min', minDate);
+        $('#todate').attr('min', minDate);
+    });
 </script>
 
 </body>
@@ -960,258 +757,230 @@ $(function() {
 
 </html>
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    $("#signup_form").validate({
-        rules: {
-            username: {
-                required: true,
-                minlength: 3,
+        $("#signup_form").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 3,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+                contact: {
+                    required: true,
+                    minlength: 10,
+                },
+                password_id: {
+                    required: true,
+                    minlength: 8,
+                },
+                cpassword: {
+                    minlength: 8,
+                    equalTo: "#password_id",
+                },
             },
-            email: {
-                required: true,
-                email: true,
+            messages: {
+                username: {
+                    required: "<b style='color:red'>Please enter your Full Name</b>",
+                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+                },
+                email: {
+                    required: "<b style='color:red'>Please enter Email Id</b>",
+                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+                },
+                contact: {
+                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                    number: "<b style='color:red'>Please Enter numerical values Only</b>",
+                },
+                password_id: {
+                    required: "<b style='color:red'>Please enter your Password</b>",
+                    minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+                },
+                cpassword: {
+                    minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
+                    equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
+                },
             },
-            contact: {
-                required: true,
-                minlength: 10,
+            submitHandler: function(form) {
+                form.submit();
             },
-            password_id: {
-                required: true,
-                minlength: 8,
+        });
+        $("#booking").validate({
+            rules: {
+                SeatingCapacity1: {
+                    required: true,
+                },
+                brand: {
+                    required: true,
+                },
+                VehicleName: {
+                    required: true,
+                },
+                pickup: {
+                    required: true,
+                },
+                dropoff: {
+                    required: true,
+                },
+                fromdate: {
+                    required: true,
+                },
             },
-            cpassword: {
-                minlength: 8,
-                equalTo: "#password_id",
-            },
-        },
-        messages: {
-            username: {
-                required: "<b style='color:red'>Please enter your Full Name</b>",
-                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-            },
-            email: {
-                required: "<b style='color:red'>Please enter Email Id</b>",
-                email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
-            },
-            contact: {
-                required: "<b style='color:red'>Please enter your Mobile Number</b>",
-                number: "<b style='color:red'>Please Enter numerical values Only</b>",
-            },
-            password_id: {
-                required: "<b style='color:red'>Please enter your Password</b>",
-                minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-            },
-            cpassword: {
-                minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
-                equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
-            },
-        },
-        submitHandler: function(form) {
-            form.submit();
-        },
-    });
-    $("#booking").validate({
-        rules: {
-            SeatingCapacity1: {
-                required: true,
-            },
-            brand: {
-                required: true,
-            },
-            VehicleName: {
-                required: true,
-            },
-            pickup: {
-                required: true,
-            },
-            dropoff: {
-                required: true,
-            },
-            fromdate: {
-                required: true,
-            },
-        },
-        messages: {
+            messages: {
 
-            SeatingCapacity1: {
-                required: "<b style='color:red'>Please select  Seating Capacity</b>",
+                SeatingCapacity1: {
+                    required: "<b style='color:red'>Please select  Seating Capacity</b>",
+                },
+                brand: {
+                    required: "<b style='color:red'>Please select your Brand</b>",
+                },
+                VehicleName: {
+                    required: "<b style='color:red'>Please select your Vehicle Name</b>",
+                },
+                pickup: {
+                    required: "<b style='color:red'>Please enter your Pick Up Location</b>",
+                },
+                dropoff: {
+                    required: "<b style='color:red'>Please enter your Drop Off Location</b>",
+                },
+                fromdate: {
+                    required: "<b style='color:red'>Please enter your From Date</b>",
+                },
             },
-            brand: {
-                required: "<b style='color:red'>Please select your Brand</b>",
+            submitHandler: function(form) {
+                form.submit();
             },
-            VehicleName: {
-                required: "<b style='color:red'>Please select your Vehicle Name</b>",
-            },
-            pickup: {
-                required: "<b style='color:red'>Please enter your Pick Up Location</b>",
-            },
-            dropoff: {
-                required: "<b style='color:red'>Please enter your Drop Off Location</b>",
-            },
-            fromdate: {
-                required: "<b style='color:red'>Please enter your From Date</b>",
-            },
-        },
-        submitHandler: function(form) {
-            form.submit();
-        },
+        });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    let now = new Date();
+    $(document).ready(function() {
+        let now = new Date();
 
-    $('#datetimepicker4').val(now.getHours() + ":" + now.getMinutes());
-});
+        $('#datetimepicker4').val(now.getHours() + ":" + now.getMinutes());
+    });
 </script>
 <!-- Select state javascript codes -->
 
 <script>
-var map;
+    var map;
 
-function initialize() {
-    map = new google.maps.Map(document.getElementById('map-canvas'), {
-        center: new google.maps.LatLng(48.1293954, 12.556663), //Setting Initial Position
-        zoom: 10
+    function initialize() {
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+            center: new google.maps.LatLng(48.1293954, 12.556663), //Setting Initial Position
+            zoom: 10
+        });
+    }
+
+    function newLocation(newLat, newLng) {
+        map.setCenter({
+            lat: newLat,
+            lng: newLng
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    //Setting Location with jQuery
+    $(document).ready(function() {
+        $("#odisha").on('click', function() {
+            newLocation(20.64012280220996, 83.7516135646323);
+        });
+
+        $("#2").on('click', function() {
+            newLocation(14.901206653751029, 78.32374069508379);
+        });
+
     });
-}
-
-function newLocation(newLat, newLng) {
-    map.setCenter({
-        lat: newLat,
-        lng: newLng
-    });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-//Setting Location with jQuery
-$(document).ready(function() {
-    $("#odisha").on('click', function() {
-        newLocation(20.64012280220996, 83.7516135646323);
-    });
-
-    $("#2").on('click', function() {
-        newLocation(14.901206653751029, 78.32374069508379);
-    });
-
-});
 </script>
 
 
 <script>
-function myOdisha() {
-    console.log("odisha");
-    document.getElementById("slider1").style.backgroundImage = "url(images/slider/NK.png)";
-    document.getElementById("slider1text").innerHTML = ' <h4>Nandan Kanan (Bhubneswar) </h4>';
-    document.getElementById("slider12").innerText = "puri";
+    function myOdisha() {
+        console.log("odisha");
+        document.getElementById("slider1").style.backgroundImage = "url(images/slider/NK.png)";
+        document.getElementById("slider1text").innerHTML = ' <h4>Nandan Kanan (Bhubneswar) </h4>';
+        document.getElementById("slider12").innerText = "puri";
 
-    document.getElementById("slider2").style.backgroundImage = "url(images/slider/Puri.png)";
-    document.getElementById("slider2text").innerHTML = ' <h4> Jaganath Temple (Puri) </h4>';
-    document.getElementById("slider11").innerText = "Nandan Kanan (Bhubneswar)";
+        document.getElementById("slider2").style.backgroundImage = "url(images/slider/Puri.png)";
+        document.getElementById("slider2text").innerHTML = ' <h4> Jaganath Temple (Puri) </h4>';
+        document.getElementById("slider11").innerText = "Nandan Kanan (Bhubneswar)";
 
-    document.getElementById("slider3").style.backgroundImage = "url(images/slider/Chilika.png)";
-    document.getElementById("slider3text").innerHTML = ' <h4>Cilika (Bhubneswar) </h4>';
-    document.getElementById("slider13").innerText = "Cilika (Bhubneswar)";
+        document.getElementById("slider3").style.backgroundImage = "url(images/slider/Chilika.png)";
+        document.getElementById("slider3text").innerHTML = ' <h4>Cilika (Bhubneswar) </h4>';
+        document.getElementById("slider13").innerText = "Cilika (Bhubneswar)";
 
-    document.getElementById("slider4").style.backgroundImage = "url(images/slider/Konark.png)";
-    document.getElementById("slider4text").innerHTML = ' <h4>Konark (Bhubaneswar) </h4>';
-    document.getElementById("slider14").innerText = "Konark (Bhubaneswar) ";
+        document.getElementById("slider4").style.backgroundImage = "url(images/slider/Konark.png)";
+        document.getElementById("slider4text").innerHTML = ' <h4>Konark (Bhubaneswar) </h4>';
+        document.getElementById("slider14").innerText = "Konark (Bhubaneswar) ";
 
-    document.getElementById("slider5").style.backgroundImage = "url(images/slider/SNP.png)";
-    document.getElementById("slider5text").innerHTML = ' <h4> Similipal National Park (Odisha) </h4>';
-    document.getElementById("slider15").innerText = "Similipal National Park (Odisha)";
+        document.getElementById("slider5").style.backgroundImage = "url(images/slider/SNP.png)";
+        document.getElementById("slider5text").innerHTML = ' <h4> Similipal National Park (Odisha) </h4>';
+        document.getElementById("slider15").innerText = "Similipal National Park (Odisha)";
 
-    document.getElementById("slider6").style.backgroundImage = "url(images/slider/Cuttack.png)";
-    document.getElementById("slider6text").innerHTML = ' <h4>Cuttack (Odisha) </h4>';
-    document.getElementById("slider16").innerText = "Cuttack (Odisha)";
+        document.getElementById("slider6").style.backgroundImage = "url(images/slider/Cuttack.png)";
+        document.getElementById("slider6text").innerHTML = ' <h4>Cuttack (Odisha) </h4>';
+        document.getElementById("slider16").innerText = "Cuttack (Odisha)";
 
-    document.getElementById("slider7").style.backgroundImage = "url(images/slider/BK.png)";
-    document.getElementById("slider7text").innerHTML = ' <h4>Bhitar Kanika (Odisha) </h4>';
-    document.getElementById("slider17").innerText = "Bhitar Kanika  (Odisha)";
+        document.getElementById("slider7").style.backgroundImage = "url(images/slider/BK.png)";
+        document.getElementById("slider7text").innerHTML = ' <h4>Bhitar Kanika (Odisha) </h4>';
+        document.getElementById("slider17").innerText = "Bhitar Kanika  (Odisha)";
 
-    document.getElementById("slider8").style.backgroundImage = "url(images/slider/Sambalpur.png)";
-    document.getElementById("slider8text").innerHTML = ' <h4>Sambalpur (Odisha) </h4>';
-    document.getElementById("slider18").innerText = "Sambalpur (Odisha)";
+        document.getElementById("slider8").style.backgroundImage = "url(images/slider/Sambalpur.png)";
+        document.getElementById("slider8text").innerHTML = ' <h4>Sambalpur (Odisha) </h4>';
+        document.getElementById("slider18").innerText = "Sambalpur (Odisha)";
 
-    document.getElementById("slider9").style.backgroundImage = "url(images/slider/DB.png)";
-    document.getElementById("slider9text").innerHTML = ' <h4>Daring Badi (Odisha) </h4>';
-    document.getElementById("slider19").innerText = "Daring Badi (Odisha)";
+        document.getElementById("slider9").style.backgroundImage = "url(images/slider/DB.png)";
+        document.getElementById("slider9text").innerHTML = ' <h4>Daring Badi (Odisha) </h4>';
+        document.getElementById("slider19").innerText = "Daring Badi (Odisha)";
 
-}
+    }
 
-function myAP() {
-    console.log("AP");
-    document.getElementById("slider1").style.backgroundImage = "url(images/slider/ArakuValley.png)";
-    document.getElementById("slider1text").innerHTML = ' <h4>Araku Valley (Andhra Pradesh) </h4>';
-    document.getElementById("slider11").innerText = "Araku Valley (Andhra Pradesh) ";
+    function myAP() {
+        console.log("AP");
+        document.getElementById("slider1").style.backgroundImage = "url(images/slider/ArakuValley.png)";
+        document.getElementById("slider1text").innerHTML = ' <h4>Araku Valley (Andhra Pradesh) </h4>';
+        document.getElementById("slider11").innerText = "Araku Valley (Andhra Pradesh) ";
 
-    document.getElementById("slider2").style.backgroundImage = "url(images/slider/Visakhapatnam.png)";
-    document.getElementById("slider2text").innerHTML = ' <h4> Visakhapatnam (Andhra Pradesh) </h4>'
-    document.getElementById("slider12").innerText = "Visakhapatnam (Andhra Pradesh)";
+        document.getElementById("slider2").style.backgroundImage = "url(images/slider/Visakhapatnam.png)";
+        document.getElementById("slider2text").innerHTML = ' <h4> Visakhapatnam (Andhra Pradesh) </h4>'
+        document.getElementById("slider12").innerText = "Visakhapatnam (Andhra Pradesh)";
 
-    document.getElementById("slider3").style.backgroundImage = "url(images/slider/Amaravathi.png)";
-    document.getElementById("slider3text").innerHTML = ' <h4> Amaravathi (Andhra Pradesh) </h4>'
-    document.getElementById("slider13").innerText = "Amaravathi (Andhra Pradesh)";
+        document.getElementById("slider3").style.backgroundImage = "url(images/slider/Amaravathi.png)";
+        document.getElementById("slider3text").innerHTML = ' <h4> Amaravathi (Andhra Pradesh) </h4>'
+        document.getElementById("slider13").innerText = "Amaravathi (Andhra Pradesh)";
 
-    document.getElementById("slider4").style.backgroundImage = "url(images/slider/Gandikota.png)";
-    document.getElementById("slider4text").innerHTML = ' <h4>Gandikota (Andhra Pradesh) </h4>'
-    document.getElementById("slider14").innerText = "Gandikota (Andhra Pradesh)";
+        document.getElementById("slider4").style.backgroundImage = "url(images/slider/Gandikota.png)";
+        document.getElementById("slider4text").innerHTML = ' <h4>Gandikota (Andhra Pradesh) </h4>'
+        document.getElementById("slider14").innerText = "Gandikota (Andhra Pradesh)";
 
-    document.getElementById("slider5").style.backgroundImage = "url(images/slider/Tirupati.png)";
-    document.getElementById("slider5text").innerHTML = ' <h4>  Tirupati (Andhra Pradesh) </h4>'
-    document.getElementById("slider15").innerText = "Tirupati (Andhra Pradesh)";
+        document.getElementById("slider5").style.backgroundImage = "url(images/slider/Tirupati.png)";
+        document.getElementById("slider5text").innerHTML = ' <h4>  Tirupati (Andhra Pradesh) </h4>'
+        document.getElementById("slider15").innerText = "Tirupati (Andhra Pradesh)";
 
-    document.getElementById("slider6").style.backgroundImage = "url(images/slider/Vijayawada.png)";
-    document.getElementById("slider6text").innerHTML = ' <h4>Vijayawada (Andhra Pradesh) </h4>'
-    document.getElementById("slider16").innerText = "Vijayawada (Andhra Pradesh) ";
+        document.getElementById("slider6").style.backgroundImage = "url(images/slider/Vijayawada.png)";
+        document.getElementById("slider6text").innerHTML = ' <h4>Vijayawada (Andhra Pradesh) </h4>'
+        document.getElementById("slider16").innerText = "Vijayawada (Andhra Pradesh) ";
 
-    document.getElementById("slider7").style.backgroundImage = "url(images/slider/Anantapur.png)";
-    document.getElementById("slider7text").innerHTML = ' <h4>Anantapur (Andhra Pradesh) </h4>'
-    document.getElementById("slider17").innerText = "Anantapur (Andhra Pradesh) ";
+        document.getElementById("slider7").style.backgroundImage = "url(images/slider/Anantapur.png)";
+        document.getElementById("slider7text").innerHTML = ' <h4>Anantapur (Andhra Pradesh) </h4>'
+        document.getElementById("slider17").innerText = "Anantapur (Andhra Pradesh) ";
 
-    document.getElementById("slider8").style.backgroundImage = "url(images/slider/Srisailam.png)";
-    document.getElementById("slider8text").innerHTML = ' <h4>Srisailam (Andhra Pradesh) </h4>'
-    document.getElementById("slider18").innerText = "Srisailam (Andhra Pradesh)";
+        document.getElementById("slider8").style.backgroundImage = "url(images/slider/Srisailam.png)";
+        document.getElementById("slider8text").innerHTML = ' <h4>Srisailam (Andhra Pradesh) </h4>'
+        document.getElementById("slider18").innerText = "Srisailam (Andhra Pradesh)";
 
-    document.getElementById("slider9").style.backgroundImage = "url(images/slider/Kurnool.png)";
-    document.getElementById("slider9text").innerHTML = ' <h4>Kurnool (Andhra Pradesh) </h4>'
-    document.getElementById("slider19").innerText = "Kurnool (Andhra Pradesh)";
-}
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-</script>
-
-<script>
-$(document).ready(function() {
-    $('#zctb').DataTable();
-});
+        document.getElementById("slider9").style.backgroundImage = "url(images/slider/Kurnool.png)";
+        document.getElementById("slider9text").innerHTML = ' <h4>Kurnool (Andhra Pradesh) </h4>'
+        document.getElementById("slider19").innerText = "Kurnool (Andhra Pradesh)";
+    }
 </script>
 <script>
-var x = document.getElementById("one");
-var y = document.getElementById("two");
-var z = document.getElementById("butn");
-
-
-function two() {
-    x.style.left = "-480px";
-    y.style.left = "20px";
-    z.style.left = "235px";
-}
-
-function one() {
-    x.style.left = "20px";
-    y.style.left = "530px";
-    z.style.left = "0px";
-}
+    $(document).ready(function() {
+        $('#zctb').DataTable();
+    });
 </script>
 <!-- Select state javascript codes End -->
