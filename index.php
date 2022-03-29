@@ -95,7 +95,7 @@ $fromDate = "";
                     <h2 style="color:white;">
                         Taxi & Cabs In Bhubaneswar
                     </h2>
-                    <h4 style="color:white;">CALL</h4>
+                    <h4 style="color:white;"><b>CALL :</b></h4>
                     <h1>
                         +91 0123456789
                     </h1>
