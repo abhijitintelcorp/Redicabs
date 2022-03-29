@@ -39,7 +39,7 @@
 </head>
 <div id="preloader">
     <div class="preloader-container">
-        <img src="images/preloader.gif" class="preload-gif" alt="preload-image">
+        <img src="images/Preloader-1.gif" class="preload-gif" alt="preload-image">
     </div>
 </div>
 <div class="map-wapper-opacity">
