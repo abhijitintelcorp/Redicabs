@@ -18,7 +18,7 @@
 
 
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
-    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
@@ -31,10 +31,15 @@
         });
     </script>
 
+    <!-- <script>
+    $(document).ready(function() {
+        $("#selectState").modal('show');
+    });
+    </script> -->
 </head>
 <div id="preloader">
     <div class="preloader-container">
-        <img src="images/Preloader-1.gif" class="preload-gif" alt="preload-image">
+        <img src="images/preloader.gif" class="preload-gif" alt="preload-image">
     </div>
 </div>
 <div class="map-wapper-opacity">
@@ -103,6 +108,6 @@
         </div>
     </div>
 </div>
-<!-- <div class="google-image">
-    <div id="map-canvas"></div>
-</div> -->
+<div class="Hero">
+
+</div>

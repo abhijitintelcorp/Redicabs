@@ -21,21 +21,16 @@ if (isset($_POST['submit'])) {
 
     $bookingno = mt_rand(100000000, 999999999);
     $status = 0;
-    $brand = htmlspecialchars($_POST['brand']);
-    $VehicleName = htmlspecialchars($_POST['VehicleName']);
+    $UserName = htmlspecialchars($_POST['UserName']);
+    $ContactNo = htmlspecialchars($_POST['ContactNo']);
+    $EmailId = htmlspecialchars($_POST['EmailId']);
 
-    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
-    $FromDate = htmlspecialchars($_POST['FromDate']);
-    $ToDate = htmlspecialchars($_POST['ToDate']);
-    $Time = htmlspecialchars($_POST['Time']);
-    $pickup = htmlspecialchars($_POST['pickup']);
-    $dropoff = htmlspecialchars($_POST['dropoff']);
+    // $Time = htmlspecialchars($_POST['Time']);
+    // $pickup = htmlspecialchars($_POST['pickup']);
+    // $dropoff = htmlspecialchars($_POST['dropoff']);
 
-    // $query = "insert into tblbooking (SeatingCapacity,owner_vehicle_name,   
-    // pickup,dropoff,FromDate,ToDate,Time)
-    //  values('$SeatingCapacity','$VehicleName','$pickup','$dropoff','$FromDate','$ToDate','$Time')";
-    $update_qry = "UPDATE tblbooking SET SeatingCapacity='$SeatingCapacity',
-    owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',
+    $update_qry = "UPDATE tblbooking SET UserName='$UserName',
+    ContactNo ='$ContactNo',EmailId='$EmailId',owner_vehicle_name='$VehicleName',
     FromDate='$FromDate',ToDate='$ToDate',Time='$Time', pickup='$pickup',BookingNumber='$bookingno',
       dropoff='$dropoff' WHERE id='$id'";
 
@@ -184,57 +179,71 @@ if (isset($_POST['submit'])) {
     <section class="listings">
         <div class="wrapper">
             <ul class="properties_list">
-
                 <?php
-                // $query = "SELECT * from tblbooking ";
-                // $query_run = mysqli_query($conn, $query);
-                // $cnt = 1;
-                // if (mysqli_num_rows($query_run) > 0) {
-                //     $rows = mysqli_fetch_array($query_run);
-                //     foreach ($rows as $row) {
-                include 'includes/config.php';
-                $sel = "SELECT * from tblbooking";
+                include("includes/connection.php");
+                $sel = "SELECT * FROM tblbooking WHERE id = '$_GET[id]'";
                 $rs = $conn->query($sel);
-                while ($rws = $rs->fetch_assoc()) {
-
+                $rws = $rs->fetch_assoc();
                 ?>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <h3 class="form-block-title" style="font-size: 30px;color: #f7eded;background-color: #1886bb;">
-                        Vehicle
-                        Information</h3>
-                    <div class="col-lg-18" style="border: 2px solid black;width: 450px;">
-                        <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
-                        <img src="images/<?php echo $rws['frontimage']; ?>" width="100px" height="100px" alt="">
-                        <ul class="feature-list">
-                            <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
-                            </h6>
+                <li>
+                    <a href="book_car.php?id=<?php echo $rws['id'] ?>">
+                        <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="300" height="200">
+                    </a>
+                    <div class="property_details">
+                        <!-- <h1>
+                            <a
+                                href="book_car.php?id=<?php echo $rws['id'] ?>"><?php echo 'Car Make>' . $rws['car_type']; ?></a>
+                        </h1> -->
+                        <h2>Car Name/Model: <span class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
+                        </h2>
+                        <h2>PricePerDay: <span class="property_size"><?php echo $rws['PricePerDay']; ?></span></h2>
+                        <h2>PickupPlace: <span class="property_size"><?php echo $rws['pickup']; ?></span></h2>
+                        <h2>DropOffPlace: <span class="property_size"><?php echo $rws['dropoff']; ?></span></h2>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <form action="#" class="booking-form-two" method="post">
+            <div style="background-color: black">
+                <h3 class="form-block-title" style="font-size: 30px;color: #f7eded;background-color: #1886bb;">Select
+                    User Information</h3>
+            </div>
+            <div class="row">
+                <input type="hidden" name="id" value="<?php echo $rws['id']; ?>">
 
-                            <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
-
-                            <h6>SeatingCapacity :
-                                <?php echo $rws['SeatingCapacity']; ?></h6>
-                        </ul>
-
-                        <!-- <button class="btn btn-primary"  name="submit" type="submit">BookNow</button> -->
-                        <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="book-taxi-btn" name="search">Book
-                            Now</a>
+                <div class="col-lg-10">
+                    <div class="input-holder">
+                        <input type="text" name="UserName" placeholder="Your name" style="height: 40px;
+    width: 200px;" pattern="[a-z]{1,15}" title="Username should only contain lowercase letters. e.g. john" required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-holder">
+                        <input type="number" name="ContactNo" placeholder="contactnumber" style="height: 40px;
+    width: 200px;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-holder">
+                        <input type="text" style="height: 40px;
+    width: 200px;" name="EmailId" title="Contact's email (format: xxx@xxx.xxx)"
+                            pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                            placeholder="Email address">
                     </div>
                 </div>
 
-                <?php
-                }
-
-
-                ?>
-
-
-
-        </div>
-        </div>
-
-        </div>
-
-
+            </div>
+            <ul class="special-checkbox">
+                <li>
+                    <span class="input-checker">
+                        <input type="checkbox" name="apt_vehicle_services_needed" value="">
+                    </span>By using this form you agree to our terms & conditions.
+                </li>
+            </ul>
+            <a href="payment.php" class="book-btn" style="background-color: #1886bb;color: black" type="submit"
+                name="submit">Go To Payment</a>
+        </form>
+    </section>
 </body>
 
 </html>

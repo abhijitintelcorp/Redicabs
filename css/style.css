@@ -250,17 +250,18 @@ body,
 }
 
 .booking-form-wrapper {
-    float: left;
-    position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../banner-2.jpg");
-    background-position: center;
-    background-size: cover;
-    width:100%;
-    height:650px;
-    /* position: absolute; */
-    color: white;
+  float: left;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url("../banner-2.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 650px;
+  /* position: absolute; */
+  color: white;
   z-index: 9999;
-    top:20%;
+  top: 20%;
 }
 
 .map-wapper-opacity {
@@ -271,11 +272,11 @@ body,
   border-top: 6px solid #0e8fd5;
   position: absolute;
   background-image: url(../images/blader-bg.png);
-    background-position: center;
-    background-size: cover;
-    height:20%;
-    /* position: absolute; */
-    color: white;
+  background-position: center;
+  background-size: cover;
+  height: 20%;
+  /* position: absolute; */
+  color: white;
   z-index: 9999;
 }
 
@@ -934,12 +935,12 @@ margin-top:40px; */
 }
 
 .label-white2 {
-    width: 100%;
-    float: left;
-    padding-bottom: 52px;
-    padding-top: 20px;
-    background-color: #fff;
-    margin-top: 100px;
+  width: 100%;
+  float: left;
+  padding-bottom: 52px;
+  padding-top: 20px;
+  background-color: #fff;
+  margin-top: 100px;
 }
 .car-type {
   width: 188px;
@@ -3071,81 +3072,80 @@ label.control-label span {
 .dropdown:hover .dropbtn {
   background-color: #f1c40f;
 }
- .car-type:hover {
-        background: #0e8fd5;
-        height: 300px;
-        width: 300px !important;
-        margin-left: 50px;
-        margin-top: 50px;
-    }
-
-    .car-btn {
-        background: #2C3E50;
-        color: #0e8fd5;
-        margin-top: 160px !important;
-    }
-    
-     .form-box {
-            width: 580px;
-            height: 100%;
-            background-color: #0D4555;
-            margin-left:-100px;
-            position:relative;
-            margin-top:50px;
-        }
-     
-        .butn {
-            left: 0;
-            position: relative;
-            width: 50%;
-            border-radius: 30px;
-            padding: 10px;
-            background-color: #19bde3;
-            text-align: center;
-
-        }
-         .submit-btn {
-            width: 50%;
-            padding: 10px 30px;
-            cursor: pointer;
-            display: block;
-            font-weight: bold;
-            color: white;
-            background-color: rgb(0, 132, 255);
-            margin-top: 20px;
-        }
-     .header-text {
-       margin-top: 12px;
-      float: right;
-      margin-right: -130px;
-      color: white;
-      margin-bottom:40px;
+.car-type:hover {
+  background: #0e8fd5;
+  height: 300px;
+  width: 300px !important;
+  margin-left: 50px;
+  margin-top: 50px;
 }
-         #butn {
-            top: 0;
-            left: 0;
-            position: relative;
-            width: 100%;
-            border-radius: 30px;
-            background-color: #19bde3;
-            transition: .5s;
-        }
-        .input-group {
-            top: 100px;
-            position: relative;
-            width: 100%;
-        }
-        label{
-          text-align: justify;
-          padding-left: 20px;
-          margin-top: -200px;
-        }
-        .form-control{
-          width:500px !important;
-        }
-        fieldset{
-          height:500px;
-        }
-        .col-md-6{
-          width:50%;
-        }
+
+.car-btn {
+  background: #2c3e50;
+  color: #0e8fd5;
+  margin-top: 160px !important;
+}
+
+.form-box {
+  width: 580px;
+  height: 65%;
+  background-color: #0d4555;
+  margin-left: -100px;
+  position: relative;
+  margin-top: 50px;
+}
+
+.butn {
+  left: 0;
+  position: relative;
+  width: 50%;
+  border-radius: 30px;
+  padding: 10px;
+  background-color: #19bde3;
+  text-align: center;
+}
+.submit-btn {
+  width: 50%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(0, 132, 255);
+  margin-top: 20px;
+}
+.header-text {
+  margin-top: 12px;
+  float: right;
+  margin-right: -130px;
+  color: white;
+  margin-bottom: 40px;
+}
+#butn {
+  top: 0;
+  left: 0;
+  position: relative;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #19bde3;
+  transition: 0.5s;
+}
+.input-group {
+  top: 100px;
+  position: relative;
+  width: 100%;
+}
+label {
+  text-align: justify;
+  padding-left: 20px;
+  margin-top: -200px;
+}
+.form-control {
+  width: 500px !important;
+}
+fieldset {
+  height: 500px;
+}
+.col-md-6 {
+  width: 50%;
+}
