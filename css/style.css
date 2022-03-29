@@ -3087,9 +3087,9 @@ label.control-label span {
     
      .form-box {
             width: 580px;
-            height: 65%;
+            height: 100%;
             background-color: #0D4555;
-            margin-left:-154px;
+            margin-left:-100px;
             position:relative;
             margin-top:50px;
         }

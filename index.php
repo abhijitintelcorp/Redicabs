@@ -76,14 +76,12 @@ $fromDate = "";
                                     </div>
                                 </div>
 
-
-
                                 <label for="">Pick-up Time (Mandatory)</label>
                                 <input type="date" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
                                 <label for="">Select Vehicle Type</label>
-                                <input type="text" class="form-control" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="select" class="form-control" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
                                 <label for="">Select Seater Type</label>
-                                <input type="text" class="form-control" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="select" class="form-control" placeholder="Select type" aria-label="Username" aria-describedby="basic-addon1">
                                 <center><button class="submit-btn btn">Book Vehicle</button></center>
 
 
