@@ -52,7 +52,7 @@
                 echo "<option  value='$SeatingCapacity'>$SeatingCapacity</option>";
             }
         } else {
-            echo '<option value="">no vehicles available</option>';
+            echo '<option value="">no seats available</option>';
         }
     }
     ?>

@@ -6,33 +6,41 @@ date_default_timezone_set("Asia/Kolkata");
 $msg = "";
 $fromDate = "";
 
-// function dateDiff($fromDate, $toDate)
-// {
-//     $date1_ts = strtotime($fromDate);
-//     $date2_ts = strtotime($toDate);
-//     $diff = $date2_ts - $date1_ts;
-//     return round($diff / 86400) + 1;
-// }
+function dateDiff($fromDate, $toDate)
+{
+    $date1_ts = strtotime($fromDate);
+    $date2_ts = strtotime($toDate);
+    $diff = $date2_ts - $date1_ts;
+    return round($diff / 86400) + 1;
+}
 
 if (isset($_POST['submit'])) {
-
+    //$id = $_GET['id'];
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
-    //$totalnodays = dateDiff($FromDate, $ToDate);
+    $totalnodays = dateDiff($FromDate, $ToDate);
     $Time = htmlspecialchars($_POST['Time']);
     $Categories = htmlspecialchars($_POST['Categories']);
-    $SeatingCapacity = htmlspecialchars($_POST['$SeatingCapacity']);
+    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $regdate = date("Y-m-d");
 
-    $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories,SeatingCapacity)
-        values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories','$SeatingCapacity')";
+    $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories,SeatingCapacity,TotalNoDays)
+        values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories','$SeatingCapacity','$totalnodays')";
     $res_query = mysqli_query($conn, $insert_qry);
     if ($res_query) {
         //echo "success";
         header("location:Search_car.php");
     }
+    // $update_qry = "UPDATE tblbooking SET SeatingCapacity='$SeatingCapacity',TotalNoDays='$totalnodays'  
+    // FromDate='$FromDate',ToDate='$ToDate',Time='$Time', pickup='$pickup',Categories='$Categories',
+    //   dropoff='$dropoff' WHERE id='$id'";
+
+    // $query_run = mysqli_query($conn, $update_qry);
+    // if ($query_run) {
+    //     header("location:Search_car.php");
+    // }
 }
 ?>
 <!DOCTYPE html>
@@ -64,8 +72,21 @@ if (isset($_POST['submit'])) {
                     <div class="form-box">
                         <div class="butn" style="margin-top:-30px;margin-left:100px;">RENTAL</div>
                         <fieldset>
+
                             <form id="one" action="" method="post">
 
+                                <?php
+
+                                // $id = intval($_GET['id']);
+                                // $query = "SELECT * from tblbooking where tblbooking.id='$id'";
+                                // $query_run = mysqli_query($conn, $query);
+                                // if (mysqli_num_rows($query_run) > 0) {
+                                //     $row = mysqli_fetch_array($query_run);
+
+                                ?>
+                                <?php //} 
+                                ?>
+                                <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
                                 <label for="">Picking Up Location</label>
                                 <input type="text" class="form-control" placeholder=" From (Area,Street,Landmark)"
                                     aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
@@ -106,7 +127,8 @@ if (isset($_POST['submit'])) {
                                     </option>
                                     <?php
 
-                                    } ?>
+                                    }
+                                    ?>
                                 </select>
 
                                 <label for="">Select Seater Type</label>
@@ -118,14 +140,18 @@ if (isset($_POST['submit'])) {
                                         <?php echo $row['SeatingCapacity'] ?>
                                     </option>
                                 </select>
-                                <center><button class="submit-btn btn" type="submit" name="submit"> Book
-                                        Vehicle</button></center>
+
+                                <!-- <center><button class="submit-btn btn" type="submit" name="submit"> Book
+                                        Vehicle</button></center> -->
+                                <center><a href="Search_car.php" class="submit-btn btn" type="submit" name="submit">Book
+                                        Now</a></center>
 
 
-                            </form>
                         </fieldset>
                     </div>
                 </div>
+                </form>
+
                 <div class="col-md-6 text-center header-text">
                     <h2 style="color:white;">
                         Taxi & Cabs In Bhubaneswar
@@ -1024,27 +1050,21 @@ $(document).ready(function() {
     $('#zctb').DataTable();
 });
 </script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#Categories').on('change', function() {
-        var Categories = $(this).val();
-        if (Categories) {
-            $.ajax({
-                type: 'POST',
-                url: 'get-brand-name.php',
-                data: 'SeatingCapacity=' + SeatingCapacity,
-                success: function(html) {
-                    $('#SeatingCapacity').html(html);
-                    $('#Categories').text(SeatingCapacity);
-
-                }
-            });
-        } else {
-            $('#SeatingCapacity').html('<option value="">Select Seating Capacity first</option>');
-            $('#Categories').html('<option value="">Select Brand first</option>');
-
-        }
-    });
-})
+<script>
+$('#Categories').on('change', function() {
+    var Categories = $(this).val();
+    if (Categories) {
+        $.ajax({
+            type: 'POST',
+            url: 'get-seat.php',
+            data: 'Categories=' + Categories,
+            success: function(html) {
+                $('#SeatingCapacity').html(html);
+            }
+        });
+    } else {
+        $('#SeatingCapacity').html('No data Found');
+    }
+});
 </script>
 <!-- Select state javascript codes End -->

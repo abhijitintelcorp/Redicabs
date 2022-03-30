@@ -184,55 +184,44 @@ if (isset($_POST['submit'])) {
     <section class="listings">
         <div class="wrapper">
             <ul class="properties_list">
+                <h3 class="form-block-title" style="font-size: 30px;color: #f7eded;background-color: #1886bb;">
+                    Vehicle Information</h3>
 
                 <?php
-                // $query = "SELECT * from tblbooking ";
-                // $query_run = mysqli_query($conn, $query);
-                // $cnt = 1;
-                // if (mysqli_num_rows($query_run) > 0) {
-                //     $rows = mysqli_fetch_array($query_run);
-                //     foreach ($rows as $row) {
-                include 'includes/config.php';
+
+                include("includes/connection.php");
+                $id = $_GET['id'];
                 $sel = "SELECT * from tblbooking";
                 $rs = $conn->query($sel);
                 while ($rws = $rs->fetch_assoc()) {
 
                 ?>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <h3 class="form-block-title" style="font-size: 30px;color: #f7eded;background-color: #1886bb;">
-                        Vehicle
-                        Information</h3>
-                    <div class="col-lg-18" style="border: 2px solid black;width: 450px;">
-                        <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
-                        <img src="images/<?php echo $rws['frontimage']; ?>" width="100px" height="100px" alt="">
-                        <ul class="feature-list">
-                            <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
-                            </h6>
+                <li>
+                    <input type="hidden" name="id" value=" <?php echo $rws['id']; ?>">
+                    <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="100px" height="100px"
+                        alt="">
+                    <div class="property_details">
+                        <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
+                        </h6>
 
-                            <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
+                        <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
 
-                            <h6>SeatingCapacity :
-                                <?php echo $rws['SeatingCapacity']; ?></h6>
-                        </ul>
-
-                        <!-- <button class="btn btn-primary"  name="submit" type="submit">BookNow</button> -->
-                        <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="book-taxi-btn" name="search">Book
-                            Now</a>
+                        <h6>SeatingCapacity :
+                            <?php echo $rws['SeatingCapacity']; ?></h6>
                     </div>
-                </div>
+                </li>
+            </ul>
 
-                <?php
+            <!-- <button class="btn btn-primary"  name="submit" type="submit">BookNow</button> -->
+            <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book
+                Now</a>
+        </div>
+
+        <?php
                 }
+    ?>
 
-
-                ?>
-
-
-
-        </div>
-        </div>
-
-        </div>
+    </section>
 
 
 </body>
