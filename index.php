@@ -1036,13 +1036,12 @@ $(document).ready(function() {
                 data: 'SeatingCapacity=' + SeatingCapacity,
                 success: function(html) {
                     $('#SeatingCapacity').html(html);
-                    $('#Categories').text(SeatingCapacity);
+                    $('#SeatingCapacity').text(SeatingCapacity);
 
                 }
             });
         } else {
             $('#SeatingCapacity').html('<option value="">Select Seating Capacity first</option>');
-            $('#Categories').html('<option value="">Select Brand first</option>');
 
         }
     });
