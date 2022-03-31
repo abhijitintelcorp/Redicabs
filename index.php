@@ -180,7 +180,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-3">
                             <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="cars.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-3">
                             <div class="car-wrap"> <img class="mini-track-car" src="bus.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="bus.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -198,7 +198,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-3">
                             <div class="car-wrap"> <img class="big-track-car" src="truck.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="Truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -206,7 +206,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-3">
                             <div class="car-wrap"> <img class="big-track-car" src="lorry.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="Lorry.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ if (isset($_POST['submit'])) {
                             <div class="car-wrap"> <img class="mini-track-car" width="100px" src="auto.png" alt="" />
                             </div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="Mini-Truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -226,7 +226,7 @@ if (isset($_POST['submit'])) {
                             <div class="car-wrap"> <img class="big-track-car" width="100px" src="crain.png" alt="" />
                             </div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="Crain.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -234,7 +234,7 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-3">
                             <div class="car-wrap"> <img class="big-track-car" src="big.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <a href="results_1.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <a href="big_truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
