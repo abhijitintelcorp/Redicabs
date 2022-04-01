@@ -15,7 +15,7 @@ function dateDiff($fromDate, $toDate)
 }
 
 if (isset($_POST['submit'])) {
-    //$id = $_GET['id'];
+    $id = $_GET['id'];
     $pickup = htmlspecialchars($_POST['pickup']);
     $dropoff = htmlspecialchars($_POST['dropoff']);
     $FromDate = htmlspecialchars($_POST['FromDate']);
@@ -26,23 +26,24 @@ if (isset($_POST['submit'])) {
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $regdate = date("Y-m-d");
 
-    $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories,SeatingCapacity,TotalNoDays)
-        values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories','$SeatingCapacity','$totalnodays')";
-    $res_query = mysqli_query($conn, $insert_qry);
-    if ($res_query) {
-        //echo "success";
-        header("location:Search_car.php");
-    }
-    // $update_qry = "UPDATE tblbooking SET SeatingCapacity='$SeatingCapacity',TotalNoDays='$totalnodays'  
-    // FromDate='$FromDate',ToDate='$ToDate',Time='$Time', pickup='$pickup',Categories='$Categories',
-    //   dropoff='$dropoff' WHERE id='$id'";
-
-    // $query_run = mysqli_query($conn, $update_qry);
-    // if ($query_run) {
+    // $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories,SeatingCapacity,TotalNoDays)
+    //     values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories','$SeatingCapacity','$totalnodays')";
+    // $res_query = mysqli_query($conn, $insert_qry);
+    // if ($res_query) {
+    //     //echo "success";
     //     header("location:Search_car.php");
     // }
+    $update_qry = "UPDATE tblbooking SET SeatingCapacity='$SeatingCapacity',TotalNoDays='$totalnodays'  
+    FromDate='$FromDate',ToDate='$ToDate',Time='$Time', pickup='$pickup',Categories='$Categories',
+      dropoff='$dropoff' WHERE id='$id'";
+
+    $query_run = mysqli_query($conn, $update_qry);
+    if ($query_run) {
+        header("location:Search_car.php");
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -73,47 +74,40 @@ if (isset($_POST['submit'])) {
                         <div class="butn" style="margin-top:-30px;margin-left:100px;">RENTAL</div>
                         <fieldset>
 
-                            <form id="one" action="" method="post">
+                            <form id="booking" action="Search_car.php" method="post" name="booking">
 
-                                <?php
 
-                                // $id = intval($_GET['id']);
-                                // $query = "SELECT * from tblbooking where tblbooking.id='$id'";
-                                // $query_run = mysqli_query($conn, $query);
-                                // if (mysqli_num_rows($query_run) > 0) {
-                                //     $row = mysqli_fetch_array($query_run);
-
-                                ?>
-                                <?php //} 
-                                ?>
                                 <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
                                 <label for="">Picking Up Location</label>
                                 <input type="text" class="form-control" placeholder=" From (Area,Street,Landmark)"
-                                    aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
+                                    aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup"
+                                    required>
 
                                 <label for=""> Dropping Off Location</label>
                                 <input type="text" class="form-control" placeholder="To(Area,Street, Landmark)"
-                                    aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
+                                    aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff"
+                                    required>
                                 <div class="row p-0 m-0">
                                     <div class="col-5 p-0">
                                         <label for="">Picking Up Date</label>
                                         <input type="DATE" class="form-control" placeholder="Pick-up Date"
                                             style="margin-left:20px;" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2" name="FromDate" id="FromDate">
+                                            aria-describedby="basic-addon2" name="FromDate" id="FromDate" required>
                                     </div>
                                     <div class="col-6 p-0">
                                         <label for="">Return Date</label>
                                         <input type="DATE" class="form-control" placeholder="Pick-up Date"
                                             style="margin-left:20px;" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2" name="ToDate" id="ToDate">
+                                            aria-describedby="basic-addon2" name="ToDate" id="ToDate" required>
                                     </div>
                                 </div>
 
                                 <label for="">Pick-up Time (Mandatory)</label>
                                 <input type="time" class="form-control" placeholder="Username" aria-label="Username"
-                                    aria-describedby="basic-addon1" name="Time" id="Time">
+                                    aria-describedby="basic-addon1" name="Time" id="Time" required>
                                 <label for="">Select Vehicle Type</label>
-                                <select class="form-control" data-live-search="false" name="Categories" id="Categories">
+                                <select class="form-control" data-live-search="false" name="Categories" id="Categories"
+                                    required>
                                     <option>Select Categories</option>
 
                                     <?php
@@ -134,7 +128,7 @@ if (isset($_POST['submit'])) {
                                 <label for="">Select Seater Type</label>
                                 <select class="form-control" placeholder="Select type" data-live-search="false"
                                     name="SeatingCapacity" id="SeatingCapacity" aria-label="Username"
-                                    aria-describedby="basic-addon1">
+                                    aria-describedby="basic-addon1" required>
                                     <option>Select Seater type</option>
                                     <option value="<?php echo $row['SeatingCapacity'] ?>">
                                         <?php echo $row['SeatingCapacity'] ?>
@@ -165,13 +159,61 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-    <!-- Booking now form wrapper html Exit -->
+    <!-- new codes -->
+    <!-- <div class="container mt-5 mb-5" id="content">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="card" style="margin-right: 250px;">
+                    <div class="row">
 
-    <!-- anytime-anywhere html start -->
+                        <?php
+                        // $sql = "SELECT * from tblbooking  where Categories LIKE '%Car'";
+                        // $query = mysqli_query($conn, $sql);
+                        // $results = mysqli_fetch_assoc($query);
+                        // $count = mysqli_num_rows($query);
+                        // $cnt = 1;
+                        // if ($count > 0) {
+                        //     while ($results = mysqli_fetch_assoc($query)) {
+                        ?>
+                        <div class="col-md-6" id="divMsg">
+                            <div class="images p-3">
+                                <div class="text-center p-4"> <img id="main-image"
+                                        src="images/<?php echo $results['frontimage']; ?>" width="350" /> </div>
 
-    <!-- anytime-anywhere html Exit -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product p-4">
+                                <div class="mt-4 mb-3">
+                                    <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                                    </h6>
+                                    <h6>PriceperDay: <?php echo $results['PricePerDay']; ?></h6>
 
-    <!-- label white html start -->
+                                    <h6>SeatingCapacity :
+                                        <?php echo $results['SeatingCapacity']; ?></h6>
+                                    <h6>ModelYear :
+                                        <?php echo $results['ModelYear']; ?></h6>
+                                </div>
+                            </div>
+                            <div class="cart mt-4 align-items-center">
+                                <a href="book_now.php?id=<?php echo $$results['id'] ?>" class="btn btn-primary"
+                                    name="submit" type="submit"> <?php echo $results['owner_vehicle_name']; ?>Book
+                                    Now</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <?php
+                    // }
+                    //     } 
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- new codes -->
     <div class="label-white2 white-lable-m">
         <div class="container" id="hero2">
             <div class="row py-4">
@@ -180,7 +222,8 @@ if (isset($_POST['submit'])) {
                         <div class="col-md-3">
                             <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <a href="cars.php" class="btn car-btn btn-lg">BOOK NOW</a>
+                                <input type="button" class="btn car-btn btn-lg">BOOK
+                                NOW</a>
                             </div>
                         </div>
                     </div>
@@ -1065,6 +1108,32 @@ $('#Categories').on('change', function() {
     } else {
         $('#SeatingCapacity').html('No data Found');
     }
+});
+</script>
+<script>
+$('.btn').click(function() {
+    $('#content div').hide();
+    var target = '#' + $(this).data('target');
+    $(target).show();
+})
+</script>
+
+<script>
+$(function() {
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if (month < 10)
+        month = '0' + month.toString();
+    if (day < 10)
+        day = '0' + day.toString();
+
+    var minDate = year + '-' + month + '-' + day;
+
+    $('#FromDate').attr('min', minDate);
+    $('#ToDate').attr('min', minDate);
 });
 </script>
 <!-- Select state javascript codes End -->

@@ -53,53 +53,67 @@ if (isset($_POST['submit'])) {
 
 <body class="hold-transition sidebar-mini">
     <?php
-    //include("includes/search-header.php");
+    include("includes/header.php");
     ?>
 
     <div class="container mt-5 mb-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-10">
-                <div class="card" style="margin-right: 250px;">
-                    <div class="row">
+                <div class="card" style="margin-right: 250px;margin-top: 113px;">
+                    <div class="row" style="margin-bottom: 54px;margin-top: 22px;">
+
                         <?php
-                        $sql = "SELECT * from tblbooking";
-                        $query = mysqli_query($conn, $sql);
-                        $rws = mysqli_fetch_assoc($query);
-                        $count = mysqli_num_rows($query);
-                        $cnt = 1;
-                        if ($count > 0) {
-                            while ($rws = mysqli_fetch_assoc($query)) {
+                        include("includes/connection.php");
+                        $Categories = $_GET['$Categories'];
+                        $SeatingCapacity = $_GET['$SeatingCapacity'];
+                        $min_length = 3;
+
+                        if (strlen($Categories) >= $min_length) {
+
+                            $Categories = htmlspecialchars($Categories);
+
+                            $Categories = $mysqli->real_escape_string($Categories);
+
+                            $raw_results = mysqli_query($conn, "SELECT * from tblbooking
+			WHERE (Categories LIKE '%" . $Categories . "%') OR (SeatingCapacity LIKE '%" . $SeatingCapacity . "%')") or die(mysql_error());
+
+                            while ($results = mysqli_fetch_array($raw_results)) {
+                                echo "<p><h3>" . $results['Categories'] . "</h3>" . $results['SeatingCapacity'] . "</p>";
+                            }
+                        }
                         ?>
+
                         <div class="col-md-6">
                             <div class="images p-3">
                                 <div class="text-center p-4"> <img id="main-image"
-                                        src="images/<?php echo $rws['frontimage']; ?>" width="250" /> </div>
+                                        src="images/<?php echo $results['frontimage']; ?>" width="250" /> </div>
 
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="product p-4">
-                                <input type="hidden" name="id" value=" <?php echo $rws['id']; ?>">
+                                <input type="hidden" name="id" value=" <?php echo $$results['id']; ?>">
                                 <div class="mt-4 mb-3">
-                                    <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
+                                    <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
                                     </h6>
-                                    <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
+                                    <h6>PriceperDay: <?php echo $results['PricePerDay']; ?></h6>
 
                                     <h6>SeatingCapacity :
-                                        <?php echo $rws['SeatingCapacity']; ?></h6>
+                                        <?php echo $results['SeatingCapacity']; ?></h6>
                                 </div>
 
 
                                 <div class="cart mt-4 align-items-center">
-                                    <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="btn btn-primary"
+                                    <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary"
                                         name="submit" type="submit">Book Now</a>
 
                                 </div>
 
                             </div>
                         </div>
-                        <?php }
-                        } ?>
+                        <?php //}
+                        //} 
+                        ?>
                     </div>
                 </div>
             </div>

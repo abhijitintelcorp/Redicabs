@@ -9,29 +9,16 @@ include("includes/connection.php");
 
 <body>
     <?php
-    //include("includes/header.php");
+    include("includes/header.php");
     ?>
 
-    <section class="section-padding gray-bg" style="padding-top: 50px;">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Find the Best <span><b>CarForYou</b></span></h2>
-                <p></p>
-            </div>
-            <div class="row">
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="card" style="margin-right: 250px;">
+                    <div class="row">
 
-                <!-- Nav tabs -->
-                <div class="recent-tab">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">New
-                                Car</a></li>
-                    </ul>
-                </div>
-                <!-- Recently Listed New Cars -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="resentnewcar">
-
-                        <?php $sql = "SELECT * from tblbooking  where Categories = 'Car'";
+                        <?php $sql = "SELECT * from tblbooking  where Categories LIKE '%Car'";
                         $query = mysqli_query($conn, $sql);
                         $results = mysqli_fetch_assoc($query);
                         $count = mysqli_num_rows($query);
@@ -39,41 +26,43 @@ include("includes/connection.php");
                         if ($count > 0) {
                             while ($results = mysqli_fetch_assoc($query)) {
                         ?>
-                        <div class="col-list-3">
-                            <div class="recent-car-list">
-                                <div class="car-info-box">
-                                    <img src="images/<?php echo $results['frontimage']; ?>" class="img-responsive"
-                                        alt="image" width="400px" height="400px">
-                                    <ul>
-                                        <li><i class="fa fa-car"
-                                                aria-hidden="true"></i><?php echo $results['owner_vehicle_name']; ?>
-                                        </li>
-                                        <li><i class="fa fa-calendar"
-                                                aria-hidden="true"></i><?php echo $results['ModelYear']; ?>
-                                            Model</li>
-                                        <li><i class="fa fa-user"
-                                                aria-hidden="true"></i><?php echo $results['SeatingCapacity']; ?>
-                                            seats</li>
-                                        <li><i class="fa fa-user"
-                                                aria-hidden="true"></i><?php echo $results['PricePerDay']; ?>
-                                            /Day</li>
-                                    </ul>
-                                </div>
-                                <div class="car-title-m">
-                                    <h6><a href="book_now.php?id=<?php echo $results['id']; ?>">
-                                            <?php echo $results['owner_vehicle_name']; ?></a></h6>
-
-                                </div>
+                        <div class="col-md-6">
+                            <div class="images p-3">
+                                <div class="text-center p-4"> <img id="main-image"
+                                        src="images/<?php echo $results['frontimage']; ?>" width="350" /> </div>
 
                             </div>
                         </div>
-                        <?php }
-                        } ?>
+                        <div class="col-md-6" id="divMsg">
+                            <div class="product p-4">
+                                <div class="mt-4 mb-3">
+                                    <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                                    </h6>
+                                    <h6>PriceperDay: <?php echo $results['PricePerDay']; ?></h6>
+
+                                    <h6>SeatingCapacity :
+                                        <?php echo $results['SeatingCapacity']; ?></h6>
+                                    <h6>ModelYear :
+                                        <?php echo $results['ModelYear']; ?></h6>
+                                </div>
+                            </div>
+                            <div class="cart mt-4 align-items-center">
+                                <a href="book_now.php?id=<?php echo $$results['id'] ?>" class="btn btn-primary"
+                                    name="submit" type="submit"> <?php echo $results['owner_vehicle_name']; ?>Book
+                                    Now</a>
+
+                            </div>
+
+                        </div>
 
                     </div>
+                    <?php }
+                        } ?>
                 </div>
             </div>
-    </section>
+        </div>
+    </div>
+
 </body>
 
 </html>
