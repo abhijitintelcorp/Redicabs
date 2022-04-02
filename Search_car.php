@@ -28,6 +28,7 @@ if (isset($_POST['submit'])) {
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $regdate = date("Y-m-d");
     $raw_results = mysqli_query($conn, "SELECT * FROM tblbooking WHERE Categories LIKE '%$Categories%' AND SeatingCapacity LIKE '%$SeatingCapacity%' AND Status='3'");
+    $count = mysqli_num_rows($raw_results);
     $ins = "INSERT INTO `tblbooking` (pickup,dropoff,FromDate,ToDate,Time,RegDate,Categories,SeatingCapacity,TotalNoDays)
          VALUES('$pickup','$dropoff','$FromDate','$ToDate','$Time','$regdate','$Categories','$SeatingCapacity','$totalnodays')";
     $res = mysqli_query($conn, $ins);
@@ -49,36 +50,40 @@ if (isset($_POST['submit'])) {
 
                             <?php
                             while ($results = mysqli_fetch_array($raw_results)) {
-                                echo "<p><h3>" . $results['Categories'] . "</h3>" . $results['SeatingCapacity'] . "</p>";
+                                if ($count == 1) {
+                                    echo "<p><h3>" . $results['Categories'] . "</h3>" . $results['SeatingCapacity'] . "</p>";
                             ?>
 
-                                <div class="col-md-6">
-                                    <div class="images p-3">
-                                        <div class="text-center p-4"> <img id="main-image" src="images/<?php echo $results['frontimage']; ?>" width="250" /> </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="product p-4">
-                                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
-                                        <div class="mt-4 mb-3">
-                                            <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
-                                            </h6>
-                                            <h6>Price: <?php echo $results['PricePerDay']; ?></h6>
-
-                                            <h6>Seating Capacity :
-                                                <?php echo $results['SeatingCapacity']; ?></h6>
-                                        </div>
-
-
-                                        <div class="cart mt-4 align-items-center">
-                                            <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+                                    <div class="col-md-6">
+                                        <div class="images p-3">
+                                            <div class="text-center p-4"> <img id="main-image" src="images/<?php echo $results['frontimage']; ?>" width="250" /> </div>
 
                                         </div>
-
                                     </div>
-                                </div>
+                                    <div class="col-md-6">
+                                        <div class="product p-4">
+                                            <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
+                                            <div class="mt-4 mb-3">
+                                                <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                                                </h6>
+                                                <h6>Price: <?php echo $results['PricePerDay']; ?></h6>
+
+                                                <h6>Seating Capacity :
+                                                    <?php echo $results['SeatingCapacity']; ?></h6>
+                                            </div>
+
+
+                                            <div class="cart mt-4 align-items-center">
+                                                <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
                         <?php
+                                } else {
+                                    echo "<b style='color:red;'>No Vehicles Found for this Search. Please Try Again.</b>";
+                                }
                             }
                         }
                         ?>
@@ -117,6 +122,7 @@ if (isset($_POST['submit'])) {
                                     $qry = "SELECT distinct Categories from tblbooking ";
                                     $exe = mysqli_query($conn, $qry);
                                     while ($row = mysqli_fetch_array($exe)) {
+
 
                                     ?>
                                         <option value="<?php echo $row['Categories'] ?>">
