@@ -42,113 +42,118 @@ if (isset($_POST['submit'])) {
         include("includes/header.php");
         ?>
 
-        <div class="container mt-5 mb-5">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-10">
-                    <div class="card" style="margin-right: 250px;margin-top: 113px;">
-                        <div class="row" style="margin-bottom: 54px;margin-top: 22px;">
+        <div class="container mt-2 mb-5">
+            <div class="row text-dark d-flex justify-content-center">
+                <div class="col-md-8">
+
+
+
+                    <?php
+                    while ($results = mysqli_fetch_array($raw_results)) {
+
+                    ?>
+                        <div class="row" style="margin-bottom: 14px;margin-top: 22px;">
+                            <div class="col-lg-6 p-0 m-0 ">
+                                <div class="images ">
+                                    <div class="text-center"> <img id="main-image" src="images/cars/<?php echo $results['frontimage']; ?>" width="100%" /> </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 product">
+                                <div class="">
+                                    <input type="hidden" name="id" value=" <?php echo $$results['id']; ?>">
+                                    <div class="mt-4 mb-3">
+                                        <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                                        </h3>
+
+                                        <h6>Vachile Type: <?php echo $results['Categories']; ?></h6>
+                                        <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
+                                        <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
+                                        <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
+
+                                    </div>
+
+
+                                    <div class="cart mt-4 align-items-center">
+                                        <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                <?php
+                    }
+                }
+                ?>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="form-box1" style="margin-top: 20px;">
+                        <div class="but11" style="">Find Car</div>
+                        <form id="onetwo" action="" method="post">
+
+
 
                             <?php
-                            while ($results = mysqli_fetch_array($raw_results)) {
-                                if ($count == 1) {
-                                    echo "<p><h3>" . $results['Categories'] . "</h3>" . $results['SeatingCapacity'] . "</p>";
+
+                            $id = intval($_GET['id']);
+                            $query = "SELECT * from tblbooking where tblbooking.id='$id'";
+                            $query_run = mysqli_query($conn, $query);
+                            if (mysqli_num_rows($query_run) > 0) {
+                                $row = mysqli_fetch_array($query_run);
+
                             ?>
+                            <?php }
+                            ?>
+                            <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
+                            <label style="margin-top: 19px;" for="">Picking Up Location</label>
+                            <input type="text" class="form-control1" placeholder=" From (Area,Street,Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
 
-                                    <div class="col-md-6">
-                                        <div class="images p-3">
-                                            <div class="text-center p-4"> <img id="main-image" src="images/<?php echo $results['frontimage']; ?>" width="250" /> </div>
+                            <label style="margin-top: 19px;" for=""> Dropping Off Location</label>
+                            <input type="text" class="form-control1" placeholder="To(Area,Street, Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="product p-4">
-                                            <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
-                                            <div class="mt-4 mb-3">
-                                                <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
-                                                </h6>
-                                                <h6>Price: <?php echo $results['PricePerDay']; ?></h6>
+                            <label style="margin-top: 19px;" for="">Picking Up Date</label>
+                            <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
 
-                                                <h6>Seating Capacity :
-                                                    <?php echo $results['SeatingCapacity']; ?></h6>
-                                            </div>
+                            <label style="margin-top: 19px;" for="">Return Date</label>
+                            <input type="DATE" class="form-control1" placeholder="Pick-up Date" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
 
 
-                                            <div class="cart mt-4 align-items-center">
-                                                <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+                            <label style="margin-top: 19px;" for="">Pick-up Time (Mandatory)</label>
+                            <input type="time" class="form-control1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
+                            <label style="margin-top: 19px;" for="">Select Vehicle Type</label>
+                            <select class="form-control1" data-live-search="false" name="Categories" id="Categories">
+                                <option>Select Categories</option>
 
-                                            </div>
+                                <?php
+                                $qry = "SELECT distinct Categories from tblbooking ";
+                                $exe = mysqli_query($conn, $qry);
+                                while ($row = mysqli_fetch_array($exe)) {
 
-                                        </div>
-                                    </div>
-                        <?php
-                                } else {
-                                    echo "<b style='color:red;'>No Vehicles Found for this Search. Please Try Again.</b>";
-                                }
-                            }
-                        }
-                        ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-box" style="margin-top: 168px; margin-left: -234px;height:44%;background-color: #0d554e7a;">
-                        <div class="butn" style="margin-top:-30px;margin-left:100px;">Your Searched Details</div>
-                        <fieldset>
-                            <form id="one" action="" method="post">
-                                <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
-                                <label style="margin-top: 19px;" for="">Picking Up Location</label>
-                                <input type="text" class="form-control" value="<?php echo $pickup; ?>" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
-
-                                <label style="margin-top: 19px;" for=""> Dropping Off Location</label>
-                                <input type="text" class="form-control" value="<?php echo $dropoff; ?>" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-                                <div class="row p-0 m-0">
-                                    <div class="col-5 p-0">
-                                        <label style="margin-top: 19px;" for="">Picking Up Date</label>
-                                        <input type="DATE" class="form-control" value="<?php echo $FromDate; ?>" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
-                                    </div>
-                                    <div class="col-6 p-0">
-                                        <label style="margin-top: 19px;" for="">Return Date</label>
-                                        <input type="DATE" class="form-control" value="<?php echo $ToDate; ?>" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
-                                    </div>
-                                </div>
-
-                                <label style="margin-top: 19px;" for="">Pick-up Time (Mandatory)</label>
-                                <input type="time" class="form-control" value="<?php echo $Time; ?>" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
-                                <label style="margin-top: 19px;" for="">Select Vehicle Type</label>
-                                <select class="form-control" data-live-search="false" name="Categories" id="Categories">
-                                    <option value="<?php echo $Categories; ?>"><?php echo $Categories; ?></option>
-
-                                    <?php
-                                    $qry = "SELECT distinct Categories from tblbooking ";
-                                    $exe = mysqli_query($conn, $qry);
-                                    while ($row = mysqli_fetch_array($exe)) {
-
-
-                                    ?>
-                                        <option value="<?php echo $row['Categories'] ?>">
-                                            <?php echo $row['Categories'] ?>
-                                        </option>
-                                    <?php
-
-                                    }
-                                    ?>
-                                </select>
-
-                                <label style="margin-top: 19px;" for="">Select Seater Type</label>
-                                <select class="form-control" placeholder="Select type" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity" aria-label="Username" aria-describedby="basic-addon1">
-                                    <option value="<?php echo $SeatingCapacity; ?>"><?php echo $SeatingCapacity; ?></option>
-                                    <option value="<?php echo $row['SeatingCapacity'] ?>">
-                                        <?php echo $row['SeatingCapacity'] ?>
+                                ?>
+                                    <option value="<?php echo $row['Categories'] ?>">
+                                        <?php echo $row['Categories'] ?>
                                     </option>
-                                </select>
+                                <?php
 
-                                <!-- <center><button class="submit-btn btn" type="submit" name="submit"> Book
-                                        Vehicle</button></center> -->
-                                <center><a href="Search_car.php" class="submit-btn btn" type="submit" name="submit">Book
-                                        Now</a></center>
+                                }
+                                ?>
+                            </select>
+
+                            <label style="margin-top: 19px;" for="">Select Seater Type</label>
+                            <select class="form-control1" placeholder="Select type" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity" aria-label="Username" aria-describedby="basic-addon1">
+                                <option>Select Seater type</option>
+                                <option value="<?php echo $row['SeatingCapacity'] ?>">
+                                    <?php echo $row['SeatingCapacity'] ?>
+                                </option>
+                            </select>
 
 
-                        </fieldset>
+
+
+
+
                     </div>
                 </div>
             </div>
