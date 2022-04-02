@@ -14,6 +14,7 @@ function dateDiff($fromDate, $toDate)
     return round($diff / 86400) + 1;
 }
 
+
 ?>
 
 <!DOCTYPE html>
