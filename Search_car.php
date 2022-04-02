@@ -23,9 +23,15 @@ if (isset($_POST['submit'])) {
     $FromDate = htmlspecialchars($_POST['FromDate']);
     $ToDate = htmlspecialchars($_POST['ToDate']);
     $Time = htmlspecialchars($_POST['Time']);
-    $Categories = $_POST['Categories'];
-    $SeatingCapacity = $_POST['SeatingCapacity'];
+    $totalnodays = dateDiff($FromDate, $ToDate);
+    $Categories = htmlspecialchars($_POST['Categories']);
+    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
+    $regdate = date("Y-m-d");
     $raw_results = mysqli_query($conn, "SELECT * FROM tblbooking WHERE Categories LIKE '%$Categories%' AND SeatingCapacity LIKE '%$SeatingCapacity%'");
+    $ins = "INSERT INTO `tblbooking` (pickup,dropoff,FromDate,ToDate,Time,RegDate,Categories,SeatingCapacity,TotalNoDays)
+         VALUES('$pickup','$dropoff','$FromDate','$ToDate','$Time','$regdate','$Categories','$SeatingCapacity','$totalnodays')";
+    $res = mysqli_query($conn, $ins);
+    $last_id = mysqli_insert_id($conn);
 ?>
     <!doctype html>
     <html lang="en">
@@ -54,7 +60,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-md-6">
                                     <div class="product p-4">
-                                        <input type="hidden" name="id" value=" <?php echo $$results['id']; ?>">
+                                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
                                         <div class="mt-4 mb-3">
                                             <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
                                             </h6>
@@ -86,17 +92,7 @@ if (isset($_POST['submit'])) {
 
                             <form id="one" action="" method="post">
 
-                                <?php
 
-                                $id = intval($_GET['id']);
-                                $query = "SELECT * from tblbooking where tblbooking.id='$id'";
-                                $query_run = mysqli_query($conn, $query);
-                                if (mysqli_num_rows($query_run) > 0) {
-                                    $row = mysqli_fetch_array($query_run);
-
-                                ?>
-                                <?php }
-                                ?>
                                 <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
                                 <label style="margin-top: 19px;" for="">Picking Up Location</label>
                                 <input type="text" class="form-control" placeholder=" From (Area,Street,Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">

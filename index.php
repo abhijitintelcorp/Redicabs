@@ -14,34 +14,6 @@ function dateDiff($fromDate, $toDate)
     return round($diff / 86400) + 1;
 }
 
-if (isset($_POST['submit'])) {
-
-    $pickup = htmlspecialchars($_POST['pickup']);
-    $dropoff = htmlspecialchars($_POST['dropoff']);
-    $FromDate = htmlspecialchars($_POST['FromDate']);
-    $ToDate = htmlspecialchars($_POST['ToDate']);
-    $totalnodays = dateDiff($FromDate, $ToDate);
-    $Time = htmlspecialchars($_POST['Time']);
-    $Categories = htmlspecialchars($_POST['Categories']);
-    $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
-    $regdate = date("Y-m-d");
-
-    // $insert_qry = "insert into tblbooking (pickup,dropoff,FromDate,ToDate,Time,Categories,SeatingCapacity,TotalNoDays)
-    //     values('$pickup','$dropoff','$FromDate','$ToDate','$Time','$Categories','$SeatingCapacity','$totalnodays')";
-    // $res_query = mysqli_query($conn, $insert_qry);
-    // if ($res_query) {
-    //     //echo "success";
-    //     header("location:Search_car.php");
-    // }
-    $update_qry = "UPDATE tblbooking SET SeatingCapacity='$SeatingCapacity',TotalNoDays='$totalnodays'  
-    FromDate='$FromDate',ToDate='$ToDate',Time='$Time', pickup='$pickup',Categories='$Categories',
-      dropoff='$dropoff' WHERE id='$id'";
-
-    $query_run = mysqli_query($conn, $update_qry);
-    if ($query_run) {
-        header("location:Search_car.php");
-    }
-}
 ?>
 
 <!DOCTYPE html>
