@@ -274,7 +274,7 @@ body,
   background-image: url(../images/blader-bg.png);
   background-position: center;
   background-size: cover;
-  height: 20%;
+  height: 12%;
   /* position: absolute; */
   color: white;
   z-index: 9999;
@@ -1559,7 +1559,11 @@ margin-top:40px; */
 .product {
   background-color: #eee;
 }
-
+.product h6 span{
+ font-size: 20px;
+ color: red;
+ font-weight: 700;
+}
 .brand {
   font-size: 13px;
 }
@@ -3209,17 +3213,66 @@ label.control-label span {
   position: relative;
   width: 100%;
 }
+#booking .row label{
+  padding-left: 20px;
+}
 label {
   text-align: justify;
-  padding-left: 20px;
+  padding-left: 10px;
   margin-top: -200px;
 }
 .form-control {
   width: 500px !important;
+}
+.form-control1{
+width: 100%;
+padding: 6px 12px;
+font-size: 13px;
+line-height: 1.428571429;
+color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
 }
 fieldset {
   height: 500px;
 }
 .col-md-6 {
   width: 50%;
+}
+#onetwo{
+  background-color: #1799df;
+  color: white;
+  display: block;
+  padding: 7px 10px 10px 1px;
+}
+.but11{
+  display: block;
+  background-color: #000000;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+  font-size: 17px;
+  padding: 8px;
+}
+.categories-card{
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+  rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  border-radius: 18px;
+  text-align: center;
+ padding: 20px 0px;                   
+}
+.categories-card img{
+  width: 100px;
+}
+.categories-card .car-type-btn{
+  background-color: #1799df;
+  color: rgb(255, 255, 255);
+  padding: 8px;
+  margin-top: 10px;
+}
+#hero2{
+  padding: 20px 0px;
+  margin-top: 70px;
 }
