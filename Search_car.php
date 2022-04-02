@@ -87,34 +87,31 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="col-md-2">
                     <div class="form-box" style="margin-top: 168px; margin-left: -234px;height:44%;background-color: #0d554e7a;">
-                        <div class="butn" style="margin-top:-30px;margin-left:100px;">Find Car</div>
+                        <div class="butn" style="margin-top:-30px;margin-left:100px;">Your Searched Details</div>
                         <fieldset>
-
                             <form id="one" action="" method="post">
-
-
-                                <input type="hidden" name="id" value=" <?php echo $row['id']; ?>">
+                                <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
                                 <label style="margin-top: 19px;" for="">Picking Up Location</label>
-                                <input type="text" class="form-control" placeholder=" From (Area,Street,Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
+                                <input type="text" class="form-control" value="<?php echo $pickup; ?>" aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup">
 
                                 <label style="margin-top: 19px;" for=""> Dropping Off Location</label>
-                                <input type="text" class="form-control" placeholder="To(Area,Street, Landmark)" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
+                                <input type="text" class="form-control" value="<?php echo $dropoff; ?>" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
                                 <div class="row p-0 m-0">
                                     <div class="col-5 p-0">
                                         <label style="margin-top: 19px;" for="">Picking Up Date</label>
-                                        <input type="DATE" class="form-control" placeholder="Pick-up Date" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
+                                        <input type="DATE" class="form-control" value="<?php echo $FromDate; ?>" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
                                     </div>
                                     <div class="col-6 p-0">
                                         <label style="margin-top: 19px;" for="">Return Date</label>
-                                        <input type="DATE" class="form-control" placeholder="Pick-up Date" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
+                                        <input type="DATE" class="form-control" value="<?php echo $ToDate; ?>" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
                                     </div>
                                 </div>
 
                                 <label style="margin-top: 19px;" for="">Pick-up Time (Mandatory)</label>
-                                <input type="time" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
+                                <input type="time" class="form-control" value="<?php echo $Time; ?>" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
                                 <label style="margin-top: 19px;" for="">Select Vehicle Type</label>
                                 <select class="form-control" data-live-search="false" name="Categories" id="Categories">
-                                    <option>Select Categories</option>
+                                    <option value="<?php echo $Categories; ?>"><?php echo $Categories; ?></option>
 
                                     <?php
                                     $qry = "SELECT distinct Categories from tblbooking ";
@@ -133,7 +130,7 @@ if (isset($_POST['submit'])) {
 
                                 <label style="margin-top: 19px;" for="">Select Seater Type</label>
                                 <select class="form-control" placeholder="Select type" data-live-search="false" name="SeatingCapacity" id="SeatingCapacity" aria-label="Username" aria-describedby="basic-addon1">
-                                    <option>Select Seater type</option>
+                                    <option value="<?php echo $SeatingCapacity; ?>"><?php echo $SeatingCapacity; ?></option>
                                     <option value="<?php echo $row['SeatingCapacity'] ?>">
                                         <?php echo $row['SeatingCapacity'] ?>
                                     </option>
