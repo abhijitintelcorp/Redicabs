@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     $Time = htmlspecialchars($_POST['Time']);
     $Categories = $_POST['Categories'];
     $SeatingCapacity = $_POST['SeatingCapacity'];
-    $raw_results = mysqli_query($conn, "SELECT * FROM tblbooking WHERE Categories LIKE '%$Categories%' OR SeatingCapacity LIKE '%$SeatingCapacity%'");
+    $raw_results = mysqli_query($conn, "SELECT * FROM tblbooking WHERE Categories LIKE '%$Categories%' AND SeatingCapacity LIKE '%$SeatingCapacity%'");
 ?>
     <!doctype html>
     <html lang="en">
