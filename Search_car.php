@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     $Categories = htmlspecialchars($_POST['Categories']);
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
     $regdate = date("Y-m-d");
-    $raw_results = mysqli_query($conn, "SELECT * FROM tblbooking WHERE Categories LIKE '%$Categories%' AND SeatingCapacity LIKE '%$SeatingCapacity%'");
+    $raw_results = mysqli_query($conn, "SELECT * FROM tblbooking WHERE Categories LIKE '%$Categories%' AND SeatingCapacity LIKE '%$SeatingCapacity%' AND Status='3'");
     $ins = "INSERT INTO `tblbooking` (pickup,dropoff,FromDate,ToDate,Time,RegDate,Categories,SeatingCapacity,TotalNoDays)
          VALUES('$pickup','$dropoff','$FromDate','$ToDate','$Time','$regdate','$Categories','$SeatingCapacity','$totalnodays')";
     $res = mysqli_query($conn, $ins);
