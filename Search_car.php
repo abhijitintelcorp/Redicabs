@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="col-md-4">
                     <div class="form-box1" style="margin-top: 20px;">
-                        <div class="but11" style="">Find Car</div>
+                        <div class="but11">Find Car</div>
                         <form id="onetwo" action="" method="post">
 
 
