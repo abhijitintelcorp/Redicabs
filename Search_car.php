@@ -42,44 +42,41 @@ if (isset($_POST['submit'])) {
         include("includes/header.php");
         ?>
 
-        <div class="container mt-2 mb-5">
-            <div class="row text-dark d-flex justify-content-center">
-                <div class="col-md-8">
-
-
-
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6" style="margin-bottom: 14px;margin-top: 5%;">
                     <?php
                     while ($results = mysqli_fetch_array($raw_results)) {
 
                     ?>
                         <div class="row" style="margin-bottom: 14px;margin-top: 22px;">
-                            <div class="col-lg-6 p-0 m-0 ">
+                            <div class="col-lg-6">
                                 <div class="images ">
                                     <div class="text-center"> <img id="main-image" src="images/cars/<?php echo $results['frontimage']; ?>" width="100%" /> </div>
 
                                 </div>
                             </div>
                             <div class="col-lg-6 product">
-                                <div class="">
-                                    <input type="hidden" name="id" value=" <?php echo $$results['id']; ?>">
-                                    <div class="mt-4 mb-3">
-                                        <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
-                                        </h3>
 
-                                        <h6>Vachile Type: <?php echo $results['Categories']; ?></h6>
-                                        <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
-                                        <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
-                                        <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
+                                <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
+                                <div class="mt-4 mb-3">
+                                    <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                                    </h3>
 
-                                    </div>
-
-
-                                    <div class="cart mt-4 align-items-center">
-                                        <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
-
-                                    </div>
+                                    <h6>Vachile Type: <?php echo $results['Categories']; ?></h6>
+                                    <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
+                                    <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
+                                    <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
 
                                 </div>
+
+
+                                <div class="cart mt-4 align-items-center">
+                                    <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+
+                                </div>
+
+
                             </div>
                         </div>
                 <?php
@@ -88,8 +85,8 @@ if (isset($_POST['submit'])) {
                 ?>
 
                 </div>
-                <div class="col-md-4">
-                    <div class="form-box1" style="margin-top: 20px;">
+                <div class="col-sm-4" style="margin-bottom: 5px;margin-top: 2%;">
+                    <div class="form-box1">
                         <div class="but11">Find Car</div>
 
                         <form id="one" action="" method="post">
@@ -99,16 +96,13 @@ if (isset($_POST['submit'])) {
 
                             <label style="margin-top: 19px;" for=""> Dropping Off Location</label>
                             <input type="text" class="form-control" value="<?php echo $dropoff; ?>" aria-label="Username" aria-describedby="basic-addon1" name="dropoff" id="dropoff">
-                            <div class="row p-0 m-0">
-                                <div class="col-5 p-0">
-                                    <label style="margin-top: 19px;" for="">Picking Up Date</label>
-                                    <input type="DATE" class="form-control" value="<?php echo $FromDate; ?>" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
-                                </div>
-                                <div class="col-6 p-0">
-                                    <label style="margin-top: 19px;" for="">Return Date</label>
-                                    <input type="DATE" class="form-control" value="<?php echo $ToDate; ?>" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
-                                </div>
-                            </div>
+
+                            <label style="margin-top: 19px;" for="">Picking Up Date</label>
+                            <input type="date" class="form-control" value="<?php echo $FromDate; ?>" aria-label="Recipient's username" aria-describedby="basic-addon2" name="FromDate" id="FromDate">
+
+                            <label style="margin-top: 19px;" for="">Return Date</label>
+                            <input type="date" class="form-control" value="<?php echo $ToDate; ?>" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate">
+
 
                             <label style="margin-top: 19px;" for="">Pick-up Time (Mandatory)</label>
                             <input type="time" class="form-control" value="<?php echo $Time; ?>" aria-label="Username" aria-describedby="basic-addon1" name="Time" id="Time">
@@ -146,7 +140,7 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br><br><br>
 
         <?php
         include("includes/footer.php");
