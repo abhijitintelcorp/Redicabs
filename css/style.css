@@ -1557,8 +1557,12 @@ margin-top:40px; */
 }
 
 .product {
+<<<<<<< HEAD
   background-color: #eee;
   color: black;
+=======
+  background-color: #000;
+>>>>>>> abhijit
 }
 .product h6 span{
  font-size: 20px;
