@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
                     <div class="col-lg-6">
                         <div class="images ">
                             <div class="text-center"> <img id="main-image"
-                                    src="images/cars/<?php echo $results['frontimage']; ?>" width="100%" /> </div>
+                                    src="images/<?php echo $results['frontimage']; ?>" width="100%" /> </div>
 
                         </div>
                     </div>

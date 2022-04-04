@@ -62,8 +62,8 @@ if (isset($_POST['submit'])) {
 
                     <li>
                         <a href="book_car.php?id=<?php echo $rws['id'] ?>">
-                            <img class="thumb" src="images/cars/<?php echo $rws['frontimage']; ?>" width="500"
-                                height="300" style="margin:52px">
+                            <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="500" height="300"
+                                style="margin:52px">
                         </a>
                         <div class="form-box" style="background-color: white;">
                             <!-- <h1>
