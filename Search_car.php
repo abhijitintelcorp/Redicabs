@@ -49,13 +49,10 @@ if (isset($_POST['submit'])) {
                     while ($results = mysqli_fetch_array($raw_results)) {
 
                     ?>
-                <div class="row" style="margin-bottom: 14px;margin-top: 22px;">
+                <div class="row" style="margin-bottom: 14px;margin-top: 22px; border:1px solid #0d4555;">
                     <div class="col-lg-6">
-                        <div class="images ">
-                            <div class="text-center"> <img id="main-image"
-                                    src="images/<?php echo $results['frontimage']; ?>" width="100%" /> </div>
-
-                        </div>
+                        <div class="text-center"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%"
+                                height="80%" style="margin-top:30px;" /> </div>
                     </div>
                     <div class="col-lg-6 product">
 
@@ -64,20 +61,18 @@ if (isset($_POST['submit'])) {
                             <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
                             </h3>
 
-                            <h6>Vachile Type: <?php echo $results['Categories']; ?></h6>
+                            <h6>Vehicle Type: <?php echo $results['Categories']; ?></h6>
                             <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
                             <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
                             <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
 
                         </div>
 
-
                         <div class="cart mt-4 align-items-center">
                             <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit"
                                 type="submit">Book Now</a>
 
                         </div>
-
 
                     </div>
                 </div>
