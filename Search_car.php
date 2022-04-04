@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
          VALUES('$pickup','$dropoff','$FromDate','$ToDate','$Time','$regdate','$Categories','$SeatingCapacity','$totalnodays')";
     $res = mysqli_query($conn, $ins);
     $last_id = mysqli_insert_id($conn);
+    //$last_id = $_SESSION['last_id'];
 ?>
 <!doctype html>
 <html lang="en">

@@ -3,34 +3,17 @@ session_start();
 //error_reporting(0);
 
 include("includes/connection.php");
-$id = $_GET['id'];
-// $query = "SELECT * from tblbooking where tblbooking.id='$id'";
-// $query_run = mysqli_query($conn, $query);
-// $rows = mysqli_fetch_array($query_run);
-
-// function dateDiff($FromDate, $ToDate)
-// {
-//     $date1_ts = strtotime($FromDate);
-//     $date2_ts = strtotime($ToDate);
-//     $si = 1;
-//     $diff = $date2_ts - $date1_ts;
-//     return round($diff / 86400) + 1;
-// }
-
 if (isset($_POST['submit'])) {
 
     $bookingno = mt_rand(100000000, 999999999);
-    $status = 1;
+    $Status = 1;
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
     $Password = htmlspecialchars($_POST['Password']);
 
     $update_qry = "UPDATE tblbooking SET UserName='$UserName',
-    ContactNo ='$ContactNo',EmailId='$EmailId',Password='$Password' WHERE id='$id'";
-    // -- ,owner_vehicle_name='$VehicleName',
-    // -- FromDate='$FromDate',ToDate='$ToDate',Time='$Time', pickup='$pickup',BookingNumber='$bookingno',
-    // --   dropoff='$dropoff'     
+    ContactNo ='$ContactNo',EmailId='$EmailId',Password='$Password',Status='$Status' WHERE id='$id'";
 
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
@@ -48,107 +31,118 @@ if (isset($_POST['submit'])) {
     include("includes/header.php");
     ?>
 
-    <div class="container mt-5 mb-5">
+    <div class="container" id="booknow">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-10 ">
 
-                <div class="row">
-                    <?php
-                    include("includes/connection.php");
-                    $query = "SELECT * FROM tblbooking WHERE id = '$_GET[id]'";
-                    $query_run = mysqli_query($conn, $query);
-                    $rws = mysqli_fetch_array($query_run);
-                    ?>
+            <?php
+            include("includes/connection.php");
+            $id = $_GET['id'];
+            $query = "SELECT * FROM tblbooking WHERE id = '$id'";
+            $query_run = mysqli_query($conn, $query);
+            $rws = mysqli_fetch_array($query_run);
+            ?>
+            <div class="col-md-9">
+                <div class="row" id="booking11">
+                    <div class="col-md-6 book1">
 
-                    <li>
-                        <a href="book_car.php?id=<?php echo $rws['id'] ?>">
-                            <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="500" height="300"
-                                style="margin:52px">
-                        </a>
-                        <div class="form-box" style="background-color: white;">
-                            <!-- <h1>
-                            <a
-                                href="book_car.php?id=<?php echo $rws['id'] ?>"><?php echo 'Car Make>' . $rws['car_type']; ?></a>
-                        </h1> -->
-                            <input type="hidden" name="id" value="<?php echo $rws['id'] ?>">
-                            <h2>VehicleName: <span
-                                    class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
-                            </h2>
-                            <h2>VehicleRCNo: <span
-                                    class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
-                            </h2>
-                            <h2>VehicleChesisNo: <span
-                                    class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
-                            </h2>
-                            <h2> VehicleNo: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
-                            </h2>
-                            <h2>PricePerDay: <span
-                                    class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
-                            </h2>
-                            <h2>PickupPlace: <span class="property_size"><?php echo $rws['pickup']; ?></span></h2>
-                            <h2>DropOffPlace: <span class="property_size"><?php echo $rws['dropoff']; ?></span></h2>
-                            <h2>TotalNo of Days: <span
-                                    class="property_size"><?php echo htmlentities($tdays = $rws['TotalNoDays']); ?></span>
-                            </h2>
-                            <h2>TotalFare: <span
-                                    class="property_size"><?php echo htmlentities(($tdays) * $ppdays); ?></span>
-                            </h2>
-                        </div>
-                    </li>
+                        <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="100%">
+                        <p class="spam">TotalFare: <span
+                                class="property_size"><?php echo htmlentities(($tdays) * $ppdays); ?></span>
+                        </p>
 
+                    </div>
+                    <div class="col-md-6 book2">
+
+                        <input type="hidden" name="id" value="<?php echo $rws['id'] ?>">
+                        <p>VehicleName: <span class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
+                        </p>
+                        <p>VehicleRCNo: <span class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
+                        </p>
+                        <p>VehicleChesisNo: <span
+                                class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
+                        </p>
+                        <p> VehicleNo: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
+                        </p>
+                        <p>PricePerDay: <span
+                                class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
+                        </p>
+                        <p>PickupPlace: <span class="property_size"><?php echo $rws['pickup']; ?></span></p>
+                        <p>DropOffPlace: <span class="property_size"><?php echo $rws['dropoff']; ?></span></p>
+                        <p>TotalNo of Days: <span
+                                class="property_size"><?php echo htmlentities($tdays = $rws['TotalNoDays']); ?></span>
+                        </p>
+
+
+                    </div>
                 </div>
-                <form action="" class="form-box" method="post" style="width:700px" name="booking" id="booking">
+                <form action="" class="form-box2" method="post" name="booking" id="booking">
                     <div style="background-color: white">
-                        <h3 class="form-block-title" style="font-size: 30px;color: #f7eded;background-color: #1886bb;">
+                        <h3 class="form-block-title"
+                            style="font-size: 30px; padding:5px; color: #f7eded;background-color: #1886bb;">
                             Select
                             User Information</h3>
                     </div>
-                    <div class="row">
 
-                        <input type="hidden" name="id" value="<?php echo $rws['id']; ?>">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Enter your name *</label>
-                                <input type="text" name="UserName" placeholder="Your name" pattern="[a-z]{1,15}"
-                                    title="Username should only contain lowercase letters. e.g. john" required>
 
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Enter your contact number *</label>
-                                <input type=" number" name="ContactNo" placeholder="contactnumber" style="height: 40px;
-                                 width: 200px;">
+                    <input type="hidden" name="id" value="<?php echo $rws['id']; ?>">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Enter your name *</label>
+                            <input type="text" class="form-control24" name="UserName" id="UserName"
+                                placeholder="Your name" pattern="[a-z]{1,15}"
+                                title="Username should only contain lowercase letters. e.g. john" required>
 
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Enter your Email address *</label>
-                                <input type="text" style="height: 40px;
-                                    width: 200px;" name="EmailId" title="Contact's email (format: xxx@xxx.xxx)"
-                                    pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
-                                    placeholder="Email address">
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Enter your password *</label>
-                                <input type="text" name="Password" placeholder="Type your password" style="height: 40px;
-                                     width: 200px;">
-
-                            </div>
                         </div>
                     </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Enter your contact number *</label>
+                            <input type=" number" class="form-control24" name="ContactNo" id="ContactNo"
+                                placeholder="contactnumber" s>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Enter your Email address *</label>
+                            <input type="text" class="form-control24" name="EmailId" id="EmailId"
+                                title="Contact's email (format: xxx@xxx.xxx)"
+                                pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                                placeholder="Email address">
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Enter your password *</label>
+                            <input type="text" class="form-control24" name="Password" id="Password"
+                                placeholder="Type your password">
+
+                        </div>
+                    </div>
+
                     <!-- <a href="index.php" class="submit-btn btn" style="background-color: #1886bb;color: black" type="submit"
                           name="submit" id="submit">Go To
                              Payment</a> -->
                     <center><button class="submit-btn btn" name="submit" type="submit">Book</button></center>
                 </form>
-                </br>
+            </div>
 
+
+
+            <div class="col-md-3">
+                <div class="card">
+                    <h3>HELPING CENTER</h3>
+                    <hr>
+                    <p>If in case of any emergency please feel free to contact us</p>
+                    <hr>
+                    <h2>+91-8956231458</h2>
+                    <hr>
+                    <h2>support@odcar.in</h2>
+                    <hr>
+                    <button class=" btn">CALL NOW</button>
+                </div>
             </div>
 
         </div>
@@ -158,6 +152,8 @@ if (isset($_POST['submit'])) {
     include("includes/footerlink.php");
     ?>
 </body>
+
+</html>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -203,5 +199,3 @@ $(document).ready(function() {
                 },
             });
 </script>
-
-</html>

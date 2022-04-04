@@ -274,7 +274,7 @@ body,
   background-image: url(../images/blader-bg.png);
   background-position: center;
   background-size: cover;
-  height: 15%;
+  height: 12%;
   /* position: absolute; */
   color: white;
   z-index: 9999;
@@ -3284,4 +3284,73 @@ fieldset {
 #hero2{
   padding: 20px 0px;
   margin-top: 150px;
+}
+#booknow{
+  margin-top: 40px;
+  margin-bottom: 30px;
+  color: #000;
+}
+#booknow .card{
+  background-color: rgb(255, 255, 255);
+  padding: 10px ;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+ 
+}
+#booknow .card h3{
+  background-color: #0e8fd5;
+font-weight: 600;
+padding: 8px;
+color: white;
+font-size: 20px;
+}
+#booknow .card .btn{
+  width: 100%;
+  background-color: #000;
+  padding: 8px;
+  color: rgb(255, 255, 255);
+
+}
+#booknow .book1{
+  margin: 0;
+  padding: 0;
+}
+#booknow .book2{
+ font-size: 16px;
+  padding: 12px;
+  margin: 0;
+  font-weight: 600;
+}
+#booking11{
+  background-color: rgb(239, 243, 255);
+  margin: 0;
+}
+#booking11 .spam{
+  background-color: red;
+  padding: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+}
+#booking11 span{
+  color: rgb(9, 52, 131);
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;
+}
+#booknow .form-box2{
+  background-color: #0d4555;
+  margin: 0;
+  padding: 12px;
+  color: white;
+  width: 100%;
+}
+#booknow .form-control24{
+     width: 100%;
+      padding: 6px 12px;
+      font-size: 16px;
+      color: #3f3f3f;
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
 }
