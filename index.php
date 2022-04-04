@@ -184,8 +184,7 @@ function dateDiff($fromDate, $toDate)
                         <div class="col-md-3">
                             <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
                             <div class="car-type-btn">
-                                <input type="button" class="btn car-btn btn-lg">BOOK
-                                NOW</a>
+                                <a href="car.php" type="button" class="btn car-btn btn-lg">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
