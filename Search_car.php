@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
                     while ($results = mysqli_fetch_array($raw_results)) {
 
                     ?>
-                        <div class="row" style="margin-bottom: 14px;margin-top: 22px;">
+                        <div class="row" style="margin-bottom: 14px;margin-top: 22px; border:1px solid #0d4555;">
                             <div class="col-lg-6">
                                 <div class="images ">
                                     <div class="text-center"> <img id="main-image" src="images/cars/<?php echo $results['frontimage']; ?>" width="100%" /> </div>
