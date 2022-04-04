@@ -274,7 +274,7 @@ body,
   background-image: url(../images/blader-bg.png);
   background-position: center;
   background-size: cover;
-  height: 12%;
+  height: 15%;
   /* position: absolute; */
   color: white;
   z-index: 9999;
@@ -1557,7 +1557,7 @@ margin-top:40px; */
 }
 
 .product {
-  background-color: #eee;
+  background-color: #000;
 }
 .product h6 span{
  font-size: 20px;
@@ -3165,13 +3165,22 @@ label.control-label span {
 }
 
 .form-box {
-  width: 580px;
-  height: 65%;
+  width: 450px;
+  height: 100%;
   background-color: #0d4555;
   margin-left: -100px;
   position: relative;
   margin-top: 50px;
 }
+.form-box1 {
+    width: 450px;
+    height: 100%;
+    background-color: #0d4555;
+    margin-left: 22px;
+    position: relative;
+    margin-top: 50px;
+}
+
 
 .butn {
   left: 0;
@@ -3222,7 +3231,7 @@ label {
   margin-top: -200px;
 }
 .form-control {
-  width: 500px !important;
+  width: 400px !important;
 }
 .form-control1{
 width: 100%;
@@ -3274,5 +3283,5 @@ fieldset {
 }
 #hero2{
   padding: 20px 0px;
-  margin-top: 70px;
+  margin-top: 150px;
 }
