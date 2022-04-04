@@ -124,7 +124,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Enter your Email address <span color="red">*</span></label>
+                                <label>Enter your Email address *</label>
                                 <input type="text" style="height: 40px;
                                     width: 200px;" name="EmailId" title="Contact's email (format: xxx@xxx.xxx)"
                                     pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
@@ -158,10 +158,6 @@ if (isset($_POST['submit'])) {
     include("includes/footerlink.php");
     ?>
 </body>
-<? //}
-?>
-
-</html>
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -171,46 +167,41 @@ $(document).ready(function() {
                         required: true,
                         minlength: 3,
                     },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-                    contact: {
+                    ContactNo: {
                         required: true,
                         minlength: 10,
                     },
-                    password_id: {
+                    EmailId: {
+                        required: true,
+                        email: true,
+                    },
+                    Password: {
                         required: true,
                         minlength: 8,
                     },
-                    cpassword: {
-                        minlength: 8,
-                        equalTo: "#password_id",
-                    },
                 },
                 messages: {
-                    username: {
+                    UserName: {
                         required: "<b style='color:red'>Please enter your Full Name</b>",
                         minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
                     },
-                    email: {
+                    EmailId: {
                         required: "<b style='color:red'>Please enter Email Id</b>",
                         email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
                     },
-                    contact: {
+                    ContactNo: {
                         required: "<b style='color:red'>Please enter your Mobile Number</b>",
                         number: "<b style='color:red'>Please Enter numerical values Only</b>",
                     },
-                    password_id: {
+                    Password: {
                         required: "<b style='color:red'>Please enter your Password</b>",
                         minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-                    },
-                    cpassword: {
-                        minlength: "<b style='color:red'>Confirm Password should be at least 8 characters</b>",
-                        equalTo: "<b style='color:red'>Password and Confirm Password must be same</b>",
                     },
                 },
                 submitHandler: function(form) {
                     form.submit();
                 },
             });
+</script>
+
+</html>
