@@ -55,7 +55,7 @@ include("includes/config.php");
                                         </thead>
 
                                         <?php
-                                        $retrive_qyr = "SELECT * FROM tblbooking  where Status='1'";
+                                        $retrive_qyr = "SELECT * FROM tblbooking  where Status='0'";
                                         $retrive_fn_query = mysqli_query($conn, $retrive_qyr);
                                         $cnt = 0;
                                         while ($row = mysqli_fetch_array($retrive_fn_query)) {

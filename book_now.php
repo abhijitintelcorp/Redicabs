@@ -11,7 +11,7 @@ $tdays = $rows['TotalNoDays'];
 
 if (isset($_POST['submit'])) {
     $bookingno = mt_rand(100000000, 999999999);
-    $Status = 1;
+    $Status = 0;
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $address = htmlspecialchars($_POST['address']);
