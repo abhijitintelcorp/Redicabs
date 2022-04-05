@@ -4,6 +4,10 @@ error_reporting(0);
 
 include("includes/connection.php");
 include("includes/header_link.php");
+$id = $_GET['id'];
+// $query = "SELECT * from tblbooking where tblbooking.id='$id'";
+// $query_run = mysqli_query($conn, $query);
+// $rows = mysqli_fetch_array($query_run);
 
 function dateDiff($FromDate, $ToDate)
 {
@@ -13,13 +17,12 @@ function dateDiff($FromDate, $ToDate)
     $diff = $date2_ts - $date1_ts;
     return round($diff / 86400) + 1;
 }
-// $pickup = $_SESSION['pickup'];
-// $dropoff = $_SESSION['dropoff'];
-// $FromDate = $_SESSION['FromDate'];
-// $ToDate =  $_SESSION['ToDate'];
-// $Time =  $_SESSION['Time'];
 if (isset($_POST['submit'])) {
-
+    $pickup = htmlspecialchars($_POST['pickup']);
+    $dropoff = htmlspecialchars($_POST['dropoff']);
+    $FromDate = htmlspecialchars($_POST['FromDate']);
+    $ToDate = htmlspecialchars($_POST['ToDate']);
+    $Time = htmlspecialchars($_POST['Time']);
     $totalnodays = dateDiff($FromDate, $ToDate);
     $Categories = htmlspecialchars($_POST['Categories']);
     $SeatingCapacity = htmlspecialchars($_POST['SeatingCapacity']);
@@ -30,7 +33,7 @@ if (isset($_POST['submit'])) {
          VALUES('$pickup','$dropoff','$FromDate','$ToDate','$Time','$regdate','$Categories','$SeatingCapacity','$totalnodays')";
     $res = mysqli_query($conn, $ins);
     $last_id = mysqli_insert_id($conn);
-    $last_id = $_SESSION['last_id'];
+    //$last_id = $_SESSION['last_id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -54,7 +57,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="col-lg-6 product">
 
-                        <input type="hidden" name="id" value=" <?php echo $id; ?>">
+                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
                         <div class="mt-4 mb-3">
                             <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
                             </h3>
