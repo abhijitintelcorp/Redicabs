@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 
                     </div>
                 </div>
-                <form action="" class="form-box2" method="post" name="booking" id="booking">
+                <form action="" class="form-box2" method="post" name="booking" name="booking" id="booking">
 
                     <div style="background-color: white">
                         <h3 class="form-block-title" style="font-size: 30px; padding:5px; color: #f7eded;background-color: #1886bb;">
@@ -217,46 +217,46 @@ if (isset($_POST['submit'])) {
 </html>
 <script type="text/javascript">
     $(document).ready(function() {
-
-                $("#booking").validate({
-                    rules: {
-                        UserName: {
-                            required: true,
-                            minlength: 3,
-                        },
-                        ContactNo: {
-                            required: true,
-                            minlength: 10,
-                        },
-                        EmailId: {
-                            required: true,
-                            email: true,
-                        },
-                        Password: {
-                            required: true,
-                            minlength: 8,
-                        },
-                    },
-                    messages: {
-                        UserName: {
-                            required: "<b style='color:red'>Please enter your Full Name</b>",
-                            minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-                        },
-                        EmailId: {
-                            required: "<b style='color:red'>Please enter Email Id</b>",
-                            email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
-                        },
-                        ContactNo: {
-                            required: "<b style='color:red'>Please enter your Mobile Number</b>",
-                            number: "<b style='color:red'>Please Enter numerical values Only</b>",
-                        },
-                        Password: {
-                            required: "<b style='color:red'>Please enter your Password</b>",
-                            minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-                        },
-                    },
-                    submitHandler: function(form) {
-                        form.submit();
-                    },
-                });
+        $("#booking").validate({
+            rules: {
+                UserName: {
+                    required: true,
+                    minlength: 3,
+                },
+                ContactNo: {
+                    required: true,
+                    minlength: 10,
+                },
+                EmailId: {
+                    required: true,
+                    email: true,
+                },
+                Password: {
+                    required: true,
+                    minlength: 8,
+                },
+            },
+            messages: {
+                UserName: {
+                    required: "<b style='color:red'>Please enter your Full Name</b>",
+                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+                },
+                EmailId: {
+                    required: "<b style='color:red'>Please enter Email Id</b>",
+                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+                },
+                ContactNo: {
+                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                    number: "<b style='color:red'>Please Enter numerical values Only</b>",
+                },
+                Password: {
+                    required: "<b style='color:red'>Please enter your Password</b>",
+                    minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+                },
+            },
+            submitHandler: function(form) {
+                form.submit();
+            },
+        });
+    });
 </script>
