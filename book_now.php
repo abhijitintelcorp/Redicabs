@@ -80,7 +80,8 @@ if (isset($_POST['submit'])) {
                     <div class="col-md-6 book1">
                         <input type="hidden" name="id" value="<?php echo $last_id; ?>">
                         <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="100%">
-                        <p class="spam">TotalFare: <span class="property_size"><?php echo htmlentities($tdays * $ppdays); ?></span>
+                        <p class="spam">TotalFare: <span
+                                class="property_size"><?php echo htmlentities($tdays * $ppdays); ?></span>
                         </p>
 
                     </div>
@@ -92,16 +93,19 @@ if (isset($_POST['submit'])) {
                         </p>
                         <p>Vehicle RCNo: <span class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
                         </p>
-                        <p>Vehicle ChesisNo: <span class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
+                        <p>Vehicle ChesisNo: <span
+                                class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
                         </p>
                         <p> Vehicle Number: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
                         </p>
-                        <p>Price Per Day: <span class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
+                        <p>Price Per Day: <span
+                                class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
                         </p>
                         <hr>
                         <p>Pickup Place: <span class="property_size"><?php echo $rows['pickup']; ?></span></p>
                         <p>DropOff Place: <span class="property_size"><?php echo $rows['dropoff']; ?></span></p>
-                        <p>TotalNo of Days: <span class="property_size"><?php echo htmlentities($tdays = $rows['TotalNoDays']); ?></span>
+                        <p>TotalNo of Days: <span
+                                class="property_size"><?php echo htmlentities($tdays = $rows['TotalNoDays']); ?></span>
                         </p>
 
 
@@ -110,7 +114,8 @@ if (isset($_POST['submit'])) {
                 <form action="" class="form-box2" method="post" name="booking" name="booking" id="booking">
 
                     <div style="background-color: white">
-                        <h3 class="form-block-title" style="font-size: 30px; padding:5px; color: #f7eded;background-color: #1886bb;">
+                        <h3 class="form-block-title"
+                            style="font-size: 30px; padding:5px; color: #f7eded;background-color: #1886bb;">
                             Select
                             User Information</h3>
                     </div>
@@ -124,8 +129,10 @@ if (isset($_POST['submit'])) {
                     <input type="hidden" name="owner_email" value="<?php echo $rws['owner_email']; ?>" />
                     <input type="hidden" name="owner_vehicle_no" value="<?php echo $rws['owner_vehicle_no']; ?>" />
                     <input type="hidden" name="owner_vehicle_RCno" value="<?php echo $rws['owner_vehicle_RCno']; ?>" />
-                    <input type="hidden" name="owner_vehicle_chesis_no" value="<?php echo $rws['owner_vehicle_chesis_no']; ?>" />
-                    <input type="hidden" name="owner_vehicle_brand" value="<?php echo $rws['owner_vehicle_brand']; ?>" />
+                    <input type="hidden" name="owner_vehicle_chesis_no"
+                        value="<?php echo $rws['owner_vehicle_chesis_no']; ?>" />
+                    <input type="hidden" name="owner_vehicle_brand"
+                        value="<?php echo $rws['owner_vehicle_brand']; ?>" />
                     <input type="hidden" name="owner_vehicle_name" value="<?php echo $rws['owner_vehicle_name']; ?>" />
                     <input type="hidden" name="Owner_Aadhar_No" value="<?php echo $rws['Owner_Aadhar_No']; ?>" />
                     <input type="hidden" name="own_adhar_image" value="<?php echo $rws['own_adhar_image']; ?>" />
@@ -142,35 +149,42 @@ if (isset($_POST['submit'])) {
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your name *</label>
-                            <input type="text" class="form-control24" name="UserName" id="UserName" placeholder="Your name" required>
+                            <input type="text" class="form-control24" name="UserName" id="UserName"
+                                placeholder="Your name" required>
 
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your contact number *</label>
-                            <input type=" number" class="form-control24" name="ContactNo" id="ContactNo" placeholder="contactnumber">
+                            <input type=" number" class="form-control24" name="ContactNo" id="ContactNo"
+                                placeholder="contactnumber">
 
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your Address *</label>
-                            <input type="text" class="form-control24" name="address" id="address" placeholder="Your Address" required>
+                            <input type="text" class="form-control24" name="address" id="address"
+                                placeholder="Your Address" required>
 
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your City *</label>
-                            <input type="text" class="form-control24" name="City" id="City" placeholder="Your City" required>
+                            <input type="text" class="form-control24" name="City" id="City" placeholder="Your City"
+                                required>
 
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your Email address *</label>
-                            <input type="text" class="form-control24" name="EmailId" id="EmailId" title="Contact's email (format: xxx@xxx.xxx)" pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*" placeholder="Email address">
+                            <input type="text" class="form-control24" name="EmailId" id="EmailId"
+                                title="Contact's email (format: xxx@xxx.xxx)"
+                                pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*"
+                                placeholder="Email address">
 
                         </div>
                     </div>
@@ -178,7 +192,8 @@ if (isset($_POST['submit'])) {
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your password *</label>
-                            <input type="text" class="form-control24" name="Password" id="Password" placeholder="Type your password">
+                            <input type="text" class="form-control24" name="Password" id="Password"
+                                placeholder="Type your password">
 
                         </div>
                     </div>
@@ -216,47 +231,62 @@ if (isset($_POST['submit'])) {
 
 </html>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#booking").validate({
-            rules: {
-                UserName: {
-                    required: true,
-                    minlength: 3,
-                },
-                ContactNo: {
-                    required: true,
-                    minlength: 10,
-                },
-                EmailId: {
-                    required: true,
-                    email: true,
-                },
-                Password: {
-                    required: true,
-                    minlength: 8,
-                },
+$(document).ready(function() {
+    $("#booking").validate({
+        rules: {
+            UserName: {
+                required: true,
+                minlength: 3,
             },
-            messages: {
-                UserName: {
-                    required: "<b style='color:red'>Please enter your Full Name</b>",
-                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-                },
-                EmailId: {
-                    required: "<b style='color:red'>Please enter Email Id</b>",
-                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
-                },
-                ContactNo: {
-                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
-                    number: "<b style='color:red'>Please Enter numerical values Only</b>",
-                },
-                Password: {
-                    required: "<b style='color:red'>Please enter your Password</b>",
-                    minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-                },
+            ContactNo: {
+                required: true,
+                minlength: 10,
             },
-            submitHandler: function(form) {
-                form.submit();
+            EmailId: {
+                required: true,
+                email: true,
             },
-        });
+            Password: {
+                required: true,
+                minlength: 8,
+            },
+            address: {
+                required: true,
+                minlength: 20,
+            },
+            City: {
+                required: true,
+                minlength: 20,
+            },
+        },
+        messages: {
+            UserName: {
+                required: "<b style='color:red'>Please enter your Full Name</b>",
+                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+            },
+            EmailId: {
+                required: "<b style='color:red'>Please enter Email Id</b>",
+                email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+            },
+            ContactNo: {
+                required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                number: "<b style='color:red'>Please Enter numerical values Only</b>",
+            },
+            Password: {
+                required: "<b style='color:red'>Please enter your Password</b>",
+                minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+            },
+            address: {
+                required: "<b style='color:red'>Please enter your address</b>",
+                //minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+            },
+            City: {
+                required: "<b style='color:red'>Please enter your city</b>",
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        },
     });
+});
 </script>

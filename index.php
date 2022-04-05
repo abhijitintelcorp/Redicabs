@@ -65,9 +65,8 @@ function dateDiff($fromDate, $toDate)
                                 <div class="row p-0 m-0">
                                     <div class="col-5 p-0">
                                         <label for="">Picking Up Date</label>
-                                        <input type="DATE" class="form-control" placeholder="Pick-up Date"
-                                            style="margin-left:20px;" aria-label="Recipient's username"
-                                            aria-describedby="basic-addon2" name="FromDate" id="FromDate" required>
+                                        <input type="date" class="form-control" placeholder="Pick-up Date"
+                                            style="margin-left:20px;" name="FromDate" id="FromDate" required>
                                     </div>
                                     <div class="col-6 p-0">
                                         <label for="">Return Date</label>
@@ -894,7 +893,7 @@ $(document).ready(function() {
     });
     $("#booking").validate({
         rules: {
-            SeatingCapacity1: {
+            SeatingCapacity: {
                 required: true,
             },
             brand: {
@@ -909,13 +908,23 @@ $(document).ready(function() {
             dropoff: {
                 required: true,
             },
-            fromdate: {
+            FromDate: {
                 required: true,
             },
+            ToDate: {
+                required: true,
+            },
+            Categories: {
+                required: true,
+            },
+            SeatingCapacity: {
+                required: true,
+            },
+
         },
         messages: {
 
-            SeatingCapacity1: {
+            SeatingCapacity: {
                 required: "<b style='color:red'>Please select  Seating Capacity</b>",
             },
             brand: {
@@ -930,8 +939,17 @@ $(document).ready(function() {
             dropoff: {
                 required: "<b style='color:red'>Please enter your Drop Off Location</b>",
             },
-            fromdate: {
+            FromDate: {
                 required: "<b style='color:red'>Please enter your From Date</b>",
+            },
+            ToDate: {
+                required: "<b style='color:red'>Please enter your To Date</b>",
+            },
+            Categories: {
+                required: "<b style='color:red'>Please select categories</b>",
+            },
+            SeatingCapacity: {
+                required: "<b style='color:red'>Please select seating capacity</b>",
             },
         },
         submitHandler: function(form) {
@@ -1093,21 +1111,22 @@ $('.btn').click(function() {
 </script>
 
 <script>
-$(function() {
-    var dtToday = new Date();
+$(document).ready(function() {
+    $('#FromDate').datepicker({
+        onSelect: function(dateText, inst) {
+            //Get today's date at midnight
+            var today = new Date();;
+            today = Date.parse(today.getMonth() + 1 + '/' + today.getDate() + '/' + today
+                .getFullYear());
+            //Get the selected date (also at midnight)
+            var selDate = Date.parse(dateText);
 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-        month = '0' + month.toString();
-    if (day < 10)
-        day = '0' + day.toString();
-
-    var minDate = year + '-' + month + '-' + day;
-
-    $('#FromDate').attr('min', minDate);
-    $('#ToDate').attr('min', minDate);
+            if (selDate < today) {
+                //If the selected date was before today, continue to show the datepicker
+                $('#FromDate').val('');
+                $(inst).datepicker('show');
+            }
+        }
+    });
 });
 </script>
-<!-- Select state javascript codes End -->

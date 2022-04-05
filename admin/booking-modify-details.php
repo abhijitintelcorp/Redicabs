@@ -207,21 +207,31 @@ if (isset($_POST['delayed'])) {
                                                         <input type="hidden" id="name" name="name"
                                                             value="<?php echo $row['owner_vehicle_name']; ?>">
                                                         <?php
-
                                                             $owner_vehicle_name = $_POST['owner_vehicle_name'];
-                                                            $result = mysqli_query($conn, "SELECT COUNT(owner_vehicle_name) AS count  FROM tblbooking where owner_vehicle_name ='$owner_vehicle_name'");
-                                                            $row = mysqli_num_rows($result);
-                                                            echo $row;
+
+                                                            //$result = mysqli_query($conn, "SELECT COUNT(owner_vehicle_name) as counts FROM tblbooking where owner_vehicle_name ='$owner_vehicle_name'");
+                                                            //$row = mysqli_fetch_array($result);
+                                                            //$count = $row['counts'];
+                                                            //echo $count;
+                                                            //  $row = mysqli_num_rows($result);
+                                                            //  echo $row;
+                                                            $sql = "SELECT COUNT(*) FROM tblbooking where owner_vehicle_name ='$owner_vehicle_name'";
+                                                            $count = 0;
+                                                            if ($result = mysqli_query($conn, $sql)) {
+                                                                $row = mysqli_fetch_row($result);
+                                                                $count = $row[0];
+                                                            }
+                                                            echo $count;
                                                             ?>
 
-
+                                                    <th>
+                                                        <lable>vehicles available now</lable>
+                                                    </th>
                                                     <td>
                                                         <input type="text" class="form-control" name="stock" id="stock"
                                                             readonly="readonly" value="<?php echo $row - 1 ?>" required>
                                                     </td>
-                                                    <th>
-                                                        <lable>vehicles available now</lable>
-                                                    </th>
+
 
                                                 </tr>
                                                 <tr>
