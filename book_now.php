@@ -5,17 +5,21 @@ session_start();
 include("includes/connection.php");
 if (isset($_POST['submit'])) {
 
+
     $bookingno = mt_rand(100000000, 999999999);
     $Status = 1;
     $UserName = htmlspecialchars($_POST['UserName']);
     $ContactNo = htmlspecialchars($_POST['ContactNo']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
     $Password = htmlspecialchars($_POST['Password']);
-
+    $_SESSION['last_id'] = $last_id;
     $update_qry = "UPDATE tblbooking SET UserName='$UserName',
-    ContactNo ='$ContactNo',EmailId='$EmailId',Password='$Password',Status='$Status' WHERE id='$id'";
+    ContactNo ='$ContactNo',EmailId='$EmailId',Password='$Password',Status='$Status'  WHERE id='$last_id'";
 
     $query_run = mysqli_query($conn, $update_qry);
+    // $last_id = mysqli_insert_id($conn);
+    // $_SESSION['last_id'] = $last_id;
+
     if ($query_run) {
         header("location:My_booking.php");
     }
@@ -44,7 +48,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-9">
                 <div class="row" id="booking11">
                     <div class="col-md-6 book1">
-
+                        <input type="hidden" name="id" value=" <?php echo $id; ?>">
                         <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="100%">
                         <p class="spam">TotalFare: <span
                                 class="property_size"><?php echo htmlentities(($tdays) * $ppdays); ?></span>
@@ -53,21 +57,21 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="col-md-6 book2">
 
-                        <input type="hidden" name="id" value="<?php echo $rws['id'] ?>">
-                        <p>VehicleName: <span class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
+                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
+                        <p>Vehicle Name: <span class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
                         </p>
-                        <p>VehicleRCNo: <span class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
+                        <p>Vehicle RCNo: <span class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
                         </p>
-                        <p>VehicleChesisNo: <span
+                        <p>Vehicle ChesisNo: <span
                                 class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
                         </p>
-                        <p> VehicleNo: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
+                        <p> Vehicle Number: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
                         </p>
                         <p>PricePerDay: <span
                                 class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
                         </p>
-                        <p>PickupPlace: <span class="property_size"><?php echo $rws['pickup']; ?></span></p>
-                        <p>DropOffPlace: <span class="property_size"><?php echo $rws['dropoff']; ?></span></p>
+                        <p>Pickup Place: <span class="property_size"><?php echo $rws['pickup']; ?></span></p>
+                        <p>DropOff Place: <span class="property_size"><?php echo $rws['dropoff']; ?></span></p>
                         <p>TotalNo of Days: <span
                                 class="property_size"><?php echo htmlentities($tdays = $rws['TotalNoDays']); ?></span>
                         </p>
@@ -84,7 +88,7 @@ if (isset($_POST['submit'])) {
                     </div>
 
 
-                    <input type="hidden" name="id" value="<?php echo $rws['id']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $rws['last_id']; ?>">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Enter your name *</label>
@@ -98,7 +102,7 @@ if (isset($_POST['submit'])) {
                         <div class="form-group">
                             <label>Enter your contact number *</label>
                             <input type=" number" class="form-control24" name="ContactNo" id="ContactNo"
-                                placeholder="contactnumber" s>
+                                placeholder="contactnumber">
 
                         </div>
                     </div>
@@ -139,7 +143,7 @@ if (isset($_POST['submit'])) {
                     <hr>
                     <h2>+91-8956231458</h2>
                     <hr>
-                    <h2>support@odcar.in</h2>
+                    <h2>support@redicab.in</h2>
                     <hr>
                     <button class=" btn">CALL NOW</button>
                 </div>
