@@ -7,7 +7,6 @@ include("includes/header_link.php");
 $id = $_GET['id'];
 if (isset($_POST['submit'])) {
 }
-
 ?>
 
 <!doctype html>
@@ -36,34 +35,32 @@ if (isset($_POST['submit'])) {
                         if ($count > 0) {
                             while ($rws = mysqli_fetch_assoc($query)) {
                         ?>
-                        <div class="col-md-6">
-                            <div class="images p-3">
-                                <div class="text-center p-4"> <img id="main-image"
-                                        src="images/<?php echo $rws['frontimage']; ?>" width="250" /> </div>
+                                <div class="col-md-6">
+                                    <div class="images p-3">
+                                        <div class="text-center p-4"> <img id="main-image" src="images/<?php echo $rws['frontimage']; ?>" width="250" /> </div>
 
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="product p-4">
-                                <input type="hidden" name="id" value=" <?php echo $rws['id']; ?>">
-                                <div class="mt-4 mb-3">
-                                    <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
-                                    </h6>
-                                    <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
-
-                                    <h6>SeatingCapacity :
-                                        <?php echo $rws['SeatingCapacity']; ?></h6>
+                                    </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="product p-4">
+                                        <input type="hidden" name="id" value=" <?php echo $rws['id']; ?>">
+                                        <div class="mt-4 mb-3">
+                                            <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
+                                            </h6>
+                                            <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
+
+                                            <h6>SeatingCapacity :
+                                                <?php echo $rws['SeatingCapacity']; ?></h6>
+                                        </div>
 
 
-                                <div class="cart mt-4 align-items-center">
-                                    <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="btn btn-primary"
-                                        name="submit" type="submit">Book Now</a>
+                                        <div class="cart mt-4 align-items-center">
+                                            <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="btn btn-primary" name="submit" type="submit">Book Now</a>
 
+                                        </div>
+
+                                    </div>
                                 </div>
-
-                            </div>
-                        </div>
                         <?php }
                         } ?>
                     </div>
@@ -80,28 +77,28 @@ if (isset($_POST['submit'])) {
 
 </html>
 <script>
-$('#Categories').on('change', function() {
-    var Categories = $(this).val();
-    if (Categories) {
-        $.ajax({
-            type: 'POST',
-            url: 'get-seat.php',
-            data: 'Categories=' + Categories,
-            success: function(html) {
-                $('#SeatingCapacity').html(html);
-            }
-        });
-    } else {
-        $('#SeatingCapacity').html('No data Found');
-    }
-});
+    $('#Categories').on('change', function() {
+        var Categories = $(this).val();
+        if (Categories) {
+            $.ajax({
+                type: 'POST',
+                url: 'get-seat.php',
+                data: 'Categories=' + Categories,
+                success: function(html) {
+                    $('#SeatingCapacity').html(html);
+                }
+            });
+        } else {
+            $('#SeatingCapacity').html('No data Found');
+        }
+    });
 </script>
 <script>
-function change_image(image) {
+    function change_image(image) {
 
-    var container = document.getElementById("main-image");
+        var container = document.getElementById("main-image");
 
-    container.src = image.src;
-}
-document.addEventListener("DOMContentLoaded", function(event) {});
+        container.src = image.src;
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {});
 </script>
