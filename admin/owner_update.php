@@ -302,7 +302,7 @@ if (isset($_POST['owner_submit'])) {
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="customFile">Car Front Image</label>
+                                                <label for="customFile">Vehicle Front Image</label>
                                                 <img src="images/<?php echo $urows['frontimage']; ?>"
                                                     style="width:20%;">
                                                 <div>

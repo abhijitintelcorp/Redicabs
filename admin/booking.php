@@ -69,8 +69,10 @@ include("includes/config.php");
                                         if (isset($_POST['filter'])) {
                                             $SeatingCapacity = $_POST['SeatingCapacity'];
                                             $cnt = 1;
-                                            $query = mysqli_query($conn, "SELECT * FROM `tblbooking`WHERE SeatingCapacity=$SeatingCapacity");
-                                            $fetch = mysqli_fetch_array($query);
+                                            $query = mysqli_query($conn, "SELECT * FROM `tblbooking` WHERE SeatingCapacity=$SeatingCapacity AND Status='3' ORDER BY id ASC");
+                                            while ($fetch = mysqli_fetch_array($query)) {
+
+
                                         ?>
                                         <tbody>
                                             <tr>
@@ -90,24 +92,19 @@ include("includes/config.php");
                                                 </td>
 
                                             </tr>
-                                            <?php $cnt++;
+                                            <?php $cnt = $cnt + 1;
+                                            }
                                         }
                                             ?>
                                         </tbody>
 
                                     </table>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </div>
-                <!-- /.container-fluid -->
             </section>
-            <!-- /.content -->
         </div>
     </div>
     <?php

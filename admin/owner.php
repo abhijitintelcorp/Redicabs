@@ -24,6 +24,7 @@ if (isset($_POST['owner_submit'])) {
     $ownno = htmlspecialchars($_POST['ownno']);
     $email = htmlspecialchars($_POST['email']);
     $res_query = "";
+    $vehicle_quantity = 1;
     $frontimage = $_FILES['frontimage']['name'];
     $type = $_FILES['frontimage']['type'];
     $size = $_FILES['frontimage']['size'];
@@ -56,9 +57,9 @@ if (isset($_POST['owner_submit'])) {
             $insert_qry = "INSERT INTO tblbooking(Categories,SubCategories,owner_vehicle_brand,owner_vehicle_name,
             owner_vehicle_no,owner_vehicle_RCno,owner_vehicle_chesis_no,DriverName,DriverMobile,Driver_DL_No,PricePerDay,
             SeatingCapacity,ModelYear,OwnerName,Owner_Aadhar_No,owner_mobile,owner_email,frontimage,backimage,DLimage,
-            Driver_Adhar_image,own_adhar_image,Status) VALUES('$category','$brand','$brand','$VehicleName','$VehicleNumber',
+            Driver_Adhar_image,own_adhar_image,Status,vehicle_quantity) VALUES('$category','$brand','$brand','$VehicleName','$VehicleNumber',
             '$VehRCNo','$chasis', '$Dname','$Dno','$DLno','$price','$seat','$year','$ownname','$ownadhar','$ownno',
-            '$email','$frontimage','$backimage','$DLimage','$Adharimage','$Adharimage1','$status')";
+            '$email','$frontimage','$backimage','$DLimage','$Adharimage','$Adharimage1','$status','$vehicle_quantity')";
             $res_query = mysqli_query($conn, $insert_qry);
         }
         $path = "images/" . $frontimage;
@@ -243,6 +244,7 @@ if (isset($_POST['owner_submit'])) {
                                                     <input type="text" class="form-control"
                                                         placeholder="Enter ownername" name="ownname" id="ownname"
                                                         required>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -331,6 +333,7 @@ if (isset($_POST['owner_submit'])) {
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary"
