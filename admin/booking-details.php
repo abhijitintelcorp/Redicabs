@@ -127,7 +127,7 @@ if (strlen($_SESSION['EmailId']) == 0) {
                                                 <th>PickUpTime</th>
                                                 <td><?php echo $row['Time']; ?></td>
                                                 <th>VehicleQuantity</th>
-                                                <td><?php echo $row['Time']; ?></td>
+                                                <td><?php echo $row['vehicle_quantity']; ?></td>
 
                                             </tr>
                                             <tr>

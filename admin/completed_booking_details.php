@@ -2,7 +2,7 @@
 session_start();
 error_reporting(0);
 include("includes/config.php");
-$id = $_GET['bid'];
+$id = $_GET['id'];
 function dateDiff($FromDate, $ToDate)
 {
     $date1_ts = strtotime($FromDate);
@@ -37,7 +37,8 @@ if (isset($_POST['update'])) {
     $owner_mobile = htmlspecialchars($_POST['owner_mobile']);
     $DriverName = htmlspecialchars($_POST['DriverName']);
     $DriverMobile = htmlspecialchars($_POST['DriverMobile']);
-    //($_POST['TotalNoDays'] * $_POST['PricePerDay']);
+    $vehicle_quantity  = htmlspecialchars($_POST['vehicle_quantity']);
+    $vehiclequantitynew = $vehicle_quantity + 1;
 
 
     $update_qry = "UPDATE tblbooking SET PricePerDay='$PricePerDay',UserName='$UserName',EmailId='$EmailId',
@@ -45,7 +46,8 @@ if (isset($_POST['update'])) {
     owner_vehicle_brand ='$brand',SubCategories='$brand',owner_vehicle_name='$VehicleName',CreatedDate='$CreatedDate',
     FromDate='$FromDate',ToDate='$ToDate',Time='$pickuptime',TotalNoDays='$TotalNoDays',Categories='$Categories'
       ,DriverName='$DriverName',DriverMobile='$DriverMobile',pickup='$pickup',
-      dropoff='$dropoff',Total='$total', OwnerName ='$OwnerName',owner_mobile= '$owner_mobile', DriverName = '$DriverName', DriverMobile = '$DriverMobile' WHERE id='$id'";
+      dropoff='$dropoff',Total='$total', OwnerName ='$OwnerName',owner_mobile= '$owner_mobile',
+       DriverName = '$DriverName', DriverMobile = '$DriverMobile', vehicle_quantity ='$vehiclequantitynew' WHERE id='$id'";
 
     $query_run = mysqli_query($conn, $update_qry);
     if ($query_run) {
@@ -86,7 +88,7 @@ if (isset($_POST['delayed'])) {
                                         <tbody>
 
                                             <?php
-                                            $id = intval($_GET['bid']);
+                                            $id = intval($_GET['id']);
                                             $query = "SELECT * from tblbooking where tblbooking.id='$id'";
                                             $query_run = mysqli_query($conn, $query);
                                             $cnt = 1;
@@ -221,16 +223,12 @@ if (isset($_POST['delayed'])) {
                                                     <td><input type="time" class="form-control" name="pickuptime"
                                                             id="pickuptime" value="<?php echo $row['Time']; ?>"
                                                             required></td>
-
                                                     <th>Booking Date</th>
                                                     <td><input type="text" class="form-control" name="CreatedDate"
                                                             id="CreatedDate" readonly="readonly"
                                                             value="<?php echo $row['RegDate']; ?>" required>
                                                     </td>
                                                 </tr>
-
-
-
                                                 <tr>
                                                     <th>Total Days</th>
                                                     <td><input type="text" class="form-control" name="TotalNoDays"
@@ -251,13 +249,12 @@ if (isset($_POST['delayed'])) {
                                                     <th>Owner Name</th>
                                                     <td><select name="OwnerName" id="OwnerName" type="text"
                                                             class="selectpicker">
-                                                            <input type="hidden" id="ownid" name="ownid"
-                                                                value="<?php echo $rows['OwnerName']; ?>" />
-                                                            <option value=" <?php echo $row['OwnerName']; ?>">
+
+                                                            <option value=" <?php echo $row['id']; ?>">
                                                                 <?php echo $row['OwnerName']; ?></option>
                                                             <?php
                                                                 $OwnerName = $_POST['OwnerName'];
-                                                                $qry = "SELECT DISTINCT OwnerName FROM tblbooking WHERE `Status`='3'";
+                                                                $qry = "SELECT DISTINCT id, OwnerName FROM tblbooking WHERE `Status`='3'";
                                                                 $exe = mysqli_query($conn, $qry);
                                                                 while ($rows = mysqli_fetch_array($exe)) {
                                                                     $owner_mobile = $rows['owner_mobile'];
@@ -267,8 +264,11 @@ if (isset($_POST['delayed'])) {
                                                             <option owner_mobile="<?php echo $rows['owner_mobile']; ?>"
                                                                 DriverName="<?php echo $rows['DriverName']; ?>"
                                                                 DriverMobile="<?php echo $rows['DriverMobile']; ?>"
-                                                                value="<?php echo $rows['OwnerName']; ?>">
-                                                                <?php echo $rows['OwnerName']; ?>
+                                                                value="<?php echo $rows['id']; ?>">
+                                                                <?php echo $rows['OwnerName'];
+
+                                                                        ?>
+
                                                             </option>
                                                             <?php }  ?>
                                                             <?php } ?>
@@ -299,7 +299,9 @@ if (isset($_POST['delayed'])) {
                                                             ?></td>
 
                                                     <th>VehicleQuantity</th>
-                                                    <td><?php echo htmlentities($row['vehicle_quantity']); ?></td>
+                                                    <td><input class="form-control white_bg" name="vehicle_quantity"
+                                                            id="vehicle_quantity" type="text"
+                                                            value="<?php echo $row['vehicle_quantity']; ?>"></td>
                                                 </tr>
                                                 <tr>
                                                     <th colspan="4" style="text-align:center;color:blue">Assign

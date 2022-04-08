@@ -15,13 +15,6 @@ $query = "SELECT * from tblbooking where tblbooking.id='$id'";
 $query_run = mysqli_query($conn, $query);
 $rows = mysqli_fetch_array($query_run);
 
-// $Categories = $_GET['$Categories'];
-// $owner_vehicle_no = $_GET['$owner_vehicle_no'];
-// $owner_vehicle_RCno = $_GET['$owner_vehicle_RCno'];
-// $owner_vehicle_chesis_no = $_GET['$owner_vehicle_chesis_no'];
-// $PricePerDay = $_GET['PricePerDay'];
-// $ModelYear = $_GET['ModelYear'];
-
 function dateDiff($FromDate, $ToDate)
 {
     $date1_ts = strtotime($FromDate);
@@ -72,8 +65,9 @@ if (isset($_POST['submit'])) {
     $frontimage = htmlspecialchars($_POST['frontimage']);
     $backimage =  htmlspecialchars($_POST['backimage']);
     $DLimage = htmlspecialchars($_POST['DLimage']);
-    $Driver_Adhar_image = htmlspecialchars($_POST['$Driver_Adhar_image']);
-    $own_adhar_image = htmlspecialchars($_POST['$own_adhar_image']);
+    $Driver_Adhar_image = htmlspecialchars($_POST['Driver_Adhar_image']);
+    $own_adhar_image = htmlspecialchars($_POST['own_adhar_image']);
+
 
     $sql = "SELECT `ContactNo`,`EmailId` FROM tblbooking WHERE `ContactNo`='$ContactNo' OR `EmailId`='$EmailId'";
     $res = mysqli_query($conn, $sql);
@@ -91,17 +85,19 @@ if (isset($_POST['submit'])) {
         //  PricePerDay='$PricePerDay',owner_email='$owner_email',pickup='$pickup',dropoff='$dropoff',totalnodays='$totalnodays',
         //  BookingNumber='$bookingno',status='$status',dob='$dob',Time='$pickuptime',RegDate='$regdate',Driver_DL_No='$Driver_DL_No',
         //  vehicle_quantity='$vehicle_quantity' WHERE id='$id'";
+
         $insert_qry = "INSERT INTO tblbooking(UserName,ContactNo,EmailId,Password,address,City,Categories,SubCategories,
         owner_vehicle_brand,owner_vehicle_name,owner_vehicle_no,owner_vehicle_RCno,owner_vehicle_chesis_no,DriverName,DriverMobile,
         Driver_DL_No,PricePerDay,ModelYear,OwnerName,owner_mobile,owner_email,FromDate,ToDate,pickup,dropoff,
-        totalnodays,BookingNumber,Status,dob,Time,RegDate,vehicle_quantity,SeatingCapacity,frontimage,backimage,DLimage,own_adhar_image)
+        totalnodays,BookingNumber,Status,dob,Time,RegDate,vehicle_quantity,SeatingCapacity,frontimage,backimage,
+        DLimage,own_adhar_image,Driver_Adhar_image)
         VALUES('$UserName','$ContactNo','$EmailId','$Password','$address','$City','$Categories','$brand',
         '$brand','$owner_vehicle_name','$owner_vehicle_no','$owner_vehicle_RCno',
         '$owner_vehicle_chesis_no','$DriverName','$DriverMobile','$Driver_DL_No','$PricePerDay',
         '$ModelYear','$OwnerName','$owner_mobile','$owner_email',
         '$FromDate','$ToDate','$pickup','$dropoff','$totalnodays',
         '$bookingno','$status','$dob','$pickuptime','$regdate','$vehicle_quantity_left','$SeatingCapacity',
-        '$frontimage','$backimage','$DLimage','$own_adhar_image')";
+        '$frontimage','$backimage','$DLimage','$own_adhar_image','$Driver_Adhar_image')";
         $inst_u_fn1_qry = mysqli_query($conn, $insert_qry);
 
         $update_qry = "UPDATE `tblbooking` SET Status='6' WHERE id='$id'";
@@ -109,6 +105,14 @@ if (isset($_POST['submit'])) {
         if ($inst_u_fn1_qry) {
 
             header("location:new-bookings.php");
+        }
+        $path = "images/" . $frontimage;
+        if (move_uploaded_file($img_file1, $path)) {
+            copy($path, "$path");
+        }
+        $path = "images/" . $backimage;
+        if (move_uploaded_file($img_file2, $path)) {
+            copy($path, "$path");
         }
     }
 }
@@ -475,9 +479,9 @@ if (isset($_POST['submit'])) {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>VehicleFrontImage</label>
-
-
-                                                        <img src="images/<?php echo $rows['frontimage']; ?>"
+                                                        <input type="hidden" name="frontimage"
+                                                            value="<?php echo $rows['frontimage']; ?>" /> <img
+                                                            src="images/<?php echo $rows['frontimage']; ?>"
                                                             style="width:20%;" name="frontimage" id="frontimage">
 
 
@@ -485,8 +489,11 @@ if (isset($_POST['submit'])) {
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
+
                                                         <label for="customFile">VehicleBackImage</label>
-                                                        <img src="images/<?php echo $rows['backimage']; ?>"
+                                                        <input type="hidden" name="backimage"
+                                                            value="<?php echo $rows['backimage']; ?>" /><img
+                                                            src="images/<?php echo $rows['backimage']; ?>"
                                                             style="width:20%;" name="backimage" id="backimage">
 
                                                     </div>
