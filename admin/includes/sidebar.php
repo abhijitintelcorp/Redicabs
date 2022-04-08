@@ -151,25 +151,31 @@
                             <li class="nav-item">
                                 <a href="new-bookings.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>NewBooking</p>
+                                    <p>New Booking</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="quick-bookings.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>QuickBooking</p>
+                                    <p>Quick Booking</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="confirmed-bookings.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>confirmed</p>
+                                    <p>Confirmed Booking</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="completed-bookings.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Completed Booking</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="canceled-bookings.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Cancelled</p>
+                                    <p>Cancelled Booking</p>
                                 </a>
                             </li>
                             <li class="nav-item">
