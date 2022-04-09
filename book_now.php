@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
     // $_SESSION['last_id'] = $last_id;
 
     if ($query_run) {
-        header("location:My_booking.php?id=");
+        header("location:My_booking.php?id=$id ");
     }
 }
 
