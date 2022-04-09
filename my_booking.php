@@ -7,7 +7,6 @@ include("includes/header_link.php");
 $id = $_GET['id'];
 if (isset($_POST['submit'])) {
 }
-
 ?>
 
 <!doctype html>
