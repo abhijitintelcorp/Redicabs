@@ -4,7 +4,7 @@ error_reporting(0);
 
 include("includes/connection.php");
 include("includes/header_link.php");
-$id = $_GET['id'];
+//$id = $_GET['id'];
 if (isset($_POST['submit'])) {
 }
 ?>
@@ -19,7 +19,37 @@ if (isset($_POST['submit'])) {
 
     <div class="container" id="booknow">
         <div class="row d-flex justify-content-center">
+            <div>
 
+                <!-- <input type="hidden" name="id" value="<?php echo $id; ?>"> -->
+                <input type="hidden" name="UserName" value="<?php echo $UserName ?>">
+                <?php
+                $UserName = $_GET['UserName'];
+                //$id = $_GET['id'];
+                $sql = "SELECT * from tblbooking where UserName='$UserName'";
+                $query = mysqli_query($conn, $sql);
+                $results = mysqli_fetch_assoc($query);
+                $cnt = mysqli_num_rows($query);
+                if ($cnt > 0) {
+                ?>
+                <div class="col-md-6 book2" style="background-color: gray;">
+
+                    <input type="hidden" name="UserName" value="<?php echo $results['$UserName']; ?>">
+
+                    <p>CustomerName: <span class="property_size"><?php echo $results['UserName']; ?></span>
+                    </p>
+                    <p>address: <span class="property_size"><?php echo $results['address']; ?></span>
+                    </p>
+                    <p>city: <span class="property_size"><?php echo $results['city']; ?></span>
+                    </p>
+
+                    <?php }
+                    ?>
+                </div>
+            </div>
+            <div>
+                <h5 class="uppercase underline">My Bookings</h5>
+            </div>
             <?php
             $id = $_GET['id'];
             //$user_id = $_GET['user_id'];
@@ -44,17 +74,13 @@ if (isset($_POST['submit'])) {
 
                         <p>Vehicle Name: <span class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
                         </p>
-                        <p>Vehicle RCNo: <span class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
-                        </p>
-                        <p>Vehicle ChesisNo: <span
-                                class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
-                        </p>
+
                         <p> Vehicle Number: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
                         </p>
                         <p>Price Per Day: <span
                                 class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
                         </p>
-                        <hr>
+
                         <p>Pickup Place: <span class="property_size"><?php echo $rows['pickup']; ?></span></p>
                         <p>DropOff Place: <span class="property_size"><?php echo $rows['dropoff']; ?></span></p>
                         <p>TotalNo of Days: <span
@@ -76,29 +102,3 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
-<script>
-$('#Categories').on('change', function() {
-    var Categories = $(this).val();
-    if (Categories) {
-        $.ajax({
-            type: 'POST',
-            url: 'get-seat.php',
-            data: 'Categories=' + Categories,
-            success: function(html) {
-                $('#SeatingCapacity').html(html);
-            }
-        });
-    } else {
-        $('#SeatingCapacity').html('No data Found');
-    }
-});
-</script>
-<script>
-function change_image(image) {
-
-    var container = document.getElementById("main-image");
-
-    container.src = image.src;
-}
-document.addEventListener("DOMContentLoaded", function(event) {});
-</script>

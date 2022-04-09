@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
     // $_SESSION['last_id'] = $last_id;
 
     if ($query_run) {
-        header("location:My_booking.php");
+        header("location:My_booking.php?id=");
     }
 }
 
@@ -120,8 +120,6 @@ if (isset($_POST['submit'])) {
                             Select
                             User Information</h3>
                     </div>
-
-
 
                     <input type="hidden" name="frontimage" value="<?php echo $rws['frontimage']; ?>" />
                     <input type="hidden" name="backimage" value="<?php echo $rws['backimage']; ?>" />
