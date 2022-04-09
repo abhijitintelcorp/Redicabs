@@ -43,6 +43,7 @@ if (isset($_POST['update'])) {
 
     $update_qry = "UPDATE tblbooking SET Status ='3' WHERE id='$owner_id'";
     $query_run = mysqli_query($conn, $update_qry);
+    $upd = "UPDATE tblbooking SET Status ='6' WHERE id='$id'";
     $res = mysqli_query($conn, $upd);
 
     if ($query_run) {
@@ -247,6 +248,8 @@ if (isset($_POST['delayed'])) {
                                                                 echo htmlentities('Not Confirmed yet');
                                                             } else if ($row['Status'] == 1) {
                                                                 echo htmlentities('Confirmed');
+                                                            } else if ($row['Status'] == 6) {
+                                                                echo htmlentities('Completed');
                                                             } else {
                                                                 echo htmlentities('Cancelled');
                                                             }
@@ -279,7 +282,7 @@ if (isset($_POST['delayed'])) {
 
                                                     <?php
 
-                                                    if ($row['Status'] == 0) {
+                                                    if ($row['Status'] == 1) {
                                                     ?>
                                                         <tr>
                                                             <td style="text-align:center" colspan="4">
