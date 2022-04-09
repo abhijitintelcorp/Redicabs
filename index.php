@@ -50,7 +50,7 @@ function dateDiff($fromDate, $toDate)
                 <div class="col-md-6">
                     <div class="form-box">
                         <div class="butn" style="margin-top:-30px;margin-left:100px;">RENTAL</div>
-                        <fieldset>
+                        <fieldset style="height: 560px;">
 
                             <form id="booking" action="Search_car.php" method="post" name="booking">
                                 <label for="">Picking Up Location</label>

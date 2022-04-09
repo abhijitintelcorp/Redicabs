@@ -15,57 +15,55 @@ if (isset($_POST['submit'])) {
 
 <body class="hold-transition sidebar-mini">
     <?php
-    //include("includes/search-header.php");
+    //include("includes/header.php");
     ?>
 
-    <div class="container mt-5 mb-5">
+    <div class="container" id="booknow">
         <div class="row d-flex justify-content-center">
-            <?php include('includes/sidebar.php'); ?>
-            <div class="col-md-10">
-                <div class="card" style="margin-right: 250px;">
-                    <h1>MY BOOKING</h1>
-                    <div class="row">
+
+            <?php
+            $id = $_GET['id'];
+            //$user_id = $_GET['user_id'];
+            $query = "SELECT * FROM tblbooking where id= 244";
+            $query_run = mysqli_query($conn, $query);
+            $rws = mysqli_fetch_array($query_run);
+            $ppdays = $rws['PricePerDay'];
+            ?>
+            <div class="col-md-9">
+                <div class="row" id="booking11">
+                    <div class="col-md-6 book1">
+                        <input type="hidden" name="id" value="<?php echo $last_id; ?>">
+                        <img class="thumb" src="images/<?php echo $rws['frontimage']; ?>" width="100%">
+                        <p class="spam">TotalFare: <span
+                                class="property_size"><?php echo htmlentities($tdays * $ppdays); ?></span>
+                        </p>
+
+                    </div>
+                    <div class="col-md-6 book2">
+
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+
+                        <p>Vehicle Name: <span class="property_size"><?php echo $rws['owner_vehicle_name']; ?></span>
+                        </p>
+                        <p>Vehicle RCNo: <span class="property_size"><?php echo $rws['owner_vehicle_RCno']; ?></span>
+                        </p>
+                        <p>Vehicle ChesisNo: <span
+                                class="property_size"><?php echo $rws['owner_vehicle_chesis_no']; ?></span>
+                        </p>
+                        <p> Vehicle Number: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
+                        </p>
+                        <p>Price Per Day: <span
+                                class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
+                        </p>
+                        <hr>
+                        <p>Pickup Place: <span class="property_size"><?php echo $rows['pickup']; ?></span></p>
+                        <p>DropOff Place: <span class="property_size"><?php echo $rows['dropoff']; ?></span></p>
+                        <p>TotalNo of Days: <span
+                                class="property_size"><?php echo htmlentities($tdays = $rows['TotalNoDays']); ?></span>
+                        </p>
+
                         <?php
-                        extract($_POST);
-                        $id = $_GET['id'];
-                        $sql = "SELECT * from tblbooking";
-                        $query = mysqli_query($conn, $sql);
-                        $rws = mysqli_fetch_assoc($query);
-                        $count = mysqli_num_rows($query);
-                        $cnt = 1;
-                        if ($count > 0) {
-                            while ($rws = mysqli_fetch_assoc($query)) {
                         ?>
-                        <div class="col-md-6">
-                            <div class="images p-3">
-                                <div class="text-center p-4"> <img id="main-image"
-                                        src="images/<?php echo $rws['frontimage']; ?>" width="250" /> </div>
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="product p-4">
-                                <input type="hidden" name="id" value=" <?php echo $rws['id']; ?>">
-                                <div class="mt-4 mb-3">
-                                    <h6> Vehicle name : <?php echo $rws['owner_vehicle_name']; ?>
-                                    </h6>
-                                    <h6>PriceperDay: <?php echo $rws['PricePerDay']; ?></h6>
-
-                                    <h6>SeatingCapacity :
-                                        <?php echo $rws['SeatingCapacity']; ?></h6>
-                                </div>
-
-
-                                <div class="cart mt-4 align-items-center">
-                                    <a href="book_now.php?id=<?php echo $rws['id'] ?>" class="btn btn-primary"
-                                        name="submit" type="submit">Book Now</a>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <?php }
-                        } ?>
                     </div>
                 </div>
             </div>
@@ -73,8 +71,8 @@ if (isset($_POST['submit'])) {
     </div>
 
     <?php
-    include("includes/footer.php");
-    include("includes/footerlink.php");
+    // include("includes/footer.php");
+    //include("includes/footerlink.php");
     ?>
 </body>
 
