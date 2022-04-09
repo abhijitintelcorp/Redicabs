@@ -218,7 +218,7 @@ if (isset($_POST['delayed'])) {
                                                         <input type="hidden" id="ownid" name="ownid" value="<?php echo $rows['OwnerName']; ?>" />
                                                         <td><select name="OwnerName" id="OwnerName" type="text" class="selectpicker">
 
-                                                                <option value="<?php echo $row['id']; ?>">
+                                                                <option value="<?php echo $row['OwnerName']; ?>">
                                                                     <?php echo $row['OwnerName']; ?></option>
                                                                 <?php
                                                                 $OwnerName = $_POST['OwnerName'];
@@ -229,7 +229,7 @@ if (isset($_POST['delayed'])) {
                                                                     $DriverName = $rows['DriverName'];
                                                                     $DriverMobile = $rows['DriverMobile'];
                                                                 ?>
-                                                                    <option owner_mobile="<?php echo $rows['owner_mobile']; ?>" DriverName="<?php echo $rows['DriverName']; ?>" DriverMobile="<?php echo $rows['DriverMobile']; ?>" value="<?php echo $rows['id']; ?>">
+                                                                    <option owner_mobile="<?php echo $rows['owner_mobile']; ?>" DriverName="<?php echo $rows['DriverName']; ?>" DriverMobile="<?php echo $rows['DriverMobile']; ?>" value="<?php echo $rows['OwnerName']; ?>">
                                                                         <?php echo $rows['OwnerName']; ?>
                                                                     </option>
                                                                 <?php }  ?>
