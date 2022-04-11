@@ -65,7 +65,7 @@ function dateDiff($fromDate, $toDate)
                                     </div>
                                     <div class="col-6 p-0">
                                         <label for="">Return Date</label>
-                                        <input type="DATE" class="form-control" placeholder="Pick-up Date" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate" required>
+                                        <input type="date" class="form-control" placeholder="Pick-up Date" style="margin-left:20px;" aria-label="Recipient's username" aria-describedby="basic-addon2" name="ToDate" id="ToDate" required>
                                     </div>
                                 </div>
 

@@ -956,7 +956,7 @@ margin-top:40px; */
   padding-bottom: 52px;
   padding-top: 20px;
   background-color: #fff;
-  margin-top: 100px;
+  margin-top: 25px;
 }
 .car-type {
   width: 188px;
@@ -3298,8 +3298,8 @@ fieldset {
   margin-top: 10px;
 }
 #hero2{
-  padding: 20px 0px;
-  margin-top: 150px;
+  margin-top: 30px;
+  margin-bottom:40px;
 }
 #booknow{
   margin-top: 40px;
