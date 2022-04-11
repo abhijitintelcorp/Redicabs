@@ -279,6 +279,22 @@ body,
   color: white;
   z-index: 9999;
 }
+.map-wapper-opacity1 {
+  float: left;
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 20px;
+  border-top: 6px solid #0e8fd5;
+  position: absolute;
+  background-image: url(../images/blader-bg.png);
+  background-position: center;
+  background-size: cover;
+  height: 12%;
+  /* position: absolute; */
+  color: white;
+  z-index: 9999;
+  margin-top:-30px;
+}
 
 .anytime-anywhere {
   position: absolute;
@@ -3378,4 +3394,34 @@ font-size: 20px;
 .profile_nav ul li.active a,
 .profile_nav ul li a:hover {
   color: #fa2837;
+}
+.mybooking2{
+  text-align: center;
+  font-size: 35px;
+  font-weight: 600;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:70px;
+}
+.mybooking{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+padding-top: 20px;
+}
+.mybooking img{
+  border-radius: 20px;
+  border: 3px solid #0e8fd5;
+
+}
+.payment{
+  padding: 8px 15px;
+  background-color: #0e8fd5;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+.mybooking .price{
+  color: red;
+  font-size: 20px;
 }

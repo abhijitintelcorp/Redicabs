@@ -7,7 +7,7 @@ $last_id = $_SESSION['last_id'];
 $query_run = "SELECT * FROM tblbooking WHERE id = '$last_id'";
 $query_run1 = mysqli_query($conn, $query_run);
 $rows = mysqli_fetch_array($query_run1);
-//$tdays = $rows['TotalNoDays'];
+$tdays = $rows['TotalNoDays'];
 
 if (isset($_POST['submit'])) {
     $bookingno = mt_rand(100000000, 999999999);
@@ -40,19 +40,23 @@ if (isset($_POST['submit'])) {
     $ModelYear = htmlspecialchars($_POST['ModelYear']);
     $EmailId = htmlspecialchars($_POST['EmailId']);
     $Password = htmlspecialchars($_POST['Password']);
+    $vehicle_quantity = 1;
     $update_qry = "UPDATE tblbooking SET UserName='$UserName',ContactNo ='$ContactNo',address='$address',City='$City',
     owner_id='$owner_id',owner_vehicle_name='$owner_vehicle_name', SubCategories='$owner_vehicle_brand',owner_vehicle_brand='$owner_vehicle_brand',owner_vehicle_chesis_no='$owner_vehicle_chesis_no',
     owner_vehicle_RCno='$owner_vehicle_RCno',owner_vehicle_no='$owner_vehicle_no',owner_email='$owner_email',owner_mobile='$owner_mobile',
-    OwnerName='$OwnerName',frontimage='$frontimage',backimage='$backimage',Owner_Aadhar_No='$Owner_Aadhar_No',BookingNumber='$bookingno',own_adhar_image='$own_adhar_image',
+    OwnerName='$OwnerName',frontimage='$frontimage',backimage='$backimage',Owner_Aadhar_No='$Owner_Aadhar_No',vehicle_quantity='$vehicle_quantity',BookingNumber='$bookingno',own_adhar_image='$own_adhar_image',
     DriverName='$DriverName',DriverMobile='$DriverMobile',Driver_DL_No='$Driver_DL_No',DLimage='$DLimage',Driver_Adhar_image='$Driver_Adhar_image',
-    PricePerDay='$PricePerDay',Total='$Total',ModelYear='$ModelYear',EmailId='$EmailId',Password='$Password',Status='$Status' WHERE id='$last_id'";
+    PricePerDay='$PricePerDay',Total='$Total',ModelYear='$ModelYear',EmailId='$EmailId', Password='$Password',Status='$Status' WHERE id='$last_id'";
 
     $query_run = mysqli_query($conn, $update_qry);
+
+    $upd = "UPDATE tblbooking SET Status ='6' WHERE id='$id'";
+    $res = mysqli_query($conn, $upd);
     // $last_id = mysqli_insert_id($conn);
     // $_SESSION['last_id'] = $last_id;
 
     if ($query_run) {
-        header("location:My_booking.php?id=$id ");
+        header("location:my_booking.php?id=$last_id");
     }
 }
 
@@ -99,6 +103,14 @@ if (isset($_POST['submit'])) {
                         <p> Vehicle Number: <span class="property_size"><?php echo $rws['owner_vehicle_no']; ?></span>
                         </p>
                         <p>Price Per Day: <span class="property_size"><?php echo htmlentities($ppdays = $rws['PricePerDay']); ?></span>
+                        </p>
+                        <?php if ($rws['Status'] == 6) {
+                            $msg = "<b style='color:red;'>Not Avilable</b>";
+                        } else {
+                            $msg = "<b style='color:Green;'>Avilable</b>";
+                        }
+                        ?>
+                        <p>Vehicle Availability: <span class="property_size"><?php echo $msg; ?></span>
                         </p>
                         <hr>
                         <p>Pickup Place: <span class="property_size"><?php echo $rows['pickup']; ?></span></p>
