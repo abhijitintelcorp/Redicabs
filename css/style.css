@@ -3354,3 +3354,28 @@ font-size: 20px;
       border: 1px solid #cccccc;
       border-radius: 4px;
 }
+.profile_nav {
+  border-right: 1px solid #c5c5c5;
+  padding: 20px;
+  text-align: right;
+}
+
+.profile_nav ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.profile_nav ul li {
+  list-style: none;
+}
+
+.profile_nav ul li a {
+  color: #555;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.profile_nav ul li.active a,
+.profile_nav ul li a:hover {
+  color: #fa2837;
+}

@@ -7,7 +7,7 @@ $last_id = $_SESSION['last_id'];
 $query_run = "SELECT * FROM tblbooking WHERE id = '$last_id'";
 $query_run1 = mysqli_query($conn, $query_run);
 $rows = mysqli_fetch_array($query_run1);
-$tdays = $rows['TotalNoDays'];
+//$tdays = $rows['TotalNoDays'];
 
 if (isset($_POST['submit'])) {
     $bookingno = mt_rand(100000000, 999999999);
