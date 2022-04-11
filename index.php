@@ -70,7 +70,7 @@ function dateDiff($fromDate, $toDate)
                                     </div>
                                     <div class="col-6 p-0">
                                         <label for="">Return Date</label>
-                                        <input type="DATE" class="form-control" placeholder="Pick-up Date"
+                                        <input type="date" class="form-control" placeholder="Pick-up Date"
                                             style="margin-left:20px;" aria-label="Recipient's username"
                                             aria-describedby="basic-addon2" name="ToDate" id="ToDate" required>
                                     </div>
@@ -829,8 +829,8 @@ $(function() {
 
     var minDate = year + '-' + month + '-' + day;
 
-    $('#fromdate').attr('min', minDate);
-    $('#todate').attr('min', minDate);
+    $('#FromDate').attr('min', minDate);
+    $('#ToDate').attr('min', minDate);
 });
 </script>
 
@@ -955,6 +955,26 @@ $(document).ready(function() {
         submitHandler: function(form) {
             form.submit();
         },
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+    $('#FromDate').datepicker({
+        onSelect: function(dateText, inst) {
+            //Get today's date at midnight
+            var today = new Date();;
+            today = Date.parse(today.getMonth() + 1 + '/' + today.getDate() + '/' + today
+                .getFullYear());
+            //Get the selected date (also at midnight)
+            var selDate = Date.parse(dateText);
+
+            if (selDate < today) {
+                //If the selected date was before today, continue to show the datepicker
+                $('#FromDate').val('');
+                $(inst).datepicker('show');
+            }
+        }
     });
 });
 </script>
@@ -1108,25 +1128,4 @@ $('.btn').click(function() {
     var target = '#' + $(this).data('target');
     $(target).show();
 })
-</script>
-
-<script>
-$(document).ready(function() {
-    $('#FromDate').datepicker({
-        onSelect: function(dateText, inst) {
-            //Get today's date at midnight
-            var today = new Date();;
-            today = Date.parse(today.getMonth() + 1 + '/' + today.getDate() + '/' + today
-                .getFullYear());
-            //Get the selected date (also at midnight)
-            var selDate = Date.parse(dateText);
-
-            if (selDate < today) {
-                //If the selected date was before today, continue to show the datepicker
-                $('#FromDate').val('');
-                $(inst).datepicker('show');
-            }
-        }
-    });
-});
 </script>

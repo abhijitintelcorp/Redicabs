@@ -6,7 +6,7 @@ $last_id = $_SESSION['last_id'];
 $sql = "SELECT * from tblbooking where id='$last_id'";
 $query = mysqli_query($conn, $sql);
 $results = mysqli_fetch_assoc($query);
-//$id = $_SESSION['last_id'];
+$id = $_SESSION['last_id'];
 if (isset($_POST['submit'])) {
 
     $UserName = htmlspecialchars($_POST['UserName']);
@@ -18,8 +18,8 @@ if (isset($_POST['submit'])) {
     $update_qry = "UPDATE 'tblbooking' SET UserName='$UserName',ContactNo ='$ContactNo',address='$address',City='$City',
     EmailId='$EmailId',Password='$Password' WHERE id='$last_id'";
     $query_run = mysqli_query($conn, $update_qry);
-    $last_id = mysqli_insert_id($conn);
-    $_SESSION['last_id'] = $last_id;
+    // $last_id = mysqli_insert_id($conn);
+    //$_SESSION['last_id'] = $last_id;
 
     if ($query_run) {
         //echo "profile updated succesfully";
