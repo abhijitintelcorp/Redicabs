@@ -10,7 +10,8 @@
                             </div>
                             <div class="menu-item">
                                 <ul>
-                                    <li><a href="page26.html"> <span>Are A Leader In Tech-Enabled Digital Marketing Solutions</span> </a></li>
+                                    <li><a href="page26.html"> <span>Are A Leader In Tech-Enabled Digital Marketing
+                                                Solutions</span> </a></li>
 
                                 </ul>
                             </div>
@@ -51,8 +52,9 @@
                                 <ul>
                                     <li><a href="#">CHP 41, Phase-1, Kanan Vihar, Patia
                                             Bhubaneswar India – 751031</a></li>
-                                    <li></i><a>paul@intelcorpsolutions.com</a></li>
-                                    <li><a>+91-9776000769</a> </li>
+                                    <li></i><a href="mailto:paul@intelcorpsolutions.com">paul@intelcorpsolutions.com
+                                        </a></li>
+                                    <li> <a href="tel:9776000769">9776000769</a></li>
 
                                 </ul>
                             </div>

@@ -47,18 +47,11 @@
         <div class="row">
 
             <div class="col-sm-4">
-                <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
-            <select class="selectpicker" data-live-search="false">
-              <option>English</option>
-              <option>Bangla</option>
-              <option>Hindi</option>
-            </select>
-          </div> -->
 
                 <div class="call-us">
-                    <span class="img-circle"><i class="fa fa-phone"></i></span>
+                    <span class="img-circle" style="width: 28px; height: 28px;"><i class="fa fa-phone"></i></span>
                     <b>
-                        <p style="font-size: 16px;">Call Us Now - 9776000769 </p>
+                        <p style="font-size: 20px;"> <a href="tel:9776000769">Call Us Now - 9776000769</a></p>
                     </b>
                 </div>
 
