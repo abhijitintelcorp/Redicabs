@@ -3422,3 +3422,14 @@ padding-top: 20px;
   color: red;
   font-size: 20px;
 }
+.pull-right {
+    float: right !important;
+    margin-left: 48%;
+}
+@media only screen and (max-width: 720px) {
+  .pull-right {
+    float: right !important;
+    margin-left: 48%;
+    margin-top:24%;
+}
+}
