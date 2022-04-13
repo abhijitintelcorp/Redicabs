@@ -250,7 +250,6 @@ function dateDiff($fromDate, $toDate)
         </div>
     </div>
     <!-- label white html exit -->
-
     <!-- label yellow html start -->
     <div class="yellow-label-wrapper2" style="background-color: #1799df;">
         <div class="label-yellow stellar" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="">
