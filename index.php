@@ -46,13 +46,12 @@ function dateDiff($fromDate, $toDate)
     <div class="booking-form-wrapper">
         <div class="container">
             <div class="row">
-
                 <div class="col-md-6">
-                    <div class="form-box">
-                        <div class="butn" style="margin-top:-30px;margin-left:100px;">RENTAL</div>
+                    <div class="form-box row">
+                        <div class="butn col-12" style="margin-top:-30px;margin-left:100px;">RENTAL</div>
                         <fieldset style="height: 560px;">
 
-                            <form id="booking" action="Search_car.php" method="post" name="booking">
+                            <form class="text-center" id="booking" action="Search_car.php" method="post" name="booking">
                                 <label for="">Picking Up Location</label>
                                 <input type="text" class="form-control" placeholder=" From (Area,Street,Landmark)"
                                     aria-label="Username" aria-describedby="basic-addon1" name="pickup" id="pickup"
@@ -115,10 +114,11 @@ function dateDiff($fromDate, $toDate)
                                         Now</button></center>
 
 
+                            </form>
+
                         </fieldset>
                     </div>
                 </div>
-                </form>
 
                 <div class="col-md-6 text-center header-text">
                     <h2 style="color:white;">
