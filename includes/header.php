@@ -79,13 +79,13 @@
 
                     <div class="pull-right">
                         <!-- <a href="#">Login</a> -->
-                        <button class="dropbtn" onclick="document.getElementById('id01').style.display='block'" style="background-color: #1799df;">Login</button>
+                        <button class="dropbtn pull-right" onclick="document.getElementById('id01').style.display='block'" style="background-color: #1799df;">Login</button>
                         <?php
                         include("login.php");
                         ?>
 
                         <!-- <a href="#">Register</a> -->
-                        <button class="dropbtn" onclick="document.getElementById('id02').style.display='block'" style="background-color: #1799df;">Register</button>
+                        <!-- <button class="dropbtn" onclick="document.getElementById('id02').style.display='block'" style="background-color: #1799df;"></button> -->
                         <?php
                         include("register.php");
                         ?>
@@ -108,7 +108,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="Hero">
-
 </div>
