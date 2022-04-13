@@ -35,9 +35,7 @@
                             </div>
                             <div class="menu-item">
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">FAQs</a></li>
-                                    <li><a href="#">Admin Login</a></li>
+                                    <li><a href="<?php echo $_SERVER['REQUEST_URI'] . 'admin/login.php'; ?>">Admin Login</a></li>
                                     <li class="menu-header menu-item3">
 
                                 </ul>

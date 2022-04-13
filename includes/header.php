@@ -26,9 +26,9 @@
 
 
     <script>
-    $(document).ready(function() {
-        $("#selectState").modal('show');
-    });
+        $(document).ready(function() {
+            $("#selectState").modal('show');
+        });
     </script>
 
     <!-- <script>
@@ -56,9 +56,9 @@
           </div> -->
 
                 <div class="call-us">
-                    <span class="img-circle"><i class="fa fa-phone"></i></span>
+                    <span class="img-circle" style="width: 28px; height: 28px;"><i class="fa fa-phone"></i></span>
                     <b>
-                        <p style="font-size: 16px;">Call Us Now - 9776000769 </p>
+                        <p style="font-size: 20px;"> <a href="tel:9776000769">Call Us Now - 9776000769</a></p>
                     </b>
                 </div>
 
@@ -79,15 +79,13 @@
 
                     <div class="pull-right">
                         <!-- <a href="#">Login</a> -->
-                        <button class="dropbtn" onclick="document.getElementById('id01').style.display='block'"
-                            style="background-color: #1799df;">Login</button>
+                        <button class="dropbtn" onclick="document.getElementById('id01').style.display='block'" style="background-color: #1799df;">Login</button>
                         <?php
                         include("login.php");
                         ?>
 
                         <!-- <a href="#">Register</a> -->
-                        <button class="dropbtn" onclick="document.getElementById('id02').style.display='block'"
-                            style="background-color: #1799df;">Register</button>
+                        <button class="dropbtn" onclick="document.getElementById('id02').style.display='block'" style="background-color: #1799df;">Register</button>
                         <?php
                         include("register.php");
                         ?>
