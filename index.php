@@ -35,12 +35,13 @@ function dateDiff($fromDate, $toDate)
 <body>
 
     <?php
-    //include("includes/register.php");
+
     include("show_cars.php");
     // }
     ?>
     <?php
     include("includes/header.php");
+    //include("includes/register.php");
     ?>
     <!-- Booking now form wrapper html start -->
     <div class="booking-form-wrapper">
