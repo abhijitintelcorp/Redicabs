@@ -19,11 +19,11 @@ include("includes/connection.php");
 
                 $sql = "SELECT * from tblbooking  where Categories='Car' and Status=3 ";
                 $query = mysqli_query($conn, $sql);
-                $results = mysqli_fetch_assoc($query);
-                $count = mysqli_num_rows($query);
-                $cnt = 1;
-                if ($count > 0) {
-                    while ($results = mysqli_fetch_assoc($query)) {
+                //$results = mysqli_fetch_assoc($query);
+                //$count = mysqli_num_rows($query);
+                // $cnt = 1;
+                //if ($count > 0) {
+                while ($results = mysqli_fetch_assoc($query)) {
 
 
                 ?>
@@ -47,26 +47,25 @@ include("includes/connection.php");
                         </div>
 
                         <div class="cart mt-4 align-items-center">
-                            <a href="book_now.php?id=<?php echo $results['id'] ?>" class="btn btn-primary" name="submit"
-                                type="submit">Book Now</a>
+                            <a href="index.php" class="btn btn-primary" name="submit" type="submit">Book Now</a>
 
                         </div>
 
                     </div>
                 </div>
                 <?php
-                    }
                 }
+                //}
                 ?>
 
 
             </div>
         </div><br><br><br>
-
-        <?php
-        include("includes/footer.php");
-        include("includes/footerlink.php");
-        ?>
+    </div>
+    <?php
+    include("includes/footer.php");
+    include("includes/footerlink.php");
+    ?>
 </body>
 
 </html>

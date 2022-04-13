@@ -1,8 +1,6 @@
 <?php
 session_start();
-
 include("includes/connection.php");
-
 ?>
 <?php
 //include("includes/header.php");
@@ -12,9 +10,6 @@ $_SESSION['id'] = $id;
 <!doctype html>
 <html lang="en">
 <?php
-
-include("includes/header.php");
-
 include("includes/login_header.php");
 ?>
 <style>

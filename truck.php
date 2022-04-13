@@ -7,66 +7,61 @@ include("includes/connection.php");
 <html lang="en">
 
 
-<body>
+<body class="hold-transition sidebar-mini">
     <?php
-    //include("includes/header.php");
+    include("includes/header.php");
     ?>
 
-    <section class="section-padding gray-bg" style="padding-top: 50px;">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Find the Best <span><b>Truck For You</b></span></h2>
-                <p></p>
-            </div>
-            <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6" style="margin-bottom: 14px;margin-top: 5%;">
+                <?php
 
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="resentnewcar">
+                $sql = "SELECT * from tblbooking  where Categories='Truck' and Status = 3 ";
+                $query = mysqli_query($conn, $sql);
+                //$results = mysqli_fetch_assoc($query);
+                //$count = mysqli_num_rows($query);
+                //$cnt = 1;
+                //if ($count > 0) {
+                while ($results = mysqli_fetch_assoc($query)) {
+                ?>
+                <div class="row" style="margin-bottom: 14px;margin-top: 22px; border:1px solid #0d4555;">
+                    <div class="col-lg-6">
+                        <div class="text-center"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%"
+                                height="80%" style="margin-top:30px;" /> </div>
+                    </div>
+                    <div class="col-lg-6 product">
+                        <div class="mt-4 mb-3">
+                            <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                            </h3>
 
-                        <?php $sql = "SELECT * from tblbooking  where Categories = 'Truck'";
-                        $query = mysqli_query($conn, $sql);
-                        $results = mysqli_fetch_assoc($query);
-                        $count = mysqli_num_rows($query);
-                        $cnt = 1;
-                        if ($count > 0) {
-                            while ($results = mysqli_fetch_assoc($query)) {
-                        ?>
-                        <div class="col-list-3">
-                            <div class="recent-car-list">
-                                <div class="car-info-box">
-                                    <img src="images/<?php echo $results['frontimage']; ?>" class="img-responsive"
-                                        alt="image" width="400px" height="400px">
-                                    <ul>
-                                        <li><i class="fa fa-car"
-                                                aria-hidden="true"></i><?php echo $results['owner_vehicle_name']; ?>
-                                        </li>
-                                        <li><i class="fa fa-calendar"
-                                                aria-hidden="true"></i><?php echo $results['ModelYear']; ?>
-                                            Model</li>
-                                        <li><i class="fa fa-user"
-                                                aria-hidden="true"></i><?php echo $results['SeatingCapacity']; ?>
-                                            seats</li>
-                                        <li><i class="fa fa-user"
-                                                aria-hidden="true"></i><?php echo $results['PricePerDay']; ?>
-                                            /Day</li>
-                                    </ul>
-                                </div>
-                                <div class="car-title-m">
-                                    <h6><a href="book_now.php?id=<?php echo $results['id']; ?>">
-                                            <?php echo $results['owner_vehicle_name']; ?></a></h6>
+                            <h6>Vehicle Type: <?php echo $results['Categories']; ?></h6>
+                            <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
+                            <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
+                            <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
 
-                                </div>
-
-                            </div>
                         </div>
-                        <?php }
-                        } ?>
+
+                        <div class="cart mt-4 align-items-center">
+                            <a href="index.php" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+
+                        </div>
 
                     </div>
                 </div>
+                <?php
+                }
+                // }
+                ?>
+
+
             </div>
-        </div>
-    </section>
+        </div><br><br><br>
+    </div>
+    <?php
+    include("includes/footer.php");
+    include("includes/footerlink.php");
+    ?>
 </body>
 
 </html>
