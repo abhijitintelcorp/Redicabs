@@ -260,10 +260,8 @@ body,
   height: 650px;
   /* position: absolute; */
   color: white;
-  z-index: 9999;
-  top: 20%;
+  top: 80%;
 }
-
 .map-wapper-opacity {
   float: left;
   width: 100%;
@@ -277,7 +275,6 @@ body,
   height: 12%;
   /* position: absolute; */
   color: white;
-  z-index: 9999;
 }
 .map-wapper-opacity1 {
   float: left;
@@ -3181,10 +3178,10 @@ label.control-label span {
 }
 
 .form-box {
-  width: 450px;
+  width: 385px;
   height: 100%;
   background-color: #0d4555;
-  margin-left: -100px;
+  margin-left: -88px;
   position: relative;
   margin-top: 50px;
 }
@@ -3247,7 +3244,7 @@ label {
   margin-top: -200px;
 }
 .form-control {
-  width: 400px !important;
+  width: 350px !important;
 }
 .form-control1{
 width: 100%;
