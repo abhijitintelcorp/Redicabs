@@ -18,7 +18,7 @@
                             </div>
                             <div class="menu-item">
                                 <ul>
-                                    <li><a href="<?php echo $_SERVER['REQUEST_URI'] . 'admin/login.php'; ?>">Admin Login</a></li>
+                                    <li><a href="<?php echo $_SERVER['REQUEST_URI'] . '/admin/login.php'; ?>">Admin Login</a></li>
 
                                 </ul>
                             </div>
