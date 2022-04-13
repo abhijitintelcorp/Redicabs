@@ -4,7 +4,7 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="menu-wrap">
-                        <div class="menu-col">
+                        <div class="menu-col2">
                             <div class="menu-header">
                                 <p>About </p>
                             </div>
@@ -12,6 +12,15 @@
                                 <ul>
                                     <li><a href="page26.html"> <span>Are A Leader In Tech-Enabled Digital Marketing
                                                 Solutions</span> </a></li>
+                                </ul>
+                            </div><br><br>
+                            <div class="menu-header">
+                                <p>Links</p>
+                            </div>
+                            <div class="menu-item">
+                                <ul>
+                                    <li><a href="<?php echo $_SERVER['REQUEST_URI'] . 'admin/login.php'; ?>">Admin
+                                            Login</a></li>
 
                                 </ul>
                             </div>
@@ -31,16 +40,7 @@
                             </div>
                         </div> -->
                         <div class="menu-col2">
-                            <div class="menu-header">
-                                <p>Links</p>
-                            </div>
-                            <div class="menu-item">
-                                <ul>
-                                    <li><a href="/Redicabs/admin">Admin Login</a></li>
-                                    <li class="menu-header menu-item3">
 
-                                </ul>
-                            </div>
                         </div>
                         <div class="menu-col2 responsive-frame642">
                             <div class="menu-header">
