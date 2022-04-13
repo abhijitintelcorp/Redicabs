@@ -3432,4 +3432,11 @@ padding-top: 20px;
     margin-left: 48%;
     margin-top:24%;
 }
+.call-us {
+    float: left;
+    width: 70%;
+    font-size: 12px;
+    color: #2c3e50;
+    margin-left: 100px;
+}
 }
