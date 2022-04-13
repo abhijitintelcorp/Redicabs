@@ -7,62 +7,65 @@ include("includes/connection.php");
 <html lang="en">
 
 
-<body>
+<body class="hold-transition sidebar-mini">
     <?php
     include("includes/header.php");
     ?>
 
-    <div class="container mt-5 mb-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-                <div class="card" style="margin-right: 250px;">
-                    <div class="row">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6" style="margin-bottom: 14px;margin-top: 5%;">
+                <?php
 
-                        <?php $sql = "SELECT * from tblbooking  where Categories LIKE '%Car'";
-                        $query = mysqli_query($conn, $sql);
-                        $results = mysqli_fetch_assoc($query);
-                        $count = mysqli_num_rows($query);
-                        $cnt = 1;
-                        if ($count > 0) {
-                            while ($results = mysqli_fetch_assoc($query)) {
-                        ?>
-                        <div class="col-md-6">
-                            <div class="images p-3">
-                                <div class="text-center p-4"> <img id="main-image"
-                                        src="images/<?php echo $results['frontimage']; ?>" width="350" /> </div>
+                $sql = "SELECT * from tblbooking  where Categories='Car' and Status=3 ";
+                $query = mysqli_query($conn, $sql);
+                //$results = mysqli_fetch_assoc($query);
+                //$count = mysqli_num_rows($query);
+                // $cnt = 1;
+                //if ($count > 0) {
+                while ($results = mysqli_fetch_assoc($query)) {
 
-                            </div>
+
+                ?>
+                <div class="row" style="margin-bottom: 14px;margin-top: 22px; border:1px solid #0d4555;">
+                    <div class="col-lg-6">
+                        <div class="text-center"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%"
+                                height="80%" style="margin-top:30px;" /> </div>
+                    </div>
+                    <div class="col-lg-6 product">
+
+                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
+                        <div class="mt-4 mb-3">
+                            <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                            </h3>
+
+                            <h6>Vehicle Type: <?php echo $results['Categories']; ?></h6>
+                            <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
+                            <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
+                            <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
+
                         </div>
-                        <div class="col-md-6" id="divMsg">
-                            <div class="product p-4">
-                                <div class="mt-4 mb-3">
-                                    <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
-                                    </h6>
-                                    <h6>PriceperDay: <?php echo $results['PricePerDay']; ?></h6>
 
-                                    <h6>SeatingCapacity :
-                                        <?php echo $results['SeatingCapacity']; ?></h6>
-                                    <h6>ModelYear :
-                                        <?php echo $results['ModelYear']; ?></h6>
-                                </div>
-                            </div>
-                            <div class="cart mt-4 align-items-center">
-                                <a href="book_now.php?id=<?php echo $$results['id'] ?>" class="btn btn-primary"
-                                    name="submit" type="submit"> <?php echo $results['owner_vehicle_name']; ?>Book
-                                    Now</a>
-
-                            </div>
+                        <div class="cart mt-4 align-items-center">
+                            <a href="index.php" class="btn btn-primary" name="submit" type="submit">Book Now</a>
 
                         </div>
 
                     </div>
-                    <?php }
-                        } ?>
                 </div>
-            </div>
-        </div>
-    </div>
+                <?php
+                }
+                //}
+                ?>
 
+
+            </div>
+        </div><br><br><br>
+    </div>
+    <?php
+    include("includes/footer.php");
+    include("includes/footerlink.php");
+    ?>
 </body>
 
 </html>

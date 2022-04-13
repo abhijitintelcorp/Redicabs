@@ -14,7 +14,9 @@
     <link href="fonts/css/font-awesome.css" rel="stylesheet">
     <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/w3.css">
-
+    <script src="/path/to/cdn/jquery.min.js"></script>
+    <link rel="stylesheet" href="venom-button.min.css" />
+    <script src="venom-button.min.js"></script>
 
 
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
@@ -47,13 +49,6 @@
         <div class="row">
 
             <div class="col-sm-4">
-                <!--           <div class="language-opt custom-select-box custom-select-box2 tec-domain-cat7" id="translateElements">
-            <select class="selectpicker" data-live-search="false">
-              <option>English</option>
-              <option>Bangla</option>
-              <option>Hindi</option>
-            </select>
-          </div> -->
 
                 <div class="call-us">
                     <span class="img-circle" style="width: 28px; height: 28px;"><i class="fa fa-phone"></i></span>

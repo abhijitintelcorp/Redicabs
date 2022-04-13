@@ -13,33 +13,33 @@ $_SESSION['id'] = $id;
 include("includes/login_header.php");
 ?>
 <style>
-    .profile_nav {
-        border-right: 1px solid #c5c5c5;
-        padding: 20px;
-        text-align: center;
-        background-color: #0e8fd5;
-        color: #ffffff;
-    }
+.profile_nav {
+    border-right: 1px solid #c5c5c5;
+    padding: 20px;
+    text-align: center;
+    background-color: #0e8fd5;
+    color: #ffffff;
+}
 
-    .profile_nav ul {
-        padding: 0px;
-        margin: 0px;
-    }
+.profile_nav ul {
+    padding: 0px;
+    margin: 0px;
+}
 
-    .profile_nav ul li {
-        list-style: none;
-    }
+.profile_nav ul li {
+    list-style: none;
+}
 
-    .profile_nav ul li a {
-        color: #ffffff;
-        font-size: 15px;
-        font-weight: 900;
-    }
+.profile_nav ul li a {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 900;
+}
 
-    .profile_nav ul li.active a,
-    .profile_nav ul li a:hover {
-        color: #fa2837;
-    }
+.profile_nav ul li.active a,
+.profile_nav ul li a:hover {
+    color: #fa2837;
+}
 </style>
 
 <body class="hold-transition sidebar-mini">
@@ -70,33 +70,37 @@ include("includes/login_header.php");
                 while ($results = mysqli_fetch_assoc($query)) {
                 ?>
 
-                    <div>
+                <div>
 
-                        <div class="col-md-6 book1">
+                    <div class="col-md-6 book1">
 
-                            <img class="thumb" src="images/<?php echo $results['frontimage']; ?>" width="100%">
+                        <img class="thumb" src="images/<?php echo $results['frontimage']; ?>" width="100%">
 
-                        </div>
-                        <div class="col-md-6 book2">
+                    </div>
+                    <div class="col-md-6 book2">
 
-                            <input type="hidden" name="id" value="<?php echo $last_id; ?>">
-                            <p>
-                            <h3 style="color:red;">Welcome, <?php echo $results['UserName']; ?></h3>
-                            </p>
-                            <h5 class="uppercase underline">Booking Number :
-                                <span style="color:red;"># <?php echo $results['BookingNumber']; ?></span>
-                            </h5>
-                            <p>Vehicle Name: <span class="property_size"><?php echo $results['owner_vehicle_name']; ?></span>
-                            </p>
+                        <input type="hidden" name="id" value="<?php echo $last_id; ?>">
+                        <p>
+                        <h3 style="color:red;">Welcome, <?php echo $results['UserName']; ?></h3>
+                        </p>
+                        <h5 class="uppercase underline">Booking Number :
+                            <span style="color:red;"># <?php echo $results['BookingNumber']; ?></span>
+                        </h5>
+                        <p>Vehicle Name: <span
+                                class="property_size"><?php echo $results['owner_vehicle_name']; ?></span>
+                        </p>
 
-                            <p> Vehicle Number: <span class="property_size"><?php echo $results['owner_vehicle_no']; ?></span>
-                            </p>
+                        <p> Vehicle Number: <span
+                                class="property_size"><?php echo $results['owner_vehicle_no']; ?></span>
+                        </p>
 
-                            <p>Pickup Place: <span class="property_size"><?php echo "<b>" . $results['pickup'] . "</b>"; ?></span>
-                            </p>
-                            <p>DropOff Place: <span class="property_size"><?php echo "<b>" . $results['dropoff'] . "</b>"; ?></b></span>
-                            </p>
-                            <?php
+                        <p>Pickup Place: <span
+                                class="property_size"><?php echo "<b>" . $results['pickup'] . "</b>"; ?></span>
+                        </p>
+                        <p>DropOff Place: <span
+                                class="property_size"><?php echo "<b>" . $results['dropoff'] . "</b>"; ?></b></span>
+                        </p>
+                        <?php
                             if ($results['Status'] == 0) {
                                 $msg = "<b style='color:red;'>Not Confirmed</b>";
                             } else if ($results['Status'] == 1) {
@@ -109,13 +113,14 @@ include("includes/login_header.php");
                                 $msg = "<b style='color:red;'>Journey Completed</b>";
                             }
                             ?>
-                            <p>Status: <span class="property_size"><?php echo $msg; ?></b></span>
-                            </p>
-                            <p class="price">Total Payment: <i class="fa fa-inr" style="font-size:18px"></i> <span class="property_size"><?php echo $results['Total']; ?></span>
-                            </p>
-                            <button class="payment">Make Payment</button>
-                        </div>
+                        <p>Status: <span class="property_size"><?php echo $msg; ?></b></span>
+                        </p>
+                        <p class="price">Total Payment: <i class="fa fa-inr" style="font-size:18px"></i> <span
+                                class="property_size"><?php echo $results['Total']; ?></span>
+                        </p>
+                        <button class="payment">Make Payment</button>
                     </div>
+                </div>
                 <?php }  ?>
             </div>
 
@@ -154,62 +159,62 @@ include("includes/login_header.php");
 
 </html>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#booking").validate({
-            rules: {
-                UserName: {
-                    required: true,
-                    minlength: 3,
-                },
-                ContactNo: {
-                    required: true,
-                    minlength: 10,
-                },
-                EmailId: {
-                    required: true,
-                    email: true,
-                },
-                Password: {
-                    required: true,
-                    minlength: 8,
-                },
-                address: {
-                    required: true,
+$(document).ready(function() {
+    $("#booking").validate({
+        rules: {
+            UserName: {
+                required: true,
+                minlength: 3,
+            },
+            ContactNo: {
+                required: true,
+                minlength: 10,
+            },
+            EmailId: {
+                required: true,
+                email: true,
+            },
+            Password: {
+                required: true,
+                minlength: 8,
+            },
+            address: {
+                required: true,
 
-                },
-                City: {
-                    required: true,
+            },
+            City: {
+                required: true,
 
-                },
             },
-            messages: {
-                UserName: {
-                    required: "<b style='color:red'>Please enter your Full Name</b>",
-                    minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-                },
-                EmailId: {
-                    required: "<b style='color:red'>Please enter Email Id</b>",
-                    email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
-                },
-                ContactNo: {
-                    required: "<b style='color:red'>Please enter your Mobile Number</b>",
-                    number: "<b style='color:red'>Please Enter numerical values Only</b>",
-                },
-                Password: {
-                    required: "<b style='color:red'>Please enter your Password</b>",
-                    minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
-                },
-                address: {
-                    required: "<b style='color:red'>Please enter your address</b>",
-                    //minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
-                },
-                City: {
-                    required: "<b style='color:red'>Please enter your city</b>",
-                }
+        },
+        messages: {
+            UserName: {
+                required: "<b style='color:red'>Please enter your Full Name</b>",
+                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
             },
-            submitHandler: function(form) {
-                form.submit();
+            EmailId: {
+                required: "<b style='color:red'>Please enter Email Id</b>",
+                email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
             },
-        });
+            ContactNo: {
+                required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                number: "<b style='color:red'>Please Enter numerical values Only</b>",
+            },
+            Password: {
+                required: "<b style='color:red'>Please enter your Password</b>",
+                minlength: "<b style='color:red'>Password should be at least 8 characters</b>",
+            },
+            address: {
+                required: "<b style='color:red'>Please enter your address</b>",
+                //minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+            },
+            City: {
+                required: "<b style='color:red'>Please enter your city</b>",
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        },
     });
+});
 </script>
