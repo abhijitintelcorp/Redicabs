@@ -19,7 +19,8 @@
                             </div>
                             <div class="menu-item">
                                 <ul>
-                                    <li><a href="<?php echo $_SERVER['REQUEST_URI'] . 'admin/login.php'; ?>">Admin
+                                    <li><a
+                                            href="http://localhost/Redicabss/Redicabs%2018-2-22/Redicabs/admin/login.php'; ?>">Admin
                                             Login</a></li>
 
                                 </ul>
