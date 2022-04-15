@@ -261,241 +261,258 @@ function dateDiff($fromDate, $toDate)
                         <h4>Look at the wonderful places</h4>
                     </div>
                     <div class="slider places-slider">
+                        <div class="row">
+                            <div class="slider-item">
+                                <div id="slider1" class="slider-img" style="background-image:url('images/slider/DB.png'); background-size:auto;background-repeat:no-repeat;margin: 40px 40px;">
 
-                        <div class="slider-item">
-                            <div id="slider1" class="slider-img" style="background-image:url('images/slider/DB.png'); background-size:auto;background-repeat:no-repeat;margin: 30px 40px;">
-
-                            </div>
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider1text">
-                                        <h4>Daring Badi</h4>
+                                </div>
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider1text">
+                                            <h4>Daring Badi</h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-text">
+                                    <div class="slider-text1">
+                                        <h4 id="slider11">Daring Badi</h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="slider-text">
-                                <div class="slider-text1">
-                                    <h4 id="slider11">Daring Badi</h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-item ">
-                            <div id="slider2" class="slider-img" style="background-image:url('images/slider/Visakhapatnam.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
+                        <div class="row">
+                            <div class="slider-item ">
+                                <div id="slider2" class="slider-img" style="background-image:url('images/slider/Visakhapatnam.png'); background-size:auto;background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
 
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider2text">
-                                        <h4>Visakhapatnam</h4>
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider2text">
+                                            <h4>Visakhapatnam</h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="slider-text">
+                                    <div class="slider-text1">
+                                        <h4 id="slider12">Visakhapatnam</h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
                                 </div>
-                            </div>
 
-
-                            <div class="slider-text">
-                                <div class="slider-text1">
-                                    <h4 id="slider12">Visakhapatnam</h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="slider-item homepage-sllider-m">
-                            <div id="slider3" class="slider-img" style="background-image:url('images/slider/Kurnool.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider3text">
-                                        <h4>Kurnool</h4>
-                                        <p>Save upto 50%</p>
-                                    </div>
-                                    <div class="slider-hover-content3">
-                                        <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-text">
-                                <div class="slider-text1">
-                                    <h4 id="slider13">Kurnool</h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
-                                </div>
                             </div>
                         </div>
-                        <div class="slider-item ">
-                            <div id="slider4" class="slider-img" style="background-image:url('images/slider/Amaravathi.png'); background-size:auto; background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider4text">
-                                        <h4>Amaravathi </h4>
+                        <div class="row">
+                            <div class="slider-item homepage-sllider-m">
+                                <div id="slider3" class="slider-img" style="background-image:url('images/slider/Kurnool.png'); background-size:auto;background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
+
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider3text">
+                                            <h4>Kurnool</h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-text">
+                                    <div class="slider-text1">
+                                        <h4 id="slider13">Kurnool</h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="slider-text">
-                                <div class="slider-text1">
-                                    <h4 id="slider14">Amaravathi </h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-item">
-                            <div id="slider5" class="slider-img" style="background-image:url('images/slider/NK.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider5text">
-                                        <h4>Nandan Kanan</h4>
+                        <div class="row">
+                            <div class="slider-item ">
+                                <div id="slider4" class="slider-img" style="background-image:url('images/slider/Amaravathi.png'); background-size:auto; background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider4text">
+                                            <h4>Amaravathi </h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slider-text">
+                                    <div class="slider-text1">
+                                        <h4 id="slider14">Amaravathi </h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="slider-text">
-                                <div class="slider-text1" id="slider5text">
-                                    <h4 id="slider15">Nandan Kanan</h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-item homepage-sllider-m">
-                            <div id="slider6" class="slider-img" style="background-image:url('images/slider/Puri.png'); background-size:auto; background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider6text">
-                                        <h4>Puri</h4>
+                        <div class="row">
+                            <div class="slider-item">
+                                <div id="slider5" class="slider-img" style="background-image:url('images/slider/NK.png'); background-size:auto;background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider5text">
+                                            <h4>Nandan Kanan</h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-text">
+                                    <div class="slider-text1" id="slider5text">
+                                        <h4 id="slider15">Nandan Kanan</h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="slider-text">
-                                <div class="slider-text1" id="slider6text">
-                                    <h4 id="slider16">Puri</h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-item ">
-                            <div id="slider7" class="slider-img" style="background-image:url('images/slider/Sambalpur.png'); background-size:auto; background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider7text">
-                                        <h4>Sambalpur </h4>
+                        <div class="row">
+                            <div class="slider-item homepage-sllider-m">
+                                <div id="slider6" class="slider-img" style="background-image:url('images/slider/Puri.png'); background-size:auto; background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
+
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider6text">
+                                            <h4>Puri</h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-text">
+                                    <div class="slider-text1" id="slider6text">
+                                        <h4 id="slider16">Puri</h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="slider-text">
-                                <div class="slider-text1" id="slider7text">
-                                    <h4 id="slider17">Sambalpur </h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-item ">
-                            <div id="slider8" class="slider-img" style="background-image:url('images/slider/Vijayawada.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider8text">
-                                        <h4>Vijayawada </h4>
+                        <div class="row">
+                            <div class="slider-item ">
+                                <div id="slider7" class="slider-img" style="background-image:url('images/slider/Sambalpur.png'); background-size:auto; background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider7text">
+                                            <h4>Sambalpur </h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-text">
+                                    <div class="slider-text1" id="slider7text">
+                                        <h4 id="slider17">Sambalpur </h4>
                                         <p>Save upto 50%</p>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="slider-text">
-                                <div class="slider-text1">
-                                    <h4 id="slider18">Vijayawada </h4>
-                                    <p>Save upto 50%</p>
-                                </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
-                                </div>
-                            </div>
-
                         </div>
-                        <div class="slider-item homepage-sllider-m">
-                            <div id="slider9" class="slider-img" style="background-image:url('images/slider/Tirupati.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
-                            </div>
-                            <div class="slider-text-hover">
-                                <div class="slider-hover-content"></div>
-                                <div class="Orange">
-                                    <div class="slider-hover-content2" id="slider9text">
-                                        <h4>Tirupati</h4>
-                                        <p>hgghhf upto 50%</p>
+                        <div class="row">
+                            <div class="slider-item ">
+                                <div id="slider8" class="slider-img" style="background-image:url('images/slider/Vijayawada.png'); background-size:auto;background-repeat:no-repeat; margin: 40px 40px;">
+                                </div>
+
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider8text">
+                                            <h4>Vijayawada </h4>
+                                            <p>Save upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
                                     </div>
-                                    <div class="slider-hover-content3">
+                                </div>
+
+
+                                <div class="slider-text">
+                                    <div class="slider-text1">
+                                        <h4 id="slider18">Vijayawada </h4>
+                                        <p>Save upto 50%</p>
+                                    </div>
+                                    <div class="slider-text2">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
                                     </div>
                                 </div>
+
                             </div>
-                            <div class="slider-text">
-                                <div class="slider-text1">
-                                    <h4 id="slider19">Tirupati</h4>
-                                    <p>Save upto 50%</p>
+                        </div>
+                        <div class="row">
+                            <div class="slider-item homepage-sllider-m">
+                                <div id="slider9" class="slider-img" style="background-image:url('images/slider/Tirupati.png'); background-size:auto;background-repeat:no-repeat; margin: 40px 40px;">
                                 </div>
-                                <div class="slider-text2">
-                                    <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                <div class="slider-text-hover">
+                                    <div class="slider-hover-content"></div>
+                                    <div class="Orange">
+                                        <div class="slider-hover-content2" id="slider9text">
+                                            <h4>Tirupati</h4>
+                                            <p>hgghhf upto 50%</p>
+                                        </div>
+                                        <div class="slider-hover-content3">
+                                            <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-text">
+                                    <div class="slider-text1">
+                                        <h4 id="slider19">Tirupati</h4>
+                                        <p>Save upto 50%</p>
+                                    </div>
+                                    <div class="slider-text2">
+                                        <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -505,7 +522,7 @@ function dateDiff($fromDate, $toDate)
                             $('.places-slider').slick({
                                 dots: false,
                                 infinite: true,
-                                speed: 5000,
+                                speed: 300,
                                 slidesToShow: 3,
                                 slidesToScroll: 3,
                                 responsive: [{
