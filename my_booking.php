@@ -129,7 +129,7 @@ include("includes/login_header.php");
                     <ul>
                         <li><a href="profile.php?id=<?php echo $id; ?>">Profile Settings</a></li>
                         <hr>
-                        <li><a href="includes/update-password.php?id=<?php echo $id; ?>">Update Password</a></li>
+                        <li><a href="update-password.php?id=<?php echo $id; ?>">Update Password</a></li>
                         <hr>
                         <li><a href="my_booking.php?id=<?php echo $id; ?>">My Booking</a></li>
                         <hr>
