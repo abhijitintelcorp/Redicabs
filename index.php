@@ -255,13 +255,13 @@ function dateDiff($fromDate, $toDate)
     <div class="yellow-label-wrapper2" style="background-color: #1799df;">
         <div class="label-yellow stellar" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="">
             <div class="container">
+                <div class="row">
+                    <div class="destination">
+                        <h2>Destinations You'd Love</h2>
+                        <h4>Look at the wonderful places</h4>
+                    </div>
+                    <div class="slider places-slider">
 
-                <div class="destination">
-                    <h2>Destinations You'd Love</h2>
-                    <h4>Look at the wonderful places</h4>
-                </div>
-                <div class="slider places-slider">
-                    <div class="row">
                         <div class="slider-item">
                             <div id="slider1" class="slider-img" style="background-image:url('images/slider/DB.png'); background-size:auto;background-repeat:no-repeat;margin: 30px 40px;">
 
@@ -288,9 +288,8 @@ function dateDiff($fromDate, $toDate)
                                 </div>
                             </div>
                         </div>
-
                         <div class="slider-item ">
-                            <div id="slider2" class="slider-img" style="background-image:url('images/slider/Visakhapatnam.png'); background-size:auto;background-repeat:no-repeat;margin: 30px 40px;">
+                            <div id="slider2" class="slider-img" style="background-image:url('images/slider/Visakhapatnam.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
                             </div>
 
                             <div class="slider-text-hover">
@@ -319,7 +318,7 @@ function dateDiff($fromDate, $toDate)
 
                         </div>
                         <div class="slider-item homepage-sllider-m">
-                            <div id="slider3" class="slider-img" style="background-image:url('images/slider/Kurnool.png'); background-size:auto;background-repeat:no-repeat;margin: 30px 40px;">
+                            <div id="slider3" class="slider-img" style="background-image:url('images/slider/Kurnool.png'); background-size:auto;background-repeat:no-repeat; margin: 30px 40px;">
                             </div>
 
                             <div class="slider-text-hover">
