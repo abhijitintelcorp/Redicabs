@@ -17,6 +17,8 @@
     <script src="/path/to/cdn/jquery.min.js"></script>
     <link rel="stylesheet" href="venom-button.min.css" />
     <script src="venom-button.min.js"></script>
+    <link rel="stylesheet" href="js/slick/slick.css">
+    <link rel="stylesheet" href="js/slick/slick-theme.css">
 
 
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
@@ -28,9 +30,9 @@
 
 
     <script>
-        $(document).ready(function() {
-            $("#selectState").modal('show');
-        });
+    $(document).ready(function() {
+        $("#selectState").modal('show');
+    });
     </script>
 
     <!-- <script>
@@ -74,7 +76,9 @@
 
                     <div class="pull-right">
                         <!-- <a href="#">Login</a> -->
-                        <button class="dropbtn pull-right" onclick="document.getElementById('id01').style.display='block'" style="background-color: #1799df;">Login</button>
+                        <button class="dropbtn pull-right"
+                            onclick="document.getElementById('id01').style.display='block'"
+                            style="background-color: #1799df;">Login</button>
                         <?php
                         include("login.php");
                         ?>
