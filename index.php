@@ -181,7 +181,7 @@ function dateDiff($fromDate, $toDate)
     <div class="label-white2 white-lable-m" id="hero2">
         <div class="container">
             <div class="row py-4">
-                <div class="car-item-wrap" style="margin-left:5%;">
+                <div class="car-item-wrap" style="margin-left:8%;">
                     <div class="car-type">
                         <div class="col-md-3">
                             <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
@@ -219,7 +219,7 @@ function dateDiff($fromDate, $toDate)
                 </div>
             </div>
             <div class="row py-4">
-                <div class="car-item-wrap" style="margin-left:6%">
+                <div class="car-item-wrap" style="margin-left:8%">
                     <div class="car-type">
                         <div class="col-md-3">
                             <div class="car-wrap"> <img class="mini-track-car" width="100px" src="auto.png" alt="" />
