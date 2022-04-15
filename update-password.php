@@ -19,33 +19,33 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <style>
-    .profile_nav {
-        border-right: 1px solid #c5c5c5;
-        padding: 20px;
-        text-align: center !important;
-        background-color: #0e8fd5;
-        color: #ffffff !important;
-    }
+.profile_nav {
+    border-right: 1px solid #c5c5c5;
+    padding: 20px;
+    text-align: center !important;
+    background-color: #0e8fd5;
+    color: #ffffff !important;
+}
 
-    .profile_nav ul {
-        padding: 0px;
-        margin: 0px;
-    }
+.profile_nav ul {
+    padding: 0px;
+    margin: 0px;
+}
 
-    .profile_nav ul li {
-        list-style: none;
-    }
+.profile_nav ul li {
+    list-style: none;
+}
 
-    .profile_nav ul li a {
-        color: #ffffff !important;
-        font-size: 15px;
-        font-weight: 900;
-    }
+.profile_nav ul li a {
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 900;
+}
 
-    .profile_nav ul li.active a,
-    .profile_nav ul li a:hover {
-        color: #fa2837;
-    }
+.profile_nav ul li.active a,
+.profile_nav ul li a:hover {
+    color: #fa2837;
+}
 </style>
 
 <body class="hold-transition sidebar-mini">
@@ -76,18 +76,22 @@ if (isset($_POST['submit'])) {
                         ?>
                         <div>
                             <label><b>Old Password</b></label>
-                            <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter email" name="opwd" id="opwd" value="<?php echo $results['Password']; ?>" required>
+                            <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter email"
+                                name="opwd" id="opwd" value="<?php echo $results['Password']; ?>" required>
                         </div>
                         <div>
                             <label><b>New Password</b></label>
-                            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="npwd" id="npwd" required>
+                            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="npwd"
+                                id="npwd" required>
                         </div>
                         <div>
                             <label><b>Confirm Password</b></label>
-                            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="cpwd" id="cpwd" required>
+                            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="cpwd"
+                                id="cpwd" required>
                         </div>
 
-                        <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" value="Change Passowrd" name="submit">Change Password</button>
+                        <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit"
+                            value="Change Passowrd" name="submit">Change Password</button>
                     </div>
                 </form>
             </div>
