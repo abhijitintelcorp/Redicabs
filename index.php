@@ -30,6 +30,10 @@ function dateDiff($fromDate, $toDate)
     width: 180px;
     height: 180px;
 }
+
+* {
+    box-sizing: border-box;
+}
 </style>
 
 <body>
@@ -134,135 +138,103 @@ function dateDiff($fromDate, $toDate)
             </div>
         </div>
     </div>
-    <!-- new codes -->
-    <!-- <div class="container mt-5 mb-5" id="content">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-                <div class="card" style="margin-right: 250px;">
-                    <div class="row">
 
-                        <?php
-                        // $sql = "SELECT * from tblbooking  where Categories LIKE '%Car'";
-                        // $query = mysqli_query($conn, $sql);
-                        // $results = mysqli_fetch_assoc($query);
-                        // $count = mysqli_num_rows($query);
-                        // $cnt = 1;
-                        // if ($count > 0) {
-                        //     while ($results = mysqli_fetch_assoc($query)) {
-                        ?>
-                        <div class="col-md-6" id="divMsg">
-                            <div class="images p-3">
-                                <div class="text-center p-4"> <img id="main-image"
-                                        src="images/<?php echo $results['frontimage']; ?>" width="350" /> </div>
+    <div class="container" style="background-color: #817b87;">
+        <h3>Available Vehicles</h3>
+        <ul class="nav nav-pills">
 
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="product p-4">
-                                <div class="mt-4 mb-3">
-                                    <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
-                                    </h6>
-                                    <h6>PriceperDay: <?php echo $results['PricePerDay']; ?></h6>
+            <li><a href="">Cars</a></li>
+            <li><a href="">Truck</a></li>
+            <li><a href="">Lorry</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <h3>Cars</h3>
 
-                                    <h6>SeatingCapacity :
-                                        <?php echo $results['SeatingCapacity']; ?></h6>
-                                    <h6>ModelYear :
-                                        <?php echo $results['ModelYear']; ?></h6>
-                                </div>
-                            </div>
-                            <div class="cart mt-4 align-items-center">
-                                <a href="book_now.php?id=<?php echo $$results['id'] ?>" class="btn btn-primary"
-                                    name="submit" type="submit"> <?php echo $results['owner_vehicle_name']; ?>Book
-                                    Now</a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <?php
-                    // }
-                    //     } 
-                    ?>
-                </div>
             </div>
-        </div>
-    </div> -->
-    <!-- new codes -->
-    <div class="label-white2 white-lable-m" id="hero2">
-        <div class="container">
-            <div class="row py-4">
-                <div class="car-item-wrap" style="margin-left:5%;">
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="cars.php" type="button" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
-                    </div>
+            <div id="menu1" class="tab-pane fade">
+                <h3>Truck</h3>
+                <?php
+
+                $sql = "SELECT * from tblbooking  where Categories='Car' and Status=3 ";
+                $query = mysqli_query($conn, $sql);
+
+                while ($results = mysqli_fetch_assoc($query)) {
 
 
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="mini-track-car" src="bus.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="bus.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
+                ?>
+                <div class="row" style="margin-bottom: 14px;margin-top: 22px; border:1px solid #0d4555;">
+                    <div class="col-lg-6">
+                        <div class="text-center"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%"
+                                height="80%" style="margin-top:30px;" /> </div>
                     </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" src="truck.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+                    <div class="col-lg-6 product">
+
+                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
+                        <div class="mt-4 mb-3">
+                            <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                            </h3>
+
+                            <h6>Vehicle Type: <?php echo $results['Categories']; ?></h6>
+                            <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
+                            <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
+                            <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
+
                         </div>
-                    </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" src="lorry.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="Lorry.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+
+                        <div class="cart mt-4 align-items-center">
+                            <a href="index.php" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+
                         </div>
+
                     </div>
                 </div>
+
             </div>
-            <div class="row py-4">
-                <div class="car-item-wrap" style="margin-left:6%">
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="mini-track-car" width="100px" src="auto.png" alt="" />
-                            </div>
-                            <div class="car-type-btn">
-                                <a href="Mini-Truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
+            <?php } ?>
+            <div id="menu2" class="tab-pane fade">
+                <h3>truck</h3>
+                <?php
+
+            $sql = "SELECT * from tblbooking  where Categories='Lorry' and Status = 3 ";
+            $query = mysqli_query($conn, $sql);
+
+            while ($results = mysqli_fetch_assoc($query)) {
+
+
+            ?>
+                <div class="row" style="margin-bottom: 14px;margin-top: 22px; border:1px solid #0d4555;">
+                    <div class="col-lg-6">
+                        <div class="text-center"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%"
+                                height="80%" style="margin-top:30px;" /> </div>
                     </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" width="100px" src="crain.png" alt="" />
-                            </div>
-                            <div class="car-type-btn">
-                                <a href="Crain.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+                    <div class="col-lg-6 product">
+
+                        <input type="hidden" name="id" value=" <?php echo $last_id; ?>">
+                        <div class="mt-4 mb-3">
+                            <h3> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
+                            </h3>
+
+                            <h6>Vehicle Type: <?php echo $results['Categories']; ?></h6>
+                            <h6>Brand Name: <?php echo $results['owner_vehicle_brand']; ?></h6>
+                            <h6>Seating Capacity : <?php echo $results['SeatingCapacity']; ?></h6>
+                            <h6> <span>Price: Rs<?php echo $results['PricePerDay']; ?>/-</span></h6>
+
                         </div>
-                    </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" src="big.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="big_truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+
+                        <div class="cart mt-4 align-items-center">
+                            <a href="index.php" class="btn btn-primary" name="submit" type="submit">Book Now</a>
+
                         </div>
+
                     </div>
                 </div>
+                <?php } ?>
             </div>
+
         </div>
     </div>
-    <!-- label white html exit -->
-    <!-- label yellow html start -->
+
     <div class="yellow-label-wrapper2" style="background-color: #1799df;">
         <div class="label-yellow stellar" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="">
             <div class="container">
@@ -863,7 +835,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>Secure Booking</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -878,7 +851,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>Reliable Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -893,7 +867,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>Customer Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -908,7 +883,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>No Hidden Charges</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
