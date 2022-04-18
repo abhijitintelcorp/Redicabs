@@ -79,6 +79,12 @@
                     <i class="fa fa-tumblr"></i>
                 </a>
             </div>
+            <div class="whatsapp">
+                <a href="https://api.whatsapp.com/send?phone=8895655536&text=Hello this is the starting message">
+
+                    <img src="images/whatsapp.png" width="70px" alt="">
+                </a>
+            </div>
             <div class="copy-right">
                 <p><span>Redicabs</span> Copyright © 2022 Redicabs. All Rights Reserved </p>
             </div>

@@ -59,6 +59,7 @@
                     </b>
                 </div>
 
+
             </div>
             <div class="col-sm-3">
                 <div class="logo-wraper">
@@ -105,6 +106,7 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 </div>

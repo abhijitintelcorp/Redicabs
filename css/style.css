@@ -1564,6 +1564,18 @@ margin-top:40px; */
   border-bottom-color: transparent;
   cursor: default;
 }
+.client-impression-content-wrap .nav-tabs1>li.active>a,
+.client-impression-content-wrap .nav-tabs1>li.active>a:hover,
+.client-impression-content-wrap .nav-tabs1>li.active>a:focus {
+  width: 20px;
+  height: 30px;
+  background: #7944be;
+  border-radius: 4px;
+  background-color: #680505;
+  border: 1px solid #dddddd;
+  border-bottom-color: transparent;
+  cursor: default;
+}
 /*=================== newly added for serch_car ======================== */
 .card {
   border: none;
@@ -3439,4 +3451,22 @@ padding-top: 20px;
     color: #2c3e50;
     margin-left: 100px;
 }
+}
+
+
+
+
+.hiddinghide {
+  display: block;
+  padding-bottom: 50px;
+  font-size: 10px;
+  margin-top: -10px;
+}
+.whatsapp{
+  position: relative;
+}
+.whatsapp a{
+  position: absolute;
+  right: 0;
+  bottom: 10px;
 }
