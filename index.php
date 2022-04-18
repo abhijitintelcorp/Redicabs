@@ -172,8 +172,8 @@ function dateDiff($fromDate, $toDate)
 
     <div class="container " style="padding-bottom: 40px;">
         <div class="nav-wrapper">
-            <h2 style="margin-top:52px;"></h2>
-            <h2 style="padding-bottom: 10px;"><b style="margin-top:30px;">ALL TYPES OF VEHICLES AVAILABLE</b></h2>
+            <h2 class="hiddinghide">hjgjhghg</h2>
+            <h2 style="padding-bottom: 10px;"><b>TYPES OF VEHICLES AVAILABLE</b></h2>
             <ul class="nav nav-tabs" style="margin-left: 10px;" id="nav">
                 <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
                 <li><a data-toggle="tab" href="#menu1">Car</a></li>
