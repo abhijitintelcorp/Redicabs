@@ -30,7 +30,53 @@ function dateDiff($fromDate, $toDate)
         width: 180px;
         height: 180px;
     }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #nav-wrapper {
+        width: 2700px;
+        margin: 0 auto;
+        padding: 20px 10px;
+        background: whitesmoke;
+    }
+
+    ul#nav {
+        font-family: Verdana;
+        font-size: 14px;
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+
+    }
+
+    ul#nav li {
+        display: inline;
+    }
+
+    ul#nav li a {
+        text-decoration: none;
+        display: block;
+        padding: 5px 21px;
+        background: #1799df;
+        color: #fff;
+        float: left;
+        text-align: center;
+        border-top: 2px solid #000;
+        width: 130px;
+    }
+
+    ul#nav li a:hover {
+        background: darkcyan;
+        color: #fff;
+        border-top: 2px solid #815444;
+        border-right: 2px solid #c59888;
+        border-bottom: 2px solid #c59888;
+        border-left: 2px solid #815444;
+    }
 </style>
+
 
 <body>
 
@@ -123,135 +169,170 @@ function dateDiff($fromDate, $toDate)
             </div>
         </div>
     </div>
-    <!-- new codes -->
-    <!-- <div class="container mt-5 mb-5" id="content">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-                <div class="card" style="margin-right: 250px;">
-                    <div class="row">
 
-                        <?php
-                        // $sql = "SELECT * from tblbooking  where Categories LIKE '%Car'";
-                        // $query = mysqli_query($conn, $sql);
-                        // $results = mysqli_fetch_assoc($query);
-                        // $count = mysqli_num_rows($query);
-                        // $cnt = 1;
-                        // if ($count > 0) {
-                        //     while ($results = mysqli_fetch_assoc($query)) {
-                        ?>
-                        <div class="col-md-6" id="divMsg">
-                            <div class="images p-3">
-                                <div class="text-center p-4"> <img id="main-image"
-                                        src="images/<?php echo $results['frontimage']; ?>" width="350" /> </div>
+    <div class="container " style="padding-bottom: 40px;">
+        <div class="nav-wrapper">
+            <h2 class="hiddinghide">hjgjhghg</h2>
+            <h2 style="padding-bottom: 10px;"><b>TYPES OF VEHICLES AVAILABLE</b></h2>
+            <ul class="nav nav-tabs" style="margin-left: 10px;" id="nav">
+                <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
+                <li><a data-toggle="tab" href="#menu1">Car</a></li>
+                <li><a data-toggle="tab" href="#menu2">Lorry</a></li>
+                <li><a data-toggle="tab" href="#menu3">Bus</a></li>
+                <li><a data-toggle="tab" href="#menu4">Truck</a></li>
+                <li><a data-toggle="tab" href="#menu5">Auto</a></li>
+                <li><a data-toggle="tab" href="#menu6">Big-Truck</a></li>
+            </ul>
 
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="product p-4">
-                                <div class="mt-4 mb-3">
-                                    <h6> Vehicle name : <?php echo $results['owner_vehicle_name']; ?>
-                                    </h6>
-                                    <h6>PriceperDay: <?php echo $results['PricePerDay']; ?></h6>
+            <div class="tab-content">
 
-                                    <h6>SeatingCapacity :
-                                        <?php echo $results['SeatingCapacity']; ?></h6>
-                                    <h6>ModelYear :
-                                        <?php echo $results['ModelYear']; ?></h6>
-                                </div>
-                            </div>
-                            <div class="cart mt-4 align-items-center">
-                                <a href="book_now.php?id=<?php echo $$results['id'] ?>" class="btn btn-primary"
-                                    name="submit" type="submit"> <?php echo $results['owner_vehicle_name']; ?>Book
-                                    Now</a>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                <div id="menu1" class="tab-pane fade">
+                    <!-- <h3>car</h3> -->
                     <?php
-                    // }
-                    //     } 
+
+                    $sql = "SELECT * from tblbooking  where Categories='Car' and Status=3 ";
+                    $query = mysqli_query($conn, $sql);
+                    while ($results = mysqli_fetch_assoc($query)) {
+
                     ?>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- new codes -->
-    <div class="label-white2 white-lable-m" id="hero2">
-        <div class="container">
-            <div class="row py-4">
-                <div class="car-item-wrap" style="margin-left:8%;">
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"><img class="private-car" src="car.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="cars.php" type="button" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+                        <div class="col-lg-4" style="border-color:#64adc9;">
+                            <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px;" /> </div>
+                            <b>
+                                <p style="color: #000;">Vehicle Name:
+                                    <?php echo $results['owner_vehicle_name']; ?>
+                                </p>
+                                <p style="color: #000;">RentPerDay:
+                                    <?php echo $results['PricePerDay']; ?>
+                                </p>
+                                <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                            </b>
                         </div>
-                    </div>
+                    <?php } ?>
+                </div>
 
+                <div id="menu2" class="tab-pane fade">
+                    <!-- <h3>Lorry</h3> -->
+                    <?php
 
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="mini-track-car" src="bus.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="bus.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+                    $sql = "SELECT * from tblbooking  where Categories='Lorry' and Status=3 ";
+                    $query = mysqli_query($conn, $sql);
+
+                    while ($results = mysqli_fetch_assoc($query)) {
+
+                    ?>
+                        <div class="col-lg-6">
+                            <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
+                            <b>
+                                <p style="color: #000;">Vehicle Name:
+                                    <?php echo $results['owner_vehicle_name']; ?>
+                                </p>
+                                <p style="color: #000;">RentPerDay:
+                                    <?php echo $results['PricePerDay']; ?>
+                                </p>
+                                <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                            </b>
                         </div>
-                    </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" src="truck.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" src="lorry.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="Lorry.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
-            </div>
-            <div class="row py-4">
-                <div class="car-item-wrap" style="margin-left:8%">
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="mini-track-car" width="100px" src="auto.png" alt="" />
-                            </div>
-                            <div class="car-type-btn">
-                                <a href="Mini-Truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
+
+                <div id="menu3" class="tab-pane fade">
+                    <!-- <h3>Bus</h3> -->
+                    <?php
+                    $sql = "SELECT * from tblbooking  where Categories='Bus' and Status=3 ";
+                    $query = mysqli_query($conn, $sql);
+                    while ($results = mysqli_fetch_assoc($query)) {
+                    ?>
+                        <div class="col-lg-6">
+                            <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
                         </div>
-                    </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" width="100px" src="crain.png" alt="" />
-                            </div>
-                            <div class="car-type-btn">
-                                <a href="Crain.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="car-type">
-                        <div class="col-md-3">
-                            <div class="car-wrap"> <img class="big-track-car" src="big.png" alt="" /></div>
-                            <div class="car-type-btn">
-                                <a href="big_truck.php" class="btn car-btn btn-lg">BOOK NOW</a>
-                            </div>
-                        </div>
-                    </div>
+                        <b>
+                            <p style="color: #000;">Vehicle Name:
+                                <?php echo $results['owner_vehicle_name']; ?>
+                            </p>
+                            <p style="color: #000;">RentPerDay:
+                                <?php echo $results['PricePerDay']; ?>
+                            </p>
+                            <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        </b>
+                    <?php } ?>
                 </div>
+
+                <div id="menu4" class="tab-pane fade">
+                    <!-- <h3>Bus</h3> -->
+                    <?php
+                    $sql = "SELECT * from tblbooking  where Categories='Truck' and Status=3 ";
+                    $query = mysqli_query($conn, $sql);
+
+                    while ($results = mysqli_fetch_assoc($query)) {
+                    ?>
+                        <div class="col-lg-6">
+                            <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
+                        </div>
+                        <b>
+                            <p style="color: #000;">Vehicle Name:
+                                <?php echo $results['owner_vehicle_name']; ?>
+                            </p>
+                            <p style="color: #000;">RentPerDay:
+                                <?php echo $results['PricePerDay']; ?>
+                            </p>
+                            <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        </b>
+                    <?php } ?>
+                </div>
+
+                <div id="menu5" class="tab-pane fade">
+                    <!-- <h3>Bus</h3> -->
+                    <?php
+                    $sql = "SELECT * from tblbooking  where Categories='Auto' and Status=3 ";
+                    $query = mysqli_query($conn, $sql);
+                    while ($results = mysqli_fetch_assoc($query)) {
+                    ?>
+                        <div class="col-lg-6">
+                            <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
+                        </div>
+                        <b>
+                            <p style="color: #000;">Vehicle Name:
+                                <?php echo $results['owner_vehicle_name']; ?>
+                            </p>
+                            <p style="color: #000;">RentPerDay:
+                                <?php echo $results['PricePerDay']; ?>
+                            </p>
+                            <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        </b>
+                    <?php } ?>
+                </div>
+
+                <div id="menu6" class="tab-pane fade">
+                    <!-- <h3>Bus</h3> -->
+                    <?php
+                    $sql = "SELECT * from tblbooking  where Categories='Bigtruck' and Status=3 ";
+                    $query = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($results = mysqli_fetch_assoc($query)) {
+                    ?>
+                            <div class="col-lg-6">
+                                <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" style="margin-top:30px;" /> </div>
+                            </div>
+                            <b>
+                                <p style="color: #000;">Vehicle Name:
+                                    <?php echo $results['owner_vehicle_name']; ?>
+                                </p>
+                                <p style="color: #000;">RentPerDay:
+                                    <?php echo $results['PricePerDay']; ?>
+                                </p>
+                                <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                            </b>
+                            <?php if ($results == 0) {
+                                echo "No vehicles available";
+                            } ?>
+                    <?php }
+                    } ?>
+                </div>
+
             </div>
         </div>
     </div>
-    <!-- label white html exit -->
-    <!-- label yellow html start -->
+
     <div class="yellow-label-wrapper2" style="background-color: #1799df;">
         <div class="label-yellow stellar" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="">
             <div class="container">
@@ -860,7 +941,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>Secure Booking</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -875,7 +957,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>Reliable Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -890,7 +973,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>Customer Service</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
@@ -905,7 +989,8 @@ function dateDiff($fromDate, $toDate)
                             <div class="containt-text">
                                 <h3>No Hidden Charges</h3>
                                 <span>We ensure safest booking!</span>
-                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio. Sed
+                                <p>Morbi accumsan ipsum velit. Nam nec tellus a odio cidunt auctor a ornare odio.
+                                    Sed
                                     non mauris vitae erat consequat auctor eu in elit.</p>
                             </div>
                         </div>
