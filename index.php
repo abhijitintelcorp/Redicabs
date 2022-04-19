@@ -19,64 +19,6 @@ function dateDiff($fromDate, $toDate)
 
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    #hero2 {
-        padding: 20px 0px;
-        margin-top: 70px;
-    }
-
-    #hero2 img {
-        cursor: pointer;
-        width: 180px;
-        height: 180px;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    #nav-wrapper {
-        width: 2700px;
-        margin: 0 auto;
-        padding: 20px 10px;
-        background: whitesmoke;
-    }
-
-    ul#nav {
-        font-family: Verdana;
-        font-size: 14px;
-        list-style: none;
-        margin: 0 auto;
-        padding: 0;
-
-    }
-
-    ul#nav li {
-        display: inline;
-    }
-
-    ul#nav li a {
-        text-decoration: none;
-        display: block;
-        padding: 5px 21px;
-        background: #1799df;
-        color: #fff;
-        float: left;
-        text-align: center;
-        border-top: 2px solid #000;
-        width: 130px;
-    }
-
-    ul#nav li a:hover {
-        background: darkcyan;
-        color: #fff;
-        border-top: 2px solid #815444;
-        border-right: 2px solid #c59888;
-        border-bottom: 2px solid #c59888;
-        border-left: 2px solid #815444;
-    }
-</style>
-
 
 <body>
 
@@ -179,7 +121,7 @@ function dateDiff($fromDate, $toDate)
             <center>
                 <h2 style="padding-bottom: 10px;color: #135ba3;"><b>TYPES OF VEHICLES AVAILABLE</b></h2>
             </center>
-            <ul class="nav nav-tabs" style="margin-left: 20px; padding-left: 100px;margin:5px" id="nav">
+            <ul class="nav nav-tabs" style="margin-left: 10%;  padding-left: 20%; margin:10px;" id="nav">
                 <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
                 <li><a data-toggle="tab" href="#menu1">Car</a></li>
                 <li><a data-toggle="tab" href="#menu2">Lorry</a></li>
@@ -225,16 +167,16 @@ function dateDiff($fromDate, $toDate)
                     while ($results = mysqli_fetch_assoc($query)) {
 
                     ?>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4" style="border: 3px solid #0e8fd5; margin-bottom:15px">
                             <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
                             <b>
-                                <p style="color: #000;">Vehicle Name:
+                                <h4 style="color: #000;">Vehicle Name:
                                     <?php echo $results['owner_vehicle_name']; ?>
-                                </p>
-                                <p style="color: #000;">RentPerDay:
+                                </h4>
+                                <h4 style="color: #000;">RentPerDay:
                                     <?php echo $results['PricePerDay']; ?>
-                                </p>
-                                <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
+                                </h4>
+                                <center><a href="#" style="color:#1799df;" type="button">BOOK</a></center>
                             </b>
                         </div>
                     <?php } ?>
@@ -247,18 +189,19 @@ function dateDiff($fromDate, $toDate)
                     $query = mysqli_query($conn, $sql);
                     while ($results = mysqli_fetch_assoc($query)) {
                     ?>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4" style="border: 3px solid #0e8fd5; margin-bottom:15px">
                             <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
+
+                            <b>
+                                <h4 style="color: #000;">Vehicle Name:
+                                    <?php echo $results['owner_vehicle_name']; ?>
+                                </h4>
+                                <h4 style="color: #000;">RentPerDay:
+                                    <?php echo $results['PricePerDay']; ?>
+                                </h4>
+                                <center><a href="#" style="color:#1799df  ;" type="button">BOOK</a></center>
+                            </b>
                         </div>
-                        <b>
-                            <p style="color: #000;">Vehicle Name:
-                                <?php echo $results['owner_vehicle_name']; ?>
-                            </p>
-                            <p style="color: #000;">RentPerDay:
-                                <?php echo $results['PricePerDay']; ?>
-                            </p>
-                            <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
-                        </b>
                     <?php } ?>
                 </div>
 
@@ -270,17 +213,17 @@ function dateDiff($fromDate, $toDate)
 
                     while ($results = mysqli_fetch_assoc($query)) {
                     ?>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4" style="border: 3px solid #0e8fd5; margin-bottom:15px">
                             <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
                         </div>
                         <b>
-                            <p style="color: #000;">Vehicle Name:
+                            <h4 style="color: #000;">Vehicle Name:
                                 <?php echo $results['owner_vehicle_name']; ?>
-                            </p>
-                            <p style="color: #000;">RentPerDay:
+                            </h4>
+                            <h4 style="color: #000;">RentPerDay:
                                 <?php echo $results['PricePerDay']; ?>
-                            </p>
-                            <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
+                            </h4>
+                            <center><a href="#" style="color:#1799df ;" type="button">BOOK</a></center>
                         </b>
                     <?php } ?>
                 </div>
@@ -292,17 +235,17 @@ function dateDiff($fromDate, $toDate)
                     $query = mysqli_query($conn, $sql);
                     while ($results = mysqli_fetch_assoc($query)) {
                     ?>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4" style="border: 3px solid #0e8fd5; margin-bottom:15px">
                             <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px" style="margin-top:30px" /> </div>
                         </div>
                         <b>
-                            <p style="color: #000;">Vehicle Name:
+                            <h4 style="color: #000;">Vehicle Name:
                                 <?php echo $results['owner_vehicle_name']; ?>
-                            </p>
-                            <p style="color: #000;">RentPerDay:
-                                <?php echo $results['PricePerDay']; ?>
-                            </p>
-                            <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
+                                <h4>
+                                    <h4 style="color: #000;">RentPerDay:
+                                        <?php echo $results['PricePerDay']; ?>
+                                    </h4>
+                                    <center><a href="#" style="color:#1799df;" type="button">BOOK</a></center>
                         </b>
                     <?php } ?>
                 </div>
@@ -315,17 +258,17 @@ function dateDiff($fromDate, $toDate)
                     if (mysqli_num_rows($query) > 0) {
                         while ($results = mysqli_fetch_array($query)) {
                     ?>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4" style="border: 3px solid #0e8fd5; margin-bottom:15px">
                                 <div class="text-center" style="margin-bottom: 30px;"> <img src="images/<?php echo $results['frontimage']; ?>" width="100%" style="margin-top:30px;" /> </div>
                             </div>
                             <b>
-                                <p style="color: #000;">Vehicle Name:
+                                <ph4 style="color: #000;">Vehicle Name:
                                     <?php echo $results['owner_vehicle_name']; ?>
-                                </p>
-                                <p style="color: #000;">RentPerDay:
-                                    <?php echo $results['PricePerDay']; ?>
-                                </p>
-                                <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
+                                    </h4>
+                                    <h4 style="color: #000;">RentPerDay:
+                                        <?php echo $results['PricePerDay']; ?>
+                                    </h4>
+                                    <center><a href="#" style="color:#1799df;" type="button">BOOK</a></center>
                             </b>
                         <?php }
                         if ($results == 0) {

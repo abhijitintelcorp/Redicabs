@@ -386,15 +386,7 @@ $(document).ready(function() {
             },
         },
         messages: {
-            SeatingCapacity: {
-                required: "<b style='color:red'> Please Select your Seating Capacity</b>",
-            },
-            brand: {
-                required: "<b style='color:red'>Please Select your brand</b>",
-            },
-            VehicleName: {
-                required: "<b style='color:red'>Please Select your Vehicle Name</b>",
-            },
+           
             UserName: {
                 required: "<b style='color:red'>Please enter your User Name</b>",
                 minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
@@ -420,6 +412,82 @@ $(document).ready(function() {
             dob: {
                 required: "<b style='color:red'>Please enter your date of birth</b>",
             },
+            pickup: {
+                required: "<b style='color:red'>Please enter your Pick Off Location</b>",
+            },
+            dropoff: {
+                required: "<b style='color:red'>Please enter your Drop Off Location</b>",
+            },
+            FromDate: {
+                required: "<b style='color:red'>Please enter your From Date</b>",
+            },
+            ToDate: {
+                required: "<b style='color:red'>Please enter your To Date</b>",
+            },
+            pickuptime: {
+                required: "<b style='color:red'>Please enter Pick Up Time</b>",
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        },
+    });
+
+      $("#booking-modify-details").validate({
+        rules: {
+           
+            UserName: {
+                required: true,
+                minlength: 3,
+            },
+            ContactNo: {
+                required: true,
+                maxlength: 10,
+            },
+          
+            address: {
+                required: true,
+            },
+            City: {
+                required: true,
+            },          
+            pickup: {
+                required: true,
+            },
+            dropoff: {
+                required: true,
+            },
+            FromDate: {
+                required: true,
+            },
+            ToDate: {
+                required: true,
+            },
+            pickuptime: {
+                required: true,
+            },
+        },
+        messages: {         
+           
+           
+            UserName: {
+                required: "<b style='color:red'>Please enter your User Name</b>",
+                minlength: "<b style='color:red'>Full Name should be at least 3 characters</b>",
+            },
+            ContactNo: {
+                required: "<b style='color:red'>Please enter your Mobile Number</b>",
+                ContactNo: "<b style='color:red'>Please Enter numerical values Only</b>",
+            },
+            EmailId: {
+                required: "<b style='color:red'>Please enter Email Id</b>",
+                email: "<b style='color:red'>The email should be in the format: abc@domain.tld</b>",
+            },           
+            address: {
+                required: "<b style='color:red'>Please enter your Address</b>",
+            },
+            City: {
+                required: "<b style='color:red'>Please enter your City</b>",
+            },           
             pickup: {
                 required: "<b style='color:red'>Please enter your Pick Off Location</b>",
             },
