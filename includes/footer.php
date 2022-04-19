@@ -79,10 +79,11 @@
                     <i class="fa fa-tumblr"></i>
                 </a>
             </div>
-            <div class="whatsapp">
-                <a href="https://api.whatsapp.com/send?phone=8895655536&text=Hello this is the starting message">
+            <div class="float">
+                <a href="https://api.whatsapp.com/send?phone=8895655536&text=Hello " class="float" target="_blank">
 
                     <img src="images/whatsapp.png" width="70px" alt="">
+                    <i class="fa fa-whatsapp my-float"></i>
                 </a>
             </div>
             <div class="copy-right">
