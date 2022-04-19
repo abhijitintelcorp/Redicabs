@@ -48,3 +48,5 @@ $.widget.bridge('uibutton', $.ui.button)
  <script src="dist/js/demo.js"></script>
  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="dist/js/pages/dashboard.js"></script>
+ <script src="js/jquery.validate.min.js"></script>
+ <script src="js/valid.js"></script>
