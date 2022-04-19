@@ -184,8 +184,13 @@ ul#nav li a:hover {
     <div class="container " style="padding-bottom: 40px;">
         <div class="nav-wrapper">
             <h2 class="hiddinghide">hjgjhghg</h2>
-            <h2 style="padding-bottom: 10px;"><b>TYPES OF VEHICLES AVAILABLE</b></h2>
-            <ul class="nav nav-tabs" style="margin-left: 10px;" id="nav">
+            <center style="font-size:small;">
+                <h4>What kind of Car you want</h4>
+            </center>
+            <center>
+                <h2 style="padding-bottom: 10px;color: #135ba3;"><b>TYPES OF VEHICLES AVAILABLE</b></h2>
+            </center>
+            <ul class="nav nav-tabs" style="margin-left: 20px; padding-left: 100px;margin:5px" id="nav">
                 <!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li> -->
                 <li><a data-toggle="tab" href="#menu1">Car</a></li>
                 <li><a data-toggle="tab" href="#menu2">Lorry</a></li>
@@ -206,18 +211,18 @@ ul#nav li a:hover {
                     while ($results = mysqli_fetch_assoc($query)) {
 
                     ?>
-                    <div class="col-lg-4" style="border-color:#64adc9;">
+                    <div class="col-lg-4" style="border: 3px solid #0e8fd5; margin-bottom:15px">
                         <div class="text-center" style="margin-bottom: 30px;"> <img
                                 src="images/<?php echo $results['frontimage']; ?>" width="100%" height="250px"
                                 style="margin-top:30px;" /> </div>
                         <b>
-                            <p style="color: #000;">Vehicle Name:
+                            <h4 style="color: #000;">Vehicle Name:
                                 <?php echo $results['owner_vehicle_name']; ?>
-                            </p>
-                            <p style="color: #000;">RentPerDay:
+                            </h4>
+                            <h4 style="color: #000;">RentPerDay:
                                 <?php echo $results['PricePerDay']; ?>
-                            </p>
-                            <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                            </h4>
+                            <center><a href="#" style="color:#1799df  ;" type="button">BOOK</a></center>
                         </b>
                     </div>
                     <?php } ?>
@@ -244,7 +249,7 @@ ul#nav li a:hover {
                             <p style="color: #000;">RentPerDay:
                                 <?php echo $results['PricePerDay']; ?>
                             </p>
-                            <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                            <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
                         </b>
                     </div>
                     <?php } ?>
@@ -269,7 +274,7 @@ ul#nav li a:hover {
                         <p style="color: #000;">RentPerDay:
                             <?php echo $results['PricePerDay']; ?>
                         </p>
-                        <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
                     </b>
                     <?php } ?>
                 </div>
@@ -294,7 +299,7 @@ ul#nav li a:hover {
                         <p style="color: #000;">RentPerDay:
                             <?php echo $results['PricePerDay']; ?>
                         </p>
-                        <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
                     </b>
                     <?php } ?>
                 </div>
@@ -318,7 +323,7 @@ ul#nav li a:hover {
                         <p style="color: #000;">RentPerDay:
                             <?php echo $results['PricePerDay']; ?>
                         </p>
-                        <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
                     </b>
                     <?php } ?>
                 </div>
@@ -329,7 +334,7 @@ ul#nav li a:hover {
                     $sql = "SELECT * from tblbooking  where Categories='Bigtruck' and Status=3 ";
                     $query = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($query) > 0) {
-                        while ($results = mysqli_fetch_assoc($query)) {
+                        while ($results = mysqli_fetch_array($query)) {
                     ?>
                     <div class="col-lg-6">
                         <div class="text-center" style="margin-bottom: 30px;"> <img
@@ -343,13 +348,16 @@ ul#nav li a:hover {
                         <p style="color: #000;">RentPerDay:
                             <?php echo $results['PricePerDay']; ?>
                         </p>
-                        <a href="#" style="background-color:#1799df  ;" type="button">RENT IT</a>
+                        <a href="#" style="background-color:#1799df  ;" type="button">BOOK</a>
                     </b>
-                    <?php if ($results == 0) {
-                                echo "No vehicles available";
-                            } ?>
                     <?php }
-                    } ?>
+                        if ($results == 0) {
+                            echo "No vehicles available";
+                        } ?>
+
+                    <?php }
+                    //} 
+                    ?>
                 </div>
 
             </div>
@@ -361,7 +369,7 @@ ul#nav li a:hover {
             <div class="container">
                 <div class="row">
                     <div class="destination">
-                        <h2>Destinations You'd Love</h2>
+                        <h2 style="color: #0f1010;">Destinations You'd Love</h2>
                         <h4>Look at the wonderful places</h4>
                     </div>
                     <div class="slider places-slider">
@@ -376,7 +384,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider1text">
                                         <h4>Daring Badi</h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -386,7 +394,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1">
                                     <h4 id="slider11">Daring Badi</h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -403,7 +411,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider2text">
                                         <h4>Visakhapatnam</h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -415,7 +423,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1">
                                     <h4 id="slider12">Visakhapatnam</h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -433,7 +441,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider3text">
                                         <h4>Kurnool</h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -443,7 +451,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1">
                                     <h4 id="slider13">Kurnool</h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -459,7 +467,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider4text">
                                         <h4>Amaravathi </h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -470,7 +478,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1">
                                     <h4 id="slider14">Amaravathi </h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -486,7 +494,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider5text">
                                         <h4>Nandan Kanan</h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -496,7 +504,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1" id="slider5text">
                                     <h4 id="slider15">Nandan Kanan</h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -513,7 +521,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider6text">
                                         <h4>Puri</h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -523,7 +531,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1" id="slider6text">
                                     <h4 id="slider16">Puri</h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -539,7 +547,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider7text">
                                         <h4>Sambalpur </h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -549,7 +557,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1" id="slider7text">
                                     <h4 id="slider17">Sambalpur </h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -566,7 +574,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider8text">
                                         <h4>Vijayawada </h4>
-                                        <p>Save upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -578,7 +586,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1">
                                     <h4 id="slider18">Vijayawada </h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -595,7 +603,7 @@ ul#nav li a:hover {
                                 <div class="Orange">
                                     <div class="slider-hover-content2" id="slider9text">
                                         <h4>Tirupati</h4>
-                                        <p>hgghhf upto 50%</p>
+
                                     </div>
                                     <div class="slider-hover-content3">
                                         <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -605,7 +613,7 @@ ul#nav li a:hover {
                             <div class="slider-text">
                                 <div class="slider-text1">
                                     <h4 id="slider19">Tirupati</h4>
-                                    <p>Save upto 50%</p>
+
                                 </div>
                                 <div class="slider-text2">
                                     <a href="#" class="btn slide-btn btn-lg">Avail Now</a>
@@ -1026,11 +1034,25 @@ ul#nav li a:hover {
 <!-- ================ footer html Exit ================ -->
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-
 <script>
-// $(document).ready(function() {
-//     $('#fromdate').datetimepicker();
+$(function() {
+    var dtToday = new Date();
 
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if (month < 10)
+        month = '0' + month.toString();
+    if (day < 10)
+        day = '0' + day.toString();
+
+    var minDate = year + '-' + month + '-' + day;
+
+    $('#FromDate').attr('min', minDate);
+    $('#ToDate').attr('min', minDate);
+});
+</script>
+<script>
 $('#SeatingCapacity1').on('change', function() {
     var SeatingCapacity1 = $(this).val();
     if (SeatingCapacity1) {
@@ -1184,24 +1206,7 @@ var countries = ["patia-Bhubaneswar", "Khandagiri", "Cuttack", "Badambadi", "bar
 autocomplete(document.getElementById("pickup"), countries);
 autocomplete(document.getElementById("dropoff"), countries);
 </script>
-<script>
-$(function() {
-    var dtToday = new Date();
 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-        month = '0' + month.toString();
-    if (day < 10)
-        day = '0' + day.toString();
-
-    var minDate = year + '-' + month + '-' + day;
-
-    $('#fromdate').attr('min', minDate);
-    $('#todate').attr('min', minDate);
-});
-</script>
 
 </body>
 
@@ -1479,26 +1484,26 @@ $('.btn').click(function() {
 })
 </script>
 
-<script>
-$(document).ready(function() {
-    $('#FromDate').datepicker({
-        onSelect: function(dateText, inst) {
-            //Get today's date at midnight
-            var today = new Date();;
-            today = Date.parse(today.getMonth() + 1 + '/' + today.getDate() + '/' + today
-                .getFullYear());
-            //Get the selected date (also at midnight)
-            var selDate = Date.parse(dateText);
+<!-- <script>
+    $(document).ready(function() {
+        $('#FromDate').datepicker({
+            onSelect: function(dateText, inst) {
+                //Get today's date at midnight
+                var today = new Date();;
+                today = Date.parse(today.getMonth() + 1 + '/' + today.getDate() + '/' + today
+                    .getFullYear());
+                //Get the selected date (also at midnight)
+                var selDate = Date.parse(dateText);
 
-            if (selDate < today) {
-                //If the selected date was before today, continue to show the datepicker
-                $('#FromDate').val('');
-                $(inst).datepicker('show');
+                if (selDate < today) {
+                    //If the selected date was before today, continue to show the datepicker
+                    $('#FromDate').val('');
+                    $(inst).datepicker('show');
+                }
             }
-        }
+        });
     });
-});
-</script>
+</script> -->
 <script>
 $(function() {
     var dtToday = new Date();
