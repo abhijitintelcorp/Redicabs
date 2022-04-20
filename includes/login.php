@@ -1,20 +1,22 @@
 <?php
 include "connection.php";
 if (isset($_POST['login_submit'])) {
-  $email = htmlspecialchars($_POST['email']);
-  $password = htmlspecialchars($_POST['password']);
-  $select = "SELECT * FROM tblbooking WHERE EmailId='$email' && password='$password'";
-  $res = mysqli_query($conn, $select);
-  $count = mysqli_num_rows($res);
-  if ($count == 1) {
-    // $msg = "Username & Password Matched.";
-    //$currentpage = $_SERVER['REQUEST_URI'];
-    //echo "<script type='text/javascript'> document.location = '$currentpage'; </script>";
-    header("location:my_booking.php");
-  } else {
-    echo "<script>alert('Invalid Details');</script>";
-  }
+    $email = htmlspecialchars($_POST['email']);
+    $password = htmlspecialchars($_POST['password']);
+    $select = "SELECT id,EmailId,Password,UserName FROM tblbooking WHERE EmailId='$email' && Password='$password'";
+    $res = mysqli_query($conn, $select);
+    $count = mysqli_num_rows($res);
+    $rows = mysqli_fetch_assoc($res);
+    $id   = $rows['id'];
+    if ($count == 1) {
+        //$_SESSION['login'] = $_POST['$email'];
+        echo "Welcome $email";
+        echo "<script>window.location.replace('./my_booking.php?id=$id')</script>";
+    } else {
+        echo "<script>alert('Invalid Details');</script>";
+    }
 }
+
 ?>
 <html>
 
@@ -25,7 +27,8 @@ if (isset($_POST['login_submit'])) {
 
         <div class="w3-center"><br>
             <span onclick="document.getElementById('id01').style.display='none'"
-                class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                class="w3-button w3-xlarge w3-hover-red w3-display-topright" style="color:blue"
+                title="Close Modal">&times;</span>
             <img src="images/icons/login.png" alt="Avatar" style="width:10%" class="w3-circle w3-margin-top">
         </div>
 
@@ -59,6 +62,10 @@ if (isset($_POST['login_submit'])) {
         </div>
     </div>
 </div>
-
+<!-- <script>
+setTimeout(function() {
+    window.location = '/my_booking.php';
+})
+</script> -->
 
 </html>
