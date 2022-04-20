@@ -438,7 +438,6 @@ $(document).ready(function() {
            
             UserName: {
                 required: true,
-                minlength: 3,
             },
             ContactNo: {
                 required: true,
@@ -467,7 +466,8 @@ $(document).ready(function() {
                 required: true,
             },
         },
-        messages: {         
+        messages: {
+           
            
            
             UserName: {
